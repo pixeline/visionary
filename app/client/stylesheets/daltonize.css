@@ -1,0 +1,71 @@
+/* Input button */
+
+.img-change .btn {
+	margin : 5px;
+	text-align: center;
+}
+.img-change {
+	text-align: center;
+}
+
+.img-change .select {
+	margin-bottom : 10px;
+}
+
+/* Set of filters (rvb, tsl...) */
+.filterList {
+  list-style:none;
+  margin-left:0;
+  padding-left:0;
+}
+.filterList li {
+  margin-bottom:0px;/* à adapter */
+}
+
+.filter {
+  text-align: center;
+}
+
+/* Filter name */
+.filter label {
+  padding-left:2px;
+}
+
+/* slider bar */
+.filter .filterSetting 
+{
+  padding: 3px 10px;
+  width:150px;
+  height:0.2px;
+  cursor:pointer;
+  margin-top:10px;
+  margin-right:20px;
+}
+
+/* slider button*/
+.filter .filterSetting span
+{
+  width:10px;
+  height: 20px!important;
+  cursor:pointer;
+  background: #337ab7;
+  border:0;
+  margin-top:-2px;
+}
+
+/* slider value */
+.filter .filterValue {
+  width: 22px;
+  display: inline-block;
+  text-align: center;
+}
+
+.filter button.less, 
+.filter button.more {
+    font-size: 20px;
+    width: 30px;
+    background: #337ab7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
