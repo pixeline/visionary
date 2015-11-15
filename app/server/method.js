@@ -59,7 +59,8 @@ Meteor.methods({
 			//extend the collection to add foreign key (join with one User and one Picture)
 			correction_profiles[i] = _.extend(correction_profiles[i], {
 				user_id: user_id,
-				picture_id: pics[iPic]._id
+				picture_id: pics[iPic]._id,
+				createdAt: new Date()
 			});
 			//Insert each user's Correction profile and return the id for the link with each of the adaptation rules
 			var correction_profile_id = Correction_profile.insert(correction_profiles[i]);

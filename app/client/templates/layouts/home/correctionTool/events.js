@@ -105,13 +105,6 @@ Template.CorrectionTool.events({
 				imageToRender.onload = function() {
 					texture = initCanvas("image"+pageNumber);
 
-					//conversion for fitler hue (0 to 1 and -1 to -0.5)
-					if(currentFilter["Teinte"] >= 0) {
-						currentFilter["Teinte"] /= 2;
-					} else {
-						currentFilter["Teinte"] = currentFilter["Teinte"] + 1.5;
-					}
-
 					applyFilters(pageNumber, false);
 				}
 
@@ -140,13 +133,6 @@ Template.CorrectionTool.events({
 				// init canvas and realise effect
 				imageToRender.onload = function() {
 					texture = initCanvas("image"+pageNumber);
-
-					//conversion for fitler hue (0 to 1 and -1 to -0.5)
-					if(currentFilter["Teinte"] >= 0) {
-						currentFilter["Teinte"] /= 2;
-					} else {
-						currentFilter["Teinte"] = currentFilter["Teinte"] + 1.5;
-					}
 
 					applyFilters(pageNumber, false);
 				}
@@ -689,19 +675,23 @@ function setColorEsthetic () {
 		$.map( currentFilter, function( value, key ) {
 			if(value != 0) continuer = false;
 		});
+		console.log(picIndex);
 		picIndex++;
 	}
-
-	//conversion for fitler hue (0 to 1 and -1 to -0.5)
-	if(currentFilter["Teinte"] >= 0) {
-		currentFilter["Teinte"] /= 2;
-	} else {
-		currentFilter["Teinte"] = currentFilter["Teinte"] + 1.5;
-	}
-
+   	
 	//update values from previous configuration
 	$.map( currentFilter, function( value, key ) {
 		value = value*100;
+		console.log(value);
+		//conversion for fitler hue (0 to 100 and -100 to -50)
+		if(key ==  "Teinte") {
+			if(value < -50) {
+				value = value + 150;
+			} else {
+				value = parseInt(value / 2);
+			}
+		}
+		console.log(value);
 		$( "#"+ key + " .filterValue" ).text(value);
 		$( "#"+ key + " .filterSetting" ).slider({value: value});
 	});
@@ -730,7 +720,15 @@ function update(tool, parent, val) {
 		} else return;
 		parent.children(".filterSetting").slider({value: val}); //update value slider
 	}
-	parent.children(".filterValue").text(val);                //update value text      
+	parent.children(".filterValue").text(val);                //update value text      	
+	//conversion for fitler hue (0 to 100 and -100 to -50)
+	if(filterName ==  "Teinte") {
+		if(val < 50) {
+			val *= 2;
+		} else {
+			val = val - 150;
+		}
+	}
 	currentFilter[filterName] = val/100;                      //update image render
 	applyFilters(pageNumber, false);
 }
@@ -740,12 +738,6 @@ function update(tool, parent, val) {
 */
 function applyFilters(imgNbr, double) {
 	tabFilters = Session.get('tabFilters');
-		//conversion for fitler hue (0 to 1 and -1 to -0.5)
-		if(currentFilter["Teinte"] < 0.5) {
-			currentFilter["Teinte"] *= 2;
-		} else {
-			currentFilter["Teinte"] = currentFilter["Teinte"] - 1.5;
-		}
 		//set the current filter as datas
 		tabFilters[imgNbr].valueFilter = currentFilter;
 		//set the type of color blindness chosen if rgb filters (warning it's changed only if filter change !)

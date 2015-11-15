@@ -20,10 +20,11 @@
 						<h3>Les informations de correction : </h3>
 							<ul>
 							    {{#each correcObj}}
-							      {{#each picObj}}
-							      	<li>Fichier image : {{fileName}}</li>
+							   		<!--<li>Fichier image : {{pic @index}}</li>-->
+							   	  {{#each picObj}}
+							   	  	<li>Fichier image : {{fileName}}</li>
 							      	{{#each QA}}
-							      		<li>Qestion : {{question}}</li>
+							      		<li>Question : {{question}}</li>
 							      		<li>Réponse : {{answerUser}}</li>
 							      		<li>Réponse correcte : {{answerCorrect}}</li>
 								  	{{/each}}

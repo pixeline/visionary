@@ -31,5 +31,8 @@ underscore
 inno:zoom
 cfs:standard-packages
 cfs:filesystem
-eldog:pixijs
 andruschka:jquery-zoom
+eldog:pixijs
+cfs:gridfs
+accounts-password
+accounts-ui

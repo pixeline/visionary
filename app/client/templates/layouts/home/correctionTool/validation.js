@@ -6,7 +6,7 @@ Template.CorrectionTool.onRendered(function(){
             var tabFilters = Session.get('tabFilters');
             var answersList = Session.get('answersList');
 
-            //Collection user
+            //Collection user 
             var user = {
               name : $('[name=Nom]').val(),
               firstname : $('[name=Prénom]').val(),

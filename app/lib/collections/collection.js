@@ -6,7 +6,7 @@ User = new Mongo.Collection('user', {
   transform: function(doc) {
     doc.correcObj = Correction_profile.find({
       user_id: { $in: [doc._id] }
-    });
+    }, {sort: {createdAt: 1} });
     return doc;
   }
 });
@@ -42,3 +42,41 @@ Picture = new Mongo.Collection('picture', {
 
 /* QA collection that contain the questions and answers about a Picture */
 QA = new Mongo.Collection('qa');
+
+
+/* Images collections to upload a picture */
+var imageStore = new FS.Store.GridFS("images");
+
+Images = new FS.Collection("images", {
+  stores: [imageStore]
+});
+
+Images.deny({
+  insert: function(){
+    return false;
+  },
+  update: function(){
+    return false;
+  },
+  remove: function(){
+    return false;
+  },
+  download: function(){
+    return false;
+  }
+  });
+
+Images.allow({
+  insert: function(){
+    return true;
+  },
+  update: function(){
+    return true;
+  },
+  remove: function(){
+    return true;
+  },
+  download: function(){
+    return true;
+  }
+});

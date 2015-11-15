@@ -3,19 +3,27 @@ var stage, sprite;
 var mode = "";
 var currentValueDalto = 0.0;
 var currentValueTransf = 0.0;
+var currentValueSat = 0.0;
+var currentValueHue = 0.0;
 
 /* At startup */
 Template.Daltonize.onRendered (function(){
- 
+
 	var picSet = Picture.find({}, {sort: {fileName: 1}}).fetch();
+	var picUpload = Images.find({}, {sort: {uploadedAt:-1}}).fetch();
+
+	//foreach picture uploaded, add it to the list of pictures
+	$.each(picUpload, function(index, value) {
+		$('#img_select').append('<option id="'+ value._id +'" value="'+ value.url() +'">'+ index +'</option>');
+	});
 
 	//foreach picture object, add his filename to the list of pictures
 	$.each(picSet, function(index, value) {
 		$('#img_select').append('<option value="'+ value.type +'">'+ value.fileName +'</option>');
 	});
-	//add src to img tag
-	srcImg = "pictures/correction_tool/"+picSet[0].type+"/"+picSet[0].fileName;
-	document.getElementById('image').src = srcImg;
+
+	//select the first one
+  	$('#img_select').change();
 
 	$('#simTxt').hide();
 	$('#correcTxt').hide();
@@ -25,7 +33,7 @@ Template.Daltonize.onRendered (function(){
 	/* As soon as any slider value change, image render change */
 	$( ".filterSetting" ).slider({
 		  max: 100,
-		  min: -100,
+		  min: 0,
 		  step: 1,
 		  value: 0,
 		  from: 0,
@@ -34,20 +42,71 @@ Template.Daltonize.onRendered (function(){
 			  update(0, parent, ui.value);
 		  }
 	}); 
+
+	/* As soon as any slider value change, image render change */
+	$( "#transform .filterSetting" ).slider({
+		  min: -100
+	}); 
 	$( ".filter" ).hide();
 
     // create an new instance of a pixi stage
     stage = new PIXI.Stage(0xFFFFFF, true);
     sprite = new PIXI.Sprite (new PIXI.Texture.fromImage(srcImg));
     stage.addChild(sprite);
+
 });
 
 /* Event daltonize */
 Template.Daltonize.events({
-	//change picture when select
-	'change select': function(event){
+	//to upload images
+	'change .myFileInput': function(event, template) {
+	    FS.Utility.eachFile(event, function(file) {
+			var fileObj = Images.insert(file, function (err, result) {
+				if (err){
+						console.log('error', err);
+				} else {
+					// handle success depending what you need to do
+					var userId = Meteor.userId();
+					var imagesURL = {
+						"profile.image": "/cfs/files/images/" + result._id
+					};
+					Meteor.users.update(userId, {$set: imagesURL});
+				}
+			});
+
+			fileObj.on('uploaded', function () {
+		        //refresh page after upload
+		        $(".refresh").submit();
+			});
+	    });
+	},
+	//to remove image
+	'click #img_remove_btn': function(event, template) {
 		var picSelect = $( "#img_select option:selected" );
-		srcImg = "pictures/correction_tool/"+picSelect.val()+"/"+picSelect.text();
+		if(picSelect.text().indexOf("image") > -1) {
+			alert("Pas celle là !");
+		} else {
+			var picIdRemove = picSelect.attr("id");
+			Images.remove({_id:picIdRemove}, function (err, result) {
+				if (err){
+					console.log('error', err);
+				} else {
+				}
+			});
+			picSelect.remove();
+  			$('#img_select').change();
+		}
+	},
+	//change picture when select
+	'change #img_select': function(event){
+		var picSelect = $("#img_select option:selected");
+		if(picSelect.text().indexOf("image") > -1) {
+			//picture from application
+			srcImg = "pictures/correction_tool/"+picSelect.val()+"/"+picSelect.text();
+		} else {
+			//uploaded picture
+			srcImg = picSelect.val();
+		}
 		document.getElementById('image').src = srcImg;
 	},
 	'submit .img-change': function(event){
@@ -105,8 +164,12 @@ function update(tool, parent, val) {
 	parent.children(".filterValue").text(val); //update value text    
 	if(parent.attr('id') == "daltonize") {
 		currentValueDalto = val/100;           //update value of image render to daltonize
-	} else {
+	} else if(parent.attr('id') == "transform") {
 		currentValueTransf = val/100;          //update value of image render to tranform
+	} else if(parent.attr('id') == "saturation") {
+		currentValueSat = val/10;          	//update value of image render to saturation
+	} else {
+		currentValueHue = val*3.6;          	//update value of image render to hue
 	}
 	changeImgBefore();
 	var image = recupImg();
@@ -136,26 +199,21 @@ function changeImgAfter(sim) {
 	$('#image').show();
 	$('#img p').hide();
 	$('canvas').css("width", "25%"); 
+	$( ".filter" ).show();
 	if(sim) {
 		$('#simTxt').show();
 		$('#correcTxt').hide();
+		$("#transform, #saturation, #teinte").hide();
 	} else {
 		$('#simTxt').hide();
 		$('#correcTxt').show();
 	}
-	$( ".filter" ).show();
 }
 
 /* return image content with a new url if not null */
 function recupImg () {
 	var image = document.getElementById("image");
-	var url = $('#url').val();
-	if(url != '') {
-		image.src = url;
-		image.crossOrigin = ''
-	} else {
-		image.src = srcImg;
-	}
+	image.src = srcImg;
 	return image;
 }
 
@@ -171,21 +229,21 @@ function Simulate(image){
 
 	Color.Vision.Simulate(image,{
 		type:"Protanope",
-		amount:0.5+currentValueDalto/2,
+		amount:currentValueDalto,
 		callback:function(canvas){
 			$('#imgContentD').append(canvas);
 		}
 	});
 	Color.Vision.Simulate(image,{
 		type:"Deuteranope",
-		amount:0.5+currentValueDalto/2,
+		amount:currentValueDalto,
 		callback:function(canvas){
 			$('#imgContentD').append(canvas);
 		}
 	});
 	Color.Vision.Simulate(image,{
 		type:"Tritanope",
-		amount:0.5+currentValueDalto/2,
+		amount:currentValueDalto,
 		callback:function(canvas){
 			$('#imgContentD').append(canvas);
 		}
@@ -209,13 +267,28 @@ function Daltonize(type, image){
     sprite = new PIXI.Sprite (new PIXI.Texture.fromImage(srcImg));
     stage.addChild(sprite);
 
-	Color.Vision.Daltonize(image, stage, {
+	Color.Vision.Simulate(image,{
 		type:type,
-		amountDalto:currentValueDalto/2 - 0.5,
+		amount:currentValueDalto,
+		callback:function(canvas){
+			$('#imgContentD').append(canvas);
+		}
+	});
+	Color.Vision.Dalto (image, {
+		type:type,
+		amountDalto:currentValueDalto-1,
 		amountTransf:currentValueTransf/2,
+		amountHue:currentValueHue,
+		amountSaturation:currentValueSat,
 		callback:function(canvas){
 			$('#imgContentD').append(canvas); //correction in normal vision
-			
+			Color.Vision.Simulate(canvas,{
+				type:type,
+				amount:currentValueDalto,
+				callback:function(canvas){
+					$('#imgContentD').append(canvas);
+				}
+			});
 		}
 	});
 };

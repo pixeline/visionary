@@ -13,14 +13,16 @@ Meteor.startup(function () {
   iron create app_name                          : creer un projet avec une bonne structure
     => placer le contenu du projet à la place de l'application crée
 
-  iron add accounts-password                    : ajoute le module account-password
-  iron add accounts-ui                          : idem -ui
+  iron add iron:router                          : ajouter le module de routing (gère Router.js)
   iron remove autopublish                       : sécurité full - pas d'accès BD
   iron remove insecure                          : retirer les autorisations CRUD sur BD
-  iron add iron:router                          : ajouter le module de routeur
-  iron add ejson                                : module pour iron:router
-  iron add themeteorchef:jquery-validation      : module de validation avec module jQuery
+  iron add ejson                                : module pour iron:router / format JSON
+  iron add accounts-password                    : ajoute le module account-password
+  iron add ian:accounts-ui-bootstrap-3
+  iron add accounts-ui                          : idem -ui
   iron add check                                : module pour ajouter les check server
+
+  iron add themeteorchef:jquery-validation      : module de validation avec module jQuery
   iron add jquery
   iron add mizzao:jquery-ui
   iron add richsilv:owl-carousel 
@@ -28,8 +30,12 @@ Meteor.startup(function () {
     => glfx.js est dans le folder compatibility (module de rendering webGL)
   iron add cfs:standard-packages
   iron add cfs:filesystem
-  iron add eldog:pixijs
+  iron add cfs:grifs
+    iron add eldog:pixijs
+    iron add fds:pixijs
   iron add andruschka:jquery-zoom
+  iron add coffeescript                         : langage compilé js (as js fonctionnel)
+  iron add underscore                           : ajout d'helper
 
   iron run                                      : run app with auto load config files
 
@@ -48,6 +54,7 @@ Meteor.startup(function () {
   show collections                      : show all collections
   db.users.drop()                       : drop user collection
   db.dropDatabase()                     : reset db
+  db.parties.remove( {"_id": "id"});
 
 ---------
 
@@ -76,10 +83,10 @@ BACKUP :
     (root> cd mongodb) sudo bin/mongodump -u username  -p password -h host -d domain
     sudo bin/mongorestore -u username -p password -h host -d domain dump/domain
     sudo bin/mongoexport -u username -p password -h host -d domain -c user -o json/users.json
-    sudo bin/mongoimport -u username -p password -h host -d domain -c user --file json/users.json
+    sudo bin/mongoimport -u username -p password -h host -d domain -c user --file json/1/user1.json
 
-    mongodb://client-521c4ed9:c1dceb59-3442-0367-c5eb-b98b6e29dabd@production-db-a3.meteor.io:27017/visionaryv1_meteor_com
+mongodb://client-d60eea6d:e989b8dc-bea3-71de-d625-ccf3a0ce16c0@production-db-c3.meteor.io:27017/visionary-test_meteor_com
 
-    sudo bin/mongodump -u client-521c4ed9  -p c1dceb59-3442-0367-c5eb-b98b6e29dabd -h production-db-a3.meteor.io:27017 -d visionaryv1_meteor_com
+    sudo bin/mongoimport -u client-d60eea6d -p e989b8dc-bea3-71de-d625-ccf3a0ce16c0 -h production-db-c3.meteor.io:27017 -d visionary-test_meteor_com -c user --file json/interview/u.json
 
 */

@@ -59,7 +59,10 @@ Router.route('/daltonize', {
     template: 'Daltonize',
     waitOn: function() {
       return [
-          Meteor.subscribe('Picture')
-      ];
+          Meteor.subscribe('Picture'),
+          Meteor.subscribe('images')
+      ]; 
     }
 });
+
+Router.onBeforeAction('dataNotFound', {only: 'Profile'});

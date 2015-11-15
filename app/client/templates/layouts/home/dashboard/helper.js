@@ -7,6 +7,17 @@ Template.Profiles.helpers({
     }
     return users;
   },
+  pic: function(index) {
+    var pic = Picture.find({}, {sort: {fileName: 1} });
+    if(pic.fetch().length==0) {
+      return;
+    }
+    if(index >= 18) {
+      index -= 18;
+    }
+    console.log(index);
+    return pic.fetch()[index].fileName;
+  },
   usersEmpty : function(users) {
     if(typeof users == 'undefined') {
       return true;
