@@ -1,17 +1,19 @@
-
-
 <template name="MasterLayout">
-	
-  <div class="center">
+
+    <div class="center">
   
-     	<div id="header">
-        <h1><img src="/pictures/logo.png" alt="Visionary" /></h1>
-      </div>
+        <div id="header">
+          <h1><a href="#"><img src="/pictures/logo.png" alt="Visionary" /></a></h1>
+        </div>
+    
+        <div id="container">
+          {{> yield}}
+        </div>
+    
+        <div id="footer">
+    
+        </div>
   
-      <div id="container">
-        {{> yield}}
-      </div>
-  
-  </div>
+    </div>
 
 </template>

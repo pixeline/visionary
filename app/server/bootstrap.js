@@ -1,8 +1,4 @@
-
-
 Meteor.startup(function () {
-      /* Remove and insert all pictures and QA associate at startup */
-      Meteor.call('insertPictures');
 });
 
 /* 
@@ -19,23 +15,9 @@ Meteor.startup(function () {
   iron add ejson                                : module pour iron:router / format JSON
   iron add accounts-password                    : ajoute le module account-password
   iron add ian:accounts-ui-bootstrap-3
+  iron add twbs:bootstrap 
   iron add accounts-ui                          : idem -ui
   iron add check                                : module pour ajouter les check server
-
-  iron add themeteorchef:jquery-validation      : module de validation avec module jQuery
-  iron add jquery
-  iron add mizzao:jquery-ui
-  iron add richsilv:owl-carousel 
-  iron add twbs:bootstrap 
-    => glfx.js est dans le folder compatibility (module de rendering webGL)
-  iron add cfs:standard-packages
-  iron add cfs:filesystem
-  iron add cfs:grifs
-    iron add eldog:pixijs
-    iron add fds:pixijs
-  iron add andruschka:jquery-zoom
-  iron add coffeescript                         : langage compilé js (as js fonctionnel)
-  iron add underscore                           : ajout d'helper
 
   iron run                                      : run app with auto load config files
 

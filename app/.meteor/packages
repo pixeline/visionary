@@ -18,21 +18,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 iron:router
 ejson
-themeteorchef:jquery-validation
-check
-nerdmed:camanjs
-postrednik:meteor-rangeslider
-mizzao:jquery-ui
-johannesma:meteor-flexslider
-universe:carousel
-richsilv:owl-carousel
-twbs:bootstrap
-underscore
-inno:zoom
-cfs:standard-packages
-cfs:filesystem
-andruschka:jquery-zoom
-eldog:pixijs
-cfs:gridfs
 accounts-password
-accounts-ui
+ian:accounts-ui-bootstrap-3
+check
+twbs:bootstrap
