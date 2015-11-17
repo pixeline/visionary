@@ -10,8 +10,8 @@ Visionary est un projet de recherche de solutions améliorant l’accessibilité
 ## Visionary prototype
 OUtil de prédiagnostic et de paramétrage d'une extension de navigateur corrigeant le rendu des couleurs, à destination des personnes dyschromatopes.
 
-[version 0.2](http://visionary-test.meteor.com/)
-[version 0.1](http://visionaryv1.meteor.com/)
+- [version 0.2](http://visionary-test.meteor.com/)
+- [version 0.1](http://visionaryv1.meteor.com/)
 
 # changelog
 
