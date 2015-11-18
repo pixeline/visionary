@@ -22,3 +22,5 @@ accounts-password
 ian:accounts-ui-bootstrap-3
 check
 twbs:bootstrap
+mizzao:jquery-ui
+fortawesome:fontawesome

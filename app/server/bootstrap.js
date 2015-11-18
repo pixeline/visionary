@@ -1,23 +1,28 @@
 Meteor.startup(function () {
 });
 
+
 /* 
     Steps in Command lines :
 
-  curl https://install.meteor.com/ | sh : install meteor
-  npm install -g iron-meteor                    : installer iron, outil de structuration de projet
+  (si pas déjà installé) curl https://install.meteor.com/ | sh : install meteor
+  (si pas déjà installé) npm install -g iron-meteor                    : installer iron, outil de structuration de projet
   iron create app_name                          : creer un projet avec une bonne structure
     => placer le contenu du projet à la place de l'application crée
 
-  iron add iron:router                          : ajouter le module de routing (gère Router.js)
+  (cd app_name) iron add iron:router                          : ajouter le module de routing (gère Router.js)
   iron remove autopublish                       : sécurité full - pas d'accès BD
   iron remove insecure                          : retirer les autorisations CRUD sur BD
   iron add ejson                                : module pour iron:router / format JSON
   iron add accounts-password                    : ajoute le module account-password
   iron add ian:accounts-ui-bootstrap-3
-  iron add twbs:bootstrap 
-  iron add accounts-ui                          : idem -ui
+  //iron add accounts-ui                          : idem -ui
   iron add check                                : module pour ajouter les check server
+  iron add jquery
+  iron add mizzao:jquery-ui
+  iron add twbs:bootstrap 
+    => glfx.js est dans le folder compatibility (module de rendering webGL)
+  iron add fortawesome:fontawesome
 
   iron run                                      : run app with auto load config files
 
@@ -66,9 +71,5 @@ BACKUP :
     sudo bin/mongorestore -u username -p password -h host -d domain dump/domain
     sudo bin/mongoexport -u username -p password -h host -d domain -c user -o json/users.json
     sudo bin/mongoimport -u username -p password -h host -d domain -c user --file json/1/user1.json
-
-mongodb://client-d60eea6d:e989b8dc-bea3-71de-d625-ccf3a0ce16c0@production-db-c3.meteor.io:27017/visionary-test_meteor_com
-
-    sudo bin/mongoimport -u client-d60eea6d -p e989b8dc-bea3-71de-d625-ccf3a0ce16c0 -h production-db-c3.meteor.io:27017 -d visionary-test_meteor_com -c user --file json/interview/u.json
-
+    
 */
