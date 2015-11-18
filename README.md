@@ -21,9 +21,10 @@ Outil de prédiagnostic et de paramétrage d'une extension de navigateur corrige
 - 18/11/2015: v0.3 (new interface begin)
 
 ## Instructions d'installation
-	
-  -(si pas déjà installé - meteor) curl https://install.meteor.com/ | sh : install meteor
-  -(si pas déjà installé - iron) npm install -g iron-meteor        
+- Si pas déjà installé - meteor :
+
+  - curl https://install.meteor.com/ | sh : install meteor
+  - (si pas déjà installé - iron) npm install -g iron-meteor        
   
 En ligne de commande, à l'endroit de l'applcation installée :
             
