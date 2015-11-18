@@ -23,14 +23,14 @@ Outil de prédiagnostic et de paramétrage d'une extension de navigateur corrige
 ## Instructions d'installation
 - Si pas déjà installé :
 
-	-Installer meteor : curl https://install.meteor.com/ | sh : install meteor
-	-Installer iron : npm install -g iron-meteor   
+	*Installer meteor : curl https://install.meteor.com/ | sh : install meteor
+	*Installer iron : npm install -g iron-meteor   
   
 - En ligne de commande, à l'endroit de l'applcation installée :
             
-	-Lancer l'application : iron run
-	-Ajouter un package : iron add package_name (voir atmospherejs.com)
-	-Déployer l'application : iron deploy app_name.meteor.com
+	*Lancer l'application : iron run
+	*Ajouter un package : iron add package_name (voir atmospherejs.com)
+	*Déployer l'application : iron deploy app_name.meteor.com
 
 ## Développeurs
 - Laurent Keil
