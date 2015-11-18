@@ -1,9 +1,9 @@
-# visionary
+# Visionary
 Visionary est un projet de recherche de solutions améliorant l’accessibilité du web pour les personnes souffrant de déficiences visuelles, et en particulier, le daltonisme. 
  Visionary est financé par la Région Wallonne et est poursuivi dans un partenariat associant une Haute Ecole (l’HEAJ), 
  une université (centre PReCISE de l’Université de Namur) et une entreprise privée (Dogstudio). 
 
-## gestion d'équipe
+## Gestion d'équipe
 - planning : [Teamweek](https://app.teamweek.com/#timeline)
 - backlog: [trello](https://trello.com/b/yaTQVddl/visionary)
 - discussion: [slack](https://visionary-heaj.slack.com) 
@@ -15,24 +15,24 @@ Outil de prédiagnostic et de paramétrage d'une extension de navigateur corrige
 - [version 0.2](http://visionary-test.meteor.com/)
 - [version 0.1](http://visionaryv1.meteor.com/)
 
-# changelog
+# Changelog
 
 - 9/11/2015: v0.1
 - 18/11/2015: v0.3 (new interface begin)
 
 ## Instructions d'installation
-- Si pas déjà installé - meteor :
+- Si pas déjà installé :
 
-  - curl https://install.meteor.com/ | sh : install meteor
-  - (si pas déjà installé - iron) npm install -g iron-meteor        
+	-Installer meteor : curl https://install.meteor.com/ | sh : install meteor
+	-Installer iron : npm install -g iron-meteor   
   
-En ligne de commande, à l'endroit de l'applcation installée :
+- En ligne de commande, à l'endroit de l'applcation installée :
             
 	-Lancer l'application : iron run
 	-Ajouter un package : iron add package_name (voir atmospherejs.com)
-  -Déployer l'application : iron deploy app_name.meteor.com
+	-Déployer l'application : iron deploy app_name.meteor.com
 
-## développeurs
+## Développeurs
 - Laurent Keil
 - Rémy Saint-Cricq
 - Benoit Vanderose
