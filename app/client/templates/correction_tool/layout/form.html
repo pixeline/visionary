@@ -1,18 +1,18 @@
-<template name="Outro">
+<template name="Form">
 	
 	<div class="home">
 	
-		<div class="center">
-			<h1><a href="/"><img src="pictures/logo.png" alt="Visionary" /></a></h1>
-		</div>
+		{{>Logo}}
 		
 		<div class="center">
 			<div class="main">
+				
 				<h2>Merci!</h2>
 				<p>Le test est à présent terminé, un tout grand merci à vous ! 
 				<br />Avant de nous quitter, pouvez-vous nous laisser vos coordonnées ?
 				 Ainsi, nous vous tiendrons informé de l'évolution du projet.</p>
-				<form method="post" action="/" class="formInfos">
+				 
+				<form method="post" action={{urlNext}} class="formInfos">
 					<label for="prenomNom">Votre prénom et nom</label>
 					<input type="text" id="prenomNom" placeholder="Votre prénom et nom" />
 					<label for="email">Votre email</label>
@@ -21,8 +21,11 @@
 					<input type="text" id="age" placeholder="Âge" />
 					<input type="submit" class="btnPrimary" value="Envoyer" />
 				</form>
+				
 			</div>
+			
 		</div>
+		
 	</div>
 	
 </template>

@@ -1,9 +1,7 @@
 <template name="Index">
 	
 	<div class="home">
-		<div class="center">
-			<h1><a href="/"><img src="pictures/logo.png" alt="Visionary" /></a></h1>
-		</div>
+		{{>Logo}}
 		
 		<div class="center">
 			<div class="main">
@@ -11,7 +9,7 @@
 				<p>Le test que vous allez réaliser à pour objectif de nous permettre de mieux comprendre 
 					votre daltonisme et au terme du test, <span>corriger les couleurs de votre écran selon votre vision</span>.
 				</p>
-				<a href="test1" class="btnPrimary">Commencer le test</a>
+				<a href={{urlNext}} class="btnPrimary">Commencer le test</a>
 			</div>
 		</div>
 	</div>

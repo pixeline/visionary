@@ -1,0 +1,22 @@
+<template name = "Choice">
+	
+	{{>Header info=txt}}
+
+	<div class="validationImage">
+		
+		<div class="choixImagesCroix">
+			<ul>
+				<li><img src="pictures/correction_tool/Ishihara/image01.svg" alt="" /></li>
+				<li><img src="pictures/correction_tool/Ishihara/image01.svg" alt="" /></li>
+				<li><img src="pictures/correction_tool/Ishihara/image01.svg" alt="" /></li>
+			</ul>
+		</div>
+	
+		<ul class="confirmation">
+			<li><a href={{urlReset}} class="btnSecondary">Non, je souhaite réajuster</a></li>
+			<li><a href={{urlNext}} class="btnPrimary">Je confirme mon choix</a></li>
+		</ul>
+		
+	</div>
+
+</template>

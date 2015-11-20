@@ -53,3 +53,10 @@ HomeController = RouteController.extend({
   onStop: function () {
   }
 });
+
+IndexController = HomeController.extend({
+    data: function() {
+        var data = IndexController.__super__.data.call(this);
+        return data;
+    }
+});

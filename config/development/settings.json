@@ -1,122 +1,79 @@
 {
-  "public": {
-	"QA": [
-	  {
-	  	"question" : "Modifiez la valeur des filtres pour adapter l'image à votre besoin.",
-	  	"answerArray" : null,
-	  	"answerCorrect" : null,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel nombre visualisez-vous dans le cercle de couleurs ci-contre ?",
-	  	"answerArray" : null,
-	  	"answerCorrect" : 29,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel nombre visualisez-vous dans le cercle de couleurs ci-contre ?",
-	  	"answerArray" : null,
-	  	"answerCorrect" : 15,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel nombre visualisez-vous dans le cercle de couleurs ci-contre ?",
-	  	"answerArray" : null,
-	  	"answerCorrect" : 97,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel nombre visualisez-vous dans le cercle de couleurs ci-contre ?",
-	  	"answerArray" : null,
-	  	"answerCorrect" : 73,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel nombre visualisez-vous dans le cercle de couleurs ci-contre ?",
-	  	"answerArray" : null,
-	  	"answerCorrect" : 0,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel nombre visualisez-vous dans le cercle de couleurs ci-contre ?",
-	  	"answerArray" : null,
-	  	"answerCorrect" : 96,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel nombre visualisez-vous dans le cercle de couleurs ci-contre ?",
-	  	"answerArray" : null,
-	  	"answerCorrect" : 74,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "A quel numéro est associé cette zone ?",
-	  	"answerArray" : [1, 2, 3, 4, 5],
-	  	"answerCorrect" : 1,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quelle est la valeur de \"3\" sur le graphique ?",
-	  	"answerArray" : ["8.20%", "8.88%", "89.93%"],
-	  	"answerCorrect" : "8.20%",
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quelle ligne de métro dois-je prendre pour descendre à Woodford (indiqué par une flèche) ?",
-	  	"answerArray" : ["Bakerloo", "Central", "Circle", "Ditrict", "East London", "Hammersmith & City", 
-	  					"Jubilee", "Metropolitan", "Northern", "Piccadilly", "Victoria", "Waterloo & City"],
-	  	"answerCorrect" : "Central",
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quel fruit est entouré sur l'image ?",
-	  	"answerArray" : ["Pommes", "Oranges", "Pêches"],
-	  	"answerCorrect" : "Oranges",
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Quelle est la valeur du crayon orange ?",
-	  	"answerArray" : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-	  	"answerCorrect" : 14,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Combien de camemberts contient le pion vert ?",
-	  	"answerArray" : [0, 1, 2, 3, 4, 5, 6],
-	  	"answerCorrect" : 0,
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Dans cette image prise du jeu Minecraft, quelle est la nature du sol ?",
-	  	"answerArray" : ["Terre", "Lave", "Herbe", "Eau"],
-	  	"answerCorrect" : "Herbe",
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  },
-	  {
-	  	"question" : "Indiquez où se trouvent les champignons.",
-	  	"answerArray" : ["En haut à gauche", "En haut au milieu",  "En haut à droite", "Au centre à gauche", 
-	  					"Au centre", "Au centre à droite", "En bas à gauche", "En bas au milieu",  "En bas à droite"],
-	  	"answerCorrect" : "Au centre",
-	  	"answerUser" : null,
-	  	"answerUserCorrection" : null
-	  }
-  	]
-  },
+  "public" : {
+      "admin_panel" : {
+        
+          "survey": [
+                      {
+                        "name" : "V2 - Questionnaire 1",
+                        "root_url" : "",
+                        "display" : true,
+                        "date-created" : "Thu Nov 19 2015 11:05:50 GMT+0100",
+                        "max_reset_counter" : 100,
+                        "picture_admin": [
+                                    {
+                                      "order" : 1,
+                                      "title" : "image 1",
+                                      "type" : "Ishihara",
+                                      "file_name" : "image01.svg",
+                                      "question" : "Choisissez l'image qui vous permet de voir au mieux le chiffre 96"
+                                    }
+                        ],
+                        "sorted_color_admin": [
+                                    {
+                                      "order" : 1,
+                                      "color" : "#ffffff"
+                                    }
+                        ],
+                        "module_survey": [
+                                    {
+                                      "order" : 1,
+                                      "title" : "Premier module",
+                                      "info_txt": [
+                                                  {
+                                                    "txt" : "Bonjour et bienvenue",
+                                                    "title" : "Premier module"
+                                                  }
+                                      ]
+                                    }
+                        ],
+                        "filter_admin": [
+                                    {
+                                      "primary" : true,
+                                      "order" : 1,
+                                      "parameter" : "saturation",
+                                      "init_value" : 0,
+                                      "min" : 0,
+                                      "max" : 100,
+                                      "conversion" : 10,
+                                      "step_choice" : 50,
+                                      "step_refine" : 10
+                                    },
+                                    {
+                                      "primary" : false,
+                                      "order" : 0,
+                                      "parameter" : "teinte",
+                                      "init_value" : 0,
+                                      "min" : 0,
+                                      "max" : 360,
+                                      "conversion" : 3.6,
+                                      "step_choice" : 120,
+                                      "step_refine" : null
+                                    }
+                        ],
+                        "field_form": [
+                                    {
+                                      "order" : 1,
+                                      "type" : "text",
+                                      "label" : null,
+                                      "name" : "name",
+                                      "placeholder" : "Votre nom",
+                                      "required" : true
+                                    }
+                        ]
+                      }
+          ]
+                  
+      }
+  }         
 
-  "sample": "value"
 }
