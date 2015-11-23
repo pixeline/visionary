@@ -291,6 +291,20 @@ header h2 {
 }
 
 
+@media screen and (max-width:1140px){
+	.choixImagesLigne ul li {
+		width: 170px;
+	}
+}
+
+@media screen and (min-width:1141px) and (max-width:1390px){
+	
+	.choixImagesLigne ul li {
+		width: 200px;
+	}
+	
+}
+
 
 /* ---------------------------------------------- 
 	adjust.html // Filtre +/- image
@@ -580,6 +594,14 @@ ul.confirmation  li a.btnPrimary {
 	    margin-bottom: 30px;
 	}
 
+	/* Select_ligne.html // Choix images (ligne) */
+	.choixImagesLigne ul li {
+		display: block;
+		width:90%;
+		margin:0 auto;
+		padding:0;
+	}
+
 }
 /* ---------------------------------------------- 
 	VERSION INTERMEDIAIRE (< 1023px)
@@ -595,5 +617,14 @@ ul.confirmation  li a.btnPrimary {
 	    max-width: 700px;
 	    margin: 0 auto;
 	}
+
+	/* Select_ligne.html // Choix images (ligne) */
+	.choixImagesLigne ul li {
+		display: block;
+		width:90%;
+		margin:0 auto;
+		padding:0;
+	}
+
 
 }
