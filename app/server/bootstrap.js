@@ -10,7 +10,7 @@ Meteor.startup(function () {
   iron create app_name                          : creer un projet avec une bonne structure
     => placer le contenu du projet à la place de l'application crée
 
-  (cd app_name) iron add iron:router                          : ajouter le module de routing (gère Router.js)
+  (cd app_name) iron add iron:router            : ajouter le module de routing (gère Router.js)
   iron remove autopublish                       : sécurité full - pas d'accès BD
   iron remove insecure                          : retirer les autorisations CRUD sur BD
   iron add ejson                                : module pour iron:router / format JSON

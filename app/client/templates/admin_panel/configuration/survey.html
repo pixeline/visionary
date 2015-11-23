@@ -25,12 +25,17 @@
 						</thead>
 						<tbody>
 							{{#each survey}}
-								<tr>
+								<tr class="survey_line" id={{_id}}>
 									<td>{{name}}</td>
 									<td>{{root_url}}</td>
 									<td>{{max_reset_counter}}</td>
-									<td>{{display}}</td>
-									<td>{{date_creation}}</td>
+									<td>{{#if display}}
+											v
+										{{else}}
+											x
+										{{/if}}
+									</td>
+									<td>{{date_created}}</td>
 									<td><input type="submit" id="removeSurvey" class="btn btn-danger" value="Supprimer" /></td>
 								</tr>
             				{{/each}}

@@ -34,17 +34,6 @@ IndexController = HomeController.extend({
     }
 });
 
-AdminController = HomeController.extend({
-    onBeforeAction : function() {
-        var currentUser = Meteor.user();
-        if(currentUser && currentUser.username === "admin"){
-            this.next();
-        } else {
-            Router.go("Login");
-        }
-    }
-});
-
 LoginAdminController = HomeController.extend({
     onBeforeAction : function() {
         var currentUser = Meteor.user();
@@ -53,5 +42,19 @@ LoginAdminController = HomeController.extend({
         } else {
             this.next();
         }   
+    },
+    waitOn : function() {
+        return Meteor.subscribe("admin");
+    }
+});
+
+AdminController = HomeController.extend({
+    onBeforeAction : function() {
+        var currentUser = Meteor.user();
+        if(currentUser && currentUser.username === "admin"){
+            this.next();
+        } else {
+            Router.go("Login");
+        }
     }
 });

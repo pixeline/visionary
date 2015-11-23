@@ -62,6 +62,7 @@ Router.route(root_url+'/form', {
     template: 'Form'
 });
 
+
 /***************
  * Admin panel *
  ***************/

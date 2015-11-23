@@ -8,6 +8,22 @@ function checkPasswordIsValid (aString) {
   return aString.length > 7;
 }
 
+/* Insert admin if no one exist */
+Template.Login.onRendered (function () {
+      if(Meteor.users.find().fetch().length == 0) { 
+            Accounts.createUser ({
+                  username: "admin", 
+                  password : "jenna567",
+                  role : 'admin'
+            }, function(error){
+                  if(error){
+                        throw new Meteor.Error("Erreur", "Erreur d'insertion d'un admin.");
+                  }
+            });
+      }
+});
+
+/* Login for administrator */
 Template.Login.events({  
   'submit #loginForm': function (event, template) {
       event.preventDefault();
@@ -35,6 +51,7 @@ Template.Login.events({
             sAlert.error('Mot de passe invalide');
           }
       } else {
+          //log with meteor account
           Meteor.loginWithPassword(login, password, function (error) {
               if (error) {
                   if(error.reason == "User not found"){
