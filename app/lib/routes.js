@@ -24,6 +24,13 @@ Router.route(root_url+'/select', {
     name: 'Select',
     template: 'Select'
 });
+
+/* Template to select a picture (between several types of correction) */
+Router.route(root_url+'/select_ligne', {
+    name: 'Select_ligne',
+    template: 'Select_ligne'
+});
+
 /* Template to adjust first color correction of a picture */
 Router.route(root_url+'/adjust', {
     name: 'Adjust',
