@@ -19,8 +19,9 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 iron:router
 ejson
 accounts-password
-ian:accounts-ui-bootstrap-3
 check
 twbs:bootstrap
 mizzao:jquery-ui
 fortawesome:fontawesome
+juliancwirko:s-alert
+juliancwirko:s-alert-stackslide

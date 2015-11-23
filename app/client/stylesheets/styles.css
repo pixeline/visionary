@@ -436,7 +436,6 @@ ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
 }
 
 .formInfos input#age {
-	width: 30px;
 }
 
 .formInfos input:active, .formInfos input:focus, .formInfos input:hover {

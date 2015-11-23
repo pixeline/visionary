@@ -59,8 +59,36 @@ Router.route(root_url+'/form', {
  * Admin panel *
  ***************/
  
-/* Homepage of Admin Panel */
+/* Login for Admin Panel */
 Router.route(root_url+'/admin', {
+    name: 'Login',
+    template: 'Login',
+    controller: 'LoginAdminController'
+});
+
+/* Homepage of Admin Panel */
+Router.route(root_url+'/adminPanel', {
     name: 'Admin',
-    template: 'Admin'
+    template: 'Admin',
+    controller: 'AdminController'
+});
+
+/* Survey Panel */
+Router.route(root_url+'/adminPanel/survey', {
+    name: 'Survey',
+    template: 'Survey',
+    onBeforeAction : function() {
+        var currentUser = Meteor.user();
+        if(currentUser && currentUser.username === "admin"){
+            this.next();
+        } else {
+            Router.go("Login");
+        }
+    },
+    waitOn : function() {
+        var currentUser = Meteor.user();
+        return [ 
+            Meteor.subscribe('survey', currentUser)
+        ];
+    }
 });

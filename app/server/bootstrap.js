@@ -15,14 +15,15 @@ Meteor.startup(function () {
   iron remove insecure                          : retirer les autorisations CRUD sur BD
   iron add ejson                                : module pour iron:router / format JSON
   iron add accounts-password                    : ajoute le module account-password
-  iron add ian:accounts-ui-bootstrap-3
-  //iron add accounts-ui                          : idem -ui
   iron add check                                : module pour ajouter les check server
   iron add jquery
   iron add mizzao:jquery-ui
   iron add twbs:bootstrap 
     => glfx.js est dans le folder compatibility (module de rendering webGL)
   iron add fortawesome:fontawesome
+  
+  iron add juliancwirko:s-alert  
+  iron add juliancwirko:s-alert-stackslide
 
   iron run                                      : run app with auto load config files
 
