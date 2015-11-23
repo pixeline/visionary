@@ -10,24 +10,18 @@ body {
 	color:#333;
 }
 
-
-.progressBar { 
-	height: 2px;
-	position: relative;
-	background: #fff;
-}
-
-.progressBar.colorWhite > span {
+header {
 	background-color:#fff;
+	position: relative;
 }
 
-.progressBar > span {
-  display: block;
-  height: 100%;
-  background-color: #0277BD;
-  position: relative;
-  overflow: hidden;
+header h2 {
+	text-align: center;
+	font-size: 2.3em;
+	font-family: "kepler-std-display", serif;
+	padding:30px 15px;
 }
+
 
 .btnPrimary {
 	display: block;
@@ -42,6 +36,11 @@ body {
 	text-decoration: none;
 	font-weight: 500;
 	transition: background-color 0.5s ease;
+}
+
+.content {
+	padding-top:30px;
+	padding-bottom:30px;
 }
 
 .btnPrimary:hover {
@@ -240,31 +239,15 @@ body {
 }
 
 /* ---------------------------------------------- 
-	TEST1.HTML // LAYOUT CHOIX IMAGE 
+	select.html // Choix images (croix)
 ---------------------------------------------- */
-header {
-	background-color:#fff;
-	margin-bottom:30px;
-	position: relative;
-}
-
-header h2 {
-	text-align: center;
-	font-size: 2.5em;
-	font-family: "kepler-std-display", serif;
-	padding:30px 15px;
-
-}
-
-
 .choixImagesCroix ul {
     text-align: center;
 }
 
 .choixImagesCroix ul li {
 	display: inline-block;
-    width: 170px;
-    padding: 12px;
+    width: 190px;
 }
 
 .choixImagesCroix ul li.hidden {
@@ -272,30 +255,59 @@ header h2 {
 }
 
 .choixImagesCroix ul li img {
+}
+
+@media screen and (max-height:674px){
+	
+	.choixImagesCroix ul li {
+		width: 150px;
+	}
+	
+}
+
+@media screen and (min-height:675px) and (max-height:750px){
+	
+	.choixImagesCroix ul li {
+		width: 170px;
+	}
+	
+}
+
+/* ---------------------------------------------- 
+	select_ligne.html // Choix image (ligne)
+---------------------------------------------- */
+.choixImagesLigne ul {
+    text-align: center;    
+}
+
+.choixImagesLigne ul li {
+	display: inline-block;
+    width: 250px;
+    padding:10% 12px;
+}
+
+.choixImagesLigne ul li img {
 	max-width: 100%;
 }
 
 
-/* ---------------------------------------------- 
-	TEST2.HTML // LAYOUT FILTRE IMAGE
----------------------------------------------- */
 
+/* ---------------------------------------------- 
+	adjust.html // Filtre +/- image
+---------------------------------------------- */
 ul.filtreAjustement {
 	text-align: center;
 }
 
-ul.filtreAjustement li:first-child {
-	width: 25%;
+ul.filtreAjustement li:first-child, ul.filtreAjustement li:last-child {
+	width: 250px;
+	height: 250px;
 }
 
 ul.filtreAjustement li {
 	display: inline-block;
-	width: 35%;
+	width: 33%;
 	padding:10px;
-}
-
-ul.filtreAjustement li:last-child {
-	width: 25%;
 }
 
 ul.filtreAjustement li img {
@@ -308,68 +320,129 @@ ul.filtreAjustement .filtreMoins, ul.filtreAjustement .filtrePlus {
 }
 
 ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
-	width: 80%;
-	margin-bottom: 30%;
+	margin-bottom: 50%;
 }
 
 .imgMoins:before {
-	content:"-";
-	position: absolute;
-	font-size: 13.5em;
-	font-weight: bold;
-	color:#fff;
-	left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
+	content: "-";
+    position: absolute;
+    font-size: 13.5em;
+    font-weight: bold;
+    color: #fff;
+    left: 0;
+    right: 0;
     z-index: 0;
     opacity: 0.7;
+    top:-5px;
 }
 
 .imgPlus:before {
 	content:"+";
-	position: absolute;
-	font-size: 13em;
-	font-weight: bold;
-	color:#fff;
-	left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
+    position: absolute;
+    font-size: 13em;
+    font-weight: bold;
+    color: #fff;
+    left: 0;
+    right: 0;
     z-index: 0;
     opacity: 0.7;
+    top: -10px;
+}
+
+@media screen and (min-width:0px) and (max-width:850px){
+
+	/* adjust.html // Filtre +/- image */
+	ul.filtreAjustement li {
+	    display: block;
+	    width: 90%;
+	    margin: 0 auto;
+   }
+
+	ul.filtreAjustement li:first-child, ul.filtreAjustement li:last-child {
+		width: 100px;
+		height: 100px;
+	}
+
+	.imgMoins:before, .imgPlus:before {
+		font-size: 6em;
+	}
+
+}
+
+@media screen and (max-width:1023px){
+
+	
+	ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
+		margin-bottom: 20%;
+	}
+
+}
+
+@media screen and (min-width:1024px) and (max-width:1300px){
+	
+	ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
+		margin-bottom: 30%;
+	}
+
+	
 }
 
 
 /* ---------------------------------------------- 
-	TEST3.HTML // LAYOUT VALIDATION IMAGE
+	choice.html // Validation d'une image / 3
 ---------------------------------------------- */
-.validationImage img {
-	display: block;
-	text-align: center;
-	margin:0 auto;
-	max-height: 450px;
-}
-
-.validationImage ul {
-	text-align: center;
-}
-
-.validationImage ul li {
+ul.validationImage {
 	display: inline-block;
+	width: 100%;
+	text-align: center;
+	margin-bottom:30px;
+}
+ul.validationImage li {
+    display: inline-block;
+	width: 30%;
 }
 
-.validationImage ul li a.btnSecondary {
+ul.validationImage li img {
+	max-width: 100%;
+}
+
+ul.confirmation {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	
+}
+
+
+ul.confirmation li {
+	display: inline;
+}
+
+ul.confirmation li a.btnPrimary2 {
+	padding:12px 25px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 4px;
+	width: 150px;
+	margin:20px auto 0 auto;
+	background-color:#0277BD;
+	color:#fff;
+	text-decoration: none;
+	font-weight: 500;
+	transition: background-color 0.5s ease;
+}
+
+ul.confirmation li a.btnSecondary {
 	color:#000;
 	padding:5px 15px;
 }
 
-.validationImage ul li a.btnSecondary:hover {
+ul.confirmation li a.btnSecondary:hover {
 	color:#999;
 	
 }
 
-.validationImage ul li a.btnPrimary {
+ul.confirmation  li a.btnPrimary {
 	width: 180px;
 }
 
@@ -449,4 +522,78 @@ ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
 	font-family: "jaf-bernino-sans", sans-serif;
 	margin-top:40px;
 	margin-bottom:0;
+}
+
+/* ---------------------------------------------- 
+	VERSION MOBILE (< 480px)
+---------------------------------------------- */
+@media screen and (max-width:480px){
+
+	
+	/* index.html // Homepage */
+	.home {
+		margin:0px 0;
+		background:#fff;
+		padding-top:30px;
+	}
+	
+	.home .main {
+		background-color:#fff;
+		padding:40px 20px;
+		border-top:none;
+		margin-top:0px;
+	}	
+	
+	.home .main p {
+		font-size: 1.2em;
+	}
+	
+	/* header des pages du test (!= homepage) */
+	header ul.breadcrumb, header .aide  {
+		display: none;
+	}	
+	
+	header h2 {
+		text-align: left;
+	    font-size: 1.5em;
+	    padding: 20px;
+	}
+	
+	/* select.html // Choix images (choix) */
+	.choixImagesCroix ul li {
+	    width: 80%;
+	    display: block;
+	    margin: 0 auto;
+	}
+	
+	
+	/* choice.html // Choix d'une image sur 3 */
+	ul.validationImage li {
+	    display: block;
+	    width: 90%;
+	    margin: 0 auto;
+	
+	}
+
+	ul.confirmation li {
+	    display: block;
+	    margin-bottom: 30px;
+	}
+
+}
+/* ---------------------------------------------- 
+	VERSION INTERMEDIAIRE (< 1023px)
+---------------------------------------------- */
+@media screen and (min-width:481px) and (max-width:1023px){
+	
+	header ul.breadcrumb, header .aide  {
+		display: none;
+	}	
+	
+	header h2 {
+		text-align: left;
+	    max-width: 700px;
+	    margin: 0 auto;
+	}
+
 }

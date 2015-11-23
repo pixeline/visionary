@@ -13,6 +13,13 @@ Template.Select.helpers({
     urlNext : root_url+"/adjust"
 });
 
+/* Use of attributes to reuse in the template Select */
+Template.Select_ligne.helpers({  
+    //information text to select a picture (type of correction to choose) 
+    txt : "Choisissez l'image qui vous permet de voir au mieux le chiffre 96.",
+    urlNext : root_url+"/adjust"
+});
+
 /* Use of attributes to reuse in the template Adjust */
 Template.Adjust.helpers({  
     //information text to ajust color for a picture 
