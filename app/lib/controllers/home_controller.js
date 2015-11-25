@@ -38,7 +38,7 @@ LoginAdminController = HomeController.extend({
     onBeforeAction : function() {
         var currentUser = Meteor.user();
         if(currentUser && currentUser.username === "admin"){
-            Router.go("Admin");
+            Router.go("AdminMock");
         } else {
             this.next();
         }   
@@ -56,5 +56,29 @@ AdminController = HomeController.extend({
         } else {
             Router.go("Login");
         }
+    },
+    waitOn : function() {
+        var currentUser = Meteor.user();
+        return [
+            Meteor.subscribe('survey', currentUser),
+            Meteor.subscribe('module_survey'),
+            Meteor.subscribe('picture_admin'),
+            Meteor.subscribe('instruction'),
+            Meteor.subscribe('info_txt'),
+            Meteor.subscribe('sorted_color_admin'),
+            Meteor.subscribe('filter_admin'),
+            Meteor.subscribe('field_form')
+        ];
     }
 });
+
+AdminMockController = AdminController.extend({
+    onBeforeAction: function() {
+        var onBeforeAction = AdminMockController.__super__.onBeforeAction.call(this);
+        return onBeforeAction;
+    },
+    waitOn: function() {
+        var waitOn = AdminMockController.__super__.waitOn.call(this);
+        return waitOn;
+    }
+})

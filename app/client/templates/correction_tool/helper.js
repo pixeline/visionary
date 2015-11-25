@@ -30,26 +30,20 @@ Template.Adjust.helpers({
 /* Use of attributes to reuse in the template Choice */
 Template.Choice.helpers({  
   //information text to ajust color for a picture 
-    txt : "Jugez-vous l'image suffisamment claire pour vous?",
-    urlNext : root_url+"/test4",
+    txt : "Choisissez l'image qui vous permet de voir au mieux le chiffre 96.",
+    urlNext : root_url+"/upload",
     urlReset : root_url+"/select"
 });
 
-/* Use of attributes to reuse in the template Test4 */
-Template.Test4.helpers({  
-    txt : "Ajuster l'image jusqu'à ce qu'elle soit visuellement agréable pour vous.",
-    urlNext : root_url+"/test5"
-});
-
 /* Use of attributes to reuse in the template Test5 */
-Template.Test5.helpers({  
+Template.Upload.helpers({  
     txt : "Validation de vos préférences.",
-    urlNext : root_url+"/test6",
+    urlNext : root_url+"/valid",
 });
 
 /* Use of attributes to reuse in the template Test6 */
-Template.Test6.helpers({  
-    txt : "Êtes-vous satisfait avec votre photo?",
+Template.Valid.helpers({  
+    txt : "Êtes-vous satisfait avec votre photo ?",
     urlNext : root_url+"/form",
     urlReset : root_url+"/select"
 });

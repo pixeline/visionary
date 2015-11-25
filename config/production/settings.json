@@ -1,73 +1,371 @@
 {
   "public" : {
-      "version" : 2,
+      "mock" : true,
       "admin_panel" : {
         
           "survey": [
                       {
                         "name" : "V2 - Questionnaire 1",
-                        "display" : true,
-                        "date-created" : "Thu Nov 19 2015 11:05:50 GMT+0100",
-                        "max_reset_counter" : 100,
-                        "picture_admin": [
-                                    {
-                                      "order" : 1,
-                                      "title" : "image 1",
-                                      "type" : "Ishihara",
-                                      "file_name" : "image01.svg",
-                                      "question" : "Choisissez l'image qui vous permet de voir au mieux le chiffre 96"
-                                    }
-                        ],
-                        "sorted_color_admin": [
-                                    {
-                                      "order" : 1,
-                                      "color" : "#ffffff"
-                                    }
-                        ],
+                        "root_url" : "",
+                        "state" : true,
+                        "date_created" : "23/11/2015 14:53:59",
+                        "max_reset_counter" : 10,
                         "module_survey": [
                                     {
                                       "order" : 1,
-                                      "title" : "Premier module",
+                                      "title" : "Index",
                                       "info_txt": [
                                                   {
-                                                    "txt" : "Bonjour et bienvenue",
-                                                    "title" : "Premier module"
+                                                    "title" : "Êtes-vous daltonien(ne) ?",
+                                                    "txt" : "Bonjour et bienvenue"
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 0,
+                                      "title" : "Sorted_test",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Ranger les couleurs",
+                                                    "txt" : "Faites le test."
+                                                  }
+                                      ],
+                                      "sorted_color_admin": [
+                                                  {
+                                                    "order" : 1,
+                                                    "color" : "#ffffff"
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "color" : "#3efefe"
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "color" : "#aa2aaa"
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 2,
+                                      "title" : "Select",
+                                      "filter_admin" : [
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 70
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "protanopeSeverity",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 70
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "deuteranopeSeverity",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 70
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "tritanopeSeverity",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 70
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 0,
+                                      "title" : "Select_ligne",
+                                      "filter_admin" : [
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 70
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "protanopeSeverity",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 70
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "deuteranopeSeverity",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 70
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "tritanopeSeverity",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 70
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 3,
+                                      "title" : "Adjust",
+                                      "filter_admin" : [
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 70,
+                                                    "min" : 10,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 10
+                                                  },
+                                                  {
+                                                    "order" : 1,
+                                                    "parameter" : "protanopeSeverity",
+                                                    "init_value" : 70,
+                                                    "min" : 10,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 10
+                                                  },
+                                                  {
+                                                    "order" : 1,
+                                                    "parameter" : "deuteranopeSeverity",
+                                                    "init_value" : 70,
+                                                    "min" : 10,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 10
+                                                  },
+                                                  {
+                                                    "order" : 1,
+                                                    "parameter" : "tritanopeSeverity",
+                                                    "init_value" : 70,
+                                                    "min" : 10,
+                                                    "max" : 100,
+                                                    "conversion" : 0.01,
+                                                    "step" : 10
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 4,
+                                      "title" : "Choice",
+                                      "filter_admin" : [
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "hue",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 70,
+                                                    "conversion" : 3.6,
+                                                    "step" : 35
+                                                  },
+                                                  {
+                                                    "order" : 1,
+                                                    "parameter" : "protanopeIntensity",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 1,
+                                                    "parameter" : "deuteranopeIntensity",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 1,
+                                                    "parameter" : "tritanopeIntensity",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 5,
+                                      "title" : "Upload",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Téléchargement de photo",
+                                                    "txt" : "Valider vos préferences..."
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 6,
+                                      "title" : "Valid",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Êtes-vous satisfait avec votre photo ?",
+                                                    "txt" : "Satisfait ?"
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Form",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Merci !",
+                                                    "txt" : "Entrez vos coordonnées"
+                                                  }
+                                      ],
+                                      "field_form": [
+                                                  {
+                                                    "order" : 1,
+                                                    "type" : "text",
+                                                    "label" : ["Votre nom"],
+                                                    "name" : "name",
+                                                    "placeholder" : "Votre nom",
+                                                    "required" : true
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "type" : "text",
+                                                    "label" : ["Votre prenom"],
+                                                    "name" : "firstname",
+                                                    "placeholder" : "Votre prenom",
+                                                    "required" : true
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "type" : "email",
+                                                    "label" : ["Votre email"],
+                                                    "name" : "email",
+                                                    "placeholder" : "Votre email",
+                                                    "required" : false
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "type" : "number",
+                                                    "label" : ["Votre âge"],
+                                                    "name" : "age",
+                                                    "placeholder" : "Votre âge",
+                                                    "required" : true
+                                                  },
+                                                  {
+                                                    "order" : 5,
+                                                    "type" : "radio",
+                                                    "label" : ["Homme", "Femme"],
+                                                    "name" : "sex",
+                                                    "placeholder" : "",
+                                                    "required" : true
                                                   }
                                       ]
                                     }
                         ],
-                        "filter_admin": [
+                        "picture_admin": [
                                     {
-                                      "primary" : true,
                                       "order" : 1,
-                                      "parameter" : "saturation",
-                                      "init_value" : 0,
-                                      "min" : 0,
-                                      "max" : 100,
-                                      "conversion" : 10,
-                                      "step_choice" : 50,
-                                      "step_refine" : 10
+                                      "title" : "Plate 7",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate07.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Sélectionner l'image qui vous permet de voir au mieux le chiffre 3.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce que le chiffre soit visuellement agréable pour vous.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet de voir au mieux le chiffre 3.",
+                                                      "module" : "Choice"
+                                                    }
+                                      ]
                                     },
                                     {
-                                      "primary" : false,
-                                      "order" : 0,
-                                      "parameter" : "teinte",
-                                      "init_value" : 0,
-                                      "min" : 0,
-                                      "max" : 360,
-                                      "conversion" : 3.6,
-                                      "step_choice" : 120,
-                                      "step_refine" : null
-                                    }
-                        ],
-                        "field_form": [
-                                    {
                                       "order" : 1,
-                                      "type" : "text",
-                                      "label" : null,
-                                      "name" : "name",
-                                      "placeholder" : "Votre nom",
-                                      "required" : true
+                                      "title" : "Plate 8",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate08.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Sélectionner l'image qui vous permet de voir au mieux le nombre 15.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce que le nombre soit visuellement agréable pour vous.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet de voir au mieux le nombre 15.",
+                                                      "module" : "Choice"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 2,
+                                      "title" : "Carte de paris",
+                                      "type" : "Technique",
+                                      "file_name" : "carte.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Sélectionner l'image qui vous permet de distinguer au mieux toutes les zones.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux toutes les zones.",
+                                                      "module" : "Choice"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 3,
+                                      "title" : "Arc-en-ciel",
+                                      "type" : "Illustration",
+                                      "file_name" : "arc.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Sélectionner votre image préférée.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce qu'elle corresponde au mieux à vos attentes.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez votre image préférée.",
+                                                      "module" : "Choice"
+                                                    }
+                                      ]
                                     }
                         ]
                       }

@@ -41,20 +41,15 @@ Router.route(root_url+'/choice', {
     name: 'Choice',
     template: 'Choice'
 });
-/* Homepage of the application */
-Router.route(root_url+'/test4', {
-    name: 'Test4',
-    template: 'Test4'
+/* Template to upload a picture and correct it */
+Router.route(root_url+'/upload', {
+    name: 'Upload',
+    template: 'Upload'
 });
-/* Homepage of the application */
-Router.route(root_url+'/test5', {
-    name: 'Test5',
-    template: 'Test5'
-});
-/* Homepage of the application */
-Router.route(root_url+'/test6', {
-    name: 'Test6',
-    template: 'Test6'
+/* Template to valid a correction */
+Router.route(root_url+'/valid', {
+    name: 'Valid',
+    template: 'Valid'
 });
 /* Form to submit informations of the current user */
 Router.route(root_url+'/form', {
@@ -81,22 +76,9 @@ Router.route(root_url+'/adminPanel', {
     controller: 'AdminController'
 });
 
-/* Survey Panel */
-Router.route(root_url+'/adminPanel/survey', {
-    name: 'Survey',
-    template: 'Survey',
-    onBeforeAction : function() {
-        var currentUser = Meteor.user();
-        if(currentUser && currentUser.username === "admin"){
-            this.next();
-        } else {
-            Router.go("Login");
-        }
-    },
-    waitOn : function() {
-        var currentUser = Meteor.user();
-        return [ 
-            Meteor.subscribe('survey', currentUser)
-        ];
-    }
+/* Homepage of Admin Mock Panel */
+Router.route(root_url+'/adminMockPanel', {
+    name: 'AdminMock',
+    template: 'AdminMock',
+    controller: 'AdminMockController'
 });
