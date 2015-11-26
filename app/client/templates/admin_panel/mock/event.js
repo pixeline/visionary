@@ -12,6 +12,7 @@ Template.AdminMock.onRendered (function () {
 
 /* Create mock data come from settings */
 Template.AdminMock.events ({
+    //remove survey
     'click #removeSurvey': function(event){
         event.preventDefault();
         var idSurvey = $(event.target.parentNode.parentNode).attr('id');
@@ -29,6 +30,12 @@ Template.AdminMock.events ({
         });
     },
     
+    //remove module
+    'click #removeModule': function(event){
+        event.preventDefault();
+        var idModule = $(event.target.parentNode.parentNode).attr('id');
+        Controller.RemoveModuleSurvey(idModule);
+    },
     
     //link with settings and insert data for field_form associate with appropriate module
     'click #addPicture': function(event){
@@ -38,7 +45,14 @@ Template.AdminMock.events ({
         //insert each picture
         $.each(mock, function( index, value ) {
             Controller.InsertPictureAdmin(value, idSurvey);
-        });
+        }); 
+    },
+    
+    //remove picture
+    'click #removePicture': function(event){
+        event.preventDefault();
+        var idPicture = $(event.target.parentNode.parentNode).attr('id');
+        Controller.RemovePictureAdmin(idPicture);
     },
     
     //link with settings and insert data for info_txt associate with appropriate module
@@ -60,6 +74,13 @@ Template.AdminMock.events ({
         }
     },
     
+    //remove InfoTxt
+    'click #removeInfoTxt': function(event){
+        event.preventDefault();
+        var idInfoTxt = $(event.target.parentNode.parentNode).attr('id');
+        Controller.RemoveInfoTxt(idInfoTxt);
+    },
+    
     //link with settings and insert data for sorted_color_admin associate with appropriate module
     'click #addColor': function(event){
         event.preventDefault();
@@ -79,6 +100,13 @@ Template.AdminMock.events ({
         }
     },
     
+    //remove color
+    'click #removeColor': function(event){
+        event.preventDefault();
+        var idColor = $(event.target.parentNode.parentNode).attr('id');
+        Controller.RemoveSortedColorAdmin(idColor);
+    },
+    
     //link with settings and insert data for filter_admin associate with appropriate module
     'click #addFilter': function(event){
         event.preventDefault();
@@ -96,6 +124,13 @@ Template.AdminMock.events ({
         } else {
             sAlert.warning("Rien à insérer !");
         }
+    },
+    
+    //remove filter
+    'click #removeFilter': function(event){
+        event.preventDefault();
+        var idFilter = $(event.target.parentNode.parentNode).attr('id');
+        Controller.RemoveFilterAdmin(idFilter);
     },
     
     //link with settings and insert data for instruction associate with appropriate picture and module
@@ -128,6 +163,13 @@ Template.AdminMock.events ({
         }
     },
     
+    //remove instruction
+    'click #removeInstruction': function(event){
+        event.preventDefault();
+        var idInstruction = $(event.target.parentNode.parentNode).attr('id');
+        Controller.RemoveInstruction(idInstruction);
+    },
+    
     //link with settings and insert data for field_form associate with appropriate module
     'click #addForm': function(event){
         event.preventDefault();
@@ -145,6 +187,13 @@ Template.AdminMock.events ({
         } else {
             sAlert.warning("Rien à insérer !");
         }
-    }
+    },
+    
+    //remove fieldForm
+    'click #removeFieldForm': function(event){
+        event.preventDefault();
+        var idForm = $(event.target.parentNode.parentNode).attr('id');
+        Controller.RemoveFieldForm(idForm);
+    },
     
 });

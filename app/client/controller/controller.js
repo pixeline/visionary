@@ -60,6 +60,19 @@ Controller = {};
                 }
         }
         
+        //Remove module
+        Controller.RemoveModuleSurvey = function (moduleId) {
+                //Remove module from mongoDB - call to server-side
+                Meteor.call('removeModuleSurvey', moduleId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('La suppresion du module a échoué.');
+                        } else {
+                                sAlert.success('Suppression effectuée !');
+                        }
+                }); 
+        }
+        
         //Validate and insert picture
         Controller.InsertPictureAdmin = function (pictureInput, surveyId) {
                 var picture_admin = new Collection.PictureAdmin(pictureInput.order, pictureInput.title, pictureInput.type, 
@@ -83,6 +96,19 @@ Controller = {};
                 }
         }
         
+        //Remove picture
+        Controller.RemovePictureAdmin = function (pictureId) {
+                //Remove picture from mongoDB - call to server-side
+                Meteor.call('removePictureAdmin', pictureId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('La suppresion de l\'image a échoué.');
+                        } else {
+                                sAlert.success('Suppression effectuée !');
+                        }
+                }); 
+        }
+        
         //Validate and insert picture
         Controller.InsertInstruction = function (instr, pictureId, moduleId) {
                 var instruction = new Collection.Instruction(instr.txt);
@@ -102,24 +128,45 @@ Controller = {};
                 }
         }
         
-        //Validate and insert info_txt
+        //Remove instruction
+        Controller.RemoveInstruction = function (instructionId) {
+                //Remove picture from mongoDB - call to server-side
+                Meteor.call('removeInstruction', instructionId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('La suppresion de l\'instruction a échoué.');
+                        } else {
+                                sAlert.success('Suppression effectuée !');
+                        }
+                }); 
+        }
+        
+        // insert info_txt (no validation because fields can be null)
         Controller.InsertInfoTxt = function (infoTxt, moduleId) {
                 var info_txt = new Collection.InfoTxt(infoTxt.title, infoTxt.txt);
                 
-                var isValidTitle = Validation.checkString(info_txt.title, "Titre");
-                var isValidTxt = Validation.checkString(info_txt.txt, "Texte");
-                
-                if (isValidTitle && isValidTxt) {
-                        //Insert info_txt in mongoDB - call to server-side
-                        Meteor.call('insertInfoTxt', info_txt, moduleId, function(error, result){
-                                // display error or go on
-                                if(error) {              
-                                        sAlert.error('L\'insertion du texte d\'information a échoué.');
-                                } else {
-                                        sAlert.success('Insertion effectuée !');
-                                }
-                        }); 
-                }
+                //Insert info_txt in mongoDB - call to server-side
+                Meteor.call('insertInfoTxt', info_txt, moduleId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('L\'insertion du texte d\'information a échoué.');
+                        } else {
+                                sAlert.success('Insertion effectuée !');
+                        }
+                }); 
+        }
+        
+        //Remove infotxt
+        Controller.RemoveInfoTxt = function (infoTxtId) {
+                //Remove infotxt from mongoDB - call to server-side
+                Meteor.call('removeInfoTxt', infoTxtId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('La suppresion du texte d\'information a échoué.');
+                        } else {
+                                sAlert.success('Suppression effectuée !');
+                        }
+                }); 
         }
         
         //Validate and insert sorted_color_admin
@@ -140,6 +187,19 @@ Controller = {};
                                 }
                         }); 
                 }
+        }
+        
+        //Remove sortedColorAdmin
+        Controller.RemoveSortedColorAdmin = function (sortedColorAdminId) {
+                //Remove picture from mongoDB - call to server-side
+                Meteor.call('removeSortedColorAdmin', sortedColorAdminId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('La suppresion de la couleur a échoué.');
+                        } else {
+                                sAlert.success('Suppression effectuée !');
+                        }
+                }); 
         }
         
         //Validate and insert filter_admin
@@ -169,6 +229,19 @@ Controller = {};
                 }
         }
         
+        //Remove filterAdmin
+        Controller.RemoveFilterAdmin = function (filterAdminId) {
+                //Remove picture from mongoDB - call to server-side
+                Meteor.call('removeFilterAdmin', filterAdminId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('La suppresion du filtre a échoué.');
+                        } else {
+                                sAlert.success('Suppression effectuée !');
+                        }
+                }); 
+        }
+        
         //Validate and insert field_form
         Controller.InsertFieldForm = function (fieldForm, moduleId) {
                 var field_form = new Collection.FieldForm(fieldForm.order, fieldForm.type, fieldForm.label,
@@ -190,6 +263,19 @@ Controller = {};
                                 }
                         }); 
                 }
+        }
+        
+        //Remove fieldForm
+        Controller.RemoveFieldForm = function (fieldFormId) {
+                //Remove picture from mongoDB - call to server-side
+                Meteor.call('removeFieldForm', fieldFormId, function(error, result){
+                        // display error or go on
+                        if(error) {              
+                                sAlert.error('La suppresion du champ a échoué.');
+                        } else {
+                                sAlert.success('Suppression effectuée !');
+                        }
+                }); 
         }
         
 })();

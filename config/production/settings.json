@@ -17,7 +17,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Êtes-vous daltonien(ne) ?",
-                                                    "txt" : "Bonjour et bienvenue"
+                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre daltonisme et, au terme du test, <b>corriger les couleurs de votre écran selon votre vision.</b></p>"
                                                   }
                                       ]
                                     },
@@ -26,8 +26,8 @@
                                       "title" : "Sorted_test",
                                       "info_txt": [
                                                   {
-                                                    "title" : "Ranger les couleurs",
-                                                    "txt" : "Faites le test."
+                                                    "title" : "Test de classement des couleurs",
+                                                    "txt" : "<p>Ranger les couleurs par ordre de nuances.<p>"
                                                   }
                                       ],
                                       "sorted_color_admin": [
@@ -218,8 +218,8 @@
                                       "title" : "Upload",
                                       "info_txt": [
                                                   {
-                                                    "title" : "Téléchargement de photo",
-                                                    "txt" : "Valider vos préferences..."
+                                                    "title" : "Validation de vos préférences.",
+                                                    "txt" : "<p>C'est l'heure de vérité! Afin de vérifier vos préférences, nous vous invitons à uploader une photo de votre choix. Cela doit nous permettre de valider si les réglages que vous avez effectués précédemment fonctionnent avec votre propre photo.</p>"
                                                   }
                                       ]
                                     },
@@ -228,8 +228,8 @@
                                       "title" : "Valid",
                                       "info_txt": [
                                                   {
-                                                    "title" : "Êtes-vous satisfait avec votre photo ?",
-                                                    "txt" : "Satisfait ?"
+                                                    "title" : "Êtes-vous satisfait de votre photo ?",
+                                                    "txt" : ""
                                                   }
                                       ]
                                     },
@@ -239,7 +239,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Merci !",
-                                                    "txt" : "Entrez vos coordonnées"
+                                                    "txt" : "<p>Le test est à présent terminé, un tout grand merci à vous ! <br />Avant de nous quitter, pouvez-vous nous laisser vos coordonnées ? Ainsi, nous vous tiendrons informé de l'évolution du projet.</p>"
                                                   }
                                       ],
                                       "field_form": [
@@ -293,7 +293,7 @@
                                       "type" : "Ishihara",
                                       "file_name" : "plate07.svg",
                                       "instruction" : [
-                                                    {
+                                                    { 
                                                       "txt" : "Sélectionner l'image qui vous permet de voir au mieux le chiffre 3.",
                                                       "module" : "Select"
                                                     },
