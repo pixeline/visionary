@@ -1,9 +1,13 @@
-/* Rendering pictures */
+/*************************
+ * Rendering of pictures *
+ *************************/
+
+/* Rendering pictures (global rendering for correction_tool) */
 Template.Picture.onRendered (function () {
         buildFilters("render");
 });
 
-/* Events of template Picture */
+/* Events of template Picture (global event for correction_tool) */
 Template.Picture.events({
         
         //adjust rendering (module Adjust)

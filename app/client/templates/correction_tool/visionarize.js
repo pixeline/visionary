@@ -5,6 +5,7 @@
 * of RGB depended on matrix of deficiency (type of color blindness)
 * and some "amount" values which refines the final render
 */
+
 (function() {
 
 	var CVDMatrix = { // Color Vision Deficiency

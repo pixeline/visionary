@@ -19,6 +19,11 @@ Controller = {};
                         if (error) {
                                 sAlert.error('La soumission du formulaire a échoué.');
                         } else {
+                                //remove session's data
+                                sessionStorage.removeItem("correction_profiles");
+                                sessionStorage.removeItem("currentSurvey");
+                                sessionStorage.removeItem("lastModule");
+                                sessionStorage.removeItem("lastPicture");
                                 Router.go("Thanks");
                         }
                 });

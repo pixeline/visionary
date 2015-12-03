@@ -1,4 +1,7 @@
-/* Global functions and variables for correction_tool */
+
+/******************************************************
+ * Global functions and variables for correction_tool *
+ ******************************************************/
 
 (function() {
 	
