@@ -6,7 +6,7 @@
           "survey": [
                       {
                         "name" : "V2 - Questionnaire 1",
-                        "root_url" : "",
+                        "root_url" : "/v2",
                         "state" : true,
                         "date_created" : "23/11/2015 14:53:59",
                         "max_reset_counter" : 10,
@@ -17,7 +17,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Êtes-vous daltonien(ne) ?",
-                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre daltonisme et, au terme du test, <b>corriger les couleurs de votre écran selon votre vision.</b></p>"
+                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre daltonisme et, au terme du test, <span>corriger les couleurs de votre écran selon votre vision.</span></p>"
                                                   }
                                       ]
                                     },
@@ -56,34 +56,34 @@
                                                     "min" : 0,
                                                     "max" : 100,
                                                     "conversion" : 0.1,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   },
                                                   {
                                                     "order" : 2,
-                                                    "parameter" : "protanopeSeverity",
-                                                    "init_value" : 0,
-                                                    "min" : 0,
-                                                    "max" : 100,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   },
                                                   {
                                                     "order" : 3,
-                                                    "parameter" : "deuteranopeSeverity",
-                                                    "init_value" : 0,
-                                                    "min" : 0,
-                                                    "max" : 100,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   },
                                                   {
                                                     "order" : 4,
-                                                    "parameter" : "tritanopeSeverity",
-                                                    "init_value" : 0,
-                                                    "min" : 0,
-                                                    "max" : 100,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   }
                                       ]
                                     },
@@ -98,34 +98,34 @@
                                                     "min" : 0,
                                                     "max" : 100,
                                                     "conversion" : 0.1,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   },
                                                   {
                                                     "order" : 2,
-                                                    "parameter" : "protanopeSeverity",
-                                                    "init_value" : 0,
-                                                    "min" : 0,
-                                                    "max" : 100,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   },
                                                   {
                                                     "order" : 3,
-                                                    "parameter" : "deuteranopeSeverity",
-                                                    "init_value" : 0,
-                                                    "min" : 0,
-                                                    "max" : 100,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   },
                                                   {
                                                     "order" : 4,
-                                                    "parameter" : "tritanopeSeverity",
-                                                    "init_value" : 0,
-                                                    "min" : 0,
-                                                    "max" : 100,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 70
+                                                    "step" : 50
                                                   }
                                       ]
                                     },
@@ -136,57 +136,57 @@
                                                   { 
                                                     "order" : 1,
                                                     "parameter" : "saturation",
-                                                    "init_value" : 70,
+                                                    "init_value" : 50,
                                                     "min" : 10,
                                                     "max" : 100,
                                                     "conversion" : 0.1,
-                                                    "step" : 10
+                                                    "step" : 20
                                                   },
                                                   {
-                                                    "order" : 1,
-                                                    "parameter" : "protanopeSeverity",
-                                                    "init_value" : 70,
-                                                    "min" : 10,
-                                                    "max" : 100,
+                                                    "order" : 2,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -50,
+                                                    "min" : -90,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 10
+                                                    "step" : 20
                                                   },
                                                   {
-                                                    "order" : 1,
-                                                    "parameter" : "deuteranopeSeverity",
-                                                    "init_value" : 70,
-                                                    "min" : 10,
-                                                    "max" : 100,
+                                                    "order" : 3,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -50,
+                                                    "min" : -90,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 10
+                                                    "step" : 20
                                                   },
                                                   {
-                                                    "order" : 1,
-                                                    "parameter" : "tritanopeSeverity",
-                                                    "init_value" : 70,
-                                                    "min" : 10,
-                                                    "max" : 100,
+                                                    "order" : 4,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -50,
+                                                    "min" : -90,
+                                                    "max" : 0,
                                                     "conversion" : 0.01,
-                                                    "step" : 10
+                                                    "step" : 20
                                                   }
                                       ]
                                     },
                                     {
                                       "order" : 4,
                                       "title" : "Choice",
-                                      "filter_admin" : [
+                                      "filter_admin" : [ 
                                                   { 
                                                     "order" : 1,
                                                     "parameter" : "hue",
                                                     "init_value" : 0,
-                                                    "min" : 0,
-                                                    "max" : 70,
+                                                    "min" : -35,
+                                                    "max" : 35,
                                                     "conversion" : 3.6,
                                                     "step" : 35
                                                   },
                                                   {
-                                                    "order" : 1,
-                                                    "parameter" : "protanopeIntensity",
+                                                    "order" : 2,
+                                                    "parameter" : "intensity_protanope",
                                                     "init_value" : 0,
                                                     "min" : -50,
                                                     "max" : 50,
@@ -194,8 +194,8 @@
                                                     "step" : 50
                                                   },
                                                   {
-                                                    "order" : 1,
-                                                    "parameter" : "deuteranopeIntensity",
+                                                    "order" : 3,
+                                                    "parameter" : "intensity_deuteranope",
                                                     "init_value" : 0,
                                                     "min" : -50,
                                                     "max" : 50,
@@ -203,8 +203,8 @@
                                                     "step" : 50
                                                   },
                                                   {
-                                                    "order" : 1,
-                                                    "parameter" : "tritanopeIntensity",
+                                                    "order" : 4,
+                                                    "parameter" : "intensity_tritanope",
                                                     "init_value" : 0,
                                                     "min" : -50,
                                                     "max" : 50,
@@ -215,21 +215,21 @@
                                     },
                                     {
                                       "order" : 5,
-                                      "title" : "Upload",
-                                      "info_txt": [
-                                                  {
-                                                    "title" : "Validation de vos préférences.",
-                                                    "txt" : "<p>C'est l'heure de vérité! Afin de vérifier vos préférences, nous vous invitons à uploader une photo de votre choix. Cela doit nous permettre de valider si les réglages que vous avez effectués précédemment fonctionnent avec votre propre photo.</p>"
-                                                  }
-                                      ]
-                                    },
-                                    {
-                                      "order" : 6,
                                       "title" : "Valid",
                                       "info_txt": [
                                                   {
                                                     "title" : "Êtes-vous satisfait de votre photo ?",
                                                     "txt" : ""
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 6,
+                                      "title" : "Upload",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Validation de vos préférences.",
+                                                    "txt" : "<p>C'est l'heure de vérité! Afin de vérifier vos préférences, nous vous invitons à uploader une photo de votre choix. Cela doit nous permettre de valider si les réglages que vous avez effectués précédemment fonctionnent avec votre propre photo.</p>"
                                                   }
                                       ]
                                     },
@@ -331,7 +331,7 @@
                                       "order" : 2,
                                       "title" : "Carte de paris",
                                       "type" : "Technique",
-                                      "file_name" : "carte.jpg",
+                                      "file_name" : "carte.jpeg",
                                       "instruction" : [
                                                     {
                                                       "txt" : "Sélectionner l'image qui vous permet de distinguer au mieux toutes les zones.",

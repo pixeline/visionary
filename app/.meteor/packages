@@ -24,4 +24,7 @@ mizzao:jquery-ui
 fortawesome:fontawesome
 juliancwirko:s-alert
 juliancwirko:s-alert-stackslide
-twbs:bootstrap
+cfs:filesystem
+cfs:standard-packages
+cfs:gridfs
+themeteorchef:jquery-validation

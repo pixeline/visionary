@@ -1,7 +1,7 @@
 Template.MasterLayout.helpers({
 });
 
-/* events to do for every templates */
+/* events applied for every templates */
 Template.MasterLayout.events({
 	'mouseover header, mouseout header' : function () {
 		$(".breadcrumb").toggleClass("active");

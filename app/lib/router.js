@@ -20,41 +20,54 @@ Router.route(root_url, {
 });
 
 /* Template to select a picture (between several types of correction) */
-Router.route(root_url+'/select', {
+Router.route(root_url+'/select/:img', {
     name: 'Select',
-    template: 'Select'
+    template: 'Select',
+    controller: 'PictureController'
 });
 
 /* Template to select a picture (between several types of correction) */
-Router.route(root_url+'/select_ligne', {
+Router.route(root_url+'/select_ligne/:img', {
     name: 'Select_ligne',
-    template: 'Select_ligne'
+    template: 'Select_ligne',
+    controller: 'PictureController'
 });
 
 /* Template to adjust first color correction of a picture */
-Router.route(root_url+'/adjust', {
+Router.route(root_url+'/adjust/:img', {
     name: 'Adjust',
-    template: 'Adjust'
+    template: 'Adjust',
+    controller: 'PictureController'
 });
 /* Template to choose best second correction adjustment of a picture */
-Router.route(root_url+'/choice', {
+Router.route(root_url+'/choice/:img', {
     name: 'Choice',
-    template: 'Choice'
+    template: 'Choice',
+    controller: 'PictureController'
+});
+/* Template to valid a correction (illustration picture) */
+Router.route(root_url+'/valid/:img', {
+    name: 'Valid',
+    template: 'Valid',
+    controller: 'PictureController'
 });
 /* Template to upload a picture and correct it */
-Router.route(root_url+'/upload', {
+Router.route(root_url+'/upload/:img', {
     name: 'Upload',
-    template: 'Upload'
-});
-/* Template to valid a correction */
-Router.route(root_url+'/valid', {
-    name: 'Valid',
-    template: 'Valid'
+    template: 'Upload',
+    controller: 'PictureController'
 });
 /* Form to submit informations of the current user */
 Router.route(root_url+'/form', {
     name: 'Form',
-    template: 'Form'
+    template: 'Form',
+    controller: 'FormController'
+});
+/* Form to thank the user */
+Router.route(root_url+'/thanks', {
+    name: 'Thanks',
+    template: 'Thanks',
+    controller: 'VerifController'
 });
 
 

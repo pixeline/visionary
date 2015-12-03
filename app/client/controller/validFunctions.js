@@ -13,7 +13,7 @@ Validation = {};
               sAlert.error(field + " invalide.");
               return false;
             }
-        }
+        };
         
         /* Validation of a number */
         Validation.checkNumber = function (aNumber, field) {  
@@ -23,7 +23,7 @@ Validation = {};
               sAlert.error(field + " invalide.");
               return false;
             }
-        }
+        };
         
         /* Validation of a number >= 0 */
         Validation.checkNumberPos = function (aNumber, field) {  
@@ -33,17 +33,17 @@ Validation = {};
               sAlert.error(field + " invalide.");
               return false;
             }
-        }
+        };
         
         /* Validation of a boolean */
         Validation.checkBool = function (aBool, field) {  
-            if(typeof(aBool) === "boolean"){
+            if(typeof(aBool) == "boolean"){
               return true;
             } else {
               sAlert.error(field + " invalide.");
               return false;
             }
-        }
+        };
         
         /* url must be void or /url */
         Validation.checkUrlRoot = function (aString) {  
@@ -54,7 +54,7 @@ Validation = {};
                 sAlert.error('L\'url doit être de type \"/url\".');
                 return false;
             }
-        }
+        };
         
         /* only one survey displayed */
         Validation.checkState = function (state) {  
@@ -69,7 +69,7 @@ Validation = {};
             } else {
                 return true;
             }
-        }
+        };
         
         /* color must be like '#......' or '#...' */
         Validation.checkColor = function (aString) {  
@@ -80,7 +80,7 @@ Validation = {};
                 sAlert.error('La couleur doit être de type #ffffff ou #fff.');
                 return false;
             }
-        }
+        };
         
         
 })();

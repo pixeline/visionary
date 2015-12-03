@@ -1,6 +1,6 @@
-/* Create mock data come from settings */
+/* Create mock data coming from settings */
 Template.AdminMock.onRendered (function () {
-        //link with settings and insert data for survey
+        //link with settings and insert data for one survey
         if(Meteor.settings.public.mock) {
             var surveyActive = survey.findOne({state : true});
             if (typeof surveyActive == "undefined") {
@@ -10,7 +10,7 @@ Template.AdminMock.onRendered (function () {
         }
 });
 
-/* Create mock data come from settings */
+/* Create mock data coming from settings */
 Template.AdminMock.events ({
     //remove survey
     'click #removeSurvey': function(event){

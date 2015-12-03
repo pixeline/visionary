@@ -1,0 +1,17 @@
+<template name = "Upload">
+	
+	{{>Header template="Upload"}}
+		
+	<div class="validationUserPhoto">
+			
+		{{{infoTxt.txt}}}
+		
+		<form method="post" action="">
+			<input type="file"  id="picUpload" accept="image/*" />
+			<a href="" id="end" class="btnSecondary">Je ne souhaite pas corriger de photo</a>
+			<input type="submit" class="btnPrimary" value="Corriger ma photo" />
+		</form>
+			
+	</div>
+	
+</template>

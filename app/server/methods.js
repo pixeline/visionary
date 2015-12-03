@@ -9,12 +9,101 @@ function isAdmin () {
         return true;
     } else {
         throw new Meteor.Error("Unauthorized", "Insertion non-autorisée");
-        return false;
     } 
 }
 
+/* Insert, Update, Delete in mongoDB */
 Meteor.methods({
   
+    /*******************
+    * PROFILER SYSTEM *
+    *******************/
+ 
+	/* Insert Data of User and his Correction Profiles */ 
+	'insertUserAndProfiles': function(User, correctionProfilesPicture, surveyName){ 
+		//Check server-side
+		check(User, {
+            name : String,
+            firstname: String, 
+            email: String, 
+            age: Number,
+            sex: Boolean, //true if Male, false if Female
+            date_created: String
+		});
+        
+        var survey_id = survey.find().fetch()[0]._id;
+        //add the survey foreign key
+        User = _.extend(User, {
+				survey_id: survey_id
+		});
+        
+		//Insert User Data and return user_id, useful for foreign keys
+		var user_id = user.insert(User);
+        
+        //insert each correction_profile of user and the picture in relation
+        correctionProfilesPicture.forEach(function (correc) {
+            //if the user have seen the picture
+            if(correc.picture.length != 0) {
+                var picture_correc = correc.picture;
+                var filters_correc = correc.filter;
+                delete correc.picture;
+                delete correc.filter;
+                check(correc, {
+                    filter_type : String,
+                    reset_counter : Number
+                });
+                //add the user foreign key
+                correc = _.extend(correc, {
+                        user_id: user_id
+                });
+                //Insert correction_profile_picture Data and return id
+                var correc_id = correction_profile_picture.insert(correc);
+                
+                delete picture_correc.instruction;
+                check(picture_correc, {
+                    order : Number,
+                    title : String,
+                    type : String,
+                    file_name : String,
+                });
+                //add the correc foreign key
+                picture_correc = _.extend(picture_correc, {
+                        correction_profile_picture_id: correc_id
+                });
+                picture.insert(picture_correc);
+                
+                //if there were a correction on the picture
+                if(correc.filter_type != "undefined") {
+                    //insert each filter of correction_profile_picture
+                    filters_correc.forEach(function (filter_correc) {
+                        //if it's the filter chosen lastly
+                        if(typeof filter_correc.value != "undefined" && (filter_correc.parameter == correc.filter_type || 
+                            (filter_correc.parameter == "hue" && correc.filter_type == "saturation") ||
+                            (filter_correc.parameter.split("_")[1] == correc.filter_type.split("_")[1]))) {
+                                check(filter_correc, {
+                                    parameter : String,
+                                    value: Number
+                                });
+                                //extend the collection to add foreign key
+                                filter_correc = _.extend(filter_correc, {
+                                    correction_profile_picture_id: correc_id
+                                });
+                                //Insert each filter
+                                filter.insert(filter_correc);
+                         }
+                    });
+                }
+                
+            }
+        }); 
+        
+		return user_id;
+	},
+    
+    /***************
+    * ADMIN PANEL *
+    ***************/
+    
     /* Insert Survey */ 
     'insertSurvey': function(surveyObj) { 
         //Check server-side
@@ -23,7 +112,9 @@ Meteor.methods({
               root_url : String,
               max_reset_counter : Number,
               state : Boolean,
-              date_created : String
+              date_created : String,
+              module_survey : Array,
+              picture_admin : Array
         });
         //Insert survey data's in MongoDB and return id (+ verification of admin)
         if(isAdmin()){
@@ -58,7 +149,12 @@ Meteor.methods({
         //Check server-side
         check(moduleSurveyObj, {
               order : Number,
-              title : String
+              title : String,
+              instruction : Array,
+              info_txt : Array,
+              filter_admin : Array,
+              sorted_color_admin : Array,
+              field_form : Array
         });
         
         //extend the collection to join with survey associated
@@ -111,14 +207,15 @@ Meteor.methods({
         }
     },
     
-    /* Insert PictureAdmin of survey surveyId*/ 
+    /* Insert PictureAdmin of survey surveyId */ 
     'insertPictureAdmin': function(pictureAdmin, surveyId) { 
         //Check server-side
         check(pictureAdmin, {
               order : Number,
               title : String,
               type : String,
-              file_name : String
+              file_name : String,
+              instruction : Array
         });
         
         //extend the collection to join with survey associated
@@ -150,7 +247,9 @@ Meteor.methods({
     'insertInstruction': function(Instruction, pictureId, moduleId) { 
         //Check server-side
         check(Instruction, {
-              txt : String
+              txt : String,
+              module_order : Match.Optional(Number),
+              picture_order : Match.Optional(Number)
         });
         
         //extend the collection to join with picture and module associated

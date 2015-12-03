@@ -1,0 +1,17 @@
+<template name = "Adjust" class="test">
+	
+	{{>Header template="Adjust"}}
+	
+	<div class="content">
+		
+		<ul class="filtreAjustement">
+			{{>Picture template="Adjust" idImg="-" check=false click=true classLi="filtreMoins imgMoins"}}
+			{{>Picture template="Adjust" idImg="1" check=false click=false classLi=""}}
+			{{>Picture template="Adjust" idImg="+" check=false click=true classLi="filtrePlus imgPlus"}}
+		</ul>
+		
+		<a id="nextPage" class="btnPrimary">Valider mon choix</a>
+		
+	</div>
+	
+</template>

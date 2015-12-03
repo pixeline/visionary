@@ -19,9 +19,12 @@ Meteor.startup(function () {
   iron add jquery
   iron add mizzao:jquery-ui
   iron add twbs:bootstrap 
-    => glfx.js est dans le folder compatibility (module de rendering webGL)
+    => typekit.js et webgl-image-filter.js dans le folder compatibility
   iron add fortawesome:fontawesome
-  
+  iron add cfs:standard-packages
+  iron add cfs:filesystem
+  iron add cfs:gridfs
+  iron add themeteorchef:jquery-validation      : module de validation avec module jQuery
   iron add juliancwirko:s-alert  
   iron add juliancwirko:s-alert-stackslide
 
@@ -42,7 +45,7 @@ Meteor.startup(function () {
   show collections                      : show all collections
   db.users.drop()                       : drop user collection
   db.dropDatabase()                     : reset db
-  db.parties.remove( {"_id": "id"});
+  db.parties.remove( {"_id": "id"});    : remove specific collection
 
 ---------
 

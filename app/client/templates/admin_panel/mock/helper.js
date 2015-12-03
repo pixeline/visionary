@@ -1,3 +1,4 @@
+/* helper of the mock admin panel (fake data) */
 Template.AdminMock.helpers ({
     'survey': function(){
         return survey.find();
