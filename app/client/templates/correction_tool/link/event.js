@@ -33,7 +33,7 @@ function routing (template, orderFilter) {
         //store the current path
         var module = getCurrentModule($(event.target).attr("template"));
         var picOrder = parseInt(Router.current().params.img);
-        sessionStorage.setItem("lastModule", module.order);
+        sessionStorage.setItem("lastModule", module.title);
         sessionStorage.setItem("lastPicture", picOrder);
         
         var choiceOrigin = false;
@@ -82,7 +82,7 @@ Template.linkReset.events({
                 //store the current path
                 var module = getCurrentModule($(event.target).attr("template"));
                 var picOrder = parseInt(Router.current().params.img);
-                sessionStorage.setItem("lastModule", module.order);
+                sessionStorage.setItem("lastModule", module.title);
                 sessionStorage.setItem("lastPicture", picOrder);
                 
                 //update reset_counter for this picture

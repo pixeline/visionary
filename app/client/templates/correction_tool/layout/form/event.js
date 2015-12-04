@@ -17,7 +17,7 @@ Template.Form.onRendered(function(){
 
             //store the current path
             var module = getCurrentModule("Form");
-            sessionStorage.setItem("lastModule", module.order);
+            sessionStorage.setItem("lastModule", module.title);
                        
             if(!$('[name=sex]')[0].checked && !$('[name=sex]')[1].checked) {
                 sAlert.error('Veuillez sélectionner votre genre.');

@@ -22,7 +22,7 @@ Template.Upload.events({
                         //store the current path
                         var module = getCurrentModule("Upload");
                         var picOrder = parseInt(Router.current().params.img);
-                        sessionStorage.setItem("lastModule", module.order);
+                        sessionStorage.setItem("lastModule", module.title);
                         sessionStorage.setItem("lastPicture", picOrder);
                         
                         var picUploaded = {};
