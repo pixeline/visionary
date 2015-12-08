@@ -64,10 +64,10 @@ Router.route(root_url+'/form', {
     controller: 'FormController'
 });
 /* Form to thank the user */
-Router.route(root_url+'/thanks', {
+Router.route(root_url+'/thanks/:idUser', {
     name: 'Thanks',
     template: 'Thanks',
-    controller: 'VerifController'
+    controller: 'ThanksController'
 });
 
 
@@ -94,4 +94,18 @@ Router.route(root_url+'/adminMockPanel', {
     name: 'AdminMock',
     template: 'AdminMock',
     controller: 'AdminMockController'
+});
+
+/* Homepage of Dashboard Panel */
+Router.route(root_url+'/dashboard', {
+    name: 'Dashboard',
+    template: 'Dashboard',
+    controller: 'DashboardController'
+});
+
+/* Dashboard for each user */
+Router.route(root_url+'/dashboard/:idUser', {
+    name: 'DashboardUser',
+    template: 'DashboardUser',
+    controller: 'ProfileController'
 });

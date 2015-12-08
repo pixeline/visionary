@@ -88,7 +88,6 @@
 		} else {
 			satis_counter += 1;
 		}
-		console.log(satis_counter);
 	};
 	
 	/* return true if the counter of satisfaction is suficient */
@@ -128,44 +127,49 @@
 			nextModule = getCurrentModule("Select"); //manual recorrection of current picture 
 			nextPic = getCurrentPicture(picOrder);
 		} else {
-			//get next picture
-			nextPic = getNextPicture(picOrder);
 			//get the order of the current module
 			var currentOrder = getCurrentModule(currentTemplate).order;
 			
 			var modules = JSON.parse(sessionStorage.getItem("currentSurvey")).module_survey;
 			//filter to get only one module with the next order
 			$(modules).each(function( index, module ) {
-				if(module.order == currentOrder+1) {
+				if(module.order == currentOrder+1) { 
 					nextModule = module;
 				} 
 			}); 
 			//1st picture without sorted test
 			if(currentOrder == 1 && nextModule.title != "Sorted_test") { 
+				//get next picture
+				nextPic = getNextPicture(picOrder);
 				nextModule = getCurrentModule("Select");
 			} //if select the original picture or go to next picture
 			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {
-				switch(nextPic.type) {
-					case "Upload":
+				
+				//update satis_counter si current = valid ou choice origin pic (if satis)
+				if(nextModule.title != "Upload") {
+					updateSatis(); //more satisfaction if "I'm satisfied"
+				}
+				//module upload if completly satified
+				if(isSatis() && nextModule.title != "Upload") {
+					nextPic = getLastPicture();
+					if(nextPic.title === "undefined") {
 						nextModule = getCurrentModule("Upload");
-						break;
-					case "Undefined":
+					} else {
 						nextModule = getCurrentModule("Form");
-						break;
-					default:
-						//update satis_counter si current = valid (if satis)
-						if(nextModule.title != "Upload") {
-							updateSatis(); //more satisfaction if "I'm satisfied"
-							//validation of next picture with injected profile or uploaded module if completly satified
-							if(isSatis()) {
-								nextPic = getLastPicture();
-								nextModule = getCurrentModule("Upload");
-							} else {
-								nextModule = getCurrentModule("Valid");
-							}
-						} else {
+					}
+				} else {
+					//get next picture
+					nextPic = getNextPicture(picOrder);
+					switch(nextPic.type) {
+						case "Upload":
+							nextModule = getCurrentModule("Upload");
+							break;
+						case "Undefined":
+							nextModule = getCurrentModule("Form");
+							break;
+						default: //validation of next picture with injected profile
 							nextModule = getCurrentModule("Valid");
-						}
+					}
 				}
 			//else next module is just module with next order and current picture !
 			} else if(picOrder != 0) {
@@ -191,7 +195,7 @@
 	getCurrentPicture = function (pictureOrder) {
 		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
 		//if it's a picture from the survey yet
-		if(pictureOrder < correction_profiles.length) {
+		if(pictureOrder <= correction_profiles.length) {
 			//if first time, choose randomly and set in session
 			if(correction_profiles[pictureOrder-1].picture.length == 0) {
 				var pictures = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
@@ -215,17 +219,7 @@
 				return correction_profiles[pictureOrder-1].picture;
 			}
 		} else {
-			var typePic = "Undefined";
-			//if every pictures of survey have been shown
-			if(pictureOrder == correction_profiles.length) {
-				//if already uploaded
-				if(correction_profiles[pictureOrder-1].picture.length != 0) {
-					return correction_profiles[pictureOrder-1].picture;
-				} else {
-					typePic = "Upload";
-				}
-			}
-			var currentPicture = new Collection.Picture(pictureOrder, "undefined", typePic, "undefined", "undefined");	
+			var currentPicture = new Collection.Picture(pictureOrder, "undefined", "Undefined", "undefined", "undefined");	
 			return currentPicture;
 		}
 	};
@@ -251,32 +245,14 @@
 		}
 	};
 	
-	/* set the uploaded picture in session inside correction_profiles TODO */
+	/* set the uploaded picture in session inside correction_profiles */
 	setUploadedPicture = function (picUploaded) {
 		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
-		
-		var instruction = [];
-		instruction[0] = {};
-		instruction[1] = {};
-		instruction[2] = {};
-		instruction[3] = {};
-		instruction[0].txt = "Êtes-vous satisfait de votre image ?";
-		instruction[1].txt = "Sélectionner votre image préférée.";
-		instruction[2].txt = "Ajuster l'image jusqu'à ce qu'elle corresponde au mieux à vos attentes.";
-		instruction[3].txt = "Choisissez votre image préférée.";
-		instruction[0].module_order = 2;
-		instruction[1].module_order = 3;
-		instruction[2].module_order = 4;
-		instruction[3].module_order = 5;
-		instruction[0].picture_order = picUploaded.order;
-		instruction[1].picture_order = picUploaded.order;
-		instruction[2].picture_order = picUploaded.order;
-		instruction[3].picture_order = picUploaded.order;
-		picUploaded.instruction = instruction;
+		var picSession = getCurrentPicture(picUploaded.order);
 		
 		//set in session the picture for this correction_profile
 		correction_profiles[picUploaded.order-1].picture = new Collection.Picture(picUploaded.order, picUploaded.title, 
-												picUploaded.type, picUploaded.file_name, picUploaded.instruction);	
+												picUploaded.type, picUploaded.file_name, picSession.instruction);	
 														
 		sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
 	};

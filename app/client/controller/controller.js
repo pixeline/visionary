@@ -23,7 +23,7 @@ Controller = {};
 			        sessionStorage.clear();
                                 //remove data in local
                                 localStorage.clear();
-                                Router.go("Thanks");
+                                Router.go("Thanks", {idUser: result});
                         }
                 });
         };

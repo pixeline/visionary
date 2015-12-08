@@ -29,6 +29,10 @@
                                                   {
                                                     "title" : "Test de classement des couleurs",
                                                     "txt" : "<p>Ranger les couleurs par ordre de nuances.<p>"
+                                                  },
+                                                  {
+                                                    "title" : "Test de classement des couleurs",
+                                                    "txt" : "<p>Vous devez ranger les couleurs par ordre de nuances.<p>"
                                                   }
                                       ],
                                       "sorted_color_admin": [
@@ -49,6 +53,12 @@
                                     {
                                       "order" : 2,
                                       "title" : "Valid",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Validez cette image.",
+                                                    "txt" : "<p>Si cette image vous permet de répondre à l'instruction, validez-la pour passer à la prochaine image, sinon commencez la configuration en choisissant de réajuster !</p>"
+                                                  }
+                                      ],
                                       "filter_admin" : [ 
                                                   { 
                                                     "order" : 1,
@@ -127,6 +137,12 @@
                                     {
                                       "order" : 3,
                                       "title" : "Select",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Sélectionner une image.",
+                                                    "txt" : "<p>Séléctionner l'image qui vous permet de répondre le mieux possible à l'instruction.</p>"
+                                                  }
+                                      ],
                                       "filter_admin" : [
                                                   { 
                                                     "order" : 1,
@@ -169,6 +185,12 @@
                                     {
                                       "order" : 0,
                                       "title" : "Select_ligne",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Sélectionner une image.",
+                                                    "txt" : "<p>Séléctionner l'image qui vous permet de répondre le mieux possible à l'instruction.</p>"
+                                                  }
+                                      ],
                                       "filter_admin" : [
                                                   { 
                                                     "order" : 1,
@@ -211,6 +233,12 @@
                                     {
                                       "order" : 4,
                                       "title" : "Adjust",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Ajustez une image.",
+                                                    "txt" : "<p>Vous devez ajuster l'image de manière à répondre le mieux possible à l'instruction. Il vous suffit de cliquer sur les images + et - pour modifier le rendu. En confirmant, vous choisirez le rendu de l'image du milieu. Si aucune configuration ne vous satisfait, vous pouvez recommencer la configuration pour cette image.</p>"
+                                                  }
+                                      ],
                                       "filter_admin" : [
                                                   { 
                                                     "order" : 1,
@@ -253,6 +281,12 @@
                                     {
                                       "order" : 5,
                                       "title" : "Choice",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Choississez une image.",
+                                                    "txt" : "<p>Vous devez choisir l'image qui vous permet de répondre le mieux possible à l'instruction.</p>"
+                                                  }
+                                      ],
                                       "filter_admin" : [ 
                                                   { 
                                                     "order" : 1,
@@ -299,6 +333,10 @@
                                                   {
                                                     "title" : "Validation de vos préférences.",
                                                     "txt" : "<p>C'est l'heure de vérité! Afin de vérifier vos préférences, nous vous invitons à uploader une photo de votre choix. Cela doit nous permettre de valider si les réglages que vous avez effectués précédemment fonctionnent avec votre propre photo.</p>"
+                                                  },
+                                                  {
+                                                    "title" : "Télécharger un fichier.",
+                                                    "txt" : "<p>Si vous le souhaitez, téléchargez une de vos images afin d'observer le rendu grâce au profil retenu par notre application, et eventuellement la recorriger.</p>"
                                                   }
                                       ]
                                     },

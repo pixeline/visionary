@@ -6,9 +6,17 @@
   /*
 		Publish informations of users
 	*/
-	Meteor.publish('user', function(){
-	  //every users
-	  return user.find();
+	Meteor.publish('user', function(currentUser, userId){
+      //Admin can see every users
+      if(currentUser && currentUser.username === "admin") {
+        if(userId) {
+          return user.find({_id:userId}); 
+        } else {
+          return user.find(); 
+        }
+      } else {
+        return user.find({_id:userId}); 
+      }
 	});
 
 	Meteor.publish('correction_profile_picture', function(){

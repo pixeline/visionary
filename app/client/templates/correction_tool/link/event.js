@@ -200,15 +200,13 @@ function initCorrection () {
         var i = 0;
         //iteration on the number of corrections that have to be done
         $(surveySession.picture_admin).each(function (index, pic) {
-                        i++;
+                i++;
                 if(pic.order == i) {	
                         correction_profiles[i-1] = new Collection.CorrectionProfilePicture(undefined , 0, undefined, filtersToInit);
                 } else {
                         i--; //picture with the same order
                 }
         });
-        //add a last correction for the upload possibility
-        correction_profiles.push(new Collection.CorrectionProfilePicture(undefined , 0, undefined, filtersToInit));
         //set in session
         sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
                 

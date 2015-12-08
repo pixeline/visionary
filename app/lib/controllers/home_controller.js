@@ -78,24 +78,19 @@ FormController =  HomeController.extend({
     }
 });
 
-VerifController = HomeController.extend({
-    data: function() {
-        var data = IndexController.__super__.data.call(this);
-        return data;
+
+ThanksController = IndexController.extend({
+    onBeforeAction: function() {
+        var onBeforeAction = ThanksController.__super__.onBeforeAction.call(this);
+        return onBeforeAction;
     },
-    waitOn : function() {
+    waitOn: function() {
         var currentUser = Meteor.user();
+        var userId = this.params.idUser;
+        var waitOn = ThanksController.__super__.waitOn.call(this);
         return [
-            Meteor.subscribe('survey'),
-            Meteor.subscribe('module_survey'),
-            Meteor.subscribe('picture_admin'),
-            Meteor.subscribe('instruction'),
-            Meteor.subscribe('info_txt'),
-            Meteor.subscribe('sorted_color_admin'),
-            Meteor.subscribe('filter_admin'),
-            Meteor.subscribe('field_form'),
-            
-      		Meteor.subscribe('user'),
+            waitOn,
+      		Meteor.subscribe('user', currentUser, userId),
       		Meteor.subscribe('correction_profile_picture'),
             Meteor.subscribe('correction_profile_result'),
       		Meteor.subscribe('filter'),
@@ -155,5 +150,47 @@ AdminMockController = AdminController.extend({
     waitOn: function() {
         var waitOn = AdminMockController.__super__.waitOn.call(this);
         return waitOn;
+    }
+});
+
+DashboardController = AdminController.extend({
+    onBeforeAction: function() {
+        var onBeforeAction = DashboardController.__super__.onBeforeAction.call(this);
+        return onBeforeAction;
+    },
+    waitOn: function() {
+        var currentUser = Meteor.user();
+        var waitOn = DashboardController.__super__.waitOn.call(this);
+        return [
+            waitOn,
+      		Meteor.subscribe('user', currentUser),
+      		Meteor.subscribe('correction_profile_picture'),
+            Meteor.subscribe('correction_profile_result'),
+      		Meteor.subscribe('filter'),
+            Meteor.subscribe('picture'),
+            Meteor.subscribe('target')
+        ];
+        
+    }
+});
+
+ProfileController = AdminController.extend({
+    onBeforeAction: function() {
+        var onBeforeAction = ProfileController.__super__.onBeforeAction.call(this);
+        return onBeforeAction;
+    },
+    waitOn: function() {
+        var currentUser = Meteor.user();
+        var userId = this.params.idUser;
+        var waitOn = ProfileController.__super__.waitOn.call(this);
+        return [
+            waitOn,
+      		Meteor.subscribe('user', currentUser, userId),
+      		Meteor.subscribe('correction_profile_picture'),
+            Meteor.subscribe('correction_profile_result'),
+      		Meteor.subscribe('filter'),
+            Meteor.subscribe('picture'),
+            Meteor.subscribe('target')
+        ];
     }
 });

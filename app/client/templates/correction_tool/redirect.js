@@ -23,67 +23,61 @@ window.onload = function () {
 	var lastModule = sessionStorage.getItem("lastModule");
 		
 	var moduleEncoded = insideTool(false);
-	//if there is something in session
-	if(lastModule) {
-		//if a valid url in correction tool
-		if(moduleEncoded != "undefined") {
-			var paramImg = parseInt(Router.current().params.img);
-			//if not a valid url
-			if(isNaN(paramImg) || paramImg <= 0){
+	if(Router.current() && typeof Router.current().route != "undefined") {
+		//if there is something in session
+		if(lastModule) {
+			//if a valid url in correction tool
+			if(moduleEncoded != "undefined") {
+				var paramImg = parseInt(Router.current().params.img);
+				//if not a valid url
+				if(isNaN(paramImg) || paramImg <= 0){
+					//redirect to last position
+					Router.go(lastModule, {img: lastPicture});
+				} else {
+					Meteor.call('isAdmin', function (error, result) {
+						if(result) {
+						} else {
+							moduleEncoded = getCurrentModule(moduleEncoded);
+							var module = getCurrentModule(lastModule);
+							//redirect only if user want a page not visited yet
+							if(paramImg > parseInt(lastPicture) || ((paramImg == parseInt(lastPicture) && moduleEncoded.order > module.order))) {
+								//redirect to last position
+								Router.go(lastModule, {img: lastPicture});
+							} else {
+								//redirect to module valid for this picture
+								Router.go("Valid", {img: paramImg});
+							}
+						}
+					});
+				}
+			}
+		} else {
+			moduleEncoded = insideTool(true);
+			//if a valid url in correction tool
+			if(moduleEncoded != "undefined") {
+				//else retrieve everything from localStorage
+				var currentSurvey = JSON.parse(localStorage.getItem("currentSurvey"));
+				var correction_profiles = JSON.parse(localStorage.getItem("correction_profiles"));
+				lastModule = localStorage.getItem("lastModule");
+				lastPicture = parseInt(localStorage.getItem("lastPicture"));
+				
+				//set in session
+				sessionStorage.setItem("currentSurvey", JSON.stringify(currentSurvey));
+				sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
+				sessionStorage.setItem("lastModule", lastModule);
+				sessionStorage.setItem("lastPicture", lastPicture);
+				
+				//remove data in local
+				localStorage.clear();
+				
 				//redirect to last position
 				Router.go(lastModule, {img: lastPicture});
-			} else {
-				Meteor.call('isAdmin', function (error, result) {
-					if(result) {
-					} else {
-						moduleEncoded = getCurrentModule(moduleEncoded);
-						var module = getCurrentModule(lastModule);
-						//redirect only if user want a page not visited yet
-						if(paramImg > parseInt(lastPicture) || ((paramImg == parseInt(lastPicture) && moduleEncoded.order > module.order))) {
-							//redirect to last position
-							Router.go(lastModule, {img: lastPicture});
-						}
-					}
-				});
 			}
 		}
 	} else {
-		moduleEncoded = insideTool(true);
-		//if a valid url in correction tool
-		if(moduleEncoded != "undefined") {
-			//else retrieve everything from localStorage
-			var currentSurvey = JSON.parse(localStorage.getItem("currentSurvey"));
-			var correction_profiles = JSON.parse(localStorage.getItem("correction_profiles"));
-			lastModule = localStorage.getItem("lastModule");
-			lastPicture = parseInt(localStorage.getItem("lastPicture"));
-			
-			//set in session
-			sessionStorage.setItem("currentSurvey", JSON.stringify(currentSurvey));
-			sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
-			sessionStorage.setItem("lastModule", lastModule);
-			sessionStorage.setItem("lastPicture", lastPicture);
-			
-			//remove data in local
-			localStorage.clear();
-			
-			//redirect to last position
-			Router.go(lastModule, {img: lastPicture});
-		}
+		Router.go("Index");
 	}
 };
-
-/* function of verification to be an Admin */
-function isAdminRedirect () {
-	var isAdmin = false;
-	Meteor.call('isAdmin', function (error, result) {
-	 	if(result) {
-			 isAdmin = true;
-		 } else {
-			 isAdmin = false;
-		 }
-	});
-	return isAdmin;
-}
 
 /* check if it's a page of correction tool application */
 function insideTool (retrieve) {
