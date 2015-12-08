@@ -47,60 +47,80 @@ Template.Picture.events({
 
 /* Build filters to render pictures */
 function buildFilters(imgClass) {
+        //bug fixes for problem of displaying pictures when user encode bad url (<=0 or isNaN); normaly fix at routing but random bug ...
+        if(document.getElementsByClassName(imgClass)[0].src === "" || (document.getElementsByClassName(imgClass)[0].src.indexOf("undefined") > -1)) {
+                Router.go("Index");
+        }
         //render each picture
         $($("img."+imgClass)).each(function(i, img ) {
                 var module = getCurrentModule($(img).attr("template"));
-                if(module.title == "Adjust" || module.title == "Choice" || ((module.title == "Select" || module.title == "Select_ligne") && img.id !== 0)) {
+                if(module.title == "Valid" || module.title == "Adjust" || module.title == "Choice" || ((module.title == "Select" || module.title == "Select_ligne") && img.id != 0)) {
                         var filters = [];
                         var filter = {};
                         var filter_admin = {};
                         var picture = document.getElementById(img.id); 
                         
                         //construction of the combined filter depending on correction module
-                        if (module.title == "Select" || module.title == "Select_ligne") {
-                                filter_admin = getCurrentFilterByOrder(img.id, module);
-                                filter.parameter = filter_admin.parameter;
-                                filter.value = (filter_admin.init_value + filter_admin.step) * filter_admin.conversion;
-                        } else if (module.title == "Adjust") {
-                                //if just rendered or adjust
-                                if(imgClass == "visionarized") {
-                                        //replace content to render on the source picture
-                                        var pic_admin = getCurrentPicture(parseInt(Router.current().params.img));
-                                        var pictureInput = picture;
-                                        pictureInput.className = "nothing";
-                                        pictureInput.src = pictureUrl(pic_admin.file_name);
-                                        var content = $(picture.parentNode);
-                                        content.children()[0].remove();
-                                        content.prepend(pictureInput);
-                                }
-                                filter = getPreviousFilter(parseInt(Router.current().params.img));
-                                filter_admin = getCurrentFilterByTitle(filter.parameter, module);
-                                if (img.id == "-") {
-                                        filter.value = (filter.value - filter_admin.step) * filter_admin.conversion; 
-                                } else if (img.id == "+") {
-                                        filter.value = (filter.value + filter_admin.step) * filter_admin.conversion;  
-                                } else {
-                                        filter.value = filter.value * filter_admin.conversion;
-                                }
-                        } else if (module.title == "Choice") {
-                                //first (previous) filter retrieved
-                                filter = getPreviousFilter(parseInt(Router.current().params.img));
-                                filter_admin = getCurrentFilterByTitle(previousFilter.parameter, getPreviousModule(module.title));
-                                filter.value *= filter_admin.conversion;
-                                filters.push(filter);
-                                
-                                //and add second filter with extreme value
-                                if(img.id != 0) {
-                                        var secondFilter = {};
-                                        filter_admin = getCurrentFilterByOrder(filter_admin.order, module);
-                                        secondFilter.parameter = filter_admin.parameter;
-                                        secondFilter.value = (filter_admin.init_value + (parseInt(img.id) * filter_admin.step)) * filter_admin.conversion;
-                                        filters.push(secondFilter);
-                                }
+                        switch(module.title) {
+                                case "Select" || "Select_ligne"  :
+                                        filter_admin = getCurrentFilterByOrder(img.id, module);
+                                        filter.parameter = filter_admin.parameter;
+                                        filter.value = (filter_admin.init_value + filter_admin.step) * filter_admin.conversion;
+                                        //combined filter
+                                        filters.push(filter);
+                                        break;
+                                case "Adjust" :
+                                        //if just rendered or adjust
+                                        if(imgClass == "visionarized") {
+                                                //replace content to render on the source picture
+                                                var pic_admin = getCurrentPicture(parseInt(Router.current().params.img));
+                                                var pictureInput = picture;
+                                                pictureInput.className = "nothing";
+                                                pictureInput.src = pictureUrl(pic_admin.file_name);
+                                                var content = $(picture.parentNode);
+                                                content.children()[0].remove();
+                                                content.prepend(pictureInput);
+                                        }
+                                        filter = getPreviousFilter(parseInt(Router.current().params.img));
+                                        filter_admin = getCurrentFilterByTitle(filter.parameter, module);
+                                        if (img.id == "-") {
+                                                filter.value = (filter.value - filter_admin.step) * filter_admin.conversion; 
+                                        } else if (img.id == "+") {
+                                                filter.value = (filter.value + filter_admin.step) * filter_admin.conversion;  
+                                        } else {
+                                                filter.value = filter.value * filter_admin.conversion;
+                                        }
+                                        //combined filter
+                                        filters.push(filter);
+                                        break;
+                                case "Choice" :
+                                        //first (previous) filter retrieved
+                                        filter = getPreviousFilter(parseInt(Router.current().params.img));
+                                        filter_admin = getCurrentFilterByTitle(previousFilter.parameter, getPreviousModule(module.title));
+                                        filter.value *= filter_admin.conversion;
+                                        //combined filter
+                                        filters.push(filter);
+                                        
+                                        //and add second filter with extreme value
+                                        if(img.id != 0) {
+                                                var secondFilter = {};
+                                                filter_admin = getCurrentFilterByOrder(filter_admin.order, module);
+                                                secondFilter.parameter = filter_admin.parameter;
+                                                secondFilter.value = (filter_admin.init_value + (parseInt(img.id) * filter_admin.step)) * filter_admin.conversion;                                        
+                                                //combined filter
+                                                filters.push(secondFilter);
+                                        }
+                                        break;
+                                case "Valid" :
+                                        var filtersRes = getResultProfile();
+                                        //add filter to render with previous configuration
+                                        $(filtersRes[0].filter).each(function( i, input ) {
+                                                filter_admin = getCurrentFilterByTitle(input.parameter, module);
+                                                input.value = input.value * filter_admin.conversion;
+                                                filters.push(input);
+                                        });
+                                default : break;
                         }
-                        
-                        //combined filter
-                        filters.push(filter);
                         
                         //render on first load of the picture
                         picture.onload=function(){
@@ -128,7 +148,7 @@ function render (pictureInput, filters) {
                 
         //affect a general filter
         $(filters).each(function (i, filter) {
-                filterInput[filter.parameter.split("_")[0]] = filter.value; //TODO
+                filterInput[filter.parameter.split("_")[0]] = filter.value;
                 if(filter.parameter.split("_").length > 1) {
                         filterInput.type = filter.parameter.split("_")[1];
                 }

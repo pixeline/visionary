@@ -26,7 +26,8 @@ Template.Form.onRendered(function(){
                 var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
                 //survey that the user used
                 var surveySession = JSON.parse(sessionStorage.getItem("currentSurvey"));
-                //TODO : correction_profile_result
+                //correction resulted
+                var correcResult = getResultProfile();
                 
                 //user's informations
                 var user = {
@@ -38,7 +39,7 @@ Template.Form.onRendered(function(){
                 };
                 
                 //ask an insert in DB
-                Controller.InsertUserAndProfiles(user, correction_profiles, surveySession.name);
+                Controller.InsertUserAndProfiles(user, correction_profiles, surveySession.name, correcResult);
                
             }
                       

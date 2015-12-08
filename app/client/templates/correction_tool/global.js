@@ -3,120 +3,23 @@
  * Global functions and variables for correction_tool *
  ******************************************************/
 
-/* detect that the user want to exit/encoding url in application and ask confirmation */
-window.addEventListener("beforeunload", function (e) {
-	if(insideTool(false) != "undefined") {
-		var confirmationMessage = "";
-		(e || window.event).returnValue = confirmationMessage; //Gecko + IE
-		return confirmationMessage;                            //Webkit, Safari, Chrome
-	}
-});
-
-/* register informations in local storage if exit/encoding url */
-window.onunload = function () {
-	if(insideTool(false) != "undefined" ) {
-		localStorage.setItem("currentSurvey", JSON.stringify(JSON.parse(sessionStorage.getItem("currentSurvey"))));
-		localStorage.setItem("correction_profiles", JSON.stringify(JSON.parse(sessionStorage.getItem("correction_profiles"))));
-		localStorage.setItem("lastModule", sessionStorage.getItem("lastModule"));
-		localStorage.setItem("lastPicture", sessionStorage.getItem("lastPicture"));	
-	}
-};
-
-/* retrieve informations in local storage if previous exit/encoding url */
-window.onload = function () {
-	var moduleEncoded = insideTool(true);
-	console.log(Router.current(), moduleEncoded, !isNaN(parseInt(Router.current().params.img)),  parseInt(Router.current().params.img) > 0);
-	if(Router.current() && moduleEncoded != "undefined" && !isNaN(parseInt(Router.current().params.img)) && parseInt(Router.current().params.img) > 0 ) {
-			
-		var lastPicture = parseInt(sessionStorage.getItem("lastPicture"));
-		var lastModule = sessionStorage.getItem("lastModule");
-		
-		//if there is something in session
-		if(lastModule) {
-			console.log("session");
-			console.log(lastModule);
-			console.log(lastPicture);
-			if(!isAdminRedirect()) {
-				if(typeof Router.current().params.img != "undefined") {
-					moduleEncoded = getCurrentModule(moduleEncoded);
-					var module = getCurrentModule(lastModule);
-					console.log(moduleEncoded.order, module.order, parseInt(Router.current().params.img), lastPicture);
-					//redirect only if user want a page not visited yet 
-					if(parseInt(Router.current().params.img) <= parseInt(lastPicture) && moduleEncoded.order <= module.order) {
-						
-					} else {
-						Router.go(lastModule, {img: lastPicture});
-					}
-				}
-			}
-		} else {
-			console.log("local");
-			
-			//else retrieve everything from localStorage
-			var currentSurvey = JSON.parse(localStorage.getItem("currentSurvey"));
-			var correction_profiles = JSON.parse(localStorage.getItem("correction_profiles"));
-			lastModule = localStorage.getItem("lastModule");
-			lastPicture = parseInt(localStorage.getItem("lastPicture"));
-			
-			//set in session
-			sessionStorage.setItem("currentSurvey", JSON.stringify(currentSurvey));
-			sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
-			sessionStorage.setItem("lastModule", lastModule);
-			sessionStorage.setItem("lastPicture", lastPicture);
-			
-			//remove data in local
-			localStorage.clear();
-			
-			//redirect to last position
-			Router.go(lastModule, {img: lastPicture});
-		}
-	} else {
-		if(moduleEncoded != "undefined" || Router.current() === null || parseInt(Router.current().params.img) <= 0) {
-			console.log("ko");
-			//if it's not an url known on the application
-			Router.go("Index");
-		}
-	}
-};
-
-/* function of verification to be an Admin */
-function isAdminRedirect () {
-    var currentUser = Meteor.user();
-    return currentUser && currentUser.username === "admin";
-}
-
-/* check if it's a page of correction tool application */
-function insideTool (retrieve) {
-	var moduleTitles = ["Select","Select_ligne","Adjust","Choice","Valid","Upload","Form"];
-	if(retrieve) {
-		moduleTitles.push("Index");
-	}
-	var inside = "undefined";
-	$.each(moduleTitles, function (i, title) {
-		if(Router.current() && typeof Router.current().route != "undefined" && Router.current().route.getName().indexOf(title) > -1) {
-			inside = title;
-			return;
-		}
-	});
-	return inside;
-}
-
  
 (function() {
 	
+	var satis_counter = 0;
+	
 	/* register a filter in session that match orderFilter inside correction_profiles for a pictureOrder */
-	saveFilter = function (pictureOrder, orderFilter, module, val) {
+	saveFilter = function (pictureOrder, orderFilter, module, val, setType) {
 		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
 		
 		//if no correction on picture
-		if(module.title == "Select" && orderFilter == 0) {
+		if((module.title == "Select" || module.title == "Valid")  && orderFilter == 0) {
 			correction_profiles[pictureOrder-1].filter_type = "undefined";
 		} else {
 			var filter = getCurrentFilterByOrder(orderFilter, module);
-			if(module.title == "Select") {
+			if(module.title == "Select" || setType) {
 				correction_profiles[pictureOrder-1].filter_type = filter.parameter;
 			}
-			
 			//add value to the filter
 			$(correction_profiles[pictureOrder-1].filter).each(function( i, currentFilter ) {
 				if(currentFilter.parameter == filter.parameter) {
@@ -130,12 +33,68 @@ function insideTool (retrieve) {
         sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
 	};
 	
+	/* register filters for a global result profile in session */
+	saveResultProfile = function (filters) {
+		var profileResult = JSON.parse(sessionStorage.getItem("correction_profile_result"));
+		
+		//reinit result profile each time
+		profileResult = [];
+		profileResult[0] = {};
+		profileResult[0].filter = [];
+			
+		if(filters == "undefined") {
+			profileResult[0].type = "undefined";
+			profileResult[0].filter.push({parameter:"undefined", value:0});
+		} else {
+			//add each filter to result
+			$(filters).each(function( i, filter ) {
+				if(i == 0) {
+					profileResult[0].type = filter.parameter;
+				}
+				profileResult[0].filter.push(filter);
+			});
+		}
+		
+		//set in session
+        sessionStorage.setItem("correction_profile_result", JSON.stringify(profileResult));
+	};
+	
+	/* retrieve previous filters configured */
+	getResultProfile = function () {
+		return JSON.parse(sessionStorage.getItem("correction_profile_result"));
+	};
+	
 	/* increment reset counter for picture picOrder */
 	updateResetCounter = function (picOrder) {
 		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
 		correction_profiles[picOrder-1].reset_counter += 1;
+		updateSatis(true); //reset global satisfaction in the same time
 		//set in session
         sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
+	};
+	
+	/* return true if there are too many reset for this picture */
+	stopReset = function (picOrder) {
+		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
+		var reset_counter = correction_profiles[picOrder-1].reset_counter;
+		var max_reset_counter = JSON.parse(sessionStorage.getItem("currentSurvey")).max_reset_counter;
+		return reset_counter >= max_reset_counter;
+	};
+	
+	/* update the number of consecutive times the user is satisfied for the current picture */
+	updateSatis = function (resetSatis) {
+		if(resetSatis) {
+			satis_counter = 0;
+		} else {
+			satis_counter += 1;
+		}
+		console.log(satis_counter);
+	};
+	
+	/* return true if the counter of satisfaction is suficient */
+	isSatis = function () {
+        var max_satis = JSON.parse(sessionStorage.getItem("currentSurvey")).max_satis;
+		return satis_counter >= max_satis;
 	};
 	
 	/* return module associated with currentTemplate */
@@ -160,28 +119,33 @@ function insideTool (retrieve) {
 		if(isNaN(picOrder)) {
 			picOrder = 0;
 		}
+		if(reset) {
+			//if too many reset with this picture
+			reset = !stopReset(picOrder);
+		}
 		//if want to correct again the current picture
 		if(reset) {
-			nextModule = getCurrentModule("Select");
+			nextModule = getCurrentModule("Select"); //manual recorrection of current picture 
 			nextPic = getCurrentPicture(picOrder);
 		} else {
 			//get next picture
 			nextPic = getNextPicture(picOrder);
 			//get the order of the current module
 			var currentOrder = getCurrentModule(currentTemplate).order;
+			
 			var modules = JSON.parse(sessionStorage.getItem("currentSurvey")).module_survey;
 			//filter to get only one module with the next order
 			$(modules).each(function( index, module ) {
 				if(module.order == currentOrder+1) {
 					nextModule = module;
 				} 
-			});
-			//if select an the original picture or go to next picture
-			if(choiceOrigin || (nextPic.type != "Illustration" && (nextModule.title == "Valid" || nextModule.title == "Upload"))) {
+			}); 
+			//1st picture without sorted test
+			if(currentOrder == 1 && nextModule.title != "Sorted_test") { 
+				nextModule = getCurrentModule("Select");
+			} //if select the original picture or go to next picture
+			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {
 				switch(nextPic.type) {
-					case "Illustration": 
-						nextModule = getCurrentModule("Valid");
-						break;
 					case "Upload":
 						nextModule = getCurrentModule("Upload");
 						break;
@@ -189,15 +153,24 @@ function insideTool (retrieve) {
 						nextModule = getCurrentModule("Form");
 						break;
 					default:
-						nextModule = getCurrentModule("Select");
+						//update satis_counter si current = valid (if satis)
+						if(nextModule.title != "Upload") {
+							updateSatis(); //more satisfaction if "I'm satisfied"
+							//validation of next picture with injected profile or uploaded module if completly satified
+							if(isSatis()) {
+								nextPic = getLastPicture();
+								nextModule = getCurrentModule("Upload");
+							} else {
+								nextModule = getCurrentModule("Valid");
+							}
+						} else {
+							nextModule = getCurrentModule("Valid");
+						}
 				}
 			//else next module is just module with next order and current picture !
-			} else {
-				if(picOrder != 0 && !(nextPic.type == "Illustration" && nextModule.title == "Valid")) {
-					nextPic = getCurrentPicture(picOrder);
-				}
+			} else if(picOrder != 0) {
+				nextPic = getCurrentPicture(picOrder);
 			}
-			
 		}
 		return {mod : nextModule, pic : nextPic};
 	};
@@ -262,6 +235,12 @@ function insideTool (retrieve) {
 		return getCurrentPicture(currentPicOrder + 1);
 	};
 	
+	/* return last picture = uploaded picture */
+	getLastPicture = function () {
+		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
+		return getCurrentPicture(correction_profiles.length);
+	};
+	
 	/* return the picture's url that match the file_name */
 	pictureUrl = function (fileName) {
 		//picture uploaded or in file system
@@ -272,7 +251,7 @@ function insideTool (retrieve) {
 		}
 	};
 	
-	/* set the uploaded picture in session inside correction_profiles */
+	/* set the uploaded picture in session inside correction_profiles TODO */
 	setUploadedPicture = function (picUploaded) {
 		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
 		
@@ -280,15 +259,19 @@ function insideTool (retrieve) {
 		instruction[0] = {};
 		instruction[1] = {};
 		instruction[2] = {};
-		instruction[0].txt = "Sélectionner votre image préférée.";
-		instruction[1].txt = "Ajuster l'image jusqu'à ce qu'elle corresponde au mieux à vos attentes.";
-		instruction[2].txt = "Choisissez votre image préférée.";
+		instruction[3] = {};
+		instruction[0].txt = "Êtes-vous satisfait de votre image ?";
+		instruction[1].txt = "Sélectionner votre image préférée.";
+		instruction[2].txt = "Ajuster l'image jusqu'à ce qu'elle corresponde au mieux à vos attentes.";
+		instruction[3].txt = "Choisissez votre image préférée.";
 		instruction[0].module_order = 2;
 		instruction[1].module_order = 3;
 		instruction[2].module_order = 4;
+		instruction[3].module_order = 5;
 		instruction[0].picture_order = picUploaded.order;
 		instruction[1].picture_order = picUploaded.order;
 		instruction[2].picture_order = picUploaded.order;
+		instruction[3].picture_order = picUploaded.order;
 		picUploaded.instruction = instruction;
 		
 		//set in session the picture for this correction_profile

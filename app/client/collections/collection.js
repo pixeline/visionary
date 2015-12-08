@@ -50,12 +50,13 @@ Collection = {};
 	***************************/
 		
 	/* Collection Survey to be contructed */
-	Collection.Survey = function (name, root_url, state, date_created, max_reset_counter, module_survey, picture_admin) {
+	Collection.Survey = function (name, root_url, state, date_created, max_reset_counter, max_satis, module_survey, picture_admin) {
 		this.name = name;
 		this.root_url = root_url;
 		this.state = state;
 		this.date_created = date_created;
 		this.max_reset_counter = max_reset_counter;
+		this.max_satis = max_satis;
 		this.module_survey = moduleTab(module_survey);
 		this.picture_admin = pictureTab(picture_admin);
 	};

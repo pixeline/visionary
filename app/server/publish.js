@@ -15,7 +15,12 @@
 		  //every correction profiles in DB
 	  	return correction_profile_picture.find(); 
 	});
-
+  
+	Meteor.publish('correction_profile_result', function(){
+		  //every correction profiles in DB
+	  	return correction_profile_result.find(); 
+	});
+  
 	Meteor.publish('filter', function(){
 		  //every filters in DB
 	  	return filter.find();
@@ -26,6 +31,11 @@
 	  	return picture.find();
 	});
   
+	Meteor.publish('target', function(){
+		  //every target in DB
+	  	return target.find();
+	});
+
   
   /***************
   * ADMIN PANEL *

@@ -29,21 +29,21 @@ Template.Select_ligne.events({
 
 /* Save and Route to the correct url depending on template */
 function routing (template, orderFilter) {
-        
         //store the current path
-        var module = getCurrentModule($(event.target).attr("template"));
+        var module = getCurrentModule(template);
         var picOrder = parseInt(Router.current().params.img);
         sessionStorage.setItem("lastModule", module.title);
         sessionStorage.setItem("lastPicture", picOrder);
         
         var choiceOrigin = false;
         
-        //variability for each module
-        if(module.title == "Index") {
-                //init the user's corrections (maximum of possible corrections that the user can do)
-                initCorrection();
-        } else {
-                if(template == "Select" || template == "Select_ligne") {
+        //variability to do for each module before routing
+        switch(template) {
+                case "Index" :
+                        //init the user's corrections (maximum of possible corrections that the user can do)
+                        initCorrection();
+                        break;
+                case "Select" || "Select_ligne" :
                         var val = 0;
                         //image without filter => next picture with current module
                         choiceOrigin = true;
@@ -51,20 +51,55 @@ function routing (template, orderFilter) {
                                 choiceOrigin = false;
                                 var filter_admin = getCurrentFilterByOrder(orderFilter, module);
                                 val = filter_admin.init_value + filter_admin.step;
+                        } else {
+                                //save result profile null
+                                saveResultProfile("undefined");
+                                //reinit class to render if origin is chosen
+                                $.each($("img"), function (i, pic) {
+                                        pic.className = "render";
+                                });
                         }
                         //store the correction_profile with filter chosen
                         saveFilter(picOrder, orderFilter, module, val);
-                } else if (template == "Choice" && idChoice != 0) {
+                        break;
+                case "Choice" : 
                         var previousFilter = getPreviousFilter(parseInt(Router.current().params.img));
                         var previous_filter_admin = getCurrentFilterByTitle(previousFilter.parameter, getPreviousModule(template));                       
                         var filter_admin_choice = getCurrentFilterByOrder(previous_filter_admin.order, module);
                         var val_choice = filter_admin_choice.init_value + (parseInt(idChoice) * filter_admin_choice.step);
+                        
                         //store the correction_profile with filter chosen
-                        saveFilter(picOrder, filter_admin_choice.order, module, val_choice);
-                } else if (template == "Valid") {
-                        //TODO
-                        saveFilter(picOrder, 0, getCurrentModule("Select"), 0);
-                }
+                        if(idChoice != 0) {
+                                saveFilter(picOrder, filter_admin_choice.order, module, val_choice);
+                        }
+                        
+                        for (var member in filter_admin_choice) {
+                                if(member != "parameter") {
+                                        delete filter_admin_choice[member];
+                                }
+                        }
+                        filter_admin_choice.value = val_choice;
+                        //save current result profile
+                        var filtersResult = [previousFilter, filter_admin_choice];
+                        saveResultProfile(filtersResult);
+                        break;
+                case "Valid" :
+                        var filtersRes = getResultProfile();
+                        //Save each filter
+                        $.each(filtersRes[0].filter, function (i, filterRes) {
+                                if(filterRes.parameter != "undefined") {
+                                        var filter_admin = getCurrentFilterByTitle(filterRes.parameter, module);
+                                        saveFilter(picOrder, filter_admin.order, module, filterRes.value, i===0);
+                                } else {
+                                        saveFilter(picOrder, 0, module, 0, i===0);
+                                }
+                        });
+                        //reinit class to render if origin is chosen
+                        $.each($("img"), function (i, pic) {
+                                pic.className = "render";
+                        });
+                        break;
+                default: break;
         }
         
         //route to next module with picture assiocated

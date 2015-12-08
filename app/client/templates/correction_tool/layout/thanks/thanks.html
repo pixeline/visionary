@@ -29,6 +29,17 @@
 							<p>Questionnaire : {{name}}</p>
 						{{/each}}
 						
+						{{#each user.correcRes}}
+							<li>Correction résultante de type : {{type}}</li>
+							<br/>
+							<ul>
+								<p>Filtres :</p>
+								{{#each filter}}
+									<li>{{parameter}} : {{value}} </li>
+								{{/each}}
+							</ul>
+						{{/each}}
+						
 						{{#each user.correcPic}}
 							<br/>
 							{{#each picture}}

@@ -14,6 +14,10 @@ user = new Mongo.Collection('user', {
 		doc.correcPic = correction_profile_picture.find({
 			user_id: { $in: [doc._id] }
 		});
+		//correcRes can be called from this in templates allowed by publish-suscribe
+		doc.correcRes = correction_profile_result.find({
+			user_id: { $in: [doc._id] }
+		});
 		//survey that has been realised by this user
 		doc.survey = survey.find({
 			_id: { $in: [doc.survey_id] }
@@ -36,6 +40,24 @@ correction_profile_picture = new Mongo.Collection('correction_profile_picture', 
 		return doc;
 	}
 });
+
+/* user's correction profiles resulting */
+correction_profile_result = new Mongo.Collection('correction_profile_result', {
+	transform: function(doc) {
+		//filter can be called from this in templates allowed by publish-suscribe
+		doc.filter = filter.find({
+			correction_profile_result_id: { $in: [doc._id] }
+		}); 
+		//target can be called from this in templates allowed by publish-suscribe
+		doc.target = target.find({
+			correction_profile_result_id: { $in: [doc._id] }
+		}); 
+		return doc;
+	}
+});
+
+/* target of the user's correction result (type of picture, specific tag, class...) */
+target = new Mongo.Collection('target');
 
 /* filters of the user's correction profiles (hue, saturation, visionarized_protanope...) */
 filter = new Mongo.Collection('filter');

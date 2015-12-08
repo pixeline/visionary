@@ -9,21 +9,20 @@ Controller = {};
         *******************/
  
         /* Insert an user that have done the correction test surveyName to have a profile */
-        Controller.InsertUserAndProfiles = function (userInput, correctionPic, surveyName) {
+        Controller.InsertUserAndProfiles = function (userInput, correctionPic, surveyName, correcResult) {
                 var user = new Collection.User(userInput.name, userInput.firstname, userInput.email,
                         userInput.age, userInput.sex, new Date().toLocaleString());
                 
                 //Insert user with all his informations in mongoDB - call to server-side
-                Meteor.call('insertUserAndProfiles', user, correctionPic, surveyName, function (error, result) {
+                Meteor.call('insertUserAndProfiles', user, correctionPic, surveyName, correcResult, function (error, result) {
                         // display error or go on
                         if (error) {
                                 sAlert.error('La soumission du formulaire a échoué.');
                         } else {
                                 //remove session's data
-                                sessionStorage.removeItem("correction_profiles");
-                                sessionStorage.removeItem("currentSurvey");
-                                sessionStorage.removeItem("lastModule");
-                                sessionStorage.removeItem("lastPicture");
+			        sessionStorage.clear();
+                                //remove data in local
+                                localStorage.clear();
                                 Router.go("Thanks");
                         }
                 });
@@ -36,14 +35,15 @@ Controller = {};
         //Validate and insert survey
         Controller.InsertSurvey = function (surveyInput) {
                 var survey = new Collection.Survey(surveyInput.name, surveyInput.root_url, surveyInput.state,
-                        new Date().toLocaleString(), surveyInput.max_reset_counter);
+                        new Date().toLocaleString(), surveyInput.max_reset_counter, surveyInput.max_satis);
                         
                 var isValidName = Validation.checkString(survey.name, "Nom de questionnaire");
                 var isValidUrl = Validation.checkUrlRoot(survey.root_url);
-                var isValidCounter = Validation.checkNumberPos(survey.max_reset_counter, "Compteur");
+                var isValidCounter1 = Validation.checkNumberPos(survey.max_reset_counter, "Compteur reset");
+                var isValidCounter2 = Validation.checkNumberPos(survey.max_satis, "Compteur satis");
                 var isValidState = Validation.checkState(survey.state);
                 
-                if (isValidName && isValidUrl && isValidCounter && isValidState) {
+                if (isValidName && isValidUrl && isValidCounter1 && isValidCounter2 && isValidState) {
                         //Insert survey in mongoDB - call to server-side
                         Meteor.call('insertSurvey', survey, function (error, result) {
                                 // display error or go on

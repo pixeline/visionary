@@ -76,4 +76,7 @@ BACKUP :
     sudo bin/mongoexport -u username -p password -h host -d domain -c user -o json/users.json
     sudo bin/mongoimport -u username -p password -h host -d domain -c user --file json/1/user1.json
     
+    
+    newvision
+    
 */

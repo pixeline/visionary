@@ -10,6 +10,7 @@
                         "state" : true,
                         "date_created" : "23/11/2015 14:53:59",
                         "max_reset_counter" : 10,
+                        "max_satis" : 3,
                         "module_survey": [
                                     {
                                       "order" : 1,
@@ -47,6 +48,84 @@
                                     },
                                     {
                                       "order" : 2,
+                                      "title" : "Valid",
+                                      "filter_admin" : [ 
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -50,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -50,
+                                                    "min" : -90,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -50,
+                                                    "min" : -90,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  { 
+                                                    "order" : 5,
+                                                    "parameter" : "hue",
+                                                    "init_value" : 0,
+                                                    "min" : -35,
+                                                    "max" : 35,
+                                                    "conversion" : 3.6,
+                                                    "step" : 35
+                                                  },
+                                                  {
+                                                    "order" : 6,
+                                                    "parameter" : "intensity_protanope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 7,
+                                                    "parameter" : "intensity_deuteranope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 8,
+                                                    "parameter" : "intensity_tritanope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 3,
                                       "title" : "Select",
                                       "filter_admin" : [
                                                   { 
@@ -130,7 +209,7 @@
                                       ]
                                     },
                                     {
-                                      "order" : 3,
+                                      "order" : 4,
                                       "title" : "Adjust",
                                       "filter_admin" : [
                                                   { 
@@ -172,7 +251,7 @@
                                       ]
                                     },
                                     {
-                                      "order" : 4,
+                                      "order" : 5,
                                       "title" : "Choice",
                                       "filter_admin" : [ 
                                                   { 
@@ -210,16 +289,6 @@
                                                     "max" : 50,
                                                     "conversion" : 0.01,
                                                     "step" : 50
-                                                  }
-                                      ]
-                                    },
-                                    {
-                                      "order" : 5,
-                                      "title" : "Valid",
-                                      "info_txt": [
-                                                  {
-                                                    "title" : "Êtes-vous satisfait de votre photo ?",
-                                                    "txt" : ""
                                                   }
                                       ]
                                     },
@@ -293,6 +362,10 @@
                                       "type" : "Ishihara",
                                       "file_name" : "plate07.svg",
                                       "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 3 ?",
+                                                      "module" : "Valid"
+                                                    },
                                                     { 
                                                       "txt" : "Sélectionner l'image qui vous permet de voir au mieux le chiffre 3.",
                                                       "module" : "Select"
@@ -314,6 +387,10 @@
                                       "file_name" : "plate08.svg",
                                       "instruction" : [
                                                     {
+                                                      "txt" : "Observez-vous de manière claire le nombre 15 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
                                                       "txt" : "Sélectionner l'image qui vous permet de voir au mieux le nombre 15.",
                                                       "module" : "Select"
                                                     },
@@ -334,6 +411,10 @@
                                       "file_name" : "carte.jpeg",
                                       "instruction" : [
                                                     {
+                                                      "txt" : "Pouvez-vous distinguer toutes les zones ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
                                                       "txt" : "Sélectionner l'image qui vous permet de distinguer au mieux toutes les zones.",
                                                       "module" : "Select"
                                                     },
@@ -349,10 +430,38 @@
                                     },
                                     {
                                       "order" : 3,
+                                      "title" : "Graphique Google Analytics",
+                                      "type" : "Technique",
+                                      "file_name" : "graph.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous différenciez toutes les parties du graphique ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionner l'image qui vous permet de distinguer au mieux toutes les zones du graphique.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux toutes les zones.",
+                                                      "module" : "Choice"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 4,
                                       "title" : "Arc-en-ciel",
                                       "type" : "Illustration",
                                       "file_name" : "arc.jpg",
                                       "instruction" : [
+                                                    {
+                                                      "txt" : "Êtes-vous satisfait de votre photo ?",
+                                                      "module" : "Valid"
+                                                    },
                                                     {
                                                       "txt" : "Sélectionner votre image préférée.",
                                                       "module" : "Select"

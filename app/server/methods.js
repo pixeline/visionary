@@ -20,8 +20,9 @@ Meteor.methods({
     *******************/
  
 	/* Insert Data of User and his Correction Profiles */ 
-	'insertUserAndProfiles': function(User, correctionProfilesPicture, surveyName){ 
-		//Check server-side
+	'insertUserAndProfiles': function(User, correctionProfilesPicture, surveyName, correctionProfilesResult){ 
+		
+        //Check server-side
 		check(User, {
             name : String,
             firstname: String, 
@@ -40,6 +41,36 @@ Meteor.methods({
 		//Insert User Data and return user_id, useful for foreign keys
 		var user_id = user.insert(User);
         
+        //Insert each correction_profile of user and the picture in relation
+        correctionProfilesResult.forEach(function (result) {
+            var filters_result = result.filter;
+            delete result.filter;
+            check(result, {
+                type : String
+            });
+            //add the user foreign key
+            result = _.extend(result, {
+                    user_id: user_id
+            });
+            //Insert correction_profile_picture Data and return id
+            var correc_result_id = correction_profile_result.insert(result);
+            
+            //insert each filter of correction_profile_picture
+            filters_result.forEach(function (filter_result) {
+                    check(filter_result, {
+                        parameter : String,
+                        value: Number
+                    });
+                    //extend the collection to add foreign key
+                    filter_result = _.extend(filter_result, {
+                        correction_profile_result_id: correc_result_id
+                    });
+                    //Insert each filter
+                    filter.insert(filter_result);
+            });
+        });
+        
+        
         //insert each correction_profile of user and the picture in relation
         correctionProfilesPicture.forEach(function (correc) {
             //if the user have seen the picture
@@ -54,7 +85,7 @@ Meteor.methods({
                 });
                 //add the user foreign key
                 correc = _.extend(correc, {
-                        user_id: user_id
+                    user_id: user_id
                 });
                 //Insert correction_profile_picture Data and return id
                 var correc_id = correction_profile_picture.insert(correc);
@@ -64,11 +95,11 @@ Meteor.methods({
                     order : Number,
                     title : String,
                     type : String,
-                    file_name : String,
+                    file_name : String
                 });
                 //add the correc foreign key
                 picture_correc = _.extend(picture_correc, {
-                        correction_profile_picture_id: correc_id
+                    correction_profile_picture_id: correc_id
                 });
                 picture.insert(picture_correc);
                 
@@ -111,6 +142,7 @@ Meteor.methods({
               name : String,
               root_url : String,
               max_reset_counter : Number,
+              max_satis : Number,
               state : Boolean,
               date_created : String,
               module_survey : Array,
@@ -392,6 +424,11 @@ Meteor.methods({
         if(isAdmin()){
             field_form.remove({_id: fieldId});
         }
+    },
+    
+    //know if user is admin or not
+    'isAdmin': function () {
+        return isAdmin();
     }
     
 });

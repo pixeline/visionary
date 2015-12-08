@@ -97,8 +97,10 @@ VerifController = HomeController.extend({
             
       		Meteor.subscribe('user'),
       		Meteor.subscribe('correction_profile_picture'),
+            Meteor.subscribe('correction_profile_result'),
       		Meteor.subscribe('filter'),
-            Meteor.subscribe('picture')
+            Meteor.subscribe('picture'),
+            Meteor.subscribe('target')
         ];
     }
 });
