@@ -27,4 +27,38 @@ Template.Header.helpers({
             return infoTxt.txt;
         }
     },
+    previousPic : function () {
+        var currentPic = parseInt(Router.current().params.img);
+        var previousPicArray = [];
+        var item = {};
+        for(i = 1 ; i < currentPic ; i++) {
+            previousPicArray.push(i);
+        }
+        return previousPicArray;
+    },
+    nextPic : function () {
+        var currentPic = parseInt(Router.current().params.img);
+		var allPic = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
+        var nextPicArray = [];
+        for(i = currentPic+1 ; i < allPic.length ; i++) {
+            nextPicArray.push(i);
+        }
+        return nextPicArray;
+    },
+    modulesPic : function () {
+		var modules = JSON.parse(sessionStorage.getItem("currentSurvey")).module_survey;
+        modArray = [];
+        $(modules).each(function( i, mod ) {
+            if(mod.order > 0 && mod.filter_admin.length > 0) {
+                modArray.push(mod.title);
+            }
+        });
+        return modArray;
+    },
+    previous : function (templateInList) {
+        return getCurrentModule(templateInList).order <= getCurrentModule(Router.current().route.getName()).order;
+    },
+    currentPic : function () {
+        return parseInt(Router.current().params.img);
+    }
 });

@@ -79,6 +79,7 @@ function redirect (sessionAndLocal) {
             //else retrieve everything from localStorage
             var currentSurvey = JSON.parse(localStorage.getItem("currentSurvey"));
             var correction_profiles = JSON.parse(localStorage.getItem("correction_profiles"));
+            var correction_profile_result = JSON.parse(localStorage.getItem("correction_profile_result"));
             lastModule = localStorage.getItem("lastModule");
             lastPicture = parseInt(localStorage.getItem("lastPicture"));
             
@@ -90,6 +91,7 @@ function redirect (sessionAndLocal) {
                 //set in session
                 sessionStorage.setItem("currentSurvey", JSON.stringify(currentSurvey));
                 sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
+                sessionStorage.setItem("correction_profile_result", JSON.stringify(correction_profile_result));
                 sessionStorage.setItem("lastModule", lastModule);
                 sessionStorage.setItem("lastPicture", lastPicture);
                 

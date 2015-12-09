@@ -12,6 +12,7 @@ window.onunload = function () {
 	if(insideTool() != "undefined" ) {
 		localStorage.setItem("currentSurvey", JSON.stringify(JSON.parse(sessionStorage.getItem("currentSurvey"))));
 		localStorage.setItem("correction_profiles", JSON.stringify(JSON.parse(sessionStorage.getItem("correction_profiles"))));
+        localStorage.setItem("correction_profile_result", JSON.stringify(JSON.parse(sessionStorage.getItem("correction_profile_result"))));
 		localStorage.setItem("lastModule", sessionStorage.getItem("lastModule"));
 		localStorage.setItem("lastPicture", sessionStorage.getItem("lastPicture"));	
 	}

@@ -2,12 +2,21 @@
 	<header>
 		<ul class="breadcrumb">
 			<li><a href="{{pathFor route='Index'}}" class="past index"><i class="fa fa-home"></i></a></li>
-			<li><a href="" class="past">Test de classement</a></li>
-			<li><a href="" class="active">Choix de l'image</a></li>
-			<li><a href="">Filtre</a></li>
-			<li><a href="">Choix de l'image</a></li>
-			<li><a href="">Filtre</a></li>
-			<li><a href="">Merci</a></li>
+			<li><a class="past nolink">Test de classement</a></li>
+			{{#each previousPic}}
+				{{>itemLink txt=this curTemplate="Valid" curImg=this curClass="past link"}}
+			{{/each}}
+			{{#each modulesPic}}
+				{{#if previous this template}}
+					{{>itemLink txt=this curTemplate=this curImg=currentPic curClass="past link"}}
+				{{else}}
+					{{>itemNoLink txt=this}}
+				{{/if}}
+			{{/each}}
+			{{#each nextPic}}
+				{{>itemNoLink txt=this}}
+			{{/each}}
+			<li><a class="nolink">Formulaire</a></li>
 		</ul>	
 		<div class="aide">
 			<i class="fa fa-info"></i>
@@ -20,4 +29,16 @@
 		</div>
 		<h2>{{info template}}</h2>
 	</header>
+</template>
+
+<template name="itemLink">
+			<li>
+				<a href={{pathFor route=curTemplate img=curImg}} class={{curClass}} >
+					{{txt}}
+				</a>
+			</li>
+</template>
+
+<template name="itemNoLink">
+			<li><a class="nolink">{{txt}}</a></li>
 </template>
