@@ -33,13 +33,89 @@ HomeController = RouteController.extend({
 /*****************************
  * Correction Tool Prototype *
  *****************************/
+ 
+/*  
+ *  Retrieve informations in local/session storage if previous exit/encoding url 
+ *  Redirection to last route if not a valid url or not visited yet,
+ *  return false if no need redirection 
+ */
+function redirect (sessionAndLocal) {
+	var lastPicture = parseInt(sessionStorage.getItem("lastPicture"));
+	var lastModule = sessionStorage.getItem("lastModule");
+    //if there is something in session
+    if(lastModule && sessionAndLocal) {
+            var paramImg = parseInt(Router.current().params.img);
+            var moduleEncoded = getCurrentModule(Router.current().route.getName());
+            //if not a valid url
+            if(moduleEncoded.title != "Form" && (isNaN(paramImg) || paramImg <= 0)){
+                //redirect to last position
+                Router.go(lastModule, {img: lastPicture});
+            } else {
+                Meteor.call('isAdmin', function (error, result) { 
+                    if(result) {
+                        return false;
+                    } else { //if it's not an admin
+                        var module = getCurrentModule(lastModule);
+                        //redirect only if user want a page not visited yet
+                        //pattern of accepted path
+                        if( (module.title == "Index" && moduleEncoded.title == "Select" && paramImg == 1) ||
+                            (paramImg < parseInt(lastPicture)) || 
+                            ((paramImg == parseInt(lastPicture) && moduleEncoded.order <= module.order + 1)) || 
+                            ((paramImg == parseInt(lastPicture) + 1) && (moduleEncoded.title == "Valid" || moduleEncoded.title == "Upload") && (module.title == "Valid" || module.title == "Select" || module.title == "Choice")) ||
+                            (isSatis() && ((moduleEncoded.title == "Upload") || (moduleEncoded.title == "Form"))) ||
+                            (moduleEncoded.title == "Form" && (module.title == "Upload" || module.title == "Valid" || module.title == "Select" || module.title == "Choice")) ) {
+                            
+                            return false;
+                        } else {
+                            //redirect to last position
+                            Router.go(lastModule, {img: lastPicture});
+                        }
+                    }
+                });
+            }
+    } else {
+        //only in local
+        if(!lastModule) {
+            //else retrieve everything from localStorage
+            var currentSurvey = JSON.parse(localStorage.getItem("currentSurvey"));
+            var correction_profiles = JSON.parse(localStorage.getItem("correction_profiles"));
+            lastModule = localStorage.getItem("lastModule");
+            lastPicture = parseInt(localStorage.getItem("lastPicture"));
+            
+            //no local and no session storage
+            if(!lastModule) {
+                //redirect to index
+                Router.go("Index");
+            } else {
+                //set in session
+                sessionStorage.setItem("currentSurvey", JSON.stringify(currentSurvey));
+                sessionStorage.setItem("correction_profiles", JSON.stringify(correction_profiles));
+                sessionStorage.setItem("lastModule", lastModule);
+                sessionStorage.setItem("lastPicture", lastPicture);
+                
+                //remove data in local
+                localStorage.clear();
+                
+                //redirect to last position
+                Router.go(lastModule, {img: lastPicture});
+            }
+            
+        } else {
+            return false;
+        }
+    }
+}
 
 IndexController = HomeController.extend({
+    /* redirection if need, or go on if no problem */
+    onBeforeAction: function() {
+        if(!redirect(false)) this.next();
+    },
     data: function() {
         var data = IndexController.__super__.data.call(this);
         return data;
     },
-    waitOn : function() {
+    waitOn : function() { 
         var currentUser = Meteor.user();
         return [
             Meteor.subscribe('survey', currentUser),
@@ -55,6 +131,9 @@ IndexController = HomeController.extend({
 });
 
 PictureController = HomeController.extend({
+    onBeforeAction: function() {
+        if(!redirect(true)) this.next();
+    },
     data: function() {
         var data = PictureController.__super__.data.call(this);
         return data;
@@ -67,6 +146,9 @@ PictureController = HomeController.extend({
 });
 
 FormController =  HomeController.extend({
+    onBeforeAction: function() {
+        if(!redirect(true)) this.next();
+    },
     data: function() {
         var data = PictureController.__super__.data.call(this);
         return data;
@@ -79,17 +161,20 @@ FormController =  HomeController.extend({
 });
 
 
-ThanksController = IndexController.extend({
-    onBeforeAction: function() {
-        var onBeforeAction = ThanksController.__super__.onBeforeAction.call(this);
-        return onBeforeAction;
-    },
+ThanksController = HomeController.extend({
     waitOn: function() {
         var currentUser = Meteor.user();
         var userId = this.params.idUser;
-        var waitOn = ThanksController.__super__.waitOn.call(this);
         return [
-            waitOn,
+            Meteor.subscribe('survey', currentUser),
+            Meteor.subscribe('module_survey'),
+            Meteor.subscribe('picture_admin'),
+            Meteor.subscribe('instruction'),
+            Meteor.subscribe('info_txt'),
+            Meteor.subscribe('sorted_color_admin'),
+            Meteor.subscribe('filter_admin'),
+            Meteor.subscribe('field_form'),
+            
       		Meteor.subscribe('user', currentUser, userId),
       		Meteor.subscribe('correction_profile_picture'),
             Meteor.subscribe('correction_profile_result'),

@@ -74,7 +74,7 @@ Meteor.methods({
         //insert each correction_profile of user and the picture in relation
         correctionProfilesPicture.forEach(function (correc) {
             //if the user have seen the picture
-            if(correc.picture.length != 0) {
+            if(correc.picture.length != 0 && typeof correc.filter_type != "undefined" ) {
                 var picture_correc = correc.picture;
                 var filters_correc = correc.filter;
                 delete correc.picture;

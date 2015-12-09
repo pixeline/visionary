@@ -31,7 +31,7 @@ Template.Select_ligne.events({
 function routing (template, orderFilter) {
         //store the current path
         var module = getCurrentModule(template);
-        var picOrder = parseInt(Router.current().params.img);
+        var picOrder = parseInt(Router.current().params.img) || 0;
         sessionStorage.setItem("lastModule", module.title);
         sessionStorage.setItem("lastPicture", picOrder);
         
