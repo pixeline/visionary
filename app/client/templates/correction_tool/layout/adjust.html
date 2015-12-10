@@ -5,9 +5,9 @@
 	<div class="content">
 		
 		<ul class="filtreAjustement">
-			{{>Picture template="Adjust" idImg="-" check=false click=true classLi="filtreMoins imgMoins"}}
-			{{>Picture template="Adjust" idImg="1" check=false click=false classLi=""}}
-			{{>Picture template="Adjust" idImg="+" check=false click=true classLi="filtrePlus imgPlus"}}
+			<li class="filtreMoins imgMoins">{{>Picture template="Adjust" idImg="-" check=false click=true}}</li>
+			<li>{{>Picture template="Adjust" idImg="1" check=false click=false classLi=""}}</li>
+			<li class="filtrePlus imgPlus">{{>Picture template="Adjust" idImg="+" check=false click=true}}</li>
 		</ul>
 		
 		{{>linkNext template="Adjust" class="btnPrimary" txt="Valider mon choix"}}

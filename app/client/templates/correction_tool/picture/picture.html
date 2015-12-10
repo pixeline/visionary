@@ -1,5 +1,4 @@
 <template name="Picture">
-	<li class="{{classLi}}" >
 		{{#if click}}
 			<a href="">
 				<img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} alt={{picture.title}}/>
@@ -9,5 +8,4 @@
 			<img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} alt={{picture.title}}/>
 			{{#if check}}<span class="check"><img src="../../pictures/icon_check.png"></span>{{/if}}
 		{{/if}}
-	</li>
 </template>
