@@ -511,6 +511,7 @@ ul.confirmation  li a.btnPrimary {
 
 .formInfos label.visible {
 	display: block;
+	cursor: pointer;
 	margin:8px 0;
 }
 
