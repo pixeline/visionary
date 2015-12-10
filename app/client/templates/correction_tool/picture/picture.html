@@ -1,6 +1,6 @@
 <template name="Picture">
 		{{#if click}}
-			<a href="">
+			<a href="" class="linkPicture">
 				<img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} alt={{picture.title}}/>
 				{{#if check}}<span class="check"><img src="../../pictures/icon_check.png"></span>{{/if}}
 			</a>

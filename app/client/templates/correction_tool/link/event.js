@@ -13,7 +13,7 @@ Template.linkNext.events({
 
 /* events of template Select */
 Template.Select.events({
-        'click a': function (event) {
+        'click a.linkPicture': function (event) {
                 event.preventDefault();
                 routing ("Select", event.target.id);
         }
@@ -21,7 +21,7 @@ Template.Select.events({
 
 /* events of template Select_ligne */
 Template.Select_ligne.events({
-        'click a': function (event) {
+        'click a.linkPicture': function (event) {
                 event.preventDefault();
                 routing ("Select_ligne", event.target.id);
         }
