@@ -22,16 +22,12 @@ Template.Adjust.events({
                 var direction;
                 //change value
                 if(event.target.children[0].children[0].id == "-") {
-                        direction = "left";
                         filter.value = filter.value - filter_admin.step;
                 } else {    
-                        direction = "right";
                         filter.value = filter.value + filter_admin.step;
                 }
                 
                 if(filter.value >= filter_admin.min && filter.value <= filter_admin.max) {
-                        //effect slide
-                        $("img.visionarized").hide().show("slide", { direction: direction }, 600);
                         
                         //store the correction_profile with new filter
                         saveFilter(picOrder, filter_admin.order, module, filter.value);
@@ -78,8 +74,15 @@ function buildFilters(imgClass) {
                                                 pictureInput.className = "nothing";
                                                 pictureInput.src = pictureUrl(pic_admin.file_name);
                                                 var content = $(picture.parentNode);
+                                                
+                                                if(pictureInput.id == "1") {
+                                                        $(pictureInput).fadeOut();
+                                                }
                                                 content.children()[0].remove();
                                                 content.prepend(pictureInput);
+                                                if(pictureInput.id == "1") {
+                                                        $(pictureInput).fadeIn();
+                                                }
                                         }
                                         filter = getPreviousFilter(parseInt(Router.current().params.img));
                                         filter_admin = getCurrentFilterByTitle(filter.parameter, module);
