@@ -30,7 +30,7 @@
 	
 	{{#if isRadio type}}
 		<label class="visible" for={{giveLabel label 0}}>{{giveLabel label 0}} <input type="{{type}}" id={{giveLabel label 0}} name="{{name}}" value="M" /></label>
-		<label class="visible" for={{giveLabel label 1}}>{{giveLabel label 1}} <input type="{{type}}" id={{giveLabel label 0}} name="{{name}}" value="F" /></label>
+		<label class="visible" for={{giveLabel label 1}}>{{giveLabel label 1}} <input type="{{type}}" id={{giveLabel label 1}} name="{{name}}" value="F" /></label>
 	{{else}}
 		<label for="{{label}}">{{label}}</label>
 		<input type="{{type}}" id={{label}} name="{{name}}" placeholder={{placeholder}} required={{required}}/>
