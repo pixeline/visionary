@@ -125,8 +125,8 @@ header h2 {
 	z-index: 1; 
 }
 
-.breadcrumb li a.index:hover { background: #01579B; }
-.breadcrumb li a.index:hover:after { border-left-color: #01579B!important; }
+.breadcrumb li a.index:hover, .breadcrumb li a.past:hover { background: #01579B; cursor: pointer;}
+.breadcrumb li a.index:hover:after, .breadcrumb li a.past:hover:after { border-left-color: #01579B!important; }
 
 .aide {
 	position: absolute;
@@ -629,7 +629,8 @@ ul.confirmation  li a.btnPrimary {
 
 }
 
-/* TODO : scale of pictures (overlay if not) */
+/* TODO : scale of pictures (overlay if not) 
 img.render, img.visionarized {
 	width : 100%;
 }
+*/
