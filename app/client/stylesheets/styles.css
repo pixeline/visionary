@@ -504,8 +504,20 @@ ul.confirmation  li a.btnPrimary {
 	MERCI.HTML // LAYOUT MERCI + INFOS USER
 ---------------------------------------------- */
 
+
 .formInfos label {
 	display: none;
+}
+
+.formInfos label.visible {
+	display: block;
+	margin:8px 0;
+}
+
+.formInfos input[type="radio"] {
+	display: inline;
+	height: 16px;
+	margin-left:5px;
 }
 
 .formInfos input {
