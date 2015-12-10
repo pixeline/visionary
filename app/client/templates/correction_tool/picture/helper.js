@@ -7,5 +7,8 @@ Template.Picture.helpers({
         pic.src = pictureUrl(picture.file_name);
         pic.title = picture.title;
         return pic;
+    },
+    isSelect : function (template) {
+        return template == "Select";
     }
 });

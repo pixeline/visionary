@@ -81,7 +81,7 @@ function buildFilters(imgClass) {
                                                 content.children()[0].remove();
                                                 content.prepend(pictureInput);
                                                 if(pictureInput.id == "1") {
-                                                        $(pictureInput).fadeIn();
+                                                        $(pictureInput).fadeIn(700);
                                                 }
                                         }
                                         filter = getPreviousFilter(parseInt(Router.current().params.img));
@@ -122,6 +122,7 @@ function buildFilters(imgClass) {
                                                 input.value = input.value * filter_admin.conversion;
                                                 filters.push(input);
                                         });
+                                        break;
                                 default : break;
                         }
                         
