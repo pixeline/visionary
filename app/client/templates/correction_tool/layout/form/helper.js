@@ -14,8 +14,12 @@ Template.Form.helpers({
     }
 });
 
+/* attributes reused for template Input */
 Template.Input.helpers({  
     isRadio : function(aType) {
         return aType == "radio";
+    },
+    giveLabel : function(labelTab, i) {
+        return labelTab[i];
     }
 });
