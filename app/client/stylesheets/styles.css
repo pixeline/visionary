@@ -255,6 +255,10 @@ header h2 {
 }
 
 
+.choixImagesCroix ul li.carre a {
+	width: 14em;
+}
+
 .choixImagesCroix ul li a {
     display: block;
 	background-clip: content-box;
@@ -262,6 +266,7 @@ header h2 {
     height: 14em;
     margin:5px;
 }
+
 .choixImagesCroix ul li.hidden {
 	opacity: 0.1;
 }
