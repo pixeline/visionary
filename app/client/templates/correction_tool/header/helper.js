@@ -56,7 +56,10 @@ Template.Header.helpers({
         return modArray;
     },
     previous : function (templateInList) {
-        return getCurrentModule(templateInList).order <= getCurrentModule(Router.current().route.getName()).order;
+        return getCurrentModule(templateInList).order < getCurrentModule(Router.current().route.getName()).order;
+    },
+    current : function (templateInList) {
+        return getCurrentModule(templateInList).order == getCurrentModule(Router.current().route.getName()).order;
     },
     currentPic : function () {
         return parseInt(Router.current().params.img);

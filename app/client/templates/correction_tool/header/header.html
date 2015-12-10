@@ -10,7 +10,11 @@
 				{{#if previous this template}}
 					{{>itemLink txt=this curTemplate=this curImg=currentPic curClass="past link"}}
 				{{else}}
-					{{>itemNoLink txt=this}}
+					{{#if current this template}}
+						{{>itemNoLink txt=this curClass="active"}}
+					{{else}}
+						{{>itemNoLink txt=this curClass="nolink"}}
+					{{/if}}
 				{{/if}}
 			{{/each}}
 			{{#each nextPic}}
@@ -40,5 +44,5 @@
 </template>
 
 <template name="itemNoLink">
-			<li><a class="nolink">{{txt}}</a></li>
+			<li><a class={{curClass}}>{{txt}}</a></li>
 </template>
