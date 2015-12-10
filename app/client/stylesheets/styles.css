@@ -241,6 +241,40 @@ header h2 {
 /* ---------------------------------------------- 
 	select.html // Choix images (croix)
 ---------------------------------------------- */
+
+/*
+.choixImagesCroix {
+	margin-bottom:20px;
+}
+
+.choixImagesCroix ul {
+    text-align: center;
+}
+
+.choixImagesCroix ul li {
+    display: inline-block;
+}
+
+
+.choixImagesCroix ul li a {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+	width: 19em;
+    height: 14em;
+    margin:5px;
+}
+
+.choixImagesCroix ul li.hidden {
+	opacity: 0.1;
+}
+
+.choixImagesCroix ul li img {
+	max-width: 100%;
+}
+*/
+
 .choixImagesCroix ul {
     text-align: center;
 }
