@@ -6,6 +6,9 @@ Template.Picture.helpers({
         var picture = getCurrentPicture(parseInt(Router.current().params.img));
         pic.src = pictureUrl(picture.file_name);
         pic.title = picture.title;
+        if(picture.type == "Ishihara") {
+            pic.class = "carre";
+        }
         return pic;
     }
 });
