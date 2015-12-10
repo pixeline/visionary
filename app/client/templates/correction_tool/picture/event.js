@@ -8,7 +8,7 @@ Template.Picture.onRendered (function () {
 });
 
 /* Events of template Picture (global event for correction_tool) */
-Template.Picture.events({
+Template.Adjust.events({
         
         //adjust rendering (module Adjust)
         'click li.filtreMoins, click li.filtrePlus' : function (event) {
