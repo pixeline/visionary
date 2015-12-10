@@ -255,6 +255,7 @@ header h2 {
 }
 
 .choixImagesCroix ul li img {
+	max-width: 100%;
 }
 
 @media screen and (max-height:674px){
@@ -405,12 +406,21 @@ ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
 /* ---------------------------------------------- 
 	choice.html // Validation d'une image / 3
 ---------------------------------------------- */
-ul.validationImage {
-	display: inline-block;
-	width: 100%;
+.validationImage {
+	display: block;
 	text-align: center;
-	margin-bottom:30px;
+	margin:30px auto;
+	max-height: 450px;
 }
+
+.validationImage img {
+	display: block;
+	text-align: center;
+	margin:30px auto;
+	max-height: 450px;
+}
+
+
 ul.validationImage li {
     display: inline-block;
 	width: 30%;
@@ -426,7 +436,6 @@ ul.confirmation {
 	text-align: center;
 	
 }
-
 
 ul.confirmation li {
 	display: inline;
