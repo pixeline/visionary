@@ -61,9 +61,9 @@ function redirect (sessionAndLocal) {
                         if( (module.title == "Index" && moduleEncoded.title == "Select" && paramImg == 1) ||
                             (paramImg < parseInt(lastPicture)) || 
                             ((paramImg == parseInt(lastPicture) && moduleEncoded.order <= module.order + 1)) || 
-                            ((paramImg == parseInt(lastPicture) + 1) && (moduleEncoded.title == "Valid" || moduleEncoded.title == "Upload") && (module.title == "Valid" || module.title == "Select" || module.title == "Choice")) ||
+                            ((paramImg == parseInt(lastPicture) + 1) && (moduleEncoded.title == "Valid" || moduleEncoded.title == "Upload") && (module.title == "Valid" || module.title == "Select" || module.title == "Choose")) ||
                             (isSatis() && ((moduleEncoded.title == "Upload") || (moduleEncoded.title == "Form"))) ||
-                            (moduleEncoded.title == "Form" && (module.title == "Upload" || module.title == "Valid" || module.title == "Select" || module.title == "Choice")) ) {
+                            (moduleEncoded.title == "Form" && (module.title == "Upload" || module.title == "Valid" || module.title == "Select" || module.title == "Choose")) ) {
                             
                             return false;
                         } else {

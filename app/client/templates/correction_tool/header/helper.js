@@ -4,7 +4,7 @@ Template.Header.helpers({
     info :  function(template) {
         var module = getCurrentModule(template);
         //if template of picture's correction
-        if (["Valid", "Select", "Select_ligne", "Adjust", "Choice"].indexOf(template) > -1 ) {
+        if (["Valid", "Select", "Select_ligne", "Adjust", "Choose"].indexOf(template) > -1 ) {
             var picture = getCurrentPicture(parseInt(Router.current().params.img));
             return getCurrentInstruction(picture, module);
         } else {
@@ -29,10 +29,13 @@ Template.Header.helpers({
     },
     previousPic : function () {
         var currentPic = parseInt(Router.current().params.img);
+		var allPic = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
         var previousPicArray = [];
-        var item = {};
+        var item = {};//TODO
         for(i = 1 ; i < currentPic ; i++) {
-            previousPicArray.push(i);
+            if(i==1 || allPic[i].order != allPic[i-1].order) {
+                previousPicArray.push(allPic[i].order);
+            }
         }
         return previousPicArray;
     },
@@ -41,7 +44,9 @@ Template.Header.helpers({
 		var allPic = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
         var nextPicArray = [];
         for(i = currentPic+1 ; i < allPic.length ; i++) {
-            nextPicArray.push(i);
+            if(allPic[i].order != allPic[i-1].order) {
+                nextPicArray.push(allPic[i].order);
+            }
         }
         return nextPicArray;
     },

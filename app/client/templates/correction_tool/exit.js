@@ -20,7 +20,7 @@ window.onunload = function () {
 
 /* check if it's a page of correction tool application */
 function insideTool () {
-	var moduleTitles = ["Select","Select_ligne","Adjust","Choice","Valid","Upload","Form"];
+	var moduleTitles = ["Select","Select_ligne","Adjust","Choose","Valid","Upload","Form"];
 	var inside = "undefined";
 	$.each(moduleTitles, function (i, title) {
 		if(Router.current() && typeof Router.current().route != "undefined" && Router.current().route.getName().indexOf(title) > -1) {

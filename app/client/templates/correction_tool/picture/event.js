@@ -50,7 +50,7 @@ function buildFilters(imgClass) {
         //render each picture
         $($("img."+imgClass)).each(function(i, img ) {
                 var module = getCurrentModule($(img).attr("template"));
-                if(module.title == "Valid" || module.title == "Adjust" || module.title == "Choice" || ((module.title == "Select" || module.title == "Select_ligne") && img.id != 0)) {
+                if(module.title == "Valid" || module.title == "Adjust" || module.title == "Choose" || ((module.title == "Select" || module.title == "Select_ligne") && img.id != 0)) {
                         var filters = [];
                         var filter = {};
                         var filter_admin = {};
@@ -96,7 +96,7 @@ function buildFilters(imgClass) {
                                         //combined filter
                                         filters.push(filter);
                                         break;
-                                case "Choice" :
+                                case "Choose" :
                                         //first (previous) filter retrieved
                                         filter = getPreviousFilter(parseInt(Router.current().params.img));
                                         filter_admin = getCurrentFilterByTitle(previousFilter.parameter, getPreviousModule(module.title));

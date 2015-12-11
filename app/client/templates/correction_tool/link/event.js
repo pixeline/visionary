@@ -62,7 +62,7 @@ function routing (template, orderFilter) {
                         //store the correction_profile with filter chosen
                         saveFilter(picOrder, orderFilter, module, val);
                         break;
-                case "Choice" : 
+                case "Choose" : 
                         var previousFilter = getPreviousFilter(parseInt(Router.current().params.img));
                         var previous_filter_admin = getCurrentFilterByTitle(previousFilter.parameter, getPreviousModule(template));                       
                         var filter_admin_choice = getCurrentFilterByOrder(previous_filter_admin.order, module);
@@ -129,8 +129,8 @@ Template.linkReset.events({
         }
 });
 
-/* Rendering pictures */
-Template.Choice.onRendered (function () {
+/* Check added */
+Template.Choose.onRendered (function () {
         idChoice = 0;
         //hide the check
         $('a .check').css({ 
@@ -150,8 +150,8 @@ Template.Choice.onRendered (function () {
 //choice of rendered picture
 var idChoice;
 
-/* events of template Choice */
-Template.Choice.events({
+/* events of template Choose */
+Template.Choose.events({
 	//select a picture
         'click img': function (event) {
                 //register the id of the selected one

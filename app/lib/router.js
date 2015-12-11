@@ -40,9 +40,9 @@ Router.route(root_url+'/adjust/:img', {
     controller: 'PictureController'
 });
 /* Template to choose best second correction adjustment of a picture */
-Router.route(root_url+'/choice/:img', {
-    name: 'Choice',
-    template: 'Choice',
+Router.route(root_url+'/choose/:img', {
+    name: 'Choose',
+    template: 'Choose',
     controller: 'PictureController'
 });
 /* Template to valid a correction (illustration picture) */

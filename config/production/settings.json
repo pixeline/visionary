@@ -18,7 +18,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Êtes-vous daltonien(ne) ?",
-                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre daltonisme et, au terme du test, <span>corriger les couleurs de votre écran selon votre vision.</span></p>"
+                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre vision et, au terme du test, <span>corriger les couleurs de votre écran en fonction de celle-ci.</span></p>"
                                                   }
                                       ]
                                     },
@@ -139,8 +139,8 @@
                                       "title" : "Select",
                                       "info_txt": [
                                                   {
-                                                    "title" : "Sélectionner une image.",
-                                                    "txt" : "<p>Séléctionner l'image qui vous permet de répondre le mieux possible à l'instruction.</p>"
+                                                    "title" : "Sélectionnez une image.",
+                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [
@@ -187,8 +187,8 @@
                                       "title" : "Select_ligne",
                                       "info_txt": [
                                                   {
-                                                    "title" : "Sélectionner une image.",
-                                                    "txt" : "<p>Séléctionner l'image qui vous permet de répondre le mieux possible à l'instruction.</p>"
+                                                    "title" : "Sélectionnez une image.",
+                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [
@@ -235,9 +235,9 @@
                                       "title" : "Adjust",
                                       "info_txt": [
                                                   {
-                                                    "title" : "Ajustez une image.",
-                                                    "txt" : "<p>Vous devez ajuster l'image de manière à répondre le mieux possible à l'instruction. Il vous suffit de cliquer sur les images + et - pour modifier le rendu. En confirmant, vous choisirez le rendu de l'image du milieu. Si aucune configuration ne vous satisfait, vous pouvez recommencer la configuration pour cette image.</p>"
-                                                  }
+                                                    "title" : "Ajustez l'image.",
+                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    (Etape courante) : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                   }
                                       ],
                                       "filter_admin" : [
                                                   { 
@@ -280,11 +280,11 @@
                                     },
                                     {
                                       "order" : 5,
-                                      "title" : "Choice",
+                                      "title" : "Choose",
                                       "info_txt": [
                                                   {
                                                     "title" : "Choississez une image.",
-                                                    "txt" : "<p>Vous devez choisir l'image qui vous permet de répondre le mieux possible à l'instruction.</p>"
+                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus claire (image du milieu).<br/>3.    (Etape courante) : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [ 
@@ -332,11 +332,11 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Validation de vos préférences.",
-                                                    "txt" : "<p>C'est l'heure de vérité! Afin de vérifier vos préférences, nous vous invitons à uploader une photo de votre choix. Cela doit nous permettre de valider si les réglages que vous avez effectués précédemment fonctionnent avec votre propre photo.</p>"
+                                                    "txt" : "<p>C'est l'heure de vérité ! Afin de vérifier vos préférences, nous vous invitons à télécharger une image de votre choix. Cela nous permettra de valider si les réglages que vous avez effectués précédemment fonctionnent avec votre propre image.</p>"
                                                   },
                                                   {
-                                                    "title" : "Télécharger un fichier.",
-                                                    "txt" : "<p>Si vous le souhaitez, téléchargez une de vos images afin d'observer le rendu grâce au profil retenu par notre application, et eventuellement la recorriger.</p>"
+                                                    "title" : "Téléchargez un fichier.",
+                                                    "txt" : "<p>Si vous le souhaitez, téléchargez une de vos images afin d'observer une version de cette image configurée avec les réglages retenus, et eventuellement la recorriger.</p>"
                                                   }
                                       ]
                                     },
@@ -396,88 +396,232 @@
                         "picture_admin": [
                                     {
                                       "order" : 1,
-                                      "title" : "Plate 7",
+                                      "title" : "Plate 2",
                                       "type" : "Ishihara",
-                                      "file_name" : "plate07.svg",
+                                      "file_name" : "plate02.svg",
                                       "instruction" : [
                                                     {
-                                                      "txt" : "Observez-vous de manière claire le chiffre 3 ?",
+                                                      "txt" : "Observez-vous de manière claire le chiffre 8 ?",
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionner l'image qui vous permet de voir au mieux le chiffre 3.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 8.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que le chiffre soit visuellement agréable pour vous.",
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 8 soit le plus clairement déchiffrable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet de voir au mieux le chiffre 3.",
-                                                      "module" : "Choice"
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
                                                     }
                                       ]
                                     },
                                     {
                                       "order" : 1,
-                                      "title" : "Plate 8",
+                                      "title" : "Plate 3",
                                       "type" : "Ishihara",
-                                      "file_name" : "plate08.svg",
+                                      "file_name" : "plate03.svg",
                                       "instruction" : [
                                                     {
-                                                      "txt" : "Observez-vous de manière claire le nombre 15 ?",
+                                                      "txt" : "Observez-vous de manière claire le chiffre 6 ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionner l'image qui vous permet de voir au mieux le nombre 15.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 6.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que le nombre soit visuellement agréable pour vous.",
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 6 soit le plus clairement déchiffrable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet de voir au mieux le nombre 15.",
-                                                      "module" : "Choice"
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 1,
+                                      "title" : "Plate 4",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate04.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 29 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 29.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 29 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 1,
+                                      "title" : "Plate 5",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate05.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 57 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 57.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 57 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
                                                     }
                                       ]
                                     },
                                     {
                                       "order" : 2,
-                                      "title" : "Carte de paris",
-                                      "type" : "Technique",
-                                      "file_name" : "carte.jpeg",
+                                      "title" : "Plate 14",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate14.svg",
                                       "instruction" : [
                                                     {
-                                                      "txt" : "Pouvez-vous distinguer toutes les zones ?",
+                                                      "txt" : "Observez-vous de manière claire le chiffre 5 ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionner l'image qui vous permet de distinguer au mieux toutes les zones.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 5.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 5 soit le plus clairement déchiffrable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux toutes les zones.",
-                                                      "module" : "Choice"
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 2,
+                                      "title" : "Plate 15",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate15.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 7 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 7.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 7 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 2,
+                                      "title" : "Plate 16",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate16.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 16 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 16.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 16 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 2,
+                                      "title" : "Plate 17",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate17.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 73 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 73.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 73 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "module" : "Choose"
                                                     }
                                       ]
                                     },
                                     {
                                       "order" : 3,
-                                      "title" : "Graphique Google Analytics",
-                                      "type" : "Technique",
-                                      "file_name" : "graph.jpg",
+                                      "title" : "Graphique du nombre de personnes en fonction de l'âge (deuteranope).",
+                                      "type" : "Graphique",
+                                      "file_name" : "graphDeute.png",
                                       "instruction" : [
                                                     {
-                                                      "txt" : "Pouvez-vous différenciez toutes les parties du graphique ?",
+                                                      "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
                                                       "module" : "Valid"
                                                     },
                                                     {
-                                                      "txt" : "Sélectionner l'image qui vous permet de distinguer au mieux toutes les zones du graphique.",
+                                                      "txt" : "Sélectionner l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce que la différence soit la plus claire possible.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 4,
+                                      "title" : "Trivial Pursuit",
+                                      "type" : "Technique",
+                                      "file_name" : "trivialpursuit.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous affirmer que le joueur orange possède 4 camemberts ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionner l'image qui vous permet d'affirmer que le joueur orange possède 4 camemberts.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -485,19 +629,139 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux toutes les zones.",
-                                                      "module" : "Choice"
+                                                      "txt" : "Choisissez l'image vous permettant d'affirmer que le joueur orange possède 4 camemberts.",
+                                                      "module" : "Choose"
                                                     }
                                       ]
                                     },
                                     {
-                                      "order" : 4,
-                                      "title" : "Arc-en-ciel",
-                                      "type" : "Illustration",
-                                      "file_name" : "arc.jpg",
+                                      "order" : 5,
+                                      "title" : "Bayern vs Porto",
+                                      "type" : "Technique",
+                                      "file_name" : "foot.png",
                                       "instruction" : [
                                                     {
-                                                      "txt" : "Êtes-vous satisfait de votre photo ?",
+                                                      "txt" : "Pouvez-vous distinguer clairement les deux équipes ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionnez la version de l'image qui vous suffit à identifier les 2 équipes.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à identifier clairement les 2 équipes.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux les 2 équipes.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 6,
+                                      "title" : "Graphique du nombre de personnes en fonction de l'âge (tritanope).",
+                                      "type" : "Graphique",
+                                      "file_name" : "graphTrita.png",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionner l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce que la différence soit la plus claire possible.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Carte du prix de l'immobilier à paris",
+                                      "type" : "Carte",
+                                      "file_name" : "carte.jpeg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous distinguer les zones les plus chères des zones les moins chères ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionnez le réglage suffisant pour identifier les zones les plus chères des zones les moins chères.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux toutes les zones.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 8,
+                                      "title" : "Carte du métro de Londres",
+                                      "type" : "Carte",
+                                      "file_name" : "metro.png",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous identifier la ligne de métro passant par Woodford comme étant la ligne \"Central\" ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionnez l'image qui vous suffit à identifier la ligne de métro indiquée \"Central\".",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet d'identifier au mieux la ligne de métro \"Central\".",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 9,
+                                      "title" : "Pomme mûre sur un arbre.",
+                                      "type" : "Technique",
+                                      "file_name" : "pomme.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous distinguer la pomme mûre des autres pommes ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionnez le réglage suffisant pour identifier la pomme mûre.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que vous distinguiez au mieux la pomme mûre sur l'arbre.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux la pomme mûre.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 10,
+                                      "title" : "Plage",
+                                      "type" : "Illustration",
+                                      "file_name" : "plage.jpeg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Êtes-vous satisfait du rendu de cette image ?",
                                                       "module" : "Valid"
                                                     },
                                                     {
@@ -510,7 +774,31 @@
                                                     },
                                                     {
                                                       "txt" : "Choisissez votre image préférée.",
-                                                      "module" : "Choice"
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 11,
+                                      "title" : "undefined",
+                                      "type" : "Upload",
+                                      "file_name" : "undefined",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Êtes-vous satisfait de votre image ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionner votre image préférée.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image jusqu'à ce qu'elle corresponde au mieux à vos attentes.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez votre image préférée.",
+                                                      "module" : "Choose"
                                                     }
                                       ]
                                     }
