@@ -31,9 +31,15 @@ Template.Header.helpers({
         var currentPic = parseInt(Router.current().params.img);
 		var allPic = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
         var previousPicArray = [];
-        var item = {};//TODO
-        for(i = 1 ; i < currentPic ; i++) {
-            if(i==1 || allPic[i].order != allPic[i-1].order) {
+        var iPic;
+        $(allPic).each(function(i, pic) {
+            if(pic.order == currentPic) {
+                iPic = i;
+                return false;
+            }
+        });
+        for(i = 0 ; i < iPic ; i++) {
+            if(i==0 || allPic[i].order != allPic[i-1].order) {
                 previousPicArray.push(allPic[i].order);
             }
         }
@@ -43,7 +49,14 @@ Template.Header.helpers({
         var currentPic = parseInt(Router.current().params.img);
 		var allPic = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
         var nextPicArray = [];
-        for(i = currentPic+1 ; i < allPic.length ; i++) {
+        var iPic;
+        $(allPic).each(function(i, pic) {
+            if(pic.order == currentPic) {
+                iPic = i;
+                return false;
+            }
+        });
+        for(i = iPic+1 ; i < allPic.length ; i++) {
             if(allPic[i].order != allPic[i-1].order) {
                 nextPicArray.push(allPic[i].order);
             }

@@ -137,7 +137,7 @@ Template.Choose.onRendered (function () {
             "display": "none",
             "width":"10%",
             "height":"10%",
-            "top":"20%",
+            "top":"25%",
             "position":"absolute"
         });
         //display check for original picture by default
