@@ -130,7 +130,8 @@
 			//get the order of the current module
 			var currentOrder = getCurrentModule(currentTemplate).order;
 			
-			var modules = JSON.parse(sessionStorage.getItem("currentSurvey")).module_survey;
+			var survey = JSON.parse(sessionStorage.getItem("currentSurvey"));
+			var modules = survey.module_survey;
 			//filter to get only one module with the next order
 			$(modules).each(function( index, module ) {
 				if(module.order == currentOrder+1) { 
@@ -144,20 +145,16 @@
 				nextModule = getCurrentModule("Select");
 			} //if select the original picture or go to next picture
 			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {
-				
+				console.log("1");
 				//update satis_counter si current = valid ou choice origin pic (if satis)
 				if(nextModule.title != "Upload") {
 					updateSatis(); //more satisfaction if "I'm satisfied"
 				}
 				//module upload if completly satified
-				if(isSatis() && nextModule.title != "Upload") {
+				if(isSatis() && isNotLastPic(picOrder)) {console.log("2");
 					nextPic = getLastPicture();
-					if(nextPic.title === "undefined") {
-						nextModule = getCurrentModule("Upload");
-					} else {
-						nextModule = getCurrentModule("Form");
-					}
-				} else {
+					nextModule = getCurrentModule("Valid");
+				} else {console.log("3");
 					//get next picture
 					nextPic = getNextPicture(picOrder);
 					switch(nextPic.type) {
@@ -229,10 +226,15 @@
 		return getCurrentPicture(currentPicOrder + 1);
 	};
 	
-	/* return last picture = uploaded picture */
+	/* return last picture = illustration picture */
 	getLastPicture = function () {
 		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
-		return getCurrentPicture(correction_profiles.length);
+		return getCurrentPicture(correction_profiles.length-1);
+	};
+	
+	isNotLastPic = function (picOrder) {
+		var correction_profiles = JSON.parse(sessionStorage.getItem("correction_profiles"));
+		return picOrder < correction_profiles.length-1;
 	};
 	
 	/* return the picture's url that match the file_name */

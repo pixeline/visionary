@@ -279,75 +279,9 @@ header h2 {
 	max-width: 100%;
 }
 
-
-/*
-.choixImagesCroix {
-	margin-bottom:20px;
+.choixImagesCroix ul li img:hover {
+    box-shadow: 1px 1px 5px 2px #888888;
 }
-
-.choixImagesCroix ul {
-    text-align: center;
-}
-
-.choixImagesCroix ul li {
-    display: inline-block;
-}
-
-
-.choixImagesCroix ul li a {
-    display: block;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-	width: 19em;
-    height: 14em;
-    margin:5px;
-}
-
-.choixImagesCroix ul li.hidden {
-	opacity: 0.1;
-}
-
-.choixImagesCroix ul li img {
-	max-width: 100%;
-}
-
-
-
-.choixImagesCroix ul {
-    text-align: center;
-}
-
-.choixImagesCroix ul li {
-	display: inline-block;
-    width: 190px;
-}
-
-.choixImagesCroix ul li.hidden {
-	opacity: 0.1;
-}
-
-.choixImagesCroix ul li img {
-	max-width: 100%;
-}
-
-@media screen and (max-height:674px){
-	
-	.choixImagesCroix ul li {
-		width: 150px;
-	}
-	
-}
-
-@media screen and (min-height:675px) and (max-height:750px){
-	
-	.choixImagesCroix ul li {
-		width: 170px;
-	}
-	
-}
-*/
-
 
 /* ---------------------------------------------- 
 	select_ligne.html // Choix image (ligne)

@@ -10,7 +10,7 @@
                         "state" : true,
                         "date_created" : "23/11/2015 14:53:59",
                         "max_reset_counter" : 10,
-                        "max_satis" : 3,
+                        "max_satis" : 5,
                         "module_survey": [
                                     {
                                       "order" : 1,
@@ -56,7 +56,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Validez cette image.",
-                                                    "txt" : "<p>Si cette image vous permet de répondre à l'instruction, validez-la pour passer à la prochaine image, sinon commencez la configuration en choisissant de réajuster !</p>"
+                                                    "txt" : "<p>Si cette image vous permet de répondre à la question, validez-la pour passer à la prochaine image, sinon commencez la configuration en choisissant de réajuster !</p>"
                                                   }
                                       ],
                                       "filter_admin" : [ 
@@ -413,7 +413,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -437,7 +437,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -461,7 +461,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -485,109 +485,13 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
                                                       "module" : "Choose"
                                                     }
                                       ]
                                     },
                                     {
                                       "order" : 2,
-                                      "title" : "Plate 14",
-                                      "type" : "Ishihara",
-                                      "file_name" : "plate14.svg",
-                                      "instruction" : [
-                                                    {
-                                                      "txt" : "Observez-vous de manière claire le chiffre 5 ?",
-                                                      "module" : "Valid"
-                                                    },
-                                                    { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 5.",
-                                                      "module" : "Select"
-                                                    },
-                                                    {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 5 soit le plus clairement déchiffrable.",
-                                                      "module" : "Adjust"
-                                                    },
-                                                    {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
-                                                      "module" : "Choose"
-                                                    }
-                                      ]
-                                    },
-                                    {
-                                      "order" : 2,
-                                      "title" : "Plate 15",
-                                      "type" : "Ishihara",
-                                      "file_name" : "plate15.svg",
-                                      "instruction" : [
-                                                    {
-                                                      "txt" : "Observez-vous de manière claire le chiffre 7 ?",
-                                                      "module" : "Valid"
-                                                    },
-                                                    { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 7.",
-                                                      "module" : "Select"
-                                                    },
-                                                    {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 7 soit le plus clairement déchiffrable.",
-                                                      "module" : "Adjust"
-                                                    },
-                                                    {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
-                                                      "module" : "Choose"
-                                                    }
-                                      ]
-                                    },
-                                    {
-                                      "order" : 2,
-                                      "title" : "Plate 16",
-                                      "type" : "Ishihara",
-                                      "file_name" : "plate16.svg",
-                                      "instruction" : [
-                                                    {
-                                                      "txt" : "Observez-vous de manière claire le nombre 16 ?",
-                                                      "module" : "Valid"
-                                                    },
-                                                    { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 16.",
-                                                      "module" : "Select"
-                                                    },
-                                                    {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 16 soit le plus clairement déchiffrable.",
-                                                      "module" : "Adjust"
-                                                    },
-                                                    {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
-                                                      "module" : "Choose"
-                                                    }
-                                      ]
-                                    },
-                                    {
-                                      "order" : 2,
-                                      "title" : "Plate 17",
-                                      "type" : "Ishihara",
-                                      "file_name" : "plate17.svg",
-                                      "instruction" : [
-                                                    {
-                                                      "txt" : "Observez-vous de manière claire le nombre 73 ?",
-                                                      "module" : "Valid"
-                                                    },
-                                                    { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 73.",
-                                                      "module" : "Select"
-                                                    },
-                                                    {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 73 soit le plus clairement déchiffrable.",
-                                                      "module" : "Adjust"
-                                                    },
-                                                    {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus agréable.",
-                                                      "module" : "Choose"
-                                                    }
-                                      ]
-                                    },
-                                    {
-                                      "order" : 3,
                                       "title" : "Graphique du nombre de personnes en fonction de l'âge (deuteranope).",
                                       "type" : "Graphique",
                                       "file_name" : "graphDeute.png",
@@ -611,7 +515,7 @@
                                       ]
                                     },
                                     {
-                                      "order" : 4,
+                                      "order" : 3,
                                       "title" : "Trivial Pursuit",
                                       "type" : "Technique",
                                       "file_name" : "trivialpursuit.jpg",
@@ -635,7 +539,7 @@
                                       ]
                                     },
                                     {
-                                      "order" : 5,
+                                      "order" : 4,
                                       "title" : "Bayern vs Porto",
                                       "type" : "Technique",
                                       "file_name" : "foot.png",
@@ -659,7 +563,7 @@
                                       ]
                                     },
                                     {
-                                      "order" : 6,
+                                      "order" : 5,
                                       "title" : "Graphique du nombre de personnes en fonction de l'âge (tritanope).",
                                       "type" : "Graphique",
                                       "file_name" : "graphTrita.png",
@@ -683,17 +587,17 @@
                                       ]
                                     },
                                     {
-                                      "order" : 7,
+                                      "order" : 6,
                                       "title" : "Carte du prix de l'immobilier à paris",
                                       "type" : "Carte",
                                       "file_name" : "carte.jpeg",
                                       "instruction" : [
                                                     {
-                                                      "txt" : "Pouvez-vous distinguer les zones les plus chères des zones les moins chères ?",
+                                                      "txt" : "Pouvez-vous identifier la zone entourée comme la zone 1 ?",
                                                       "module" : "Valid"
                                                     },
                                                     {
-                                                      "txt" : "Sélectionnez le réglage suffisant pour identifier les zones les plus chères des zones les moins chères.",
+                                                      "txt" : "Sélectionnez le réglage suffisant pour distinguer la zone 1 des autres zones.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -702,6 +606,102 @@
                                                     },
                                                     {
                                                       "txt" : "Choisissez l'image qui vous permet de distinguer au mieux toutes les zones.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 14",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate14.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 5 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 5.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 5 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 15",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate15.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 7 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 7.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 7 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 16",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate16.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 16 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 16.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 16 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 17",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate17.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 73 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 73.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 73 soit le plus clairement déchiffrable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -737,15 +737,15 @@
                                       "file_name" : "pomme.jpg",
                                       "instruction" : [
                                                     {
-                                                      "txt" : "Pouvez-vous distinguer la pomme mûre des autres pommes ?",
+                                                      "txt" : "Pouvez-vous distinguer la pomme mûre entourée des autres pommes ?",
                                                       "module" : "Valid"
                                                     },
                                                     {
-                                                      "txt" : "Sélectionnez le réglage suffisant pour identifier la pomme mûre.",
+                                                      "txt" : "Sélectionnez le réglage suffisant pour identifier la pomme mûre entourée.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que vous distinguiez au mieux la pomme mûre sur l'arbre.",
+                                                      "txt" : "Ajustez l'image jusqu'à ce que vous distinguiez au mieux la pomme mûre des autres sur l'arbre.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
