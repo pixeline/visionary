@@ -100,10 +100,10 @@
                                                     "order" : 5,
                                                     "parameter" : "hue",
                                                     "init_value" : 0,
-                                                    "min" : -35,
-                                                    "max" : 35,
+                                                    "min" : -25,
+                                                    "max" : 25,
                                                     "conversion" : 3.6,
-                                                    "step" : 35
+                                                    "step" : 25
                                                   },
                                                   {
                                                     "order" : 6,
@@ -140,7 +140,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Sélectionnez une image.",
-                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question. Vous pouvez régler le zoom pour distinguer plus nettement l'image.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [
@@ -188,7 +188,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Sélectionnez une image.",
-                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question. Vous pouvez régler le zoom pour distinguer plus nettement l'image.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [
@@ -236,7 +236,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Ajustez l'image.",
-                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    (Etape courante) : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    (Etape courante) : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible. L'image du milieu est ainsi modifiée et vous pouvez observer une version zoomée de l'image en la survolant.<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                    }
                                       ],
                                       "filter_admin" : [
@@ -292,10 +292,10 @@
                                                     "order" : 1,
                                                     "parameter" : "hue",
                                                     "init_value" : 0,
-                                                    "min" : -35,
-                                                    "max" : 35,
+                                                    "min" : -25,
+                                                    "max" : 25,
                                                     "conversion" : 3.6,
-                                                    "step" : 35
+                                                    "step" : 25
                                                   },
                                                   {
                                                     "order" : 2,
@@ -405,7 +405,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 8.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 8.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -413,7 +413,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 8.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -429,7 +429,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 6.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 6.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -437,7 +437,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 6.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -453,7 +453,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 29.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 29.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -461,7 +461,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 29.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -477,7 +477,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 57.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 57.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -485,7 +485,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 57.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -505,7 +505,7 @@
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que la différence soit la plus claire possible.",
+                                                      "txt" : "Ajuster l'image jusqu'à ce que vous observiez le plus clairement un nombre d'adultes plus important que le nombre d'enfants.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
@@ -529,7 +529,7 @@
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "txt" : "Ajuster l'image jusqu'à ce que vous observiez le plus clairement 4 camemberts pour le joueur orange.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
@@ -577,7 +577,7 @@
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que la différence soit la plus claire possible.",
+                                                      "txt" : "Ajuster l'image jusqu'à ce que vous observiez le plus clairement un nombre d'adultes plus important que le nombre d'enfants.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
@@ -601,7 +601,7 @@
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "txt" : "Ajustez l'image jusqu'à ce que la zone 1 soit la plus nettement distinguable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
@@ -621,7 +621,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 5.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 5.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -629,7 +629,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 5.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -645,7 +645,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 7.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 7.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -653,7 +653,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 7.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -669,7 +669,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 16.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 16.",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -677,7 +677,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 16",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -701,7 +701,7 @@
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable.",
+                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 73.",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -721,7 +721,7 @@
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que la dictinction soit la plus claire possible.",
+                                                      "txt" : "Ajustez l'image jusqu'à ce qu'à distinguer la ligne de métro \"Central\" le plus facilement.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
