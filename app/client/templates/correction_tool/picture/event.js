@@ -5,11 +5,58 @@
 /* Rendering pictures (global rendering for correction_tool) */
 Template.Picture.onRendered (function () {
         buildFilters("render");
+        $("div.zoomContainer").remove();
+});
+
+/* Zoom on picture */
+Template.Picture.events ({
+       'mouseover img.render, mouseover img.visionarized' : function(event) {
+                $("div.zoomContainer").remove();
+                var picture_admin = getCurrentPicture(parseInt(Router.current().params.img));
+                var picture = document.getElementById(event.target.id); 
+                if(picture_admin.type != "Ishihara") {
+                                if($(event.target).attr('template') == "Select") {
+                                        $(event.target).attr('data-zoom-image', event.target.src);
+                                        if(event.target.id == 2 || event.target.id == 3) {
+                                                $(event.target).elevateZoom({
+                                                        cursor: 'pointer',
+                                                        loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
+                                                        zoomWindowFadeIn: 500, 
+                                                        zoomWindowFadeOut: 0, 
+                                                        lensFadeIn: 500,
+                                                        lensFadeOut: 0,
+                                                        zoomWindowWidth : 400,
+                                                        zoomWindowHeight : 300,
+                                                        zoomWindowPosition : 14,
+                                                        scrollZoom : true
+                                                });
+                                        } else {
+                                                $(event.target).elevateZoom({
+                                                        cursor: 'pointer',
+                                                        loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
+                                                        zoomWindowFadeIn: 500, 
+                                                        zoomWindowFadeOut: 0, 
+                                                        lensFadeIn: 500,
+                                                        lensFadeOut: 0,
+                                                        zoomWindowWidth : 400,
+                                                        zoomWindowHeight : 300,
+                                                        zoomWindowPosition : 2,
+                                                        scrollZoom : true
+                                                });
+                                        }
+                                } else if(event.target.id == 1 && ($(event.target).attr('template') == "Adjust")) {                                              
+                                        $(event.target).attr('data-zoom-image', event.target.src);
+                                        $(event.target).elevateZoom({
+                                                zoomType: "inner", //inner, lens or window
+                                                cursor: "crosshair"
+                                        });
+                                }
+                }
+        }
 });
 
 /* Events of template Picture (global event for correction_tool) */
 Template.Adjust.events({
-        
         //adjust rendering (module Adjust)
         'click li.filtreMoins, click li.filtrePlus' : function (event) {
                 event.preventDefault();
@@ -28,10 +75,8 @@ Template.Adjust.events({
                 }
                 
                 if(filter.value >= filter_admin.min && filter.value <= filter_admin.max) {
-                        
                         //store the correction_profile with new filter
                         saveFilter(picOrder, filter_admin.order, module, filter.value);
-                        
                         buildFilters("visionarized");
                 } else {
                         sAlert.info("L'ajustement maximum est déjà atteint !");
@@ -158,9 +203,19 @@ function render (pictureInput, filters) {
                 }
         });
         
+        //retrieve original picture
+        var picture = getCurrentPicture(parseInt(Router.current().params.img));
+        var pic;
+        if(picture.type == "Ishihara") { //some bug with ishihara, than just render input (not good resolution)
+                pic = pictureInput;
+        } else {
+                pic = document.createElement("img");
+                pic.src = pictureUrl(picture.file_name);
+        }
+        
         //render the picture with combined filter
         var canvas;
-        Visionarize (pictureInput, {
+        Visionarize (pic, {
                 type:filterInput.type,
                 amountVisionarize:filterInput.visionarize,
                 amountIntensity:filterInput.intensity,
@@ -172,6 +227,6 @@ function render (pictureInput, filters) {
         });
         //replace picture by rendered picture
         pictureInput.src = canvas.toDataURL('image/svg');
+        //pictureInput.src = canvas.toDataURL('image/svg');
         pictureInput.className = "visionarized";
-        
 }

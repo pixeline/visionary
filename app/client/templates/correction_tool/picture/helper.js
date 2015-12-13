@@ -7,7 +7,7 @@ Template.Picture.helpers({
         pic.src = pictureUrl(picture.file_name);
         pic.title = picture.title;
         if(picture.type == "Ishihara") {
-            pic.class = "carre";
+            pic.class = " carre";
         }
         return pic;
     }

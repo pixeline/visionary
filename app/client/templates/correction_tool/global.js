@@ -144,17 +144,16 @@
 				nextPic = getNextPicture(picOrder);
 				nextModule = getCurrentModule("Select");
 			} //if select the original picture or go to next picture
-			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {
-				console.log("1");
+			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {				
 				//update satis_counter si current = valid ou choice origin pic (if satis)
 				if(nextModule.title != "Upload") {
 					updateSatis(); //more satisfaction if "I'm satisfied"
 				}
 				//module upload if completly satified
-				if(isSatis() && isNotLastPic(picOrder)) {console.log("2");
+				if(isSatis() && isNotLastPic(picOrder)) {
 					nextPic = getLastPicture();
 					nextModule = getCurrentModule("Valid");
-				} else {console.log("3");
+				} else {
 					//get next picture
 					nextPic = getNextPicture(picOrder);
 					switch(nextPic.type) {

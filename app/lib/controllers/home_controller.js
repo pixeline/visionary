@@ -56,18 +56,17 @@ function redirect (sessionAndLocal) {
                         return false;
                     } else { //if it's not an admin
                         var module = getCurrentModule(lastModule);
-                        //redirect only if user want a page not visited yet
                         //pattern of accepted path
                         if( (module.title == "Index" && moduleEncoded.title == "Select" && paramImg == 1) ||
                             (paramImg < parseInt(lastPicture)) || 
                             ((paramImg == parseInt(lastPicture) && moduleEncoded.order <= module.order + 1)) || 
                             ((paramImg == parseInt(lastPicture) + 1) && (moduleEncoded.title == "Valid" || moduleEncoded.title == "Upload") && (module.title == "Valid" || module.title == "Select" || module.title == "Choose")) ||
-                            (isSatis() && ((moduleEncoded.title == "Upload") || (moduleEncoded.title == "Form"))) ||
+                            (isSatis() && ((moduleEncoded.title == "Valid") || (moduleEncoded.title == "Upload") || (moduleEncoded.title == "Form"))) ||
                             (moduleEncoded.title == "Form" && (module.title == "Upload" || module.title == "Valid" || module.title == "Select" || module.title == "Choose")) ) {
                             
                             return false;
                         } else {
-                            //redirect to last position
+                            //redirect to last position only if user want a page not visited yet or not accepted
                             Router.go(lastModule, {img: lastPicture});
                         }
                     }
