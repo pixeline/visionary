@@ -6,7 +6,7 @@
  
 (function() {
 	
-	var satis_counter = 0;
+	satis_counter = 0;
 	
 	/* register a filter in session that match orderFilter inside correction_profiles for a pictureOrder */
 	saveFilter = function (pictureOrder, orderFilter, module, val, setType) {

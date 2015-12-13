@@ -15,6 +15,7 @@ window.onunload = function () {
         localStorage.setItem("correction_profile_result", JSON.stringify(JSON.parse(sessionStorage.getItem("correction_profile_result"))));
 		localStorage.setItem("lastModule", sessionStorage.getItem("lastModule"));
 		localStorage.setItem("lastPicture", sessionStorage.getItem("lastPicture"));	
+		satis_counter = 0;
 	}
 };
 
