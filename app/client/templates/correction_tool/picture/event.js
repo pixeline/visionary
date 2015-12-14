@@ -16,32 +16,25 @@ Template.Picture.events ({
                 var picture = document.getElementById(event.target.id); 
                 if(picture_admin.type != "Ishihara") {
                                 if($(event.target).attr('template') == "Select") {
+                                        event.target.className += " bowShadow";
                                         $(event.target).attr('data-zoom-image', event.target.src);
                                         if(event.target.id == 2 || event.target.id == 3) {
                                                 $(event.target).elevateZoom({
-                                                        cursor: 'pointer',
+                                                        /*cursor: 'pointer',
                                                         loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
                                                         zoomWindowFadeIn: 0, 
                                                         zoomWindowFadeOut: 500, 
-                                                        lensFadeIn: 0,
-                                                        lensFadeOut: 500,
                                                         zoomWindowWidth : 400,
                                                         zoomWindowHeight : 300,
                                                         zoomWindowPosition : 14,
-                                                        scrollZoom : true
+                                                        scrollZoom : true*/
+                                                        zoomType: "inner", //inner, lens or window
+                                                        cursor: "pointer"
                                                 });
                                         } else {
                                                 $(event.target).elevateZoom({
-                                                        cursor: 'pointer',
-                                                        loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
-                                                        zoomWindowFadeIn: 0, 
-                                                        zoomWindowFadeOut: 500, 
-                                                        lensFadeIn: 0,
-                                                        lensFadeOut: 500,
-                                                        zoomWindowWidth : 400,
-                                                        zoomWindowHeight : 300,
-                                                        zoomWindowPosition : 2,
-                                                        scrollZoom : true
+                                                        zoomType: "inner", //inner, lens or window
+                                                        cursor: "pointer"
                                                 });
                                         }
                                 } else if(event.target.id == 1 && ($(event.target).attr('template') == "Adjust")) {                                              
@@ -52,7 +45,18 @@ Template.Picture.events ({
                                         });
                                 }
                 }
-        }
+        }/*,
+        'mouseout div.zoomContainer' : function(event) {
+                console.log("ok");
+                $("div.zoomContainer").remove();
+                var picture_admin = getCurrentPicture(parseInt(Router.current().params.img));
+                var picture = document.getElementById(event.target.id); 
+                if(picture_admin.type != "Ishihara") {
+                        $(event.target).css({
+                                "box-shadow": "none"
+                        });
+                }
+        }*/
 });
 
 /* Events of template Picture (global event for correction_tool) */

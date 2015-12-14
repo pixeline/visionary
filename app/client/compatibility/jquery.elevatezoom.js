@@ -377,7 +377,7 @@ if ( typeof Object.create !== 'function' ) {
 					});  
 				}
 				//Needed to work in IE
-				self.$elem.bind('mousemove', function(e){   
+				self.$elem.bind('mousemove.elevate', function(e){   
 					if(self.overWindow == false){self.setElements("show");}
 					//make sure on orientation change the setposition is not fired
 					if(self.lastX !== e.clientX || self.lastY !== e.clientY){
@@ -389,7 +389,7 @@ if ( typeof Object.create !== 'function' ) {
 
 				});  	
 
-				self.zoomContainer.bind('mousemove', function(e){ 
+				self.zoomContainer.bind('mousemove.elevate', function(e){ 
 
 					if(self.overWindow == false){self.setElements("show");} 
 
@@ -402,7 +402,7 @@ if ( typeof Object.create !== 'function' ) {
 					self.lastY = e.clientY;    
 				});  	
 				if(self.options.zoomType != "inner") {
-					self.zoomLens.bind('mousemove', function(e){      
+					self.zoomLens.bind('mousemove.elevate', function(e){      
 						//make sure on orientation change the setposition is not fired
 						if(self.lastX !== e.clientX || self.lastY !== e.clientY){
 							self.setPosition(e);
@@ -413,7 +413,7 @@ if ( typeof Object.create !== 'function' ) {
 					});
 				}
 				if(self.options.tint && self.options.zoomType != "inner") {
-					self.zoomTint.bind('mousemove', function(e){ 
+					self.zoomTint.bind('mousemove.elevate', function(e){ 
 						//make sure on orientation change the setposition is not fired
 						if(self.lastX !== e.clientX || self.lastY !== e.clientY){
 							self.setPosition(e);
@@ -425,7 +425,7 @@ if ( typeof Object.create !== 'function' ) {
 
 				}
 				if(self.options.zoomType == "inner") {
-					self.zoomWindow.bind('mousemove', function(e) {
+					self.zoomWindow.bind('mousemove.elevate', function(e) {
 						//self.overWindow = true;
 						//make sure on orientation change the setposition is not fired
 						if(self.lastX !== e.clientX || self.lastY !== e.clientY){
