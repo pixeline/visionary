@@ -2,10 +2,10 @@
 		{{#if click}}
 			<a href="" class="linkPicture {{picture.class}}">
 				<img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
-				{{#if check}}<span class="check"><img src="../../pictures/icon_check.png"></span>{{/if}}
+				{{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
 			</a>
 		{{else}}
 			<img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
-			{{#if check}}<span class="check"><img src="../../pictures/icon_check.png"></span>{{/if}}
+			{{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
 		{{/if}}
 </template>

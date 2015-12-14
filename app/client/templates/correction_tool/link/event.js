@@ -134,16 +134,16 @@ Template.Choose.onRendered (function () {
         idChoice = 0;
         //hide the check
         $('a .check').css({ 
-            "display": "none",
+            "display": "none"/*,
             "width":"10%",
             "height":"10%",
             "top":"25%",
-            "position":"absolute"
+            "position":"absolute"*/
         });
         //display check for original picture by default
         $("#0").next().css ({
-                "display": "block",
-                "left":"55%"
+                "display": "block"/*,
+                "left":"55%"*/
         });
 });
 
@@ -163,8 +163,8 @@ Template.Choose.events({
 			});
 			//display a check
 			$(event.target).next().css ({
-				"display": "block",
-                                "left": "" + (55 + parseInt(event.target.id)*30) +"%"
+				"display": "block"/*,
+                "left": "" + (55 + parseInt(event.target.id)*30) +"%"*/
 			});
 		}
         }

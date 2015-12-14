@@ -440,9 +440,27 @@ ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
 
 ul.validationImage li {
     display: inline-block;
+    position: relative;
 	width: 30%;
 }
 
+
+ul.validationImage li a.linkPicture span.check {
+	position: absolute;
+	top:0;
+	right: 0;
+}
+
+ul.validationImage li a.linkPicture span.check .fa-check {
+    border-radius: 100px;
+    border: solid 5px green;
+    padding: 30px;
+    color: green;
+    font-size: 80px;
+    background: #fff;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 5px 12px rgba(0,0,0,0.22);
+ }
+    
 ul.validationImage li img {
 	max-width: 100%;
 }
