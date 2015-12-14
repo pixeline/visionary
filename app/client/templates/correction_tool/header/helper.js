@@ -1,5 +1,14 @@
 /* Use of attributes to reuse in the template Header */
 Template.Header.helpers({
+    //question for current template
+    question :  function(template) {
+        var module = getCurrentModule("Valid");
+        //if template of picture's correction
+        if (["Select", "Select_ligne", "Adjust", "Choose"].indexOf(template) > -1 ) {
+            var picture = getCurrentPicture(parseInt(Router.current().params.img));
+            return getCurrentInstruction(picture, module);
+        }
+    },
     //instruction for current template
     info :  function(template) {
         var module = getCurrentModule(template);

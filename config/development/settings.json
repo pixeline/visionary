@@ -405,15 +405,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 8.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 8 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 8.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -429,15 +429,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 6.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 6 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 6.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -453,15 +453,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 29.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 29 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 29.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -477,15 +477,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 57.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 57 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 57.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -500,16 +500,16 @@
                                                       "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionner l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que vous observiez le plus clairement un nombre d'adultes plus important que le nombre d'enfants.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -524,16 +524,16 @@
                                                       "txt" : "Pouvez-vous affirmer que le joueur orange possède 4 camemberts ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionner l'image qui vous permet d'affirmer que le joueur orange possède 4 camemberts.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que vous observiez le plus clairement 4 camemberts pour le joueur orange.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image vous permettant d'affirmer que le joueur orange possède 4 camemberts.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -548,16 +548,16 @@
                                                       "txt" : "Pouvez-vous distinguer clairement les deux équipes ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionnez la version de l'image qui vous suffit à identifier les 2 équipes.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à identifier clairement les 2 équipes.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux les 2 équipes.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -572,16 +572,16 @@
                                                       "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionner l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce que vous observiez le plus clairement un nombre d'adultes plus important que le nombre d'enfants.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image pour laquelle le nombre d'adultes est supérieur au nombre d'enfants.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -596,16 +596,16 @@
                                                       "txt" : "Pouvez-vous identifier la zone entourée comme la zone 1 ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionnez le réglage suffisant pour distinguer la zone 1 des autres zones.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que la zone 1 soit la plus nettement distinguable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux toutes les zones.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -621,15 +621,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 5.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 5 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 5.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -645,15 +645,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 7.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le chiffre 7 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 7.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -669,15 +669,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer 16.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 16 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 16",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -693,15 +693,15 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage vous suffit à déchiffrer un 73.",
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que le nombre 73 soit le plus clairement déchiffrable.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez la version de l’image qui vous semble la plus claire et agréable pour déchiffrer 73.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -716,16 +716,16 @@
                                                       "txt" : "Pouvez-vous identifier la ligne de métro passant par Woodford comme étant la ligne \"Central\" ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionnez l'image qui vous suffit à identifier la ligne de métro indiquée \"Central\".",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce qu'à distinguer la ligne de métro \"Central\" le plus facilement.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet d'identifier au mieux la ligne de métro \"Central\".",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
@@ -740,16 +740,16 @@
                                                       "txt" : "Pouvez-vous distinguer la pomme mûre entourée des autres pommes ?",
                                                       "module" : "Valid"
                                                     },
-                                                    {
-                                                      "txt" : "Sélectionnez le réglage suffisant pour identifier la pomme mûre entourée.",
+                                                    { 
+                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajustez l'image jusqu'à ce que vous distinguiez au mieux la pomme mûre des autres sur l'arbre.",
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
-                                                      "txt" : "Choisissez l'image qui vous permet de distinguer au mieux la pomme mûre.",
+                                                      "txt" : "Quelle version préférez-vous ?",
                                                       "module" : "Choose"
                                                     }
                                       ]
