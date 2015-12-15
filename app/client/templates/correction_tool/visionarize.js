@@ -92,10 +92,9 @@
 			
 			filter.addFilter('colorMatrix', colorMatrix); //apply the colormatrix 5x5
 		}
-
 		filter.addFilter('hue', amountHue); //0 to 360
 		filter.addFilter('saturation', amountSaturation); //-1 to 10 / can manipulate hue with -1 to -10...
-
+		
 		if(typeof options.callback == "function") {
 			options.callback(filter.apply(image));
 		}

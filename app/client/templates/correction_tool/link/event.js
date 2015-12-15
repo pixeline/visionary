@@ -2,12 +2,20 @@
  * Computing of route for page of correction on pictures *
  ********************************************************/
 
+
+//choice of rendered picture
+var idChoice;
+
 /* Event of template linkNext (global event for correction_tool) */
 Template.linkNext.events({
         //redirect to the next module
         'click #nextPage': function (event) {
                 event.preventDefault();
-                routing ($(event.target).attr("template"));
+                if($(event.target).attr("template") == "Choose" && idChoice === 0) {
+                        sAlert.error("Vous devez cliquer sur la version de l'image que vous préférez.");     
+                } else {
+                        routing ($(event.target).attr("template"));
+                }
         }
 });
 
@@ -133,22 +141,8 @@ Template.linkReset.events({
 Template.Choose.onRendered (function () {
         idChoice = 0;
         //hide the check
-        $('a .check').css({ 
-            "display": "none"/*,
-            "width":"10%",
-            "height":"10%",
-            "top":"25%",
-            "position":"absolute"*/
-        });
-        //display check for original picture by default
-        $("#0").next().css ({
-                "display": "block"/*,
-                "left":"55%"*/
-        });
+        $('a .check').hide();
 });
-
-//choice of rendered picture
-var idChoice;
 
 /* events of template Choose */
 Template.Choose.events({
@@ -158,14 +152,9 @@ Template.Choose.events({
                 idChoice = event.target.id;
 		if(event.target.id != '') {
 			//disable css of each picture
-			$('a .check').css({ 
-				"display": "none"
-			});
+			$('a .check').hide();
 			//display a check
-			$(event.target).next().css ({
-				"display": "block"/*,
-                "left": "" + (55 + parseInt(event.target.id)*30) +"%"*/
-			});
+			$(event.target).next().show();
 		}
         }
 });

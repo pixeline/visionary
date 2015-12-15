@@ -10,53 +10,46 @@ Template.Picture.onRendered (function () {
 
 /* Zoom on picture */
 Template.Picture.events ({
-       'mouseover img.render, mouseover img.visionarized' : function(event) {
+       'mouseover img.render, mouseover img.visionarized, mouseover div.zoomContainer' : function(event) {
                 $("div.zoomContainer").remove();
                 var picture_admin = getCurrentPicture(parseInt(Router.current().params.img));
                 var picture = document.getElementById(event.target.id); 
-                if(picture_admin.type != "Ishihara") {
-                                if($(event.target).attr('template') == "Select") {
-                                        event.target.className += " bowShadow";
-                                        $(event.target).attr('data-zoom-image', event.target.src);
-                                        if(event.target.id == 2 || event.target.id == 3) {
-                                                $(event.target).elevateZoom({
-                                                        /*cursor: 'pointer',
-                                                        loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
-                                                        zoomWindowFadeIn: 0, 
-                                                        zoomWindowFadeOut: 500, 
-                                                        zoomWindowWidth : 400,
-                                                        zoomWindowHeight : 300,
-                                                        zoomWindowPosition : 14,
-                                                        scrollZoom : true*/
-                                                        zoomType: "inner", //inner, lens or window
-                                                        cursor: "pointer"
-                                                });
-                                        } else {
-                                                $(event.target).elevateZoom({
-                                                        zoomType: "inner", //inner, lens or window
-                                                        cursor: "pointer"
-                                                });
-                                        }
-                                } else if(event.target.id == 1 && ($(event.target).attr('template') == "Adjust")) {                                              
-                                        $(event.target).attr('data-zoom-image', event.target.src);
+                if($(event.target).attr('template') == "Select") {
+                        /*$(event.target).css({
+                                "box-shadow": "1px 1px 5px 2px #888888"
+                        });*/
+                        if(picture_admin.type != "Ishihara") {
+                                $(event.target).attr('data-zoom-image', event.target.src);
+                                if(event.target.id == 2 || event.target.id == 3) {
+                                        $(event.target).elevateZoom({
+                                                /*cursor: 'pointer',
+                                                loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
+                                                zoomWindowFadeIn: 0,
+                                                zoomWindowFadeOut: 500,
+                                                zoomWindowWidth : 400,
+                                                zoomWindowHeight : 300,
+                                                zoomWindowPosition : 14,
+                                                scrollZoom : true*/
+                                                zoomType: "inner", //inner, lens or window
+                                                cursor: "pointer"
+                                        }); 
+                                } else {
                                         $(event.target).elevateZoom({
                                                 zoomType: "inner", //inner, lens or window
-                                                cursor: "crosshair"
+                                                cursor: "pointer"
                                         });
                                 }
+                        } 
+                } else if (event.target.id == 1 && ($(event.target).attr('template') == "Adjust")) {  
+                        if(picture_admin.type != "Ishihara") {                                            
+                                $(event.target).attr('data-zoom-image', event.target.src);
+                                $(event.target).elevateZoom({
+                                        zoomType: "inner", //inner, lens or window
+                                        cursor: "crosshair"
+                                });
+                        }
                 }
-        }/*,
-        'mouseout div.zoomContainer' : function(event) {
-                console.log("ok");
-                $("div.zoomContainer").remove();
-                var picture_admin = getCurrentPicture(parseInt(Router.current().params.img));
-                var picture = document.getElementById(event.target.id); 
-                if(picture_admin.type != "Ishihara") {
-                        $(event.target).css({
-                                "box-shadow": "none"
-                        });
-                }
-        }*/
+        }
 });
 
 /* Events of template Picture (global event for correction_tool) */
@@ -64,30 +57,34 @@ Template.Adjust.events({
         //adjust rendering (module Adjust)
         'click li.filtreMoins, click li.filtrePlus' : function (event) {
                 event.preventDefault();
+                var operation = event.target.children[0].children[0].id;
                 var module = getCurrentModule("Adjust");
                 var picOrder = parseInt(Router.current().params.img);
                 var filter = getPreviousFilter(picOrder);
                 var previous_filter_admin = getCurrentFilterByTitle(filter.parameter, getPreviousModule("Adjust"));       
                 var filter_admin = getCurrentFilterByOrder(previous_filter_admin.order, module);
                 
-                var direction;
                 //change value
-                if(event.target.children[0].children[0].id == "-") {
-                        filter.value = filter.value - filter_admin.step;
-                } else {    
-                        filter.value = filter.value + filter_admin.step;
-                }
-                
-                if(filter.value >= filter_admin.min && filter.value <= filter_admin.max) {
+                if((filter.value > filter_admin.min && operation == "-") || (filter.value < filter_admin.max && operation == "+")) {                      
+                        $('img').show();
+                        if(operation == "-") {
+                                filter.value = filter.value - filter_admin.step;
+                        } else {    
+                                filter.value = filter.value + filter_admin.step;
+                        }
+                        if(filter.value <= filter_admin.min) {
+                                filter.value = filter_admin.min;
+                        } else if (filter.value >= filter_admin.max) {
+                                filter.value = filter_admin.max;
+                        }
                         //store the correction_profile with new filter
                         saveFilter(picOrder, filter_admin.order, module, filter.value);
                         buildFilters("visionarized");
                 } else {
+                        $(event.target.children[0].children[0]).hide();
                         sAlert.info("L'ajustement maximum est déjà atteint !");
                 }
-                
         }
-        
 });
 
 /* Build filters to render pictures */
@@ -119,18 +116,17 @@ function buildFilters(imgClass) {
                                         if(imgClass == "visionarized") {
                                                 //replace content to render on the source picture
                                                 var pic_admin = getCurrentPicture(parseInt(Router.current().params.img));
-                                                var pictureInput = picture;
-                                                pictureInput.className = "nothing";
-                                                pictureInput.src = pictureUrl(pic_admin.file_name);
-                                                var content = $(picture.parentNode);
                                                 
-                                                if(pictureInput.id == "1") {
-                                                        $(pictureInput).fadeOut();
+                                                picture.className = "nothing";
+                                                picture.src = pictureUrl(pic_admin.file_name);
+                                                var content = $(picture.parentNode);
+                                                if(picture.id == "1") {
+                                                        $(picture).fadeOut(1000);
                                                 }
                                                 content.children()[0].remove();
-                                                content.prepend(pictureInput);
-                                                if(pictureInput.id == "1") {
-                                                        $(pictureInput).fadeIn(700);
+                                                content.prepend(picture);
+                                                if(picture.id == "1") {
+                                                        $(picture).fadeIn(10);
                                                 }
                                         }
                                         filter = getPreviousFilter(parseInt(Router.current().params.img));

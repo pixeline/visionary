@@ -10,7 +10,7 @@
                         "state" : true,
                         "date_created" : "23/11/2015 14:53:59",
                         "max_reset_counter" : 10,
-                        "max_satis" : 5,
+                        "max_satis" : 10,
                         "module_survey": [
                                     {
                                       "order" : 1,
@@ -494,7 +494,7 @@
                                       "order" : 2,
                                       "title" : "Graphique du nombre de personnes en fonction de l'âge (deuteranope).",
                                       "type" : "Graphique",
-                                      "file_name" : "graphDeute.png",
+                                      "file_name" : "graphique-deutera.png",
                                       "instruction" : [
                                                     {
                                                       "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
@@ -566,7 +566,7 @@
                                       "order" : 5,
                                       "title" : "Graphique du nombre de personnes en fonction de l'âge (tritanope).",
                                       "type" : "Graphique",
-                                      "file_name" : "graphTrita.png",
+                                      "file_name" : "graphique-trita.png",
                                       "instruction" : [
                                                     {
                                                       "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
