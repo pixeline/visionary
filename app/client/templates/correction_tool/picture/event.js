@@ -28,10 +28,11 @@ Template.Picture.events ({
                         //zoom on current picture
                         if(picture_admin.type != "Ishihara") {
                                 $(event.target).data('zoom-image', event.target.src).elevateZoom({
-                                        responsive: true,
-                                        zoomType: "inner", //inner, lens or window
-                                        cursor: "pointer",
-                                        scrollZoom: true
+                                        cursor: 'pointer',
+                                        lensShape : "round", 
+                                        lensSize : 160,
+                                        scrollZoom : true,
+                                        zoomType : "lens" //inner, lens or window
                                 }); 
                         } 
                 }

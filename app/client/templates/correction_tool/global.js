@@ -1,7 +1,7 @@
 
-/******************************************************
- * Global functions and variables for correction_tool *
- ******************************************************/
+/*************************************************************************************************************
+ * Global functions and variables for correction_tool (functions for profile, filters, modules and pictures) *
+ ************************************************************************************************************/
 
  
 (function() {
@@ -142,7 +142,7 @@
 			if(currentOrder == 1 && nextModule.title != "Sorted_test") { 
 				//get next picture
 				nextPic = getNextPicture(picOrder);
-				nextModule = getCurrentModule("Select");
+				nextModule = getCurrentModule("Valid");
 			} //if select the original picture or go to next picture
 			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {				
 				//update satis_counter si current = valid ou choice origin pic (if satis)

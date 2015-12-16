@@ -57,7 +57,7 @@ function redirect (sessionAndLocal) {
                     } else { //if it's not an admin
                         var module = getCurrentModule(lastModule);
                         //pattern of accepted path
-                        if( (module.title == "Index" && moduleEncoded.title == "Select" && paramImg == 1) ||
+                        if( (module.title == "Index" && moduleEncoded.title == "Valid" && paramImg == 1) ||
                             (paramImg < parseInt(lastPicture)) || 
                             ((paramImg == parseInt(lastPicture) && moduleEncoded.order <= module.order + 1)) || 
                             ((paramImg == parseInt(lastPicture) + 1) && (moduleEncoded.title == "Valid" || moduleEncoded.title == "Upload") && (module.title == "Valid" || module.title == "Select" || module.title == "Choose")) ||

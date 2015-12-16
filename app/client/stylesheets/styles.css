@@ -287,6 +287,10 @@ header h2 {
 	max-width: 100%;
 }
 
+div.zoomContainer {
+	cursor: pointer;
+}
+
 /* ---------------------------------------------- 
 	select_ligne.html // Choix image (ligne)
 ---------------------------------------------- */
