@@ -6,51 +6,40 @@
 Template.Picture.onRendered (function () {
         buildFilters("render");
         $("div.zoomContainer").remove();
+        $.removeData($('img'), 'elevateZoom');//remove zoom instance from image    
 });
 
-/* Zoom on picture */
+/* Zoom and select picture */
 Template.Picture.events ({
-       'mouseover img.render, mouseover img.visionarized, mouseover div.zoomContainer' : function(event) {
-                $("div.zoomContainer").remove();
+       'mouseover img.render, mouseover img.visionarized' : function(event) {
                 var picture_admin = getCurrentPicture(parseInt(Router.current().params.img));
-                var picture = document.getElementById(event.target.id); 
-                if($(event.target).attr('template') == "Select") {
-                        /*$(event.target).css({
-                                "box-shadow": "1px 1px 5px 2px #888888"
-                        });*/
-                        if(picture_admin.type != "Ishihara") {
-                                $(event.target).attr('data-zoom-image', event.target.src);
-                                if(event.target.id == 2 || event.target.id == 3) {
-                                        $(event.target).elevateZoom({
-                                                /*cursor: 'pointer',
-                                                loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',
-                                                zoomWindowFadeIn: 0,
-                                                zoomWindowFadeOut: 500,
-                                                zoomWindowWidth : 400,
-                                                zoomWindowHeight : 300,
-                                                zoomWindowPosition : 14,
-                                                scrollZoom : true*/
-                                                zoomType: "inner", //inner, lens or window
-                                                cursor: "pointer"
-                                        }); 
-                                } else {
-                                        $(event.target).elevateZoom({
-                                                zoomType: "inner", //inner, lens or window
-                                                cursor: "pointer"
-                                        });
-                                }
-                        } 
-                } else if (event.target.id == 1 && ($(event.target).attr('template') == "Adjust")) {  
-                        if(picture_admin.type != "Ishihara") {                                            
-                                $(event.target).attr('data-zoom-image', event.target.src);
-                                $(event.target).elevateZoom({
-                                        zoomType: "inner", //inner, lens or window
-                                        cursor: "crosshair"
+                if($(event.target).attr('template') == "Select" || (event.target.id == 1 && ($(event.target).attr('template') == "Adjust"))) {                      
+                        $.removeData($('img'), 'data-zoom-image');//remove zoom instance from image
+                        $("div.zoomContainer").remove();
+                        //box shadow shown
+                        if($(event.target).attr('template') == "Select") {
+                                $('img').css({
+                                        "box-shadow": "none"
+                                });
+                                $(event.target).css({
+                                        "box-shadow": "1px 1px 5px 2px #888888"
                                 });
                         }
+                        //zoom on current picture
+                        if(picture_admin.type != "Ishihara") {
+                                $(event.target).data('zoom-image', event.target.src).elevateZoom({
+                                        responsive: true,
+                                        zoomType: "inner", //inner, lens or window
+                                        cursor: "pointer",
+                                        scrollZoom: true
+                                }); 
+                        } 
                 }
         }
 });
+
+//to hide the step - or + if min or max reached
+var minReach, maxReach;
 
 /* Events of template Picture (global event for correction_tool) */
 Template.Adjust.events({
@@ -67,25 +56,33 @@ Template.Adjust.events({
                 //change value
                 if((filter.value > filter_admin.min && operation == "-") || (filter.value < filter_admin.max && operation == "+")) {                      
                         $('img').show();
+                        minReach = maxReach = false;
                         if(operation == "-") {
                                 filter.value = filter.value - filter_admin.step;
                         } else {    
                                 filter.value = filter.value + filter_admin.step;
                         }
+                        //disable if min or max reached
                         if(filter.value <= filter_admin.min) {
+                                $(event.target.children[0].children[0]).hide();
                                 filter.value = filter_admin.min;
+                                minReach = true;
                         } else if (filter.value >= filter_admin.max) {
+                                $(event.target.children[0].children[0]).hide();
                                 filter.value = filter_admin.max;
+                                maxReach = true;
                         }
                         //store the correction_profile with new filter
                         saveFilter(picOrder, filter_admin.order, module, filter.value);
                         buildFilters("visionarized");
                 } else {
-                        $(event.target.children[0].children[0]).hide();
                         sAlert.info("L'ajustement maximum est déjà atteint !");
                 }
         }
 });
+
+//add a spinner during waiting time to load picture for adjust template
+var spinner;
 
 /* Build filters to render pictures */
 function buildFilters(imgClass) {
@@ -116,17 +113,26 @@ function buildFilters(imgClass) {
                                         if(imgClass == "visionarized") {
                                                 //replace content to render on the source picture
                                                 var pic_admin = getCurrentPicture(parseInt(Router.current().params.img));
-                                                
                                                 picture.className = "nothing";
-                                                picture.src = pictureUrl(pic_admin.file_name);
-                                                var content = $(picture.parentNode);
+                                                var speed = 1000;
+                                                //add a waiting icon
                                                 if(picture.id == "1") {
-                                                        $(picture).fadeOut(1000);
+                                                        speed = 1000;
+                                                        var opts = {
+                                                                top: '150px',
+                                                                position : 'relative'
+                                                        };
+                                                        spinner = new Spinner(opts).spin();
+                                                        $(picture.parentNode).prepend(spinner.el);
                                                 }
-                                                content.children()[0].remove();
-                                                content.prepend(picture);
-                                                if(picture.id == "1") {
-                                                        $(picture).fadeIn(10);
+                                                //fade out the picture during his loading
+                                                if(pic_admin.type == "Ishihara") {
+                                                        $(picture).fadeOut(speed);
+                                                        picture.src = pictureUrl(pic_admin.file_name);
+                                                } else {
+                                                        $(picture).fadeOut(speed, function() {
+                                                                picture.src = pictureUrl(pic_admin.file_name);
+                                                        }); 
                                                 }
                                         }
                                         filter = getPreviousFilter(parseInt(Router.current().params.img));
@@ -222,11 +228,16 @@ function render (pictureInput, filters) {
                 amountHue:filterInput.hue,
                 amountSaturation:filterInput.saturation,
                 callback:function(result){
-                        canvas = result; //correction result
+                        //replace picture by rendered picture
+                        pictureInput.src = result.toDataURL('image/svg');
+                        pictureInput.className = "visionarized";
+                        if(typeof spinner != "undefined") {
+                                $("div.zoomContainer").remove();
+                                spinner.stop();
+                        }
+                        if(!(pictureInput.id == "-" && minReach) && !(pictureInput.id == "+" && maxReach)) {
+                                $(pictureInput).fadeIn(10);
+                        }
                 }
         });
-        //replace picture by rendered picture
-        pictureInput.src = canvas.toDataURL('image/svg');
-        //pictureInput.src = canvas.toDataURL('image/svg');
-        pictureInput.className = "visionarized";
 }

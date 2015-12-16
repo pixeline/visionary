@@ -19,15 +19,42 @@ Template.linkNext.events({
         }
 });
 
-/* events of template Select */
+/* events of template Select and transition */
 Template.Select.events({
         'click a.linkPicture': function (event) {
                 event.preventDefault();
-                routing ("Select", event.target.id);
+                $("div.zoomContainer").remove();
+                if(event.target.id != 0) {
+                        var xTransit = "0";
+                        var yTransit = "0";
+                        switch (parseInt(event.target.id)) {
+                                case 1 :
+                                        yTransit = "60%";
+                                        break;
+                                case 2 :
+                                        yTransit = "-80%";
+                                        xTransit = "100%";
+                                        break;
+                                case 3 :
+                                        yTransit = "-80%";
+                                        xTransit = "-100%";
+                                        break;
+                                case 4 :
+                                        yTransit = "-170%";
+                                        break;
+                                default:
+                        }
+                        $("img").not(document.getElementById(event.target.id)).hide();
+                        $(event.target).transition({x: xTransit, y: yTransit, scale: 2.0}, function() {
+                                routing ("Select", event.target.id);
+                        }); 
+                } else {
+                        routing ("Select", event.target.id);
+                }
         }
 });
 
-/* events of template Select_ligne */
+/* events of template Select_ligne and transition */
 Template.Select_ligne.events({
         'click a.linkPicture': function (event) {
                 event.preventDefault();
