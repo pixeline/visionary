@@ -131,6 +131,7 @@ IndexController = HomeController.extend({
     }
 });
 
+/* every modules with pictures */
 PictureController = HomeController.extend({
     onBeforeAction: function() {
         if(!redirect(true)) this.next();

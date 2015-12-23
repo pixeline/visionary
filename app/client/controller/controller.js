@@ -1,4 +1,4 @@
-/* Validate and insert/remove/modify survey */
+/* Validate and insert/remove/modify survey with call to meteor server sending a collection */
 
 Controller = {};
 
@@ -11,7 +11,7 @@ Controller = {};
         /* Insert an user that have done the correction test surveyName to have a profile */
         Controller.InsertUserAndProfiles = function (userInput, correctionPic, surveyName, correcResult) {
                 var user = new Collection.User(userInput.name, userInput.firstname, userInput.email,
-                        userInput.age, userInput.sex, new Date().toLocaleString());
+                        userInput.age, userInput.sex, (new Date()).getTime());
                 
                 //Insert user with all his informations in mongoDB - call to server-side
                 Meteor.call('insertUserAndProfiles', user, correctionPic, surveyName, correcResult, function (error, result) {
@@ -20,7 +20,7 @@ Controller = {};
                                 sAlert.error('La soumission du formulaire a échoué.');
                         } else {
                                 //remove session's data
-			        sessionStorage.clear();
+			                    sessionStorage.clear();
                                 //remove data in local
                                 localStorage.clear();
                                 Router.go("Thanks", {idUser: result});
@@ -31,11 +31,10 @@ Controller = {};
         /***************
         * ADMIN PANEL *
         ***************/
-    
         //Validate and insert survey
         Controller.InsertSurvey = function (surveyInput) {
                 var survey = new Collection.Survey(surveyInput.name, surveyInput.root_url, surveyInput.state,
-                        new Date().toLocaleString(), surveyInput.max_reset_counter, surveyInput.max_satis);
+                        (new Date()).getTime(), surveyInput.max_reset_counter, surveyInput.max_satis);
                         
                 var isValidName = Validation.checkString(survey.name, "Nom de questionnaire");
                 var isValidUrl = Validation.checkUrlRoot(survey.root_url);

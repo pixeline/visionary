@@ -16,15 +16,6 @@ Template.Picture.events ({
                 if($(event.target).attr('template') == "Select" || (event.target.id == 1 && ($(event.target).attr('template') == "Adjust"))) {                      
                         $.removeData($('img'), 'data-zoom-image');//remove zoom instance from image
                         $("div.zoomContainer").remove();
-                        //box shadow shown
-                        if($(event.target).attr('template') == "Select") {
-                                $('img').css({
-                                        "box-shadow": "none"
-                                });
-                                $(event.target).css({
-                                        "box-shadow": "1px 1px 5px 2px #888888"
-                                });
-                        }
                         //zoom on current picture
                         if(picture_admin.type != "Ishihara") {
                                 $(event.target).data('zoom-image', event.target.src).elevateZoom({
@@ -56,7 +47,7 @@ Template.Adjust.events({
                 
                 //change value
                 if((filter.value > filter_admin.min && operation == "-") || (filter.value < filter_admin.max && operation == "+")) {                      
-                        $('img').show();
+                        $('li').show();
                         minReach = maxReach = false;
                         if(operation == "-") {
                                 filter.value = filter.value - filter_admin.step;
@@ -65,11 +56,11 @@ Template.Adjust.events({
                         }
                         //disable if min or max reached
                         if(filter.value <= filter_admin.min) {
-                                $(event.target.children[0].children[0]).hide();
+                                $(event.target).hide();
                                 filter.value = filter_admin.min;
                                 minReach = true;
                         } else if (filter.value >= filter_admin.max) {
-                                $(event.target.children[0].children[0]).hide();
+                                $(event.target).hide();
                                 filter.value = filter_admin.max;
                                 maxReach = true;
                         }

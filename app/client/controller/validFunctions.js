@@ -1,4 +1,4 @@
-/* Validate and insert/remove/modify survey */
+/* Validation functions */
 
 Validation = {};
 

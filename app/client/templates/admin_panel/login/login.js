@@ -8,7 +8,7 @@ function checkPasswordIsValid (aString) {
   return aString.length > 7;
 }
 
-/* Insert admin if no one exist */
+/* Insert admin if no one exist TODO more security */
 Template.Login.onRendered (function () {
       if(Meteor.users.find().fetch().length == 0) { 
             Accounts.createUser ({

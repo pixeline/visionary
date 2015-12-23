@@ -18,7 +18,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Êtes-vous daltonien(ne) ?",
-                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre vision et, au terme du test, <span>corriger les couleurs de votre écran en fonction de celle-ci.</span></p>"
+                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre vision et, au terme du test, <span>corriger les couleurs de votre écran en fonction de celle-ci.</span></p><p>Le test est constitué de plusieurs images que vous devez ajustez à votre volonté afin de répondre à une question initiale (les images sont zoomables). De manière à vous fournir les meilleures configurations de couleurs possibles, il vous est demandé de choisir/ajuster les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. <span>Les images sont zoomables.</span></p><p>Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. La question pour l'image en cours est toujours disponible en haut de votre écran et un champ d'aide vous est proposé en cas de problème en haut à droite.</p>"
                                                   }
                                       ]
                                     },
@@ -140,7 +140,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Sélectionnez une image.",
-                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question. Vous pouvez régler le zoom pour distinguer plus nettement l'image.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question (la version d'origine est celle du milieu). Vous pouvez régler le zoom pour distinguer plus nettement l'image. <br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Choisissez la version de l’image qui vous semble la plus nette et agréable.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [
@@ -188,7 +188,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Sélectionnez une image.",
-                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question. Vous pouvez régler le zoom pour distinguer plus nettement l'image.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question (la version d'origine est celle du milieu). Vous pouvez régler le zoom pour distinguer plus nettement l'image. <br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Choisissez la version de l’image qui vous semble la plus nette et agréable.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [
@@ -236,7 +236,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Ajustez l'image.",
-                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    (Etape courante) : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible. L'image du milieu est ainsi modifiée et vous pouvez observer une version zoomée de l'image en la survolant.<br/>3.    : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Choisissez la version de l’image qui vous semble la plus nette et agréable.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                    }
                                       ],
                                       "filter_admin" : [
@@ -284,7 +284,7 @@
                                       "info_txt": [
                                                   {
                                                     "title" : "Choississez une image.",
-                                                    "txt" : "<p> Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Choisissez la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus claire (image du milieu).<br/>3.    (Etape courante) : Sélectionnez la version de l’image qui vous semble la plus agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus claire (image du milieu).<br/>3.    (Etape courante) : Choisissez la version de l’image qui vous semble la plus nette et agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
                                                   }
                                       ],
                                       "filter_admin" : [ 
@@ -405,7 +405,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -429,7 +429,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -453,7 +453,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -477,7 +477,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -501,7 +501,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -525,7 +525,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -549,7 +549,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -573,7 +573,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -597,7 +597,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -621,7 +621,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -645,7 +645,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -669,7 +669,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -693,7 +693,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -717,7 +717,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -741,7 +741,7 @@
                                                       "module" : "Valid"
                                                     },
                                                     { 
-                                                      "txt" : "Sélectionnez l'image dont le réglage est suffisant.",
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
                                                       "module" : "Select"
                                                     },
                                                     {
@@ -756,6 +756,30 @@
                                     },
                                     {
                                       "order" : 10,
+                                      "title" : "Liens Google.",
+                                      "type" : "Interface",
+                                      "file_name" : "link.png",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Le lien déjà visité est-il bien \"Téléviseurs\" ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 11,
                                       "title" : "Plage",
                                       "type" : "Illustration",
                                       "file_name" : "plage.jpeg",
@@ -769,7 +793,7 @@
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce qu'elle corresponde au mieux à vos attentes.",
+                                                      "txt" : "Ajuster l'image pour qu'elle corresponde au mieux à vos attentes.",
                                                       "module" : "Adjust"
                                                     },
                                                     {
@@ -779,7 +803,7 @@
                                       ]
                                     },
                                     {
-                                      "order" : 11,
+                                      "order" : 12,
                                       "title" : "undefined",
                                       "type" : "Upload",
                                       "file_name" : "undefined",
@@ -793,7 +817,7 @@
                                                       "module" : "Select"
                                                     },
                                                     {
-                                                      "txt" : "Ajuster l'image jusqu'à ce qu'elle corresponde au mieux à vos attentes.",
+                                                      "txt" : "Ajuster l'image pour qu'elle corresponde au mieux à vos attentes.",
                                                       "module" : "Adjust"
                                                     },
                                                     {

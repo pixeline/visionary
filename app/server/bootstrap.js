@@ -6,8 +6,9 @@ Meteor.startup(function () {
     Steps in Command lines :
 
   (si pas déjà installé) curl https://install.meteor.com/ | sh : install meteor
-  (si pas déjà installé) npm install -g iron-meteor                    : installer iron, outil de structuration de projet
-  iron create app_name                          : creer un projet avec une bonne structure
+  (si pas déjà installé) npm install -g iron-meteor                               : installer iron, outil de structuration de projet
+    => Il suffit d'installer les 2 outils ci-dessus pour faire tourner l'application provenant de git avec iron run
+  iron create app_name                                                            : creer un projet avec une bonne structure
     => placer le contenu du projet à la place de l'application crée
 
   (cd app_name) iron add iron:router            : ajouter le module de routing (gère Router.js)

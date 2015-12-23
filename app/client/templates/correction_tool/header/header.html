@@ -4,21 +4,21 @@
 			<li><a href="{{pathFor route='Index'}}" class="past index"><i class="fa fa-home"></i></a></li>
 			<!--<li><a class="past nolink">Test de classement</a></li>-->
 			{{#each previousPic}}
-				{{>itemLink txt=this curTemplate="Valid" curImg=this curClass="past link"}}
+				{{>itemLink item=this curTemplate="Valid" curImg=this curClass="past link"}}
 			{{/each}}
 			{{#each modulesPic}}
 				{{#if previous this template}}
-					{{>itemLink txt=this curTemplate=this curImg=currentPic curClass="past link"}}
+					{{>itemLink item=this curTemplate=this curImg=currentPic curClass="past link"}}
 				{{else}}
 					{{#if current this template}}
-						{{>itemNoLink txt=this curClass="active"}}
+						{{>itemNoLink item=this curClass="active"}}
 					{{else}}
-						{{>itemNoLink txt=this curClass="nolink"}}
+						{{>itemNoLink item=this curClass="nolink"}}
 					{{/if}}
 				{{/if}}
 			{{/each}}
 			{{#each nextPic}}
-				{{>itemNoLink txt=this}}
+				{{>itemNoLink item=this}}
 			{{/each}}
 			<li><a class="nolink">Formulaire</a></li>
 		</ul>	
@@ -39,11 +39,11 @@
 <template name="itemLink">
 			<li>
 				<a href={{pathFor route=curTemplate img=curImg}} class={{curClass}} >
-					{{txt}}
+					{{formateTxt item}}
 				</a>
 			</li>
 </template>
 
 <template name="itemNoLink">
-			<li><a class={{curClass}}>{{txt}}</a></li>
+			<li><a class={{curClass}}>{{formateTxt item}}</a></li>
 </template>

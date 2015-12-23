@@ -3,9 +3,9 @@
   * PROFILER SYSTEM *
   *******************/
     
-  /*
-		Publish informations of users
-	*/
+    /*
+	 *	Publish informations of users
+	 */
 	Meteor.publish('user', function(currentUser, userId){
       //Admin can see every users
       if(currentUser && currentUser.username === "admin") {
@@ -101,7 +101,7 @@
   });   
   
   
-	/* publish uploaded pictures */
- 	Meteor.publish("picture_upload", function(){
-	  	return picture_upload.find();
-	});
+  /* publish uploaded pictures */
+  Meteor.publish("picture_upload", function(){
+      return picture_upload.find();
+  });

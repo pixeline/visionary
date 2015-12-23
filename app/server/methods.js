@@ -29,7 +29,7 @@ Meteor.methods({
             email: String, 
             age: Number,
             sex: Boolean, //true if Male, false if Female
-            date_created: String
+            date_created: Number //millisecond since 1970
 		});
         
         var survey_id = survey.find().fetch()[0]._id;
@@ -143,8 +143,8 @@ Meteor.methods({
               root_url : String,
               max_reset_counter : Number,
               max_satis : Number,
-              state : Boolean,
-              date_created : String,
+              state : Boolean,      //activated (online) or not
+              date_created: Number, //millisecond since 1970
               module_survey : Array,
               picture_admin : Array
         });

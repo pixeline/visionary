@@ -5,5 +5,8 @@ Template.AdminMock.helpers ({
     },
     'isNotEmpty': function (object) {
         return (object.fetch().length != 0);
+    },
+    'formateDate': function (number) {
+        return new Date(number).toLocaleString();
     }
 });

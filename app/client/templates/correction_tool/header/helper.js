@@ -36,12 +36,13 @@ Template.Header.helpers({
             return infoTxt.txt;
         }
     },
+    //get previous picture in the current survey
     previousPic : function () {
         var currentPic = parseInt(Router.current().params.img);
 		var allPic = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
         var previousPicArray = [];
         var iPic;
-        $(allPic).each(function(i, pic) {
+        $(allPic).each(function(i, pic) { // filter cause of randomize picture with same order
             if(pic.order == currentPic) {
                 iPic = i;
                 return false;
@@ -54,6 +55,7 @@ Template.Header.helpers({
         }
         return previousPicArray;
     },
+    //get next picture in the current survey
     nextPic : function () {
         var currentPic = parseInt(Router.current().params.img);
 		var allPic = JSON.parse(sessionStorage.getItem("currentSurvey")).picture_admin;
@@ -72,6 +74,7 @@ Template.Header.helpers({
         }
         return nextPicArray;
     },
+    //get every modules
     modulesPic : function () {
 		var modules = JSON.parse(sessionStorage.getItem("currentSurvey")).module_survey;
         modArray = [];
@@ -82,13 +85,52 @@ Template.Header.helpers({
         });
         return modArray;
     },
+    //true if templateInList is before current template
     previous : function (templateInList) {
         return getCurrentModule(templateInList).order < getCurrentModule(Router.current().route.getName()).order;
     },
+    //true if templateInList is the current template
     current : function (templateInList) {
         return getCurrentModule(templateInList).order == getCurrentModule(Router.current().route.getName()).order;
     },
+    //return the current picture
     currentPic : function () {
         return parseInt(Router.current().params.img);
+    }
+});
+
+/* replace the module by his content in french */
+Template.itemLink.helpers({
+    formateTxt : function (item) {
+        switch(item) {
+            case "Valid":
+                return "Validation";
+            case "Select" || "Select_ligne":
+                return "Sélection";
+            case "Adjust":
+                return "Ajustement";
+            case "Choose":
+                return "Choix";
+            default:
+                return item;
+        }
+    }
+});
+
+/* replace the module by his content in french */
+Template.itemNoLink.helpers({
+    formateTxt : function (item) {
+        switch(item) {
+            case "Valid":
+                return "Validation";
+            case "Select" || "Select_ligne":
+                return "Sélection";
+            case "Adjust":
+                return "Ajustement";
+            case "Choose":
+                return "Choix";
+            default:
+                return item;
+        }
     }
 });

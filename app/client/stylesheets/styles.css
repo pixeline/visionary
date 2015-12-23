@@ -287,8 +287,16 @@ header h2 {
 	max-width: 100%;
 }
 
+.choixImagesCroix ul li img:hover {
+   box-shadow : 1px 1px 5px 2px #888888
+}
+
 div.zoomContainer {
-	cursor: pointer;
+   cursor : pointer;
+}
+
+div.zoomContainer:hover {
+   box-shadow : 1px 1px 5px 2px #888888;
 }
 
 /* ---------------------------------------------- 
