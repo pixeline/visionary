@@ -28,3 +28,4 @@ cfs:filesystem
 cfs:standard-packages
 cfs:gridfs
 themeteorchef:jquery-validation
+d3js:d3

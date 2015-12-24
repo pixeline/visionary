@@ -28,6 +28,7 @@ Meteor.startup(function () {
   iron add themeteorchef:jquery-validation      : module de validation avec module jQuery
   iron add juliancwirko:s-alert  
   iron add juliancwirko:s-alert-stackslide
+  iron add d3js:d3
 
   iron run                                      : run app with auto load config files
 
