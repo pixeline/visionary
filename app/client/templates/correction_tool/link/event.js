@@ -120,16 +120,19 @@ function routing (template, orderFilter) {
                         break;
                 case "Valid" :
                         var filtersRes = getResultProfile();
-                        //Save each filter
-                        $.each(filtersRes[0].filter, function (i, filterRes) {
-                                if(filterRes.parameter != "undefined") {
-                                        var filter_admin = getCurrentFilterByTitle(filterRes.parameter, module);
-                                        saveFilter(picOrder, filter_admin.order, module, filterRes.value, i===0);
-                                } else {
-                                        saveFilter(picOrder, 0, module, 0, i===0);
-                                }
-                        });
-                        //reinit class to render if origin is chosen
+                        //if a result exist
+                        if(filtersRes) {
+                            //Save each filter
+                            $.each(filtersRes[0].filter, function (i, filterRes) {
+                                    if(filterRes.parameter != "undefined") {
+                                            var filter_admin = getCurrentFilterByTitle(filterRes.parameter, module);
+                                            saveFilter(picOrder, filter_admin.order, module, filterRes.value, i===0);
+                                    } else {
+                                            saveFilter(picOrder, 0, module, 0, i===0);
+                                    }
+                            });
+                        }
+                        //reinit class to render
                         $.each($("img"), function (i, pic) {
                                 pic.className = "render";
                         });
@@ -175,14 +178,14 @@ Template.Choose.onRendered (function () {
 Template.Choose.events({
 	//select a picture
         'click img': function (event) {
-                //register the id of the selected one
-                idChoice = event.target.id;
-		if(event.target.id != '') {
-			//disable css of each picture
-			$('a .check').hide();
-			//display a check
-			$(event.target).next().show();
-		}
+            //register the id of the selected one
+            idChoice = event.target.id;
+            if(event.target.id != '') {
+                //disable css of each picture
+                $('a .check').hide();
+                //display a check
+                $(event.target).next().show();
+            }
         }
 });
 

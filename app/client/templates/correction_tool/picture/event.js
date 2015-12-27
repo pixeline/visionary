@@ -159,12 +159,15 @@ function buildFilters(imgClass) {
                                         break;
                                 case "Valid" :
                                         var filtersRes = getResultProfile();
-                                        //add filter to render with previous configuration
-                                        $(filtersRes[0].filter).each(function( i, input ) {
-                                                filter_admin = getCurrentFilterByTitle(input.parameter, module);
-                                                input.value = input.value * filter_admin.conversion;
-                                                filters.push(input);
-                                        });
+                                        //if there is already a resulted profile
+                                        if(filtersRes && filtersRes[0].type != "undefined") {
+                                            //add filter to render with previous configuration
+                                            $(filtersRes[0].filter).each(function( i, input ) {
+                                                    filter_admin = getCurrentFilterByTitle(input.parameter, module);
+                                                    input.value = input.value * filter_admin.conversion;
+                                                    filters.push(input);
+                                            });
+                                        }
                                         break;
                                 default : break;
                         }
