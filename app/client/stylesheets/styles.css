@@ -692,8 +692,12 @@ ul.confirmation  li a.btnPrimary {
 
 }
 
-/* TODO : scale of pictures (overlay if not) 
-img.render, img.visionarized {
-	width : 100%;
+/* TODO affect a new line instead of \n for a tooltip */
+.ui-tooltip {
+    white-space: pre-line;
 }
-*/
+
+/* TODO pointer to select an user in the tab */
+#userTab tr :hover {
+    cursor:pointer;
+}

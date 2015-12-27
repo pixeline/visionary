@@ -1,6 +1,3 @@
-//Used for dashboard
-Slices = new Meteor.Collection(null);
-
 /* 
  * collection stored in MongoDB and 
  * relation introduced for easy access in templates 
