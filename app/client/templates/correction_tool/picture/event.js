@@ -56,11 +56,11 @@ Template.Adjust.events({
                         }
                         //disable if min or max reached
                         if(filter.value <= filter_admin.min) {
-                                $(event.target).hide();
+                                //$(event.target).hide(); TODO
                                 filter.value = filter_admin.min;
                                 minReach = true;
                         } else if (filter.value >= filter_admin.max) {
-                                $(event.target).hide();
+                                //$(event.target).hide();
                                 filter.value = filter_admin.max;
                                 maxReach = true;
                         }
@@ -230,9 +230,9 @@ function render (pictureInput, filters) {
                                 $("div.zoomContainer").remove();
                                 spinner.stop();
                         }
-                        if(!(pictureInput.id == "-" && minReach) && !(pictureInput.id == "+" && maxReach)) {
+                        //if(!(pictureInput.id == "-" && minReach) && !(pictureInput.id == "+" && maxReach)) {
                                 $(pictureInput).fadeIn(10);
-                        }
+                        //}
                 }
         });
 }
