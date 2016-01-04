@@ -117,7 +117,15 @@ function buildFilters(imgClass) {
                                                 var speed = 1000;
                                                 //add a waiting icon
                                                 if(picture.id == "1") {
-                                                    speed = 1000;
+                                                    //fade out the picture during his loading
+                                                    if(pic_admin.type == "Ishihara") {
+                                                        $(picture).fadeOut(speed);
+                                                        picture.src = pictureUrl(pic_admin.file_name);
+                                                    } else {
+                                                        $(picture).fadeOut(speed, function() {
+                                                            picture.src = pictureUrl(pic_admin.file_name);
+                                                        }); 
+                                                    }
                                                     var opts = {
                                                             top: '150px',
                                                             position : 'relative'
@@ -125,15 +133,7 @@ function buildFilters(imgClass) {
                                                     spinner = new Spinner(opts).spin();
                                                     $(picture.parentNode).prepend(spinner.el);
                                                     
-                                                    //fade out the picture during his loading
-                                                    if(pic_admin.type == "Ishihara") {
-                                                        $(picture).fadeOut(speed);
-                                                        picture.src = pictureUrl(pic_admin.file_name);
-                                                    } else {
-                                                        $(picture).fadeOut(speed, function() {
-                                                                picture.src = pictureUrl(pic_admin.file_name);
-                                                        }); 
-                                                    }
+                                                    
                                                 } else {
                                                     picture.src = pictureUrl(pic_admin.file_name);
                                                 }
@@ -237,12 +237,14 @@ function render (pictureInput, filters) {
                         //replace picture by rendered picture
                         pictureInput.src = result.toDataURL('image/svg');
                         pictureInput.className = "visionarized";
-                        if(typeof spinner != "undefined") {
-                                $("div.zoomContainer").remove();
-                                spinner.stop();
-                        }
+                        //show picture
                         if(!(pictureInput.id == "-" || pictureInput.id == "+")) {
-                                $(pictureInput).fadeIn(10);
+                            $(pictureInput).fadeIn(10);
+                            //stop spinner
+                            if(typeof spinner != "undefined") {
+                                    $("div.zoomContainer").remove();
+                                    spinner.stop();
+                            }   
                         }
                 }
         });
