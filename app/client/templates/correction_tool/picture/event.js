@@ -47,7 +47,9 @@ Template.Adjust.events({
                 
                 //change value
                 if((filter.value > filter_admin.min && operation == "-") || (filter.value < filter_admin.max && operation == "+")) {                      
-                        $('li').show();
+                        $('li').css({
+                            "visibility":"visible"
+                        });
                         minReach = maxReach = false;
                         if(operation == "-") {
                                 filter.value = filter.value - filter_admin.step;
@@ -56,17 +58,23 @@ Template.Adjust.events({
                         }
                         //disable if min or max reached
                         if(filter.value <= filter_admin.min) {
-                                //$(event.target).hide(); TODO
+                                /*$(event.target).css({
+                                    "visibility":"hidden"
+                                });*/
                                 filter.value = filter_admin.min;
                                 minReach = true;
                         } else if (filter.value >= filter_admin.max) {
-                                //$(event.target).hide();
+                                /*$(event.target).css({
+                                    "visibility":"hidden"
+                                });*/
                                 filter.value = filter_admin.max;
                                 maxReach = true;
                         }
                         //store the correction_profile with new filter
                         saveFilter(picOrder, filter_admin.order, module, filter.value);
                         buildFilters("visionarized");
+                } else if(operation == "-") {
+                        sAlert.info("L'ajustement minimum est déjà atteint !");
                 } else {
                         sAlert.info("L'ajustement maximum est déjà atteint !");
                 }
