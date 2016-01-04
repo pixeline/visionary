@@ -58,15 +58,15 @@ Template.Adjust.events({
                         }
                         //disable if min or max reached
                         if(filter.value <= filter_admin.min) {
-                                /*$(event.target).css({
+                                $(event.target).css({
                                     "visibility":"hidden"
-                                });*/
+                                });
                                 filter.value = filter_admin.min;
                                 minReach = true;
                         } else if (filter.value >= filter_admin.max) {
-                                /*$(event.target).css({
+                                $(event.target).css({
                                     "visibility":"hidden"
-                                });*/
+                                });
                                 filter.value = filter_admin.max;
                                 maxReach = true;
                         }
@@ -117,22 +117,25 @@ function buildFilters(imgClass) {
                                                 var speed = 1000;
                                                 //add a waiting icon
                                                 if(picture.id == "1") {
-                                                        speed = 1000;
-                                                        var opts = {
-                                                                top: '150px',
-                                                                position : 'relative'
-                                                        };
-                                                        spinner = new Spinner(opts).spin();
-                                                        $(picture.parentNode).prepend(spinner.el);
-                                                }
-                                                //fade out the picture during his loading
-                                                if(pic_admin.type == "Ishihara") {
+                                                    speed = 1000;
+                                                    var opts = {
+                                                            top: '150px',
+                                                            position : 'relative'
+                                                    };
+                                                    spinner = new Spinner(opts).spin();
+                                                    $(picture.parentNode).prepend(spinner.el);
+                                                    
+                                                    //fade out the picture during his loading
+                                                    if(pic_admin.type == "Ishihara") {
                                                         $(picture).fadeOut(speed);
                                                         picture.src = pictureUrl(pic_admin.file_name);
-                                                } else {
+                                                    } else {
                                                         $(picture).fadeOut(speed, function() {
                                                                 picture.src = pictureUrl(pic_admin.file_name);
                                                         }); 
+                                                    }
+                                                } else {
+                                                    picture.src = pictureUrl(pic_admin.file_name);
                                                 }
                                         }
                                         filter = getPreviousFilter(parseInt(Router.current().params.img));
@@ -238,9 +241,9 @@ function render (pictureInput, filters) {
                                 $("div.zoomContainer").remove();
                                 spinner.stop();
                         }
-                        //if(!(pictureInput.id == "-" && minReach) && !(pictureInput.id == "+" && maxReach)) {
+                        if(!(pictureInput.id == "-" || pictureInput.id == "+")) {
                                 $(pictureInput).fadeIn(10);
-                        //}
+                        }
                 }
         });
 }
