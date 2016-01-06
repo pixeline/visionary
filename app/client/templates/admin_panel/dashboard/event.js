@@ -1,20 +1,22 @@
 
 /* Events of main dashboard */
 Template.Dashboard.events ({
-    //go to dashboard for the user selected
+    //go to dashboard of the user selected
     'click #userTab tr': function(event){
         event.preventDefault();
         var idUser = $(event.target.parentNode).attr('id');
         Router.go("DashboardUser", {idUser: idUser});
+    },
+    //go to dashboard for the user selected
+    'click .deleteUser': function(event){
+        event.preventDefault();
+        var idUser = $(event.target.parentNode).attr('id');
+        Meteor.call('removeUser', idUser);
     }
 });
 
 /* rendered of graphs from d3 js TODO */
 Template.Dashboard.rendered = function () {
-    
-    /* Real-time
-	Deps.autorun(function(){
-	});*/
     
     //counter for user per sex
     var nbrUserMale = user.find({sex: true}).count();

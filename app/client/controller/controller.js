@@ -15,15 +15,31 @@ Controller = {};
                 
                 //Insert user with all his informations in mongoDB - call to server-side
                 Meteor.call('insertUserAndProfiles', user, correctionPic, surveyName, correcResult, function (error, result) {
-                        // display error or go on
-                        if (error) {
-                                sAlert.error('La soumission du formulaire a échoué.');
+                        // display error or post data, clear storage and going on
+                        if(error) {
+                            sAlert.error('La soumission du formulaire a échoué.');
                         } else {
-                                //remove session's data
-			                    sessionStorage.clear();
-                                //remove data in local
-                                localStorage.clear();
-                                Router.go("Thanks", {idUser: result});
+                            //to fit the WS data
+                            correcResult.forEach(function (result) {
+                                result.filters = result.filter;
+                                delete result.filter;
+                            });
+                            //Post data on visionary's rest webservice
+                            HTTP.post( 'http://localhost:8080/users', { 
+                                data: { "email":user.email,"name":user.name,"firstname":user.firstname,
+                                        "age":user.age,"sex":user.sex,"dateCreated":user.date_created,
+                                        "correctionProfileResults":correcResult}
+                            }, function(err, resp) {
+                                if ( err ) {
+                                    Meteor.call('removeUser', result);
+                                    sAlert.error('Echec de la création de l\'utilisateur.');
+                                } else { 
+                                    //succeed to push data, then clear and go out
+                                    sessionStorage.clear();
+                                    localStorage.clear();
+                                    Router.go("Thanks", {idUser: result});
+                                }
+                            });
                         }
                 });
         };

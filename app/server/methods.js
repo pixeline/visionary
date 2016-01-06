@@ -35,11 +35,11 @@ Meteor.methods({
         var survey_id = survey.find().fetch()[0]._id;
         //add the survey foreign key
         User = _.extend(User, {
-				survey_id: survey_id
-		});
+                survey_id: survey_id
+        });
         
-		//Insert User Data and return user_id, useful for foreign keys
-		var user_id = user.insert(User);
+        //Insert User Data and return user_id, useful for foreign keys
+        user_id = user.insert(User);
         
         //Insert each correction_profile of user and the picture in relation
         correctionProfilesResult.forEach(function (result) {
@@ -121,15 +121,78 @@ Meteor.methods({
                                 });
                                 //Insert each filter
                                 filter.insert(filter_correc);
-                         }
+                        }
                     });
                 }
-                
             }
         }); 
         
-		return user_id;
+        return user_id;
+        
 	},
+    
+    /* Remove User and every collections associated */  
+    'removeUser': function(userId){ 
+        check(userId, String);
+        
+        var results = correction_profile_result.find({user_id:userId}, {fields: {_id: 1}});          
+        //Call to remove each correc profile result associated
+        results.forEach(function (result) {
+            Meteor.call('removeCorrecResult', result._id);
+        }); 
+        
+        var picCorrecProfiles = correction_profile_picture.find({user_id:userId}, {fields: {_id: 1}});
+        //Call to remove each correc profile picture associated
+        picCorrecProfiles.forEach(function (correcProfile) {
+            Meteor.call('removeCorrecPicture', correcProfile._id);
+        }); 
+            
+        //remove user
+        user.remove({_id: userId});
+    },
+    
+    /* Remove the correction profile result and every collections associated */  
+    'removeCorrecResult': function(resultId){ 
+        check(resultId, String);
+        
+        var filters = filter.find({correction_profile_result_id:resultId}, {fields: {_id: 1}});          
+        //Call to remove each filters associated
+        filters.forEach(function (filter) {
+            Meteor.call('removeFilter', filter._id);
+        }); 
+            
+        correction_profile_result.remove({_id: resultId});
+    },
+    
+    /* Remove the correction profile picture and every collections associated */  
+    'removeCorrecPicture': function(correcProfileId){ 
+        check(correcProfileId, String);
+        
+        var filters = filter.find({correction_profile_picture_id:correcProfileId}, {fields: {_id: 1}});          
+        //Call to remove each filter associated
+        filters.forEach(function (filter) {
+            Meteor.call('removeFilter', filter._id);
+        }); 
+        var pictures = picture.find({correction_profile_picture_id:correcProfileId}, {fields: {_id: 1}});          
+        //Call to remove each picture associated
+        pictures.forEach(function (picture) {
+            Meteor.call('removePicture', picture._id);
+        }); 
+            
+        correction_profile_picture.remove({_id: correcProfileId});
+    },
+    
+    /* Remove the picture */  
+    'removePicture': function(pictureId){ 
+        check(pictureId, String);
+        picture.remove({_id: pictureId});
+    },
+    
+    /* Remove the filter */  
+    'removeFilter': function(filterId){ 
+        check(filterId, String);
+        filter.remove({_id: filterId});
+    },
     
     /***************
     * ADMIN PANEL *

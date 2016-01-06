@@ -29,6 +29,7 @@ Meteor.startup(function () {
   iron add juliancwirko:s-alert  
   iron add juliancwirko:s-alert-stackslide
   iron add d3js:d3
+  iron add http                                 : to access to ws of visionary
 
   iron run                                      : run app with auto load config files
 
