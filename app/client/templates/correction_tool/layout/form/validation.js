@@ -58,7 +58,8 @@ $.validator.setDefaults({
         },
         email : {
             required: false,
-            email: true
+            email: true,
+            uniqueEmail: true
         },
         age : {
             required: true,
@@ -101,3 +102,10 @@ $.validator.setDefaults({
         }
     }
 });
+
+
+//validate an url like /v1/app
+$.validator.addMethod( 'uniqueEmail', function(email) {
+    var usr = user.findOne( { "email": email }, { fields: { "email": 1 } } );
+    return usr ? false : true;
+}, "Cet email a déjà été utilisé, veuillez en choisir un autre.");

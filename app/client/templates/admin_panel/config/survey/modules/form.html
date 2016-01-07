@@ -1,0 +1,65 @@
+<template name="FormAdmin">
+    <input type="radio" name="tabs" id="tab4" />
+    <label for="tab4" class="onglet">Formulaire</label>
+    <div class="tab-content">
+        
+        <form action="" method="" class="form">
+        
+            {{>InputAdmin type="text" text="Titre d'introduction du test" id="introTitle" name="introTitle" placeholder="Titre du test" required="true"}}									
+            {{>TextAreaAdmin text="Instruction du formulaire" id="instructionForm" placeholder="<p>Le test est à présent terminé, un tout grand merci à vous…</p>" required="true"}}									
+                                                              
+            <table class="table tableForm">
+                <tbody>
+                    {{>InputConfig typeDefault="input" idInput="idForm1" valueId="name" valueLabel="Mon nom" }}
+                    {{>InputConfig typeDefault="input" idInput="idForm2" valueId="firstname" valueLabel="Mon prénom" }}
+                    {{>InputConfig typeDefault="email" idInput="idForm3" valueId="email" valueLabel="Mon email" }}
+                    {{>InputConfig typeDefault="number" idInput="idForm4" valueId="age" valueLabel="Mon âge" }}
+                    {{>InputConfig typeDefault="radio" idInput="idForm5" valueId="sex" valueLabel="Homme" valueLabel2="Femme" }}
+                </tbody>						 		
+            </table>
+            
+            <a class="btnPrimary" id="ajouterElemForm">Ajouter un élément au formulaire</a>
+
+        
+        </form>
+        
+    </div>
+</template>
+
+<template name="InputConfig">
+    <tr id="{{idInput}}">
+        <td>
+            <label for="selectOption">Type de champ</label>
+            <select id="selectOption">
+                <option value={{typeDefault}} selected>{{typeDefault}}</option>
+                <!--<option value="nombres">Nombres</option>
+                <option value="email">Email</option>
+                <option value="textarea">Textarea</option>
+                <option value="radio">Radio</option>
+                <option value="checkbox">Checkbox</option>
+                <option value="select">Select</option>-->
+            </select>
+        </td>
+        {{#if isRadio typeDefault}}
+            <td>
+                {{>InputAdmin type="text" text="Label" id="option1" name="labelField" placeholder="Ex: Homme" value=valueLabel }}									    
+            </td>
+            <td>
+                {{>InputAdmin type="text" text="Label" id="option2" name="labelField" placeholder="Ex: Femme" value=valueLabel2 }}									       
+            </td>
+        {{else}}
+            <td>
+                {{>InputAdmin type="text" text="Label" name="labelField" placeholder="Ex: Mon nom" value=valueLabel required="true" }}									    
+            </td>
+        {{/if}}
+        <td>
+            {{>InputAdmin type="text" text="Id" name="idField" placeholder="Ex: name" value=valueId }}									    
+        </td>
+        <td>
+            {{>InputAdmin type="checkbox" text="Requis ?" name="reqField" checked="true" }}								    
+        </td>
+        <td>
+            <a href="" title="Supprimer" class="delElemForm"><i class="fa fa-trash-o"></i></a>
+        </td>
+    </tr>
+</template>

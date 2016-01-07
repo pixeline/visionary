@@ -7,7 +7,7 @@ Template.AdminMock.onRendered (function () {
                 var surveyMock = Meteor.settings.public.admin_panel.survey[0];
                 Controller.InsertSurvey(surveyMock);
             }
-        }
+        } 
 });
 
 /* Create mock data coming from settings */

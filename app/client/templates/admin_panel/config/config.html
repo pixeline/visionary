@@ -1,0 +1,64 @@
+<template name = "Config">
+    
+    <!-- Sidebar -->
+    {{>Sidebar template="Config"}}
+    
+    <!-- Every surveys displaying -->
+	<div class="right">
+		
+		<header>
+			<h2>Mes questionnaires</h2>
+			<a href="{{pathFor route='ConfigSurvey'}}" class="btnPrimary pull-right">Ajouter</a>
+		</header>
+		
+		<div class="content">
+			
+			<table class="table">  
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Url</th>
+						<th>Reset max.</th>
+                        <th>Compteur satisfaction max.</th>
+						<th>État</th>
+						<th>Date de création</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+                    {{#each survey}}
+                        <tr id={{_id}}>
+                            <td>{{name}}</td>
+                            <td>{{root_url}}</td>
+                            <td>{{max_reset_counter}}</td>
+                            <td>{{max_satis}}</td>
+                            <td class="center">
+                                {{#if state}}
+                                    <i class="fa fa-check"></i>
+                                {{else}}
+                                    <i class="fa fa-ban"></i>
+                                {{/if}}
+                            </td>
+                            <td>{{formateDate date_created}}</td>
+                            <td class="center">
+                                <div class="btn-group">
+                                    <a href="" class="modifier"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <div class="dropdown">
+                                        <button><i class="fa fa-sort-desc"></i></button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="" title="Désactiver"><i class="fa fa-ban"></i>Désactiver</a></li>
+                                            <li><a href="" title="Dupliquer"><i class="fa fa-files-o"></i>Dupliquer</a></li>
+                                            <li><a href="" title="Supprimer"><i class="fa fa-trash-o"></i>Supprimer</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {{/each}}
+				</tbody>
+			</table>
+			
+		</div>
+	</div>
+    
+</template>

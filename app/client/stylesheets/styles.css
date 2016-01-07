@@ -23,7 +23,7 @@ header h3 {
 	
 }
 
-header h2 {
+header h2.titleCorrectionTool {
 	text-align: center;
 	font-size: 2.3em;
 	font-family: "kepler-std-display", serif;
@@ -692,12 +692,7 @@ ul.confirmation  li a.btnPrimary {
 
 }
 
-/* TODO affect a new line instead of \n for a tooltip */
-.ui-tooltip {
-    white-space: pre-line;
-}
-
-/* TODO pointer to select an user in the tab */
-#userTab tr :hover {
-    cursor:pointer;
+/* TODO style for validation error */
+.error {
+    color : red;
 }

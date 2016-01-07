@@ -6,7 +6,7 @@
     /*
 	 *	Publish informations of users
 	 */
-	Meteor.publish('user', function(currentUser, userId){
+	Meteor.publish('user', function(currentUser, userId, form){
       //Admin can see every users
       if(currentUser && currentUser.username === "admin") {
         if(userId) {
@@ -15,7 +15,11 @@
           return user.find(); 
         }
       } else {
-        return user.find({_id:userId}); 
+        if(form) {
+            return user.find();
+        } else {
+            return user.find({_id:userId}); 
+        }
       }
 	});
 

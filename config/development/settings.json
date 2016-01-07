@@ -3,7 +3,7 @@
       "mock" : true,
       "admin_panel" : {
         
-          "survey": [
+          "survey": [ 
                       {
                         "name" : "V2 - Questionnaire 1",
                         "root_url" : "/v2",

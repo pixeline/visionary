@@ -1,0 +1,15 @@
+<template name="UploadAdmin">
+    <input type="radio" name="tabs" id="tab3" />
+    <label for="tab3" class="onglet">Upload</label>
+    <div class="tab-content">
+        <form action="" method="" class="form">
+            
+            {{>InputAdmin type="text" text="Titre du module d'upload" id="instructionUploadTitle" name="instructionUploadTitle" placeholder="Le titre du module d'upload" required="true"}}									    
+            {{>TextAreaAdmin text="Instruction pour l'upload d'une image" id="instructionUpload" placeholder="<p>Si vous le souhaitez, téléchargez une de vos images afin d'observer…</p>" required="true"}}									
+           
+            {{>InputAdmin type="text" text="Titre de l'aide" id="helpUploadTitle" name="helpUploadTitle" placeholder="Le titre de l'aide" required="true"}}									
+            {{>TextAreaAdmin text="Texte d'aide" id="helpUploadTxt" placeholder="<p>Pour télécharger une image, vous devez…</p>" required="true"}}									
+           
+        </form>
+    </div>
+</template>

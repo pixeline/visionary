@@ -1,0 +1,16 @@
+<!-- template for each input field -->
+<template name="InputAdmin">
+    {{#if checked}}
+		<label for="{{id}}" class="{{classLabel}}">{{text}}</label>
+		<input type="{{type}}" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}" required="{{required}}" value="{{value}}" checked/>
+    {{else}}
+		<label for="{{id}}" class="{{classLabel}}">{{text}}</label>
+		<input type="{{type}}" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}" required="{{required}}" value="{{value}}" />
+    {{/if}}
+</template>
+
+<!-- template for each text area field -->
+<template name="TextAreaAdmin">
+    <label for="{{id}}">{{text}}</label>
+    <textarea id="{{id}}" name="{{name}}" placeholder="{{placeholder}}" required="{{required}}" value="{{value}}" ></textarea>
+</template>        

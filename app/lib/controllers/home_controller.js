@@ -156,8 +156,10 @@ FormController =  HomeController.extend({
         return data;
     },
     waitOn : function() {
+        var currentUser = Meteor.user();
         return [
-            Meteor.subscribe('survey')
+            Meteor.subscribe('survey'),
+      		Meteor.subscribe('user', currentUser, false, true)
         ];
     }
 });
@@ -195,7 +197,7 @@ LoginAdminController = HomeController.extend({
     onBeforeAction : function() {
         var currentUser = Meteor.user();
         if(currentUser && currentUser.username === "admin"){
-            Router.go("AdminMock");
+            Router.go("Dashboard");
         } else {
             this.next();
         }   

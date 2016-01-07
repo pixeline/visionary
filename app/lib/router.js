@@ -82,10 +82,24 @@ Router.route(root_url+'/admin', {
     controller: 'LoginAdminController'
 });
 
-/* Homepage of Admin Panel */
-Router.route(root_url+'/adminPanel', {
-    name: 'Admin',
-    template: 'Admin',
+/* Homepage of Admin Configuration Panel */
+Router.route(root_url+'/configPanel', {
+    name: 'Config',
+    template: 'Config',
+    controller: 'AdminController'
+});
+
+/* Configuration panel for survey */
+Router.route(root_url+'/configSurvey', {
+    name: 'ConfigSurvey',
+    template: 'ConfigSurvey',
+    controller: 'AdminController'
+});
+
+/* Configuration panel for modules */
+Router.route(root_url+'/configModules', {
+    name: 'ConfigModules',
+    template: 'ConfigModules',
     controller: 'AdminController'
 });
 

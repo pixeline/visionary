@@ -10,8 +10,10 @@ Template.Dashboard.events ({
     //go to dashboard for the user selected
     'click .deleteUser': function(event){
         event.preventDefault();
-        var idUser = $(event.target.parentNode).attr('id');
-        Meteor.call('removeUser', idUser);
+        if (confirm("Êtes-vous sûr de vouloir supprimer l'utilisateur ?")) {
+            var idUser = $(event.target.parentNode).attr('id');
+            Meteor.call('removeUser', idUser);
+        }
     }
 });
 
@@ -61,8 +63,8 @@ Template.Dashboard.rendered = function () {
             "balloonText": "[[title]]<br><span style='font-size:10px'><b>[[value]]</b> ([[percents]]%)</span>",
             "startRadius": "200%",
             "autoMarginOffset": 0,
-            "angle": 30,
-            "depth3D": 30,
+            /*"angle": 30,
+            "depth3D": 30,*/
             "marginRight": 0,
             "marginTop": -40,
             "marginLeft": 0,
@@ -113,8 +115,8 @@ Template.Dashboard.rendered = function () {
             "balloonText": "[[title]]<br><span style='font-size:10px'><b>[[value]]</b> ([[percents]]%)</span>",
             "startRadius": "200%",
             "autoMarginOffset": 0,
-            "angle": 30,
-            "depth3D": 30,
+            /*"angle": 30,
+            "depth3D": 30,*/
             "marginRight": 0,
             "marginTop": -40,
             "marginLeft": 0,

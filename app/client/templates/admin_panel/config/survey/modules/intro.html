@@ -1,0 +1,14 @@
+<template name="IntroAdmin">
+    <input type="radio" name="tabs" id="tab1" checked />
+    <label for="tab1" class="onglet">Index</label>
+    <div class="tab-content">
+                                    
+        <form action="" method="" class="form">
+            
+            {{>InputAdmin type="text" text="Titre d'introduction du test" id="introTitle" name="introTitle" placeholder="Titre du test" required="true"}}									
+            {{>TextAreaAdmin text="Message d'introduction du test" id="introTxt" placeholder="<p>Le <span>test</span> que vous allez réaliser a pour objectif de …</p>" required="true"}}									
+           
+        </form>
+        
+    </div>
+</template>

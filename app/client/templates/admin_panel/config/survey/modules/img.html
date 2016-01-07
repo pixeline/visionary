@@ -1,0 +1,63 @@
+<template name="ImgAdmin">
+    <input type="radio" name="tabs" id="tab2" />
+    <label for="tab2" class="onglet">IMG 1</label>
+    <div class="tab-content configModule">
+        
+        <form action="" method="" class="form">
+            
+            <div class="ajoutImageModule">
+                <label for="imageTypeImg">Veuillez choisir l'image à ajouter au test</label>
+                <input id="imageTypeImg" type="file">  
+            </div>
+            {{>InputAdmin type="text" text="Quelle est le type de l'image ?" name="typeImg" placeholder="Technique" required="true"}}									 	
+            
+            
+            <div class="accordion">
+                {{>contentModuleImg module="Valid"}}
+                {{>contentModuleImg module="Select"}}
+                {{>contentModuleImg module="Adjust"}}
+                {{>contentModuleImg module="Choose"}}
+            </div>
+    
+        </form>
+        
+    </div>
+</template>
+
+<template name="contentModuleImg">
+    <h4><a href="">Configuration du <strong>{{module}}</strong><i class="pull-right fa fa-caret-down"></i><i class="pull-right fa fa-trash-o"></i></a></h4>
+    <div class="contentAccordions" id="{{module}}">
+        
+        {{>InputAdmin type="text" text="Instruction de l'image pour le module" name="instructionImg" placeholder="Valider/Sélectionner/... votre image préférée" required="true"}}									
+        
+        {{>InputAdmin type="text" text="Titre de l'aide pour l'ensemble des images" name="titleHelpImg" placeholder="Titre de l'aide" required="true"}}									
+        {{>TextAreaAdmin text="Texte d'aide pour l'ensemble des images" name="txtHelpImg" placeholder="<p>Veuillez configurer les images afin de ... </p>" required="true"}}									
+            
+        <h5>Configuration des filtres du {{module}} :</h5>
+        
+        <ul class="clearfix">
+            <li>
+                {{>InputAdmin type="number" text="Ordre" name="orderFilter" placeholder="1" required="true"}}									
+            </li>
+            <li>
+                {{>InputAdmin type="text" text="Type" name="typeFilter" placeholder="Ex: visionarize_deuteranope" required="true"}}	
+            </li>
+            <li>
+                {{>InputAdmin type="number" text="Valeur initial" name="initValueFilter" placeholder="-100" required="true"}}	
+            </li>
+            <li>
+                {{>InputAdmin type="number" text="Min." name="minFilter" placeholder="-100" required="true"}}
+            </li>
+            <li>
+                {{>InputAdmin type="number" text="Max." name="maxFilter" placeholder="0" required="true"}}
+            </li>
+            <li>
+                {{>InputAdmin type="number" text="Conversion" name="conversionFilter" placeholder="0.01" required="true"}}
+            </li>
+            <li>
+                {{>InputAdmin type="number" text="Step" name="stepFilter" placeholder="80" required="true"}}
+            </li>																														
+        </ul>
+        
+    </div>
+</template>

@@ -32,6 +32,12 @@ Meteor.methods({
             date_created: Number //millisecond since 1970
 		});
         
+        //check unique email
+        var usr = user.findOne( { "email": User.email }, { fields: { "email": 1 } } );
+        if(usr) {
+            throw new Meteor.Error("Unauthorized", "Email déjà existant");
+        }
+        
         var survey_id = survey.find().fetch()[0]._id;
         //add the survey foreign key
         User = _.extend(User, {

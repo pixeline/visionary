@@ -1,0 +1,43 @@
+<template name = "ConfigModules">
+    
+    <!-- Sidebar -->
+    {{>Sidebar template="Config"}}
+    
+    <!-- configuration of survey's module -->
+	<div class="right">
+		<header>
+			<h2 class="titleConfig">{{surveyToAdd.nameSurvey}}</h2>
+			<a href="" class="btnPrimary pull-right">Enregistrer</a>
+		</header>
+		
+		<div class="content">
+			
+			<h3><strong>Étape 2/2</strong>: Configuration des modules</h3>
+			
+			<ul class="tabs clearfix">
+			  
+			    <li>
+                    {{>IntroAdmin}}
+			    </li>
+			    <li>
+                    {{>ImgAdmin}}
+			    </li>
+			    <li>
+			        <input type="radio" name="tabs" id="tab5" />
+			        <label for="tab5" class="onglet">+</label>
+			    </li>
+                {{#if surveyToAdd.upload}}
+                    <li>
+                        {{>UploadAdmin}}
+                    </li>
+                {{/if}}
+			    <li>
+                    {{>FormAdmin}}
+			    </li>
+			    
+			</ul>
+					
+		</div>
+	</div>
+
+</template>
