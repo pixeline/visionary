@@ -19,12 +19,14 @@
 			    <li>
                     {{>IntroAdmin}}
 			    </li>
+                {{#each images}}
+                    <li>
+                        {{>ImgAdmin order=order}}
+                    </li>
+                {{/each}}
 			    <li>
-                    {{>ImgAdmin}}
-			    </li>
-			    <li>
-			        <input type="radio" name="tabs" id="tab5" />
-			        <label for="tab5" class="onglet">+</label>
+			        <input type="radio" name="tabs" id="addImgInput" />
+			        <label for="tab5" class="onglet" id="addImgLabel">+</label>
 			    </li>
                 {{#if surveyToAdd.upload}}
                     <li>
