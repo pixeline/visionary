@@ -6,8 +6,8 @@
     <!-- configuration of survey's module -->
 	<div class="right">
 		<header>
-			<h2 class="titleConfig">{{surveyToAdd.nameSurvey}}</h2>
-			<a href="" class="btnPrimary pull-right">Enregistrer</a>
+			<h2 class="titleConfig">{{surveyToAdd.name}}</h2>
+			<a href="" class="btnPrimary pull-right" id="registerSurveyAdmin">Enregistrer</a>
 		</header>
 		
 		<div class="content">
@@ -17,24 +17,24 @@
 			<ul class="tabs clearfix">
 			  
 			    <li>
-                    {{>IntroAdmin}}
+                    {{>IntroAdmin infoTxt=(infoTxt 'Index')}}
 			    </li>
                 {{#each images}}
                     <li>
-                        {{>ImgAdmin order=order}}
+                        {{>ImgAdmin order=order helpTxtValid=(infoTxt 'Valid') helpTxtSelect=(infoTxt 'Select') helpTxtAdjust=(infoTxt 'Adjust') helpTxtChoose=(infoTxt 'Choose')}}
                     </li>
                 {{/each}}
 			    <li>
 			        <input type="radio" name="tabs" id="addImgInput" />
-			        <label for="tab5" class="onglet" id="addImgLabel">+</label>
+			        <label for="addImg" class="onglet" id="addImgLabel">+</label>
 			    </li>
                 {{#if surveyToAdd.upload}}
                     <li>
-                        {{>UploadAdmin}}
+                        {{>UploadAdmin infoTxt=(infoTxt 'Upload')}}
                     </li>
                 {{/if}}
 			    <li>
-                    {{>FormAdmin}}
+                    {{>FormAdmin infoTxt=(infoTxt 'Form')}}
 			    </li>
 			    
 			</ul>

@@ -24,8 +24,9 @@ Controller = {};
                                 result.filters = result.filter;
                                 delete result.filter;
                             });
+                            var url_ws = Meteor.settings.public.url_ws;
                             //Post data on visionary's rest webservice
-                            HTTP.post( 'http://localhost:8080/users', { 
+                            HTTP.post( url_ws + '/users', { 
                                 data: { "email":user.email,"name":user.name,"firstname":user.firstname,
                                         "age":user.age,"sex":user.sex,"dateCreated":user.date_created,
                                         "correctionProfileResults":correcResult}
@@ -47,6 +48,7 @@ Controller = {};
         /***************
         * ADMIN PANEL *
         ***************/
+        
         //Validate and insert survey
         Controller.InsertSurvey = function (surveyInput) {
                 var survey = new Collection.Survey(surveyInput.name, surveyInput.root_url, surveyInput.state,
@@ -65,6 +67,7 @@ Controller = {};
                                 if (error) {
                                         sAlert.error('L\'insertion du questionnaire a échoué.');
                                 } else {
+                                        //sessionStorage.setItem("surveyId", result);
                                         sAlert.success('Insertion effectuée !');
                                 }
                         });

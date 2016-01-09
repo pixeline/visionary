@@ -100,7 +100,7 @@ Router.route(root_url+'/configSurvey', {
 Router.route(root_url+'/configModules', {
     name: 'ConfigModules',
     template: 'ConfigModules',
-    controller: 'AdminController'
+    controller: 'PictureAdminController'
 });
 
 /* Homepage of Admin Mock Panel */

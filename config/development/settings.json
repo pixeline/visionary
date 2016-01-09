@@ -1,8 +1,8 @@
 {
   "public" : {
       "mock" : true,
+      "url_ws": "http://localhost:8080",
       "admin_panel" : {
-        
           "survey": [ 
                       {
                         "name" : "V2 - Questionnaire 1",

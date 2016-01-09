@@ -12,10 +12,10 @@ Template.ConfigSurvey.events ({
         sessionStorage.clear();
         //survey's informations
         var surveyToAdd = {
-            nameSurvey : $('[name=nameSurvey]').val(),
-            urlSurvey : $('[name=urlSurvey]').val(),
-            maxReset : $('[name=maxReset]').val(),
-            maxSatis : parseInt($('[name=maxSatis]').val()),
+            name : $('[name=nameSurvey]').val(),
+            root_url : $('[name=urlSurvey]').val(),
+            max_reset_counter : parseInt($('[name=maxReset]').val()),
+            max_satis : parseInt($('[name=maxSatis]').val()),
             sortedTest : $('[name=sortedTest]')[0].checked,
             upload : $('[name=upload]')[0].checked,
         };

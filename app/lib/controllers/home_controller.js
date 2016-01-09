@@ -231,6 +231,21 @@ AdminController = HomeController.extend({
     }
 });
 
+/* every modules in admin panel with pictures */
+PictureAdminController = AdminController.extend({
+    data: function() {
+        var data = PictureAdminController.__super__.data.call(this);
+        return data;
+    },
+    waitOn : function() {
+        var waitOn = AdminMockController.__super__.waitOn.call(this);
+        return [
+            waitOn,
+            Meteor.subscribe('picture_upload')
+        ];
+    }
+});
+
 AdminMockController = AdminController.extend({
     onBeforeAction: function() {
         var onBeforeAction = AdminMockController.__super__.onBeforeAction.call(this);
