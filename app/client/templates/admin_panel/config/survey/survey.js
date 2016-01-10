@@ -1,7 +1,32 @@
-/* Give some default values */
+/* Give some default values or the values from a previous config */
 Template.ConfigSurvey.helpers ({
-    surveyDefault : function(){
+    //survey from setttings
+    surveyDefault : function() {
         return Meteor.settings.public.admin_panel.survey[0];
+    },
+    //survey to modif
+    surveyModif : function () {
+        initModify = false;
+        stopInit = false;
+        return JSON.parse(sessionStorage.getItem("surveyToModify"));
+    },
+    //return true if the module have to be included, false else
+    existModule : function (surveyModif, defaultInclude, toEnable, module_title) {
+        if(surveyModif) {
+            var exist = false;
+            //iterate on module and return true if module exist
+            $.each(surveyModif.module_survey, function (index, modCurrent) {
+                if (modCurrent.title == module_title) {
+                    exist = true;
+                    return false;
+                }
+            });
+            if(!exist) toEnable = !toEnable;
+            return toEnable;
+        } else {
+            //if it's just the added template
+            return defaultInclude;
+        }
     }
 });
 
@@ -9,7 +34,6 @@ Template.ConfigSurvey.helpers ({
 Template.ConfigSurvey.events ({
     'submit #storeSurvey' : function(event) {
         event.preventDefault();
-        sessionStorage.clear();
         //survey's informations
         var surveyToAdd = {
             name : $('[name=nameSurvey]').val(),

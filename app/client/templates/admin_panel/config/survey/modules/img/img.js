@@ -3,6 +3,20 @@
 Template.ImgAdmin.onRendered (function () {
     $(".contentAccordions").hide();
     $(".contentAccordionsFilters").hide();
+    
+    //get a survey if exist and load the images
+    var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+    if(surveyToModif && !stopInit) {
+        $.each(surveyToModif.picture_admin, function( index, pic ) {
+            $("#uploadedImg"+(index+1)).attr('alt', pic.title);
+            $("#uploadedImg"+(index+1)).attr('src', pic.file_name);
+            var picture = document.getElementById("uploadedImg"+(index+1)); 
+            picture.onload=function(){
+                $("#uploadedImg"+(index+1)).attr('width', 400);
+                $("#uploadedImg"+(index+1)).attr('height', 250);
+            };
+        });
+    }
 });
 
 /* helper for the admin of images */
@@ -18,6 +32,26 @@ Template.ImgAdmin.helpers ({
     //an id different for each field in each img module configuration
     mixId : function (field, orderImg) {
         return field+orderImg;
+    },
+    //retrieve picture if it's a survey to modify
+    pictureModify : function (orderImg, field) {
+        //get a survey if exist
+        var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+        if(surveyToModif && !stopInit) {
+            return surveyToModif.picture_admin[orderImg-1][field];
+        } else {
+            return surveyToModif.picture_admin[orderImg-1][field];
+        }
+    },
+    //return true if
+    isSameGroup : function (orderImg) {
+        //get a survey if exist
+        var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+        if(surveyToModif && !stopInit) {
+            return surveyToModif.picture_admin[orderImg-1].order == surveyToModif.picture_admin[orderImg-2].order;
+        } else {
+            return false;
+        }
     }
 });
 
@@ -57,9 +91,19 @@ Template.ImgAdmin.events ({
 
 /* some utils functions for config of instruction and modules img (valid, select...) in module img */
 Template.ContentModuleImg.helpers ({
-    //return every filters for the current module
+    //return every filters for the current module from settings
+    //or from the survey that have to be modify if exist
     filterAdmin : function (module) {
-        var surveyConfig = Meteor.settings.public.admin_panel.survey[0];
+        //get a survey if exist
+        var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+        
+        var surveyConfig;
+        if(surveyToModif) {
+            surveyConfig = surveyToModif;
+        } else {
+            surveyConfig = Meteor.settings.public.admin_panel.survey[0];
+        }
+        
         var currentModule;
         //return the current module
         $.each(surveyConfig.module_survey, function( index, modCurrent ) {
@@ -76,11 +120,27 @@ Template.ContentModuleImg.helpers ({
         return filters;
     },
     //return the instruction from previous image and for module only for last image added
-    instrDefault : function (module, orderImg) {
+    //or the instruction from the survey to modify if exist
+    instrDefault : function (module, orderImg, orderModule) {
         if (orderImg != 1 && $(".configModule").length == orderImg-1) {
             return $("#instructionImg"+(orderImg-1)+module).val();
         } else {
-            return $("#instructionImg"+orderImg+module).val();
+            //get a survey if exist
+            var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+            if(surveyToModif && !stopInit) {
+                var instrs = surveyToModif.picture_admin[orderImg-1].instruction;
+                var instruction = "";
+                //return the instruction of survey to modify
+                $.each(instrs, function( index, instr ) {
+                    if(instr.module_order == orderModule) {
+                        instruction = instr.txt;
+                        return false;
+                    }
+                });
+                return instruction;
+            } else {
+                return $("#instructionImg"+orderImg+module).val();
+            }
         }
     },
     //true if first image

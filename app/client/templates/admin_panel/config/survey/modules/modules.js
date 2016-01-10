@@ -1,10 +1,24 @@
+//init the number of images
 Session.set('nbrImg', 1);
+//if the number of images have been init or not
+initModify = false;
+stopInit = false;
 
 /* some utils functions for main configuration of modules */
 Template.ConfigModules.helpers({
     //return the default infotxt for the moduleName from settings
+    //or from the survey that have to be modify if exist
     infoTxt: function (moduleName) {
-        var surveyConfig = Meteor.settings.public.admin_panel.survey[0];
+        //get config if exist
+        var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+        
+        var surveyConfig;
+        if(surveyToModif) {
+            surveyConfig = surveyToModif;
+        } else {
+            surveyConfig = Meteor.settings.public.admin_panel.survey[0];
+        }
+        
         var currentModule;
         //return the current module
         $.each(surveyConfig.module_survey, function (index, modCurrent) {
@@ -17,14 +31,27 @@ Template.ConfigModules.helpers({
         if (moduleName == "Upload") {
             currentModule.info_txt[0].helpTxt = currentModule.info_txt[1];
         }
+        
         return currentModule.info_txt[0];
     },
+    //previous config of survey
     surveyToAdd: function () {
         var survey = JSON.parse(sessionStorage.getItem("surveyToAdd"));
         return survey;
     },
     //retrieve the images objects and init reactively the counter of images
     images: function () {
+        //init the number of images if it's a survey to modify
+        var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+        if(surveyToModif && !initModify) {
+            var nbImg = surveyToModif.picture_admin.length;
+            if(surveyToModif.picture_admin[surveyToModif.picture_admin.length-1].type == "Upload") {
+                nbImg --;
+            }
+            Session.set('nbrImg', nbImg);
+            initModify = true;
+        }
+        
         var nbrImg = Session.get('nbrImg');
         var tabImg = [];
         for (var i = 0; i < nbrImg; i++) {
@@ -43,6 +70,7 @@ Template.ConfigModules.events({
         var nbrImg = Session.get('nbrImg');
         nbrImg++;
         Session.set('nbrImg', nbrImg);
+        stopInit = true;
     },
     //submit the survey and his modules
     'click #registerSurveyAdmin': function (event) {
@@ -219,4 +247,6 @@ function retrieveAndInsertSurvey() {
     });
     //access to controller to insert server-side
     Controller.InsertSurvey(survey);
+    sessionStorage.clear();
+    Router.go("Config");
 }

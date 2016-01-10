@@ -8,19 +8,23 @@
             <div class="ajoutImageModule">
                 <label for={{mixId "uploadImg" order}}>Veuillez choisir l'image à ajouter au test</label>
                 <input type="file" id={{mixId "uploadImg" order}} class="uploadImg" accept="image/*">
-                <img src="" id={{mixId "uploadedImg" order}} alt="" >
+                <img src={{pictureModify order "file_name"}} id={{mixId "uploadedImg" order}} alt={{pictureModify order "title"}} >
             </div>
-            {{>InputAdmin type="text" text="Quelle est le type de l'image ?" id="typeImg" id2=order name="typeImg" placeholder="Ex: Technique" required="true"}}									 	
+            {{>InputAdmin type="text" text="Quelle est le type de l'image ?" id="typeImg" id2=order name="typeImg" placeholder="Ex: Technique" required="true" value=(pictureModify order "type")}}									 	
             {{#if isNotFirst order}}
                 <label for={{mixId "sameGroup" order}}>Même groupe que l'image précédente ? (Le choix de l'image est aléatoire dans un même groupe)</label>
-                <input type="checkbox" name="sameGroup" id={{mixId "sameGroup" order}} />
-            {{/if}}
+                {{#if isSameGroup order}}
+                    <input type="checkbox" name="sameGroup" id={{mixId "sameGroup" order}} checked />
+                {{else}}
+                    <input type="checkbox" name="sameGroup" id={{mixId "sameGroup" order}} />
+                {{/if}}
+            {{/if}} 
             
-            <div class="accordion">
-                {{>ContentModuleImg module="Valid" order=order helpTxt=helpTxtValid}}
-                {{>ContentModuleImg module="Select" order=order helpTxt=helpTxtSelect}}
-                {{>ContentModuleImg module="Adjust" order=order helpTxt=helpTxtAdjust}}
-                {{>ContentModuleImg module="Choose" order=order helpTxt=helpTxtChoose}}
+            <div class="accordion"> 
+                {{>ContentModuleImg module="Valid" moduleOrder=2 order=order helpTxt=helpTxtValid}}
+                {{>ContentModuleImg module="Select" moduleOrder=3 order=order helpTxt=helpTxtSelect}}
+                {{>ContentModuleImg module="Adjust" moduleOrder=4 order=order helpTxt=helpTxtAdjust}}
+                {{>ContentModuleImg module="Choose" moduleOrder=5 order=order helpTxt=helpTxtChoose}}
             </div>
     
         </form>
@@ -33,7 +37,7 @@
     <div class="contentAccordions" id={{mixId module order}}>
         
         <!-- show instruction to fill for every images -->
-        {{>InputAdmin type="text" text="Instruction de l'image pour le module" id="instructionImg" id2=order id3=module name="instructionImg" placeholder="Valider/Sélectionner/... votre image préférée" required="true" value=(instrDefault module order) }}									
+        {{>InputAdmin type="text" text="Instruction de l'image pour le module" id="instructionImg" id2=order id3=module name="instructionImg" placeholder="Valider/Sélectionner/... votre image préférée" required="true" value=(instrDefault module order moduleOrder) }}									
         
         <!-- show configuration of help txt and filters only one time -->
         {{#if isFirst order}}

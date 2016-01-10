@@ -292,7 +292,7 @@ header h2.titleCorrectionTool {
 }
 
 div.zoomContainer {
-   cursor : pointer;
+   cursor : crosshair;
 }
 
 div.zoomContainer:hover {

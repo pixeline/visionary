@@ -8,7 +8,7 @@
 		
 		<header>
 			<h2>Mes questionnaires</h2>
-			<a href="{{pathFor route='ConfigSurvey'}}" class="btnPrimary pull-right">Ajouter</a>
+			<a href="{{pathFor route='ConfigSurvey'}}" id="addSurveyLink" class="btnPrimary pull-right">Ajouter</a>
 		</header>
 		
 		<div class="content">
@@ -20,6 +20,7 @@
 						<th>Url</th>
 						<th>Reset max.</th>
                         <th>Compteur satisfaction max.</th>
+                        <th>Nombre d'images</th>
 						<th>État</th>
 						<th>Date de création</th>
 						<th>Action</th>
@@ -32,6 +33,7 @@
                             <td>{{root_url}}</td>
                             <td>{{max_reset_counter}}</td>
                             <td>{{max_satis}}</td>
+                            <td>{{nbrImg picture_admin}}</td>
                             <td class="center">
                                 {{#if state}}
                                     <a href="" class="disableSurvey">
@@ -46,7 +48,7 @@
                             <td>{{formateDate date_created}}</td>
                             <td class="center">
                                 <div class="btn-group">
-                                    <a href="" class="modifier"><i class="fa fa-pencil"></i> Modifier</a>
+                                    <a href="{{pathFor route='ConfigSurvey'}}" class="modifier"><i class="fa fa-pencil"></i> Modifier</a>
                                     <div class="dropdown">
                                         <button><i class="fa fa-sort-desc"></i></button>
                                         <ul class="dropdown-menu">

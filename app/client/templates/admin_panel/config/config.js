@@ -5,6 +5,9 @@ Template.Config.helpers ({
     },
     'formateDate': function (number) {
         return new Date(number).toLocaleString();
+    },
+    'nbrImg' : function(picTab) {
+        return (picTab.fetch().length);
     }
 });
 
@@ -17,9 +20,25 @@ Template.Config.events ({
         idSurvey = $(event.target).parents(".surveyInserted").attr("id");
         Meteor.call('updateStateSurvey', idSurvey, true);
     },
+    //go to template of inserting a survey
+    'click #addSurveyLink': function(event) {
+        event.preventDefault();
+        //clear session to avoid a previous configuration
+        sessionStorage.clear();
+        Router.go("ConfigSurvey");
+    },
     //go to template of modification of a survey
     'click .modifier': function(event) {
-        sAlert.info('Fonction non-implémentée pour le moment.');
+        event.preventDefault();
+        var idSurvey = $(event.target).parents(".surveyInserted").attr("id");
+        var surveyToModify = survey.findOne({ _id : idSurvey });
+        //we have to formate the collection to access to every field
+        surveyToModify = new Collection.Survey(surveyToModify.name, surveyToModify.root_url, surveyToModify.state, 
+                                    surveyToModify.date_created, surveyToModify.max_reset_counter, surveyToModify.max_satis,
+                                    surveyToModify.module_survey.fetch(), surveyToModify.picture_admin.fetch());
+        //set in session
+        sessionStorage.setItem("surveyToModify", JSON.stringify(surveyToModify));
+        Router.go("ConfigSurvey");
     },
     //duplicate the selected survey
     'click .duplicateSurvey': function(event) {

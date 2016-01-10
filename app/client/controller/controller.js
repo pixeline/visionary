@@ -160,6 +160,8 @@ Controller = {};
                                         }
                                 }
                         });
+                } else {
+                    Meteor.call('removeSurvey', surveyId);
                 }
         };
 
@@ -222,6 +224,8 @@ Controller = {};
                                         });
                                 }
                         });
+                } else {
+                    Meteor.call('removeSurvey', surveyId);
                 }
         };
         

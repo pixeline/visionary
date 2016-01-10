@@ -16,17 +16,17 @@
 			
 			<form action="" method="post" id="storeSurvey" class="form formStep1">
 					
-					{{>InputAdmin type="text" text="Nom du questionnaire" id="nameSurvey" name="nameSurvey" placeholder=surveyDefault.name required="true"}}				
-					{{>InputAdmin type="text" text="URL du questionnaire" id="urlSurvey" name="urlSurvey" placeholder=surveyDefault.root_url required="true"}}
-					{{>InputAdmin type="number" text="Maximum de reset" id="maxReset" name="maxReset" placeholder=surveyDefault.max_reset_counter required="true"}}
-					{{>InputAdmin type="number" text="Maximum de satisfaction" id="maxSatis" name="maxSatis" placeholder=surveyDefault.max_satis required="true"}}			
+					{{>InputAdmin type="text" text="Nom du questionnaire" id="nameSurvey" name="nameSurvey" placeholder=surveyDefault.name required="true" value=surveyModif.name}}				
+					{{>InputAdmin type="text" text="URL du questionnaire" id="urlSurvey" name="urlSurvey" placeholder=surveyDefault.root_url required="true" value="/v2"}}
+					{{>InputAdmin type="number" text="Maximum de reset" id="maxReset" name="maxReset" placeholder=surveyDefault.max_reset_counter required="true" value=surveyModif.max_reset_counter}}
+					{{>InputAdmin type="number" text="Maximum de satisfaction" id="maxSatis" name="maxSatis" placeholder=surveyDefault.max_satis required="true" value=surveyModif.max_satis}}			
 					<p>Inclure le test de classement ?</p>		
-                    {{>InputAdmin type="radio" text="Oui" id="enableSortedTest" name="sortedTest" classLabel="labelRadio" value="true"}}<br/>
-					{{>InputAdmin type="radio" text="Non" id="disableSortedTest" name="sortedTest" classLabel="labelRadio" value="false" checked="true"}}
+                    {{>InputAdmin type="radio" text="Oui" id="enableSortedTest" name="sortedTest" classLabel="labelRadio" value="true" checked=(existModule surveyModif false true "Sorted_test")}}<br/>
+					{{>InputAdmin type="radio" text="Non" id="disableSortedTest" name="sortedTest" classLabel="labelRadio" value="false" checked=(existModule surveyModif true false "Sorted_test")}}
                     <br/><br/>
 					<p>Inclure l'upload d'image ?</p>
-                    {{>InputAdmin type="radio" text="Oui" id="enableUpload" name="upload" classLabel="labelRadio" value="true"}}<br/>
-					{{>InputAdmin type="radio" text="Non" id="disableUpload" name="upload" classLabel="labelRadio" value="false" checked="true"}}
+                    {{>InputAdmin type="radio" text="Oui" id="enableUpload" name="upload" classLabel="labelRadio" value="true" checked=(existModule surveyModif false true "Upload")}}<br/>
+					{{>InputAdmin type="radio" text="Non" id="disableUpload" name="upload" classLabel="labelRadio" value="false" checked=(existModule surveyModif true false "Upload")}}
 					<br><br>	
 					
 					<button type="submit" class="submit">Étape 2: Configurer les modules</button>

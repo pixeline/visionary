@@ -138,7 +138,6 @@
 					nextModule = module;
 				} 
 			}); 
-            console.log(currentOrder, nextModule.title);
 			//1st picture without sorted test
 			if(currentOrder == 1 && nextModule.title != "Sorted_test") { 
 				//get next picture
