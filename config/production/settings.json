@@ -1,9 +1,10 @@
 {
   "public" : {
       "mock" : true,
+      "ws_active": false,
+      "url_ws": "http://localhost:8080",
       "admin_panel" : {
-        
-          "survey": [
+          "survey": [ 
                       {
                         "name" : "V2 - Questionnaire 1",
                         "root_url" : "/v2",
@@ -352,7 +353,7 @@
                                       "field_form": [
                                                   {
                                                     "order" : 1,
-                                                    "type" : "text",
+                                                    "type" : "text",    
                                                     "label" : ["Votre nom"],
                                                     "name" : "name",
                                                     "placeholder" : "Votre nom",

@@ -19,28 +19,33 @@ Controller = {};
                         if(error) {
                             sAlert.error('La soumission du formulaire a échoué.');
                         } else {
-                            //to fit the WS data
-                            correcResult.forEach(function (result) {
-                                result.filters = result.filter;
-                                delete result.filter;
-                            });
-                            var url_ws = Meteor.settings.public.url_ws;
-                            //Post data on visionary's rest webservice
-                            HTTP.post( url_ws + '/users', { 
-                                data: { "email":user.email,"name":user.name,"firstname":user.firstname,
-                                        "age":user.age,"sex":user.sex,"dateCreated":user.date_created,
-                                        "correctionProfileResults":correcResult}
-                            }, function(err, resp) {
-                                if ( err ) {
-                                    Meteor.call('removeUser', result);
-                                    sAlert.error('Echec de la création de l\'utilisateur.');
-                                } else { 
-                                    //succeed to push data, then clear and go out
-                                    sessionStorage.clear();
-                                    localStorage.clear();
-                                    Router.go("Thanks", {idUser: result});
-                                }
-                            });
+                            var ws_active = Meteor.settings.public.ws_active;
+                            if (!ws_active) {
+                                Router.go("Thanks", {idUser: result});
+                            } else {
+                                //to fit the WS data
+                                correcResult.forEach(function (result) {
+                                    result.filters = result.filter;
+                                    delete result.filter;
+                                });
+                                var url_ws = Meteor.settings.public.url_ws;
+                                //Post data on visionary's rest webservice
+                                HTTP.post( url_ws + '/users', { 
+                                    data: { "email":user.email,"name":user.name,"firstname":user.firstname,
+                                            "age":user.age,"sex":user.sex,"dateCreated":user.date_created,
+                                            "correctionProfileResults":correcResult}
+                                }, function(err, resp) {
+                                    if ( err ) {
+                                        Meteor.call('removeUser', result);
+                                        sAlert.error('Echec de la création de l\'utilisateur.');
+                                    } else { 
+                                        //succeed to push data, then clear and go out
+                                        sessionStorage.clear();
+                                        localStorage.clear();
+                                        Router.go("Thanks", {idUser: result});
+                                    }
+                                });
+                            }
                         }
                 });
         };
@@ -49,7 +54,7 @@ Controller = {};
         * ADMIN PANEL *
         ***************/
         
-        //Validate and insert survey
+        //Validate and insert survey with a callback
         Controller.InsertSurvey = function (surveyInput) {
                 var survey = new Collection.Survey(surveyInput.name, surveyInput.root_url, surveyInput.state,
                         (new Date()).getTime(), surveyInput.max_reset_counter, surveyInput.max_satis);
@@ -67,10 +72,43 @@ Controller = {};
                                 if (error) {
                                         sAlert.error('L\'insertion du questionnaire a échoué.');
                                 } else {
-                                        //sessionStorage.setItem("surveyId", result);
+                                        sAlert.success('Insertion effectuée !');
+                                        //insert each modules
+                                        $.each(surveyInput.module_survey, function (index, module) {
+                                            Controller.InsertModuleSurvey(module, result);
+                                        });
+                                        //insert each pictures
+                                        $.each(surveyInput.picture_admin, function (index, picture) {
+                                            Controller.InsertPictureAdmin(picture, result);
+                                        });
+                                }
+                        });
+                        return sessionStorage.getItem("surveyId");
+                }
+        };
+        
+        //Validate and insert survey MOCK
+        Controller.InsertSurveyMock = function (surveyInput) {
+                var survey = new Collection.Survey(surveyInput.name, surveyInput.root_url, surveyInput.state,
+                        (new Date()).getTime(), surveyInput.max_reset_counter, surveyInput.max_satis);
+                        
+                var isValidName = Validation.checkString(survey.name, "Nom de questionnaire");
+                var isValidUrl = Validation.checkUrlRoot(survey.root_url);
+                var isValidCounter1 = Validation.checkNumberPos(survey.max_reset_counter, "Compteur reset");
+                var isValidCounter2 = Validation.checkNumberPos(survey.max_satis, "Compteur satis");
+                var isValidState = Validation.checkState(survey.state);
+                
+                if (isValidName && isValidUrl && isValidCounter1 && isValidCounter2 && isValidState) {
+                        //Insert survey in mongoDB - call to server-side
+                        Meteor.call('insertSurvey', survey, function (error, result) {
+                                // display error or go on
+                                if (error) {
+                                        sAlert.error('L\'insertion du questionnaire a échoué.');
+                                } else {
                                         sAlert.success('Insertion effectuée !');
                                 }
                         });
+                        return sessionStorage.getItem("surveyId");
                 }
         };
         
@@ -86,9 +124,45 @@ Controller = {};
                         }
                 });
         };
-
-        //Validate and insert module
+        
+        //Validate and insert module with callback
         Controller.InsertModuleSurvey = function (moduleSurveyInput, surveyId) {
+                var module_survey = new Collection.ModuleSurvey(moduleSurveyInput.order, moduleSurveyInput.title);
+
+                var isValidOrder = Validation.checkNumberPos(module_survey.order, "Ordre");
+                var isValidTitle = Validation.checkString(module_survey.title, "Titre");
+
+                if (isValidOrder && isValidTitle) {
+                        //Insert module in mongoDB - call to server-side
+                        Meteor.call('insertModuleSurvey', module_survey, surveyId, function (error, result) {
+                                // display error or go on
+                                if (error) {
+                                        sAlert.error('L\'insertion du module a échoué.');
+                                } else {
+                                        sAlert.success('Insertion effectuée !');
+                                        //insert each info_txt
+                                        $.each(moduleSurveyInput.info_txt, function (index, infoTxt) {
+                                            Controller.InsertInfoTxt(infoTxt, result);
+                                        });
+                                        //insert each filter_admin if exist
+                                        if(typeof moduleSurveyInput.filter_admin != "undefined") {
+                                            $.each(moduleSurveyInput.filter_admin, function (index, filterAdmin) {
+                                                Controller.InsertFilterAdmin(filterAdmin, result);
+                                            });
+                                        }
+                                        //insert each field_form if exist
+                                        if(typeof moduleSurveyInput.field_form != "undefined") {
+                                            $.each(moduleSurveyInput.field_form, function (index, fieldForm) {
+                                                Controller.InsertFieldForm(fieldForm, result);
+                                            });
+                                        }
+                                }
+                        });
+                }
+        };
+
+        //Validate and insert module MOCK
+        Controller.InsertModuleSurveyMock = function (moduleSurveyInput, surveyId) {
                 var module_survey = new Collection.ModuleSurvey(moduleSurveyInput.order, moduleSurveyInput.title);
 
                 var isValidOrder = Validation.checkNumberPos(module_survey.order, "Ordre");
@@ -120,8 +194,36 @@ Controller = {};
                 });
         };
         
-        //Validate and insert picture
+        //Validate and insert picture with callback
         Controller.InsertPictureAdmin = function (pictureInput, surveyId) {
+                var picture_admin = new Collection.PictureAdmin(pictureInput.order, pictureInput.title, pictureInput.type,
+                        pictureInput.file_name);
+
+                var isValidOrder = Validation.checkNumberPos(picture_admin.order, "Ordre");
+                var isValidTitle = Validation.checkString(picture_admin.title, "Titre");
+                var isValidType = Validation.checkString(picture_admin.type, "Type");
+                var isValidFile = Validation.checkString(picture_admin.file_name, "Nom de fichier");
+
+                if (isValidOrder && isValidTitle && isValidType && isValidFile) {
+                        //Insert picture in mongoDB - call to server-side
+                        Meteor.call('insertPictureAdmin', picture_admin, surveyId, function (error, result) {
+                                // display error or go on
+                                if (error) {
+                                        sAlert.error('L\'insertion de l\'image a échoué.');
+                                } else {
+                                        sAlert.success('Insertion effectuée !');
+                                        //insert each instruction
+                                        $.each(pictureInput.instruction, function (index, instr) {
+                                            var mod_instr = module_survey.findOne({survey_id: surveyId, title: instr.module});
+                                            Controller.InsertInstruction(instr, result, mod_instr._id);
+                                        });
+                                }
+                        });
+                }
+        };
+        
+        //Validate and insert picture MOCK
+        Controller.InsertPictureAdminMock = function (pictureInput, surveyId) {
                 var picture_admin = new Collection.PictureAdmin(pictureInput.order, pictureInput.title, pictureInput.type,
                         pictureInput.file_name);
 

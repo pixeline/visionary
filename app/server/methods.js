@@ -223,6 +223,16 @@ Meteor.methods({
         }
     },
     
+    /* Update Survey's state ; active or disable */ 
+    'updateStateSurvey': function(surveyId, stateToPut) { 
+        check(surveyId, String);
+        check(stateToPut, Boolean);
+        // Set the state of survey to true
+        survey.update(surveyId, {
+            $set: {state: stateToPut}
+        });
+    },
+    
     /* Remove Survey and every collections associated */  
     'removeSurvey': function(surveyId){ 
         check(surveyId, String);

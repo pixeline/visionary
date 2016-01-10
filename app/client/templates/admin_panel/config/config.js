@@ -8,6 +8,23 @@ Template.Config.helpers ({
     }
 });
 
+/* action on a survey */
+Template.Config.events ({
+    //disable the current active survey and active the selected one
+    'click .activeSurvey': function(event) {
+        var idSurvey = survey.findOne({ state : true })._id;
+        Meteor.call('updateStateSurvey', idSurvey, false);
+        idSurvey = $(event.target).parents(".surveyInserted").attr("id");
+        Meteor.call('updateStateSurvey', idSurvey, true);
+    },
+    'click .duplicateSurvey': function(event) {
+        
+    },
+    'click .removeSurvey': function(event) {
+        
+    }
+});
+
 /* helper for each input in configuration panel */
 Template.InputAdmin.helpers ({
     //to have a particular id for each input field
