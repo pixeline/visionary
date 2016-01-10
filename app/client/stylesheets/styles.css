@@ -426,6 +426,83 @@ ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
 }
 
 
+/* ---------------------------------------------------------------
+	adjust.html // LAYOUT FILTRE IMAGE FOR BACKGROUND + AND -
+--------------------------------------------------------------- */
+​
+ul.filtreAjustement {
+	text-align: center;
+}
+​
+ul.filtreAjustement li.normal {
+	margin-left:15px;
+	margin-right: 15px;
+}
+​
+ul.filtreAjustement li.filtre  {
+	background-color:#f4f4f4;
+	max-width: 300px;
+	position: relative;
+	vertical-align: top;
+    margin-top: 10%;
+    border:solid 1px #cecccd;
+}
+​
+ul.filtreAjustement li.filtre p {
+	text-transform: uppercase;
+	font-size: 1.8em;
+	margin-top:12px;
+}
+​
+ul.filtreAjustement li.filtre a {
+	background-position: center center;
+    background-size: cover;
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    width: auto;
+    height: 250px;
+}
+​
+.imgMoins:before {
+    content: "-";
+    position: absolute;
+    font-size: 13.5em;
+    font-weight: bold;
+    color: rgb(0,0,0);
+    left: 0;
+    right: 0;
+    z-index: 0;
+    top: -5px;
+}
+​
+.imgPlus:before {
+    content: "+";
+    position: absolute;
+    font-size: 13em;
+    font-weight: bold;
+    color: rgb(0,0,0);
+    left: 0;
+    right: 0;
+    z-index: 0;
+    top: -10px;
+}
+​
+ul.filtreAjustement li {
+	display: inline-block;
+	width: 35%;
+	padding:10px;
+}
+​
+ul.filtreAjustement li:last-child {
+	width: 25%;
+}
+​
+ul.filtreAjustement li img {
+	max-width: 100%;
+}
+
+
 /* ---------------------------------------------- 
 	choice.html // Validation d'une image / 3
 ---------------------------------------------- */

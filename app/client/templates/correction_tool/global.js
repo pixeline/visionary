@@ -138,18 +138,19 @@
 					nextModule = module;
 				} 
 			}); 
+            console.log(currentOrder, nextModule.title);
 			//1st picture without sorted test
 			if(currentOrder == 1 && nextModule.title != "Sorted_test") { 
 				//get next picture
 				nextPic = getNextPicture(picOrder);
 				nextModule = getCurrentModule("Valid");
 			} //if select the original picture or go to next picture
-			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {				
+			else if(choiceOrigin || nextModule.title == "Upload" || nextModule.title == "Form" || nextModule.title == "Select" || nextModule.title == "Select_ligne") {				
 				//update satis_counter si current = valid ou choice origin pic (if satis)
-				if(nextModule.title != "Upload") {
+				if(nextModule.title != "Upload" && nextModule.title != "Form") {
 					updateSatis(); //more satisfaction if "I'm satisfied"
 				}
-				//module upload if completly satified
+				//last pic if completly satisfied
 				if(isSatis() && isNotLastPic(picOrder)) {
 					nextPic = getLastPicture();
 					nextModule = getCurrentModule("Valid");

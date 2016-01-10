@@ -63,7 +63,7 @@ Template.Login.events({
                       sAlert.error('Mot de passe invalide');
                   } 
               } else {
-                  Router.go('Admin');
+                  Router.go('Dashboard');
               }
           });
       }

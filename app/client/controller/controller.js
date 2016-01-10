@@ -21,6 +21,9 @@ Controller = {};
                         } else {
                             var ws_active = Meteor.settings.public.ws_active;
                             if (!ws_active) {
+                                //succeed to push data, then clear and go out
+                                sessionStorage.clear();
+                                localStorage.clear();
                                 Router.go("Thanks", {idUser: result});
                             } else {
                                 //to fit the WS data

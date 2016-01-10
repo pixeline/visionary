@@ -1,11 +1,16 @@
 <template name="Picture">
-		{{#if click}}
-			<a href="" class="linkPicture {{picture.class}}">
-				<img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
-				{{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
-			</a>
+        {{#if adjustButton}}
+            <a href="" class="linkPicture {{picture.class}}" style="{{getBackgroundUrl picture.src}}">
+            </a>
 		{{else}}
-			<img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
-			{{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
-		{{/if}}
+            {{#if click}}
+                <a href="" class="linkPicture {{picture.class}}">
+                    <img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
+                    {{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
+                </a>
+            {{else}}
+                <img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
+                {{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
+            {{/if}}
+        {{/if}}
 </template>

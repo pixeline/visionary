@@ -5,10 +5,16 @@
 	<div class="content">
 		
 		<ul class="filtreAjustement">
-			<li class="filtreMoins imgMoins">{{>Picture template="Adjust" idImg="-" check=false click=true}}</li>
+			<li class="filtreMoins imgMoins">{{>Picture template="Adjust" idImg="-" check=false click=true}}<p>Diminuer l'effet</p></li>
 			<li>{{>Picture template="Adjust" idImg="1" check=false click=false classLi=""}}</li>
-			<li class="filtrePlus imgPlus">{{>Picture template="Adjust" idImg="+" check=false click=true}}</li>
-		</ul>
+			<li class="filtrePlus imgPlus">{{>Picture template="Adjust" idImg="+" check=false click=true}}<p>Augmenter l'effet</p></li>
+			
+		<!-- new Design
+            <li class="filtre">{{>Picture template="Adjust" idImg="-" check=false click=true adjustButton=true}}<p>Diminuer l'effet</p></li>
+			<li class="normal">{{>Picture template="Adjust" idImg="1" check=false click=false classLi=""}}</li>
+		    <li class="filtre">{{>Picture template="Adjust" idImg="+" check=false click=true adjustButton=true}}<p>Augmenter l'effet</p></li>
+		-->
+        </ul>
 		
 		{{>linkNext template="Adjust" class="btnPrimary" txt="Valider mon choix"}}
 		

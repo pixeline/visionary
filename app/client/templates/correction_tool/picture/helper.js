@@ -10,5 +10,8 @@ Template.Picture.helpers({
             pic.class = " carre";
         }
         return pic;
+    },
+    getBackgroundUrl : function(url) {
+        return "background-image: url('"+url+"');";
     }
 });
