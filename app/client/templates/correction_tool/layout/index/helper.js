@@ -4,7 +4,6 @@ Template.Index.helpers({
     //Warning : have to pass here to init survey
     preLoadFunction : function () {
         var surveyInput = survey.findOne({state:true});
-        console.log(surveyInput.module_survey.fetch());
         var currentSurvey = new Collection.Survey(surveyInput.name, surveyInput.root_url, surveyInput.state, 
                                     surveyInput.date_created, surveyInput.max_reset_counter, surveyInput.max_satis,
                                     surveyInput.module_survey.fetch(), surveyInput.picture_admin.fetch());

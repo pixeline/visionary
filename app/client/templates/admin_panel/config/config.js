@@ -17,11 +17,27 @@ Template.Config.events ({
         idSurvey = $(event.target).parents(".surveyInserted").attr("id");
         Meteor.call('updateStateSurvey', idSurvey, true);
     },
-    'click .duplicateSurvey': function(event) {
-        
+    //go to template of modification of a survey
+    'click .modifier': function(event) {
+        sAlert.info('Fonction non-implémentée pour le moment.');
     },
+    //duplicate the selected survey
+    'click .duplicateSurvey': function(event) {
+        sAlert.info('Fonction non-implémentée pour le moment.');
+        /*var idSurvey = $(event.target).parents(".surveyInserted").attr("id");
+        var survey2 = survey.findOne({ _id : idSurvey });
+        //access to controller to insert the same survey
+        Controller.InsertSurvey(survey2);*/
+    },
+    //remove the selected survey
     'click .removeSurvey': function(event) {
-        
+        var idSurvey = $(event.target).parents(".surveyInserted").attr("id");
+        var state = survey.findOne({ _id : idSurvey }).state;
+        if(state === true) {
+            sAlert.error('Vous ne pouvez supprimer que les questionnaires non-actifs.');
+        } else {
+            Controller.RemoveSurvey(idSurvey);
+        }
     }
 });
 

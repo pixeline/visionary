@@ -115,7 +115,7 @@ function retrieveAndInsertSurvey() {
                         filterAdmin.init_value = parseInt($("#initValue" + fitlerId).val());
                         filterAdmin.min = parseInt($("#min" + fitlerId).val());
                         filterAdmin.max = parseInt($("#max" + fitlerId).val());
-                        filterAdmin.conversion = parseInt($("#conversion" + fitlerId).val());
+                        filterAdmin.conversion = parseFloat($("#conversion" + fitlerId).val());
                         filterAdmin.step = parseInt($("#step" + fitlerId).val());
                         //insert filter_admin
                         moduleSurvey.filter_admin.push(filterAdmin);
@@ -180,7 +180,7 @@ function retrieveAndInsertSurvey() {
                 var pic_admin = Meteor.settings.public.admin_panel.survey[0].picture_admin;
                 var picUp = pic_admin[pic_admin.length - 1];
                 // inject a picture_admin for upload picture from settings
-                picUp.order = order_picture++;
+                picUp.order = order_picture+1;
                 survey.picture_admin.push(picUp);
             }
 
@@ -217,8 +217,6 @@ function retrieveAndInsertSurvey() {
             survey.module_survey.push(moduleSurvey);
         }
     });
-    console.log(survey);
     //access to controller to insert server-side
     Controller.InsertSurvey(survey);
-
 }

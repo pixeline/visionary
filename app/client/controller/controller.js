@@ -83,7 +83,6 @@ Controller = {};
                                         });
                                 }
                         });
-                        return sessionStorage.getItem("surveyId");
                 }
         };
         
@@ -108,7 +107,6 @@ Controller = {};
                                         sAlert.success('Insertion effectuée !');
                                 }
                         });
-                        return sessionStorage.getItem("surveyId");
                 }
         };
         
@@ -138,6 +136,7 @@ Controller = {};
                                 // display error or go on
                                 if (error) {
                                         sAlert.error('L\'insertion du module a échoué.');
+                                        Meteor.call('removeSurvey', surveyId);
                                 } else {
                                         sAlert.success('Insertion effectuée !');
                                         //insert each info_txt
@@ -210,6 +209,7 @@ Controller = {};
                                 // display error or go on
                                 if (error) {
                                         sAlert.error('L\'insertion de l\'image a échoué.');
+                                        Meteor.call('removeSurvey', surveyId);
                                 } else {
                                         sAlert.success('Insertion effectuée !');
                                         //insert each instruction
