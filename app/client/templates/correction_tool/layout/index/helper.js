@@ -3,6 +3,7 @@ Template.Index.helpers({
     //put survey configuration in session at the startup
     //Warning : have to pass here to init survey
     preLoadFunction : function () {
+        sessionStorage.clear();
         var surveyInput = survey.findOne({state:true});
         var currentSurvey = new Collection.Survey(surveyInput.name, surveyInput.root_url, surveyInput.state, 
                                     surveyInput.date_created, surveyInput.max_reset_counter, surveyInput.max_satis,

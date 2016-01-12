@@ -16,8 +16,9 @@
 			
 			<form action="" method="post" id="storeSurvey" class="form formStep1">
 					
-					{{>InputAdmin type="text" text="Nom du questionnaire" id="nameSurvey" name="nameSurvey" placeholder=surveyDefault.name required="true" value=surveyModif.name}}				
-					{{>InputAdmin type="text" text="URL du questionnaire" id="urlSurvey" name="urlSurvey" placeholder=surveyDefault.root_url required="true" value="/v2"}}
+					{{>InputAdmin type="text" text="Nom du questionnaire" id="nameSurvey" name="nameSurvey" placeholder=surveyDefault.name required="true" value=surveyModif.name}}
+                    <label for="urlSurvey">URL du questionnaire</label>
+                    <input type="text" id="urlSurvey" name="urlSurvey" placeholder={{surveyDefault.root_url}} required=true value={{surveyDefault.root_url}} disabled />                         
 					{{>InputAdmin type="number" text="Maximum de reset" id="maxReset" name="maxReset" placeholder=surveyDefault.max_reset_counter required="true" value=surveyModif.max_reset_counter}}
 					{{>InputAdmin type="number" text="Maximum de satisfaction" id="maxSatis" name="maxSatis" placeholder=surveyDefault.max_satis required="true" value=surveyModif.max_satis}}			
 					<p>Inclure le test de classement ?</p>		

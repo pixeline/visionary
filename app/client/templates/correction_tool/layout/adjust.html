@@ -1,22 +1,19 @@
-<template name = "Adjust" class="test">
+<template name = "Adjust">
 	
 	{{>Header template="Adjust"}}
 	
 	<div class="content">
 		
 		<ul class="filtreAjustement">
-			<li class="filtreMoins imgMoins">{{>Picture template="Adjust" idImg="-" check=false click=true}}<p>Diminuer l'effet</p></li>
-			<li>{{>Picture template="Adjust" idImg="1" check=false click=false classLi=""}}</li>
-			<li class="filtrePlus imgPlus">{{>Picture template="Adjust" idImg="+" check=false click=true}}<p>Augmenter l'effet</p></li>
-			
-		<!-- new Design
-            <li class="filtre">{{>Picture template="Adjust" idImg="-" check=false click=true adjustButton=true}}<p>Diminuer l'effet</p></li>
+            <li class="filtre">{{>Picture template="Adjust" idImg="-" check=false click=true imgLess=true classLi="imgMoins"}}</li>
 			<li class="normal">{{>Picture template="Adjust" idImg="1" check=false click=false classLi=""}}</li>
-		    <li class="filtre">{{>Picture template="Adjust" idImg="+" check=false click=true adjustButton=true}}<p>Augmenter l'effet</p></li>
-		-->
+		    <li class="filtre">{{>Picture template="Adjust" idImg="+" check=false click=true imgMore=true classLi="imgPlus"}}</li>
         </ul>
-		
-		{{>linkNext template="Adjust" class="btnPrimary" txt="Valider mon choix"}}
+        
+		<ul class="confirmation">
+            <li>{{>linkReset template="Adjust" class="btnSecondary"  txt="Retour"}}</li>
+            <li>{{>linkNext template="Adjust" class="btnPrimary" txt="Valider mon choix"}}</li>
+		</ul>
 		
 	</div>
 	

@@ -77,7 +77,6 @@ Template.ConfigModules.events({
         retrieveAndInsertSurvey();
         event.preventDefault();
     }
-
 });
 
 /* some utils functions for configuration of form module */

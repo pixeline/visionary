@@ -1,23 +1,19 @@
 <template name="ImgAdmin">
     <input type="radio" name="tabs" id="{{idTab order}}" />
-    <label for="{{idTab order}}" class="onglet">{{order}}</label>
+    <label for="{{idTab order}}" class="onglet state-default">{{order}}</label>
     <div class="tab-content configModule" id={{mixId "moduleImg" order}} >
-        
+        <button id={{mixId "removeImgAdmin" order}} class="delImgAdmin btnPrimary pull-right">Supprimer cette image</button>
         <form action="" method="" class="form">
              
             <div class="ajoutImageModule">
                 <label for={{mixId "uploadImg" order}}>Veuillez choisir l'image à ajouter au test</label>
                 <input type="file" id={{mixId "uploadImg" order}} class="uploadImg" accept="image/*">
-                <img src={{pictureModify order "file_name"}} id={{mixId "uploadedImg" order}} alt={{pictureModify order "title"}} >
+                <img src="" id={{mixId "uploadedImg" order}} alt="" >
             </div>
-            {{>InputAdmin type="text" text="Quelle est le type de l'image ?" id="typeImg" id2=order name="typeImg" placeholder="Ex: Technique" required="true" value=(pictureModify order "type")}}									 	
+            {{>InputAdmin type="text" text="Quelle est le type de l'image ?" id="typeImg" id2=order name="typeImg" placeholder="Ex: Technique" required="true"}}									 	
             {{#if isNotFirst order}}
                 <label for={{mixId "sameGroup" order}}>Même groupe que l'image précédente ? (Le choix de l'image est aléatoire dans un même groupe)</label>
-                {{#if isSameGroup order}}
-                    <input type="checkbox" name="sameGroup" id={{mixId "sameGroup" order}} checked />
-                {{else}}
-                    <input type="checkbox" name="sameGroup" id={{mixId "sameGroup" order}} />
-                {{/if}}
+                <input type="checkbox" name="sameGroup" id={{mixId "sameGroup" order}} />
             {{/if}} 
             
             <div class="accordion"> 

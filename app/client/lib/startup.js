@@ -6,7 +6,7 @@ Meteor.startup(function () {
       sAlert.config({
             effect: 'stackslide',
             position: 'top-right',
-            timeout: 2000,
+            timeout: 3500,
             html: false,
             onRouteClose: true,
             stack: true

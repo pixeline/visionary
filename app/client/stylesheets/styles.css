@@ -335,171 +335,82 @@ div.zoomContainer:hover {
 /* ---------------------------------------------- 
 	adjust.html // Filtre +/- image
 ---------------------------------------------- */
+
 ul.filtreAjustement {
-	text-align: center;
+    text-align: center;
 }
-
-ul.filtreAjustement li:first-child, ul.filtreAjustement li:last-child {
-	width: 250px;
-	height: 250px;
-}
-
-ul.filtreAjustement li {
-	display: inline-block;
-	width: 33%;
-	padding:10px;
-}
-
-ul.filtreAjustement li img {
-	max-width: 100%;
-}
-
-ul.filtreAjustement .filtreMoins, ul.filtreAjustement .filtrePlus {
-	position: relative;
-	cursor: pointer;
-}
-
-ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
-	margin-bottom: 50%;
-}
-
-.imgMoins:before {
-	content: "-";
-    position: absolute;
-    font-size: 13.5em;
-    font-weight: bold;
-    color: rgba(0,0,0,0.7);
-    left: 0;
-    right: 0;
-    z-index: 0;
-    top:-5px;
-}
-
-.imgPlus:before {
-	content:"+";
-    position: absolute;
-    font-size: 13em;
-    font-weight: bold;
-    color: rgba(0,0,0,0.7);
-    left: 0;
-    right: 0;
-    z-index: 0;
-    top: -10px;
-}
-
-@media screen and (min-width:0px) and (max-width:850px){
-
-	/* adjust.html // Filtre +/- image */
-	ul.filtreAjustement li {
-	    display: block;
-	    width: 90%;
-	    margin: 0 auto;
-   }
-
-	ul.filtreAjustement li:first-child, ul.filtreAjustement li:last-child {
-		width: 100px;
-		height: 100px;
-	}
-
-	.imgMoins:before, .imgPlus:before {
-		font-size: 6em;
-	}
-
-}
-
-@media screen and (max-width:1023px){
-
-	
-	ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
-		margin-bottom: 20%;
-	}
-
-}
-
-@media screen and (min-width:1024px) and (max-width:1300px){
-	
-	ul.filtreAjustement .filtreMoins img, ul.filtreAjustement .filtrePlus img {
-		margin-bottom: 30%;
-	}
-
-	
-}
-
-
-/* ---------------------------------------------------------------
-	adjust.html // LAYOUT FILTRE IMAGE FOR BACKGROUND + AND -
---------------------------------------------------------------- */
-​
-ul.filtreAjustement {
-	text-align: center;
-}
-​
+ 
 ul.filtreAjustement li.normal {
-	margin-left:15px;
-	margin-right: 15px;
+    margin-left:15px;
+    margin-right: 15px;
 }
-​
-ul.filtreAjustement li.filtre  {
-	background-color:#f4f4f4;
-	max-width: 300px;
-	position: relative;
-	vertical-align: top;
-    margin-top: 10%;
-    border:solid 1px #cecccd;
-}
-​
-ul.filtreAjustement li.filtre p {
-	text-transform: uppercase;
-	font-size: 1.8em;
-	margin-top:12px;
-}
-​
+ 
 ul.filtreAjustement li.filtre a {
-	background-position: center center;
-    background-size: cover;
+    position: relative;
     display: block;
-    margin: 0 auto;
+    background-color: #f4f4f4;
+    border: solid 1px #cecccd;
     max-width: 300px;
     width: auto;
-    height: 250px;
+    background-clip: content-box;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    margin-top: 12px;
+    padding: 5px;
+    text-decoration: none;
+    color: #000;
+    transition: box-shadow 0.3s ease;
 }
-​
+ 
+ul.filtreAjustement li.filtre a:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    -moz-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+}
+ 
 .imgMoins:before {
     content: "-";
     position: absolute;
-    font-size: 13.5em;
+    font-size: 12em;
     font-weight: bold;
     color: rgb(0,0,0);
     left: 0;
     right: 0;
     z-index: 0;
-    top: -5px;
+    top: 37%;
+    line-height: 0;
 }
-​
+ 
 .imgPlus:before {
     content: "+";
     position: absolute;
-    font-size: 13em;
+    font-size: 8em;
     font-weight: bold;
     color: rgb(0,0,0);
     left: 0;
     right: 0;
     z-index: 0;
-    top: -10px;
+    top: 37%;
+    line-height: 0;
 }
-​
+ 
 ul.filtreAjustement li {
-	display: inline-block;
-	width: 35%;
-	padding:10px;
+    display: inline-block;
+    width: 35%;
+    padding:10px;
 }
-​
+ 
+ul.filtreAjustement li.filtre {
+    max-width: 300px;
+
+}
+ 
 ul.filtreAjustement li:last-child {
-	width: 25%;
+    width: 25%;
 }
-​
+ 
 ul.filtreAjustement li img {
-	max-width: 100%;
+    max-width: 100%;
 }
 
 

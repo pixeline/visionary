@@ -14,7 +14,7 @@
 			
 			<h3><strong>Étape 2/2</strong>: Configuration des modules</h3>
 			
-			<ul class="tabs clearfix">
+			<ul class="tabs clearfix sortable">
 			  
 			    <li>
                     {{>IntroAdmin infoTxt=(infoTxt 'Index')}}
@@ -26,7 +26,7 @@
                 {{/each}}
 			    <li>
 			        <input type="radio" name="tabs" id="addImgInput" />
-			        <label for="addImg" class="onglet" id="addImgLabel">+</label>
+			        <label for="addImg" class="onglet state-default state-disabled" id="addImgLabel">+</label>
 			    </li>
                 {{#if surveyToAdd.upload}}
                     <li>
