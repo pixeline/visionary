@@ -1,4 +1,12 @@
-
+  /**************************************************************************\
+  |  Functions for img templates                                             |
+  |      Informations of images to modify + filters and instructions         |
+  |      Informations of a previous survey or the default survey introduced  |
+  |      Remove of a template img functionnality                             |
+  |      Change order with a drag&drop functionnality                        |
+  |      Uploading a picture and seeing reactively the result                |
+  \**************************************************************************/
+  
 /* onrendered the ImgAdmin Template => toggle every modules and filter config */
 Template.ImgAdmin.onRendered(function () {
     $(".contentAccordions").hide();

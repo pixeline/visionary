@@ -1,13 +1,13 @@
-/* Controller to suscribe on data assiocate with the current route */
+
+  /*******************************************************************\
+  |  Controller to suscribe on data assiocate with the current route  |
+  \*******************************************************************/
 
 HomeController = RouteController.extend({
-  
   subscriptions: function() {
   },
-  
   waitOn: function () {
   },
-  
   data: function () {
   },
   
@@ -30,9 +30,9 @@ HomeController = RouteController.extend({
 });
 
 
-/*****************************
- * Correction Tool Prototype *
- *****************************/
+/*******************
+ * PROFILER SYSTEM *
+ *******************/
  
 /*  
  *  Retrieve informations in local/session storage if previous exit/encoding url 

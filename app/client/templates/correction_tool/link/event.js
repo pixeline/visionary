@@ -1,7 +1,7 @@
-/*********************************************************
- * Computing of route for page of correction on pictures *
- ********************************************************/
 
+  /************************************************************************\
+  |  Computing a route and doing actions for page of pictures' correction  |
+  \************************************************************************/
 
 //choice of rendered picture
 var idChoice;
@@ -18,7 +18,6 @@ Template.linkNext.events({
         }
     }
 });
-
 
 Template.Select.onRendered(function () {
     //to avoid a bug : while click on tritanope mode picture, 
@@ -170,7 +169,7 @@ Template.linkReset.events({
         //update reset_counter for this picture
         updateResetCounter(picOrder);
                 
-        //route to first page of correction for this picture
+        //route to first page of correction for this picture (Select)
         var nextRoute = getNextModule("Valid", true, false);
         Router.go(nextRoute.mod.title, { img: nextRoute.pic.order });
     }

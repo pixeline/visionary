@@ -1,4 +1,8 @@
-
+  /****************************************************\
+  |  Creation of graphics and give some informations   |
+  |  about one specific user                           |
+  \****************************************************/
+  
 /* rendered of graphs from d3 js for one user TODO */
 Template.DashboardUser.rendered = function () {
     

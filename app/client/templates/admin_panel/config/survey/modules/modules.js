@@ -1,3 +1,10 @@
+  /**************************************************************************\
+  |  Second step for the configuration of a survey                           |
+  |      Informations of modules to modify                                   |
+  |      Informations of a previous survey or the default survey introduced  |
+  |      Retrieving, Validating and Inserting the survey when submitting     |
+  \**************************************************************************/
+
 //init the number of images
 Session.set('nbrImg', 1);
 //if the number of images have been init or not
@@ -43,6 +50,7 @@ Template.ConfigModules.helpers({
     images: function () {
         //init the number of images if it's a survey to modify
         var surveyToModif = JSON.parse(sessionStorage.getItem("surveyToModify"));
+        console.log(surveyToModif);
         if(surveyToModif && !initModify) {
             var nbImg = surveyToModif.picture_admin.length;
             if(surveyToModif.picture_admin[surveyToModif.picture_admin.length-1].type == "Upload") {

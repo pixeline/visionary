@@ -1,5 +1,10 @@
+
+  /*********************\
+  |  Init of front-end  |
+  \*********************/
+  
 /*    
- *    Init sAlert module at the startup of client application
+ * Init sAlert module at the startup of client application
  */
 Meteor.startup(function () { 
       

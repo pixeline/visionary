@@ -1,4 +1,4 @@
-/* Using informations of the user in the template Thanks */
+/* Using informations of the users */
 Template.Dashboard.helpers({
     'user': function() {
         return user.find({}, {sort: {date_created: -1} });

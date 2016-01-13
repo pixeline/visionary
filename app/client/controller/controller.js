@@ -1,4 +1,7 @@
-/* Validate and insert/remove/modify survey with call to meteor server sending a collection */
+
+  /********************************************************************************************\
+  |  Validate and insert/remove/modify object with call to meteor server sending a collection  |
+  \********************************************************************************************/
 
 Controller = {};
 
@@ -8,7 +11,10 @@ Controller = {};
         * PROFILER SYSTEM *
         *******************/
  
-        /* Insert an user that have done the correction test surveyName to have a profile */
+        /* Insert a user which have done the correction test surveyName to have a profile
+        *   If ws is active, send these informations to the ws
+        *   Clear the session and route if no fail
+        */
         Controller.InsertUserAndProfiles = function (userInput, correctionPic, surveyName, correcResult) {
                 var user = new Collection.User(userInput.name, userInput.firstname, userInput.email,
                         userInput.age, userInput.sex, (new Date()).getTime());

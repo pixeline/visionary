@@ -13,9 +13,9 @@
         <div class="content">
 		
             <p>Nombre total d'utilisateurs : {{user.count}}</p>
-                <div id="pieChartSex" style="width: 100%; height: 300px;" ></div>
-                <div id="pieChartTypeFilter" style="width: 100%; height: 300px;" ></div>
-                <div id="chartValueFilterResult" style="width: 100%; height: 500px;" ></div>
+            <div id="pieChartSex" style="width: 100%; height: 300px;" ></div>
+            <div id="pieChartTypeFilter" style="width: 100%; height: 300px;" ></div>
+            <div id="chartValueFilterResult" style="width: 100%; height: 500px;" ></div>
                 
             <br/><br/><br/>
             
@@ -38,7 +38,8 @@
                             <td>{{name}}</td>
                             <td>{{firstname}}</td>
                             <td>{{age}}</td>
-                            <td>{{#if sex}}
+                            <td>
+                                {{#if sex}}
                                     M
                                 {{else}}
                                     F
@@ -50,7 +51,7 @@
                             <td>{{formateDate date_created}}</td>
                             <td class="deleteUser">Supprimer</td>
                         </tr>
-                        {{/each}}
+                    {{/each}}
                 </tbody>
             </table>
         </div>

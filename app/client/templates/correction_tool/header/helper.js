@@ -1,3 +1,9 @@
+  /**************************************************************************\
+  |  Header of each templates in the correction_tool                         |
+  |      Informations that need the breadcrumb, the instructions and the     |
+  |      helpt text are send by the templates                                |
+  \**************************************************************************/
+
 /* Use of attributes to reuse in the template Header */
 Template.Header.helpers({
     //question for current template

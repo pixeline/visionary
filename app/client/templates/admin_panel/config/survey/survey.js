@@ -1,3 +1,7 @@
+  /****************************************************\
+  |  First step for the configuration of a survey      |
+  \****************************************************/
+
 /* Give some default values or the values from a previous config */
 Template.ConfigSurvey.helpers ({
     //survey from setttings
@@ -6,8 +10,6 @@ Template.ConfigSurvey.helpers ({
     },
     //survey to modif
     surveyModif : function () {
-        initModify = false;
-        stopInit = false;
         return JSON.parse(sessionStorage.getItem("surveyToModify"));
     },
     //return true if the module have to be included, false else
@@ -45,6 +47,8 @@ Template.ConfigSurvey.events ({
         };
         //set in session
         sessionStorage.setItem("surveyToAdd", JSON.stringify(surveyToAdd));
+        initModify = false;
+        stopInit = false;
         Router.go("ConfigModules");
     }
 });

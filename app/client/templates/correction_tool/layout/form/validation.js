@@ -104,7 +104,7 @@ $.validator.setDefaults({
 });
 
 
-//validate an url like /v1/app
+//validate an email
 $.validator.addMethod( 'uniqueEmail', function(email) {
     var usr = user.findOne( { "email": email }, { fields: { "email": 1 } } );
     return usr ? false : true;

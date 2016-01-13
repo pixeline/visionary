@@ -1,7 +1,9 @@
-/* Collections for client-side (Model) 
- *  collections are used for admin panel without sub collection
- *	collections are used in correction with all sub collections to put in session
- */
+
+  /*****************************************************************************************\
+  |  Collections for client-side (Model)                                                    |
+  |     collections are used for admin panel without sub collection                         |
+  | 	collections are used in profiler system with all sub collections to put in session  |
+  \*****************************************************************************************/
 
 Collection = {}; 
 
@@ -11,7 +13,7 @@ Collection = {};
 	*	USER INFORMATIONS     *
 	***************************/
 		
-	/* Collection User to be contructed */
+	/* Collection User to be constructed */
 	Collection.User = function (name, firstname, email, age, sex, date_created) {
 		this.name = name;
 		this.firstname = firstname;
@@ -21,7 +23,7 @@ Collection = {};
 		this.date_created = date_created;
 	};
 	
-	/* Collection CorrectionProfilePicture to be contructed (linked with one user) */
+	/* Collection CorrectionProfilePicture to be constructed (linked with one user) */
 	Collection.CorrectionProfilePicture = function (filter_type, reset_counter, picture, filter) {
 		this.filter_type = filter_type;
 		this.reset_counter = reset_counter;
@@ -29,7 +31,7 @@ Collection = {};
 		this.filter = filterTab(filter);
 	};
 		
-	/* Collection Picture to be contructed (linked with one CorrectionPorfilePicture) */
+	/* Collection Picture to be constructed (linked with one CorrectionPorfilePicture) */
 	Collection.Picture = function (order, title, typePic, file_name, instruction) {
 		this.order = order;
 		this.title = title;
@@ -38,7 +40,7 @@ Collection = {};
 		this.instruction = instructionTab2(objectOrUndefined2(instruction));
 	};
 		
-	/* Collection Filter to be contructed (linked with one user) */
+	/* Collection Filter to be constructed (linked with one user) */
 	Collection.Filter = function (parameter, value) {
 		this.parameter = parameter;
 		this.value = value;
@@ -49,7 +51,7 @@ Collection = {};
 	*	ADMIN CONFIGURATION   *
 	***************************/
 		
-	/* Collection Survey to be contructed */
+	/* Collection Survey to be constructed */
 	Collection.Survey = function (name, root_url, state, date_created, max_reset_counter, max_satis, module_survey, picture_admin) {
 		this.name = name;
 		this.root_url = root_url;
@@ -61,7 +63,7 @@ Collection = {};
 		this.picture_admin = pictureTab(picture_admin);
 	};
 		
-	/* Collection ModuleSurvey to be contructed (linked with survey) */
+	/* Collection ModuleSurvey to be constructed (linked with survey) */
 	Collection.ModuleSurvey = function (order, title, instruction, info_txt, filter_admin, sorted_color_admin, field_form) {
 		this.order = order;
 		this.title = title;
@@ -72,7 +74,7 @@ Collection = {};
 		this.field_form = fieldTab(objectOrUndefined(field_form));
 	};
 		
-	/* Collection PictureAdmin to be contructed (linked with survey and integrated in module which have one/several filter_admin) */
+	/* Collection PictureAdmin to be constructed (linked with survey and integrated in module which have one/several filter_admin) */
 	Collection.PictureAdmin = function (order, title, typePic, file_name, instruction) {
 		this.order = order;
 		this.title = title;
@@ -88,19 +90,19 @@ Collection = {};
 		this.picture_order = picture_order;
 	};
 		
-	/* Collection InfoTxt to be contructed (linked with some modules) */
+	/* Collection InfoTxt to be constructed (linked with some modules) */
 	Collection.InfoTxt = function (title, txt) {
 		this.title = title;
 		this.txt = txt;
 	};
 		
-	/* Collection SortedColorAdmin to be contructed (linked with module sorted_test) */
+	/* Collection SortedColorAdmin to be constructed (linked with module sorted_test) */
 	Collection.SortedColorAdmin = function (order, color) {
 		this.order = order;
 		this.color = color;
 	};
 		
-	/* Collection FilterAdmin to be contructed (linked with some modules - select, select_ligne, adjust, choice) */
+	/* Collection FilterAdmin to be constructed (linked with some modules - select, select_ligne, adjust, choice) */
 	Collection.FilterAdmin = function (order, parameter, init_value, min, max, conversion, step) {
 		this.order = order;
 		this.parameter = parameter;
@@ -111,7 +113,7 @@ Collection = {};
 		this.step = step;
 	};
 		
-	/* Collection FieldForm to be contructed (linked with module form) */
+	/* Collection FieldForm to be constructed (linked with module form) */
 	Collection.FieldForm = function (order, typeField, label, name, placeholder, required) {
 		this.order = order;
 		this.type = typeField;

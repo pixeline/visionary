@@ -1,4 +1,4 @@
-/* Using informations of the user in the template Thanks */
+/* Using informations of the user */
 Template.DashboardUser.helpers({
     user: function() {
         return user.findOne();

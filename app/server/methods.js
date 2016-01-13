@@ -1,16 +1,7 @@
-/*****************************************************************************/
-/*  Server Methods */
-/*****************************************************************************/
+  /********************************************************************\
+  |  Data-access and process in MongoDB (pattern Method-call and DAO)  |
+  \********************************************************************/
 
-/* function of verification to be an Admin */
-function isAdmin () {
-    var currentUser = Meteor.user();
-    if(currentUser && currentUser.username === "admin"){
-        return true;
-    } else {
-        throw new Meteor.Error("Unauthorized", "Insertion non-autorisée");
-    } 
-}
 
 /* Insert, Update, Delete in mongoDB */
 Meteor.methods({
@@ -199,6 +190,7 @@ Meteor.methods({
         check(filterId, String);
         filter.remove({_id: filterId});
     },
+    
     
     /***************
     * ADMIN PANEL *
@@ -511,3 +503,13 @@ Meteor.methods({
     }
     
 });
+
+/* function of verification to be an Admin */
+function isAdmin () {
+    var currentUser = Meteor.user();
+    if(currentUser && currentUser.username === "admin"){
+        return true;
+    } else {
+        throw new Meteor.Error("Unauthorized", "Insertion non-autorisée");
+    } 
+}

@@ -1,3 +1,7 @@
+  /****************************************************\
+  |  Creation of graphics and give some informations   |
+  |  about every users thanks to amChart library       |
+  \****************************************************/
 
 /* Events of main dashboard */
 Template.Dashboard.events ({

@@ -1,3 +1,8 @@
+
+  /**************************\
+  |  Admin panel's Side bar  |
+  \**************************/
+
 Template.Sidebar.events({
     //logout of the admin panel
     'click #logout': function(event){

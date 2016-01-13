@@ -1,4 +1,7 @@
-/* Validation functions */
+
+  /****************************************\
+  |  Function for some field's validation  |
+  \****************************************/
 
 Validation = {};
 

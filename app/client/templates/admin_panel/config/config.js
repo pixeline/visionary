@@ -1,3 +1,7 @@
+  /****************************************************\
+  |  Displaying survey and managing survey data CRUD   |
+  \****************************************************/
+  
 /* helper of the homepage configuration panel */
 Template.Config.helpers ({
     'survey': function(){
@@ -23,11 +27,12 @@ Template.Config.events ({
     //go to template of inserting a survey
     'click #addSurveyLink': function(event) {
         event.preventDefault();
-        //clear session to avoid a previous configuration
+        //clean session to avoid a previous configuration
         sessionStorage.clear();
+        Session.set('nbrImg', null);
         Router.go("ConfigSurvey");
     },
-    //go to template of modification of a survey
+    //go to template of modification of a survey TODO
     'click .modifier': function(event) {
         event.preventDefault();
         var idSurvey = $(event.target).parents(".surveyInserted").attr("id");
@@ -40,7 +45,7 @@ Template.Config.events ({
         sessionStorage.setItem("surveyToModify", JSON.stringify(surveyToModify));
         Router.go("ConfigSurvey");
     },
-    //duplicate the selected survey
+    //duplicate the selected survey TODO
     'click .duplicateSurvey': function(event) {
         sAlert.info('Fonction non-implémentée pour le moment.');
         /*var idSurvey = $(event.target).parents(".surveyInserted").attr("id");
@@ -60,6 +65,10 @@ Template.Config.events ({
     }
 });
 
+  /************************************\
+  |  helpers for field in admin panel  |
+  \************************************/
+  
 /* helper for each input in configuration panel */
 Template.InputAdmin.helpers ({
     //to have a particular id for each input field

@@ -1,7 +1,7 @@
-/* 
- * collection stored in MongoDB and 
- * relation introduced for easy access in templates 
- */
+
+  /***************************************************************************************\
+  |  collections stored in MongoDB and relations introduced for easy access in templates  |
+  \***************************************************************************************/
 
 /*******************
  * PROFILER SYSTEM *

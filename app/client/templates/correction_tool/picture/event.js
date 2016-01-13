@@ -1,6 +1,6 @@
-/*************************
- * Rendering of pictures *
- *************************/
+  /**************************************************\
+  |  Rendering and action (zoom, adjut) on pictures  |
+  \**************************************************/
 
 /* Rendering pictures (global rendering for correction_tool) */
 Template.Picture.onRendered(function () {
@@ -38,7 +38,7 @@ Template.Picture.events({
 //to hide the step - or + if min or max reached
 var minReach, maxReach;
 
-/* Events of template Picture (global event for correction_tool) */
+/* Events of picture's adjustment */
 Template.Adjust.events({
     //adjust rendering (module Adjust)
     'click li.filtre': function (event) {

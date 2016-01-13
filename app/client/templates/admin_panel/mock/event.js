@@ -1,3 +1,7 @@
+  /******************************\
+  |  Admin panel's in mock mode  |
+  \******************************/
+
 /* Create mock data coming from settings */
 Template.AdminMock.onRendered(function () {
     //link with settings and insert data for one survey

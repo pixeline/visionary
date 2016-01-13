@@ -1,3 +1,8 @@
+  /********************************************************************************************\
+  |  Template of authentification to go on admin panel                                         |
+  |   Security have to improved                                                                |
+  \********************************************************************************************/
+
 function checkEmailIsValid (aString) {  
   aString = aString || '';
   return aString.length > 1;

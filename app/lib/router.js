@@ -1,3 +1,7 @@
+  /******************************************\
+  |  Routing of the application's templates  |
+  \******************************************/
+
 //root_url of the current application
 var root_url = Meteor.settings.public.admin_panel.survey[0].root_url;
 
@@ -8,9 +12,9 @@ Router.configure({
     notFoundTemplate: 'NotFound'
 }); 
 
-/*****************************
- * Correction Tool Prototype *
- *****************************/
+/*******************
+ * PROFILER SYSTEM *
+ *******************/
 
 /* Homepage of the application */
 Router.route(root_url, {

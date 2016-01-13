@@ -1,3 +1,7 @@
+  /***********************************************\
+  |  Register informations if user exit the tool  |
+  \***********************************************/
+
 /* detect that the user want to exit/encoding url in application and ask confirmation */
 window.addEventListener("beforeunload", function (e) {
 	if(insideTool() != "undefined") {
