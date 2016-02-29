@@ -127,3 +127,10 @@ Router.route(root_url+'/dashboard/:idUser', {
     template: 'DashboardUser',
     controller: 'ProfileController'
 });
+
+/* Teste de classement */
+Router.route(root_url+'/testdeclassement', {
+    name: 'TestDeClassement',
+    template: 'TestDeClassement',
+    controller: 'TestDeClassementController'
+});

@@ -189,6 +189,9 @@ ThanksController = HomeController.extend({
     }
 });
 
+/* Classement test D15 */
+TestDeClassementController = HomeController.extend({});
+
 /***************
  * Admin panel *
  ***************/
