@@ -6,6 +6,7 @@ html {
   box-sizing: inherit;
 }
 
+
 html, body {
     height: 100%;
     font: normal 100% "jaf-bernino-sans", sans-serif;
@@ -17,16 +18,18 @@ body {
     padding: 0;
 }
 
-.center {
+
+.text-center {
     text-align: center;
 }
-.part-top {
-    height: 50%;
+.section-top {
+    height: 70%;
     background: #000;
-}
-.part-bottom {
     position: relative;
-    height: 50%;
+}
+.section-bottom {
+    position: relative;
+    height: 30%;
     padding: 20px;
 }
 
@@ -84,19 +87,70 @@ body {
 #cheat {
     position: absolute;
     right: 0;
-    top : 0;
+    top: 20px;
     background: #ccc;
     z-index: 1;
-    width: 280px;
+    width: 100px;
     opacity: .8;
+    padding: 10px 0;
 }
 
 .hide {
     display: none;
     opacity: 0;
 }
+.show {
+    display: block;
+    opacity: 1;
+}
 #graph {
-    float: right;
+        position: absolute;
+    right: 0;
+    top: 0;
+}
+#pop-up {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: rgba(255, 255, 255, .98);
+    top : 5%;
+    left: 5%;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, .5);
+    padding: 10px;
+}
+
+#show-result {
+    padding: 10px;
+    background-color: #3583B4;
+    color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+    border-radius: 2px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+
+    -webkit-animation : animBtn 10s infinite;
+            animation : animBtn 10s infinite;
 }
 
 
+
+@keyframes animBtn {
+    6.25%  { background-color : #3B84A7; }
+    12.5%  { background-color : #39859C; }
+    18.75% { background-color : #3B8690; }
+    25%    { background-color : #3F8782; }
+    31.25% { background-color : #588473; }
+    37.5%  { background-color : #6C8164; }
+    43.75% { background-color : #837B5D; }
+    50%    { background-color : #837B5D; }
+    56.25% { background-color : #907660; }
+    62.5%  { background-color : #9E6E6F; }
+    68.75% { background-color : #9F6D7C; }
+    75%    { background-color : #9C6D89; }
+    81.25% { background-color : #927099; }
+    87.5%  { background-color : #8F6FA4; }
+    93.75% { background-color : #8073B2; }
+    100%   { background-color : #3583B4; }   
+    
+}

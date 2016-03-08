@@ -1,29 +1,37 @@
 <template name="TestDeClassement">
 
-    <section class="part-top">
+    <section class="section-top">
         <ul id="color-list"></ul>
+        <div id="pop-up" class="hide">
+            <div id="result">
+                <div id="currentOrder"></div>
+                <div id="angle"></div>
+                <div id="major_radius"></div>
+                <div id="minor_radius"></div>
+                <div id="tes"></div>
+                <div id="s_index"></div>
+                <div id="c_index"></div>
+                <div id="cvd_type"></div>
+                <div id="severity_range"></div>
+            </div>
+            <div>
+                <div id="graph"></div>
+            </div>
+        </div>
     </section>
 
-    <section class="part-bottom ">
+    <section class="section-bottom text-center">
         
         <h1>Visionary</h1>
-        <h2>D-15 - Teste d'arrangement de couleur  </h2>
-        <div id="result">
-            <div id="angle"></div>
-            <div id="major_radius"></div>
-            <div id="minor_radius"></div>
-            <div id="tes"></div>
-            <div id="s_index"></div>
-            <div id="c_index"></div>
-            <div id="cvd_type"></div>
-            <div id="severity_range"></div>
-        </div>
+        <h2>D-15 - Teste d'arrangement de couleur</h2>
+        <p>
+            <a href="#" id="show-result">Voir mon resultat</a>
+        </p>
+
 
         <button id="toggle-cheat">cheat</button>
 
         <div id="cheat" class="hide">
-            <div id="graph"></div>
-            <p id="currentOrder"></p>
             <div id="commands">
                 <button id="set-normal">Set normal</button>
                 <button id="set-protan">Set protan</button>
@@ -34,5 +42,8 @@
         </div>
 
     </section>
+
+
+    
 
 </template>

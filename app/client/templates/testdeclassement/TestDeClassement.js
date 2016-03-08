@@ -139,11 +139,27 @@ Template.TestDeClassement.onRendered(function () {
 		},
 		commands = function(){
 
-			//$("#check").on("click", checkAnwser);
-
 			$("#toggle-cheat").on("click", function(){
 				$("#cheat").toggleClass("hide");
+
+				if( $("#pop-up").hasClass("hide") ){
+					$("#pop-up").velocity("transition.slideUpIn", function(){
+						$(this).removeClass("hide");
+					});
+				} else {
+					$("#pop-up").velocity("transition.slideDownOut", function(){
+						$(this).addClass("hide");
+					});
+				}
 			})
+
+			$("#show-result").on("click", function(){
+				$("#pop-up").velocity("transition.slideUpIn", function(){
+					$(this).removeClass("hide");
+				});
+			})
+
+			//$("#graph").toggleClass("hide");
 
 			$("#commands").on("click", "button", function(){
 				switch($(this).attr("id")){ 
@@ -153,6 +169,9 @@ Template.TestDeClassement.onRendered(function () {
 					case "set-tritan": colorOrder = orderArray(data.colors, data.tritan.scheme); break;
 					case "set-random": colorOrder = shuffleArray(data.colors); break;
 				}
+				$("#pop-up").velocity("transition.slideDownOut", function(){
+					$(this).addClass("hide");
+				});
 				$colorList.find("li").velocity("transition.slideUpOut", { 
 					stagger: 20, 
 					complete: function() {
@@ -301,9 +320,13 @@ Template.TestDeClassement.onRendered(function () {
 		        "to" : { "x" : 35,    "y" :   4 },
 		    "scheme" : [ 0, 1, 2, 3, 4, 5, 6, 7, 15, 8, 14, 9, 13, 10, 11, 12]
 		    },
-		  "colors" : [
+		    "presets" : [
+		    	[0,1,2,3,4,5,6,7,9,8,10,11,12,13,14,15], // Normal-minor transpositional error,
+		    	[0,1,2,3,4,5,6,7,15,14,13,12,11,10,9,8], //Normal-1 Tritan crossing
+		    	[0,1] // Deuteranomal
+		    ],
+		    "colors" : [
 		    { "id" : 0,  "color" :"#3781C1", "u" : -21.54, "v" : -38.39 },
-
 		    { "id" : 1,  "color" :"#3583B4", "u" : -23.26, "v" : -25.56 },
 		    { "id" : 2,  "color" :"#3B84A7", "u" : -22.41, "v" : -15.53 },
 		    { "id" : 3,  "color" :"#39859C", "u" : -23.11, "v" :  -7.45 },
@@ -319,7 +342,7 @@ Template.TestDeClassement.onRendered(function () {
 		    { "id" : 13, "color" :"#927099", "u" :  26.64, "v" :  -9.38 },
 		    { "id" : 14, "color" :"#8F6FA4", "u" :  22.92, "v" : -18.65 },
 		    { "id" : 15, "color" :"#8073B2", "u" :   11.2, "v" : -24.61 }
-		  ]
+			]
 		}
 
 		colorOrder = shuffleArray(data.colors);
@@ -378,7 +401,6 @@ var MomentOfInertia = function(spots) {
 };
 
 MomentOfInertia.prototype.vectors = function() {
-	console.log(this.spots)
     vecs = [];
     for(i = 1; i < this.spots.length; i++) {
       vecs.push(new Vector(this.spots[i-1], this.spots[i]));
@@ -391,7 +413,6 @@ MomentOfInertia.prototype.angle = function() {
     var sum2 = 0;
     for (i = 0; i < this.vectors.length; i++) {
       sum1 = sum1 + 2 * this.vectors[i].u * this.vectors[i].v;
-      console.log(sum1)
       sum2 = sum2 + (Math.pow(this.vectors[i].u, 2) - Math.pow(this.vectors[i].v, 2));
     }
     var piAngle = Math.atan(sum1/sum2) / 2;
