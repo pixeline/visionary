@@ -430,6 +430,7 @@ function initialiseReconaissance(data){
 	commands();
 	drawGraph();
 
+	$(window).trigger('resize');
 
 }
 
@@ -787,9 +788,9 @@ function initialiseClassement(data){
 	sortable();
 	commands();
 	drawGraph();
-
+	
+	$(window).trigger('resize');
 	//testDeClassement
-	console.log("initialiseDeClassement")
 
 }
 
