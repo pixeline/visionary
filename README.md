@@ -37,3 +37,4 @@ Outil de prédiagnostic et de paramétrage d'une extension de navigateur corrige
 - Rémy Saint-Cricq
 - Benoit Vanderose
 - Alexandre Plennevaux
+- Teddy Kishi
