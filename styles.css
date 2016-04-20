@@ -59,3 +59,54 @@ header h2.titleCorrectionTool {
 .btnPrimary:hover {
 	background-color:#01579B;
 }
+
+
+/* ---------------------------------------------- 
+	INDEX.HTML // START PAGE 
+---------------------------------------------- */
+.home {
+	margin:50px 0;
+}
+
+.home .center {
+	max-width: 700px;
+	margin:0 auto;
+}
+
+.home h1 {
+	text-align: center;
+}
+
+.home .main {
+	background-color:#fff;
+	padding:50px;
+	border-top:solid 2px #0277BD;
+	margin-top:70px;
+}
+
+.home .main h2 {
+	font-size: 2.2em;
+	margin-bottom:50px;
+	font-family: "kepler-std-display", serif;
+	text-align: center;
+	color:#000;
+}
+
+.home .main p {
+	font-size: 1.3em;
+	line-height: 1.8em;
+	margin-bottom:30px;
+}
+
+/* ---------------------------------------------- 
+	TEST DE CLASSEMENT
+---------------------------------------------- */
+
+.home .main p span {
+	font-weight: 500;
+}
+
+/* TODO style for validation error */
+.error {
+    color : red;
+}
