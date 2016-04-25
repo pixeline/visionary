@@ -1,0 +1,40 @@
+<template name = "ConfigSurvey">
+    
+    <!-- Sidebar -->
+    {{>Sidebar template="Config"}}
+    
+    <!-- configuration of survey -->
+	<div class="right">
+		
+		<header>
+			<h2>Ajouter un questionnaire</h2>
+		</header>
+		
+		<div class="content">
+			
+			<h3><strong>Étape 1/2</strong>: Réglage globale du questionnaire</h3>
+			
+			<form action="" method="post" id="storeSurvey" class="form formStep1">
+					
+					{{>InputAdmin type="text" text="Nom du questionnaire" id="nameSurvey" name="nameSurvey" placeholder=surveyDefault.name required="true" value=surveyModif.name}}
+                    <label for="urlSurvey">URL du questionnaire</label>
+                    <input type="text" id="urlSurvey" name="urlSurvey" placeholder={{surveyDefault.root_url}} required=true value={{surveyDefault.root_url}} disabled />                         
+					{{>InputAdmin type="number" text="Maximum de reset" id="maxReset" name="maxReset" placeholder=surveyDefault.max_reset_counter required="true" value=surveyModif.max_reset_counter}}
+					{{>InputAdmin type="number" text="Maximum de satisfaction" id="maxSatis" name="maxSatis" placeholder=surveyDefault.max_satis required="true" value=surveyModif.max_satis}}			
+					<p>Inclure le test de classement ?</p>		
+                    {{>InputAdmin type="radio" text="Oui" id="enableSortedTest" name="sortedTest" classLabel="labelRadio" value="true" checked=(existModule surveyModif false true "Sorted_test")}}<br/>
+					{{>InputAdmin type="radio" text="Non" id="disableSortedTest" name="sortedTest" classLabel="labelRadio" value="false" checked=(existModule surveyModif true false "Sorted_test")}}
+                    <br/><br/>
+					<p>Inclure l'upload d'image ?</p>
+                    {{>InputAdmin type="radio" text="Oui" id="enableUpload" name="upload" classLabel="labelRadio" value="true" checked=(existModule surveyModif false true "Upload")}}<br/>
+					{{>InputAdmin type="radio" text="Non" id="disableUpload" name="upload" classLabel="labelRadio" value="false" checked=(existModule surveyModif true false "Upload")}}
+					<br><br>	
+					
+					<button type="submit" class="submit">Étape 2: Configurer les modules</button>
+											
+			</form>
+					
+		</div>
+	</div>
+    
+</template>
