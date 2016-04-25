@@ -1,0 +1,20 @@
+<template name = "Choose">
+	
+	{{>Header template="Choose"}}
+
+	<div class="content">
+		
+		<ul class="validationImage">
+			<li>{{>Picture template="Choose" idImg="-1" check=true click=true}}</li>
+			<li>{{>Picture template="Choose" idImg="0" check=true click=true}}</li>
+			<li>{{>Picture template="Choose" idImg="+1" check=true click=true}}</li>
+		</ul>
+	 
+		<ul class="confirmation">
+			<li>{{>linkReset template="Choose" txt="Non, je souhaite réajuster"}}</li>
+			<li>{{>linkNext template="Choose" class="btnPrimary2" txt="Je confirme mon choix"}}</li>
+		</ul>
+		
+	</div>
+
+</template>

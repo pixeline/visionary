@@ -1,0 +1,837 @@
+{
+  "public" : {
+      "mock" : true,
+      "ws_active": false,
+      "url_ws": "http://localhost:8080",
+      "admin_panel" : {
+          "survey": [ 
+                      {
+                        "name" : "V2 - Questionnaire 1",
+                        "root_url" : "/v2",
+                        "state" : true,
+                        "date_created" : "23/11/2015 14:53:59",
+                        "max_reset_counter" : 10,
+                        "max_satis" : 10,
+                        "module_survey": [
+                                    {
+                                      "order" : 1,
+                                      "title" : "Index",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Êtes-vous daltonien(ne) ?",
+                                                    "txt" : "<p>Le test que vous allez réaliser a pour objectif de nous permettre de mieux comprendre votre vision et, au terme du test, <span>corriger les couleurs de votre écran en fonction de celle-ci.</span></p><p>Le test est constitué de plusieurs images que vous devez ajustez à votre volonté afin de répondre à une question initiale. De manière à vous fournir les meilleures configurations de couleurs possibles, il vous est demandé de choisir/ajuster les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. <span>Les images sont zoomables.</span></p><p>Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. La question pour l'image en cours est toujours disponible en haut de votre écran et un champ d'aide vous est proposé en cas de problème en haut à droite.</p>"
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 0,
+                                      "title" : "Sorted_test",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Test de classement des couleurs",
+                                                    "txt" : "<p>Ranger les couleurs par ordre de nuances.<p>"
+                                                  },
+                                                  {
+                                                    "title" : "Test de classement des couleurs",
+                                                    "txt" : "<p>Vous devez ranger les couleurs par ordre de nuances.<p>"
+                                                  }
+                                      ],
+                                      "sorted_color_admin": [
+                                                  {
+                                                    "order" : 1,
+                                                    "color" : "#ffffff"
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "color" : "#3efefe"
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "color" : "#aa2aaa"
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 2,
+                                      "title" : "Valid",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Validez cette image.",
+                                                    "txt" : "<p>Si cette image vous permet de répondre à la question, validez-la pour passer à la prochaine image, sinon commencez la configuration en choisissant de réajuster !</p>"
+                                                  }
+                                      ],
+                                      "filter_admin" : [ 
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -50,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -50,
+                                                    "min" : -90,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -50,
+                                                    "min" : -90,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  { 
+                                                    "order" : 5,
+                                                    "parameter" : "hue",
+                                                    "init_value" : 0,
+                                                    "min" : -25,
+                                                    "max" : 25,
+                                                    "conversion" : 3.6,
+                                                    "step" : 25
+                                                  },
+                                                  {
+                                                    "order" : 6,
+                                                    "parameter" : "intensity_protanope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 7,
+                                                    "parameter" : "intensity_deuteranope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 8,
+                                                    "parameter" : "intensity_tritanope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 3,
+                                      "title" : "Select",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Sélectionnez une image.",
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question (la version d'origine est celle du milieu). Vous pouvez régler le zoom pour distinguer plus nettement l'image. <br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Choisissez la version de l’image qui vous semble la plus nette et agréable.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                  }
+                                      ],
+                                      "filter_admin" : [
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 80
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 80
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 80
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 80
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 0,
+                                      "title" : "Select_ligne",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Sélectionnez une image.",
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question (la version d'origine est celle du milieu). Vous pouvez régler le zoom pour distinguer plus nettement l'image. <br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Choisissez la version de l’image qui vous semble la plus nette et agréable.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                  }
+                                      ],
+                                      "filter_admin" : [
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 0,
+                                                    "min" : 0,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 80
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 80
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 80
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -100,
+                                                    "min" : -100,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 80
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 4,
+                                      "title" : "Adjust",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Ajustez l'image.",
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    (Etape courante) : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus lisible (image du milieu).<br/>3.    : Choisissez la version de l’image qui vous semble la plus nette et agréable.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                   }
+                                      ],
+                                      "filter_admin" : [
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "saturation",
+                                                    "init_value" : 80,
+                                                    "min" : 10,
+                                                    "max" : 100,
+                                                    "conversion" : 0.1,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "visionarize_protanope",
+                                                    "init_value" : -20,
+                                                    "min" : -90,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "visionarize_deuteranope",
+                                                    "init_value" : -20,
+                                                    "min" : -90,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "visionarize_tritanope",
+                                                    "init_value" : -20,
+                                                    "min" : -90,
+                                                    "max" : 0,
+                                                    "conversion" : 0.01,
+                                                    "step" : 20
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 5,
+                                      "title" : "Choose",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Choississez une image.",
+                                                    "txt" : "<p>Bonjour et merci de vous prêter à ce test de perception de la couleur.<br/>De manière à vous fournir les meilleures configurations de couleurs possible, il vous est demandé de choisir les images de manière à pouvoir répondre facilement à la question tout en gardant une image qui est la plus agréable à vos yeux. Si vous ne parvenez pas à répondre à une question avec n'importe quelle configuration, choisissez une version de l'image qui vous paraît approcher la réponse le plus possible. <br/><br/>Chaque configuration d'image se déroule en trois étapes :<br/><br/><br/>1.    : Cliquez pour choisir la version de l’image dont le réglage est suffisant pour répondre à la question.<br/>2.    : Ajustez au moyen des boutons + et - jusqu’à obtenir l’image la plus claire (image du milieu).<br/>3.    (Etape courante) : Choisissez la version de l’image qui vous semble la plus nette et agréable. Si aucune ne vous satisfait, vous pouvez recommencer la configuration pour cette image.<br/><br/>Chaque réglage que vous effectuez est conservé et utilisé sur l’image illustrant la question suivante.</p>"
+                                                  }
+                                      ],
+                                      "filter_admin" : [ 
+                                                  { 
+                                                    "order" : 1,
+                                                    "parameter" : "hue",
+                                                    "init_value" : 0,
+                                                    "min" : -25,
+                                                    "max" : 25,
+                                                    "conversion" : 3.6,
+                                                    "step" : 25
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "parameter" : "intensity_protanope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "parameter" : "intensity_deuteranope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "parameter" : "intensity_tritanope",
+                                                    "init_value" : 0,
+                                                    "min" : -50,
+                                                    "max" : 50,
+                                                    "conversion" : 0.01,
+                                                    "step" : 50
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 6,
+                                      "title" : "Upload",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Validation de vos préférences.",
+                                                    "txt" : "<p>C'est l'heure de vérité ! Afin de vérifier vos préférences, nous vous invitons à télécharger une image de votre choix. Cela nous permettra de valider si les réglages que vous avez effectués précédemment fonctionnent avec votre propre image.</p>"
+                                                  },
+                                                  {
+                                                    "title" : "Téléchargez un fichier.",
+                                                    "txt" : "<p>Si vous le souhaitez, téléchargez une de vos images afin d'observer une version de cette image configurée avec les réglages retenus, et eventuellement la recorriger.</p>"
+                                                  }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Form",
+                                      "info_txt": [
+                                                  {
+                                                    "title" : "Merci !",
+                                                    "txt" : "<p>Le test est à présent terminé, un tout grand merci à vous ! <br />Avant de nous quitter, pouvez-vous nous laisser vos coordonnées ? Ainsi, nous vous tiendrons informé de l'évolution du projet.</p>"
+                                                  }
+                                      ],
+                                      "field_form": [
+                                                  {
+                                                    "order" : 1,
+                                                    "type" : "text",    
+                                                    "label" : ["Votre nom"],
+                                                    "name" : "name",
+                                                    "placeholder" : "Votre nom",
+                                                    "required" : true
+                                                  },
+                                                  {
+                                                    "order" : 2,
+                                                    "type" : "text",
+                                                    "label" : ["Votre prenom"],
+                                                    "name" : "firstname",
+                                                    "placeholder" : "Votre prenom",
+                                                    "required" : true
+                                                  },
+                                                  {
+                                                    "order" : 3,
+                                                    "type" : "email",
+                                                    "label" : ["Votre email"],
+                                                    "name" : "email",
+                                                    "placeholder" : "Votre email",
+                                                    "required" : false
+                                                  },
+                                                  {
+                                                    "order" : 4,
+                                                    "type" : "number",
+                                                    "label" : ["Votre âge"],
+                                                    "name" : "age",
+                                                    "placeholder" : "Votre âge",
+                                                    "required" : true
+                                                  },
+                                                  {
+                                                    "order" : 5,
+                                                    "type" : "radio",
+                                                    "label" : ["Homme", "Femme"],
+                                                    "name" : "sex",
+                                                    "placeholder" : "",
+                                                    "required" : true
+                                                  }
+                                      ]
+                                    }
+                        ],
+                        "picture_admin": [
+                                    {
+                                      "order" : 1,
+                                      "title" : "Plate 2",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate02.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 8 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 1,
+                                      "title" : "Plate 3",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate03.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 6 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 1,
+                                      "title" : "Plate 4",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate04.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 29 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 1,
+                                      "title" : "Plate 5",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate05.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 57 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 2,
+                                      "title" : "Graphique du nombre de personnes en fonction de l'âge (deuteranope).",
+                                      "type" : "Graphique",
+                                      "file_name" : "graphique-deutera.png",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 3,
+                                      "title" : "Trivial Pursuit",
+                                      "type" : "Technique",
+                                      "file_name" : "trivialpursuit.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous affirmer que le joueur orange possède 4 camemberts ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 4,
+                                      "title" : "Bayern vs Porto",
+                                      "type" : "Technique",
+                                      "file_name" : "foot.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous distinguer clairement les deux équipes ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 5,
+                                      "title" : "Graphique du nombre de personnes en fonction de l'âge (tritanope).",
+                                      "type" : "Graphique",
+                                      "file_name" : "graphique-trita.png",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous bien un nombre d'adultes supérieur au nombre d'enfants sur ce graphique ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 6,
+                                      "title" : "Carte du prix de l'immobilier à paris",
+                                      "type" : "Carte",
+                                      "file_name" : "carte.jpeg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous identifier la zone entourée comme la zone 1 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 14",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate14.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 5 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 15",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate15.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le chiffre 7 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 16",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate16.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 16 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 7,
+                                      "title" : "Plate 17",
+                                      "type" : "Ishihara",
+                                      "file_name" : "plate17.svg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Observez-vous de manière claire le nombre 73 ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 8,
+                                      "title" : "Carte du métro de Londres",
+                                      "type" : "Carte",
+                                      "file_name" : "metro.png",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous identifier la ligne de métro passant par Woodford comme étant la ligne \"Central\" ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 9,
+                                      "title" : "Pomme mûre sur un arbre.",
+                                      "type" : "Technique",
+                                      "file_name" : "pomme.jpg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Pouvez-vous distinguer la pomme mûre entourée des autres pommes ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 10,
+                                      "title" : "Liens Google.",
+                                      "type" : "Interface",
+                                      "file_name" : "link.png",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Le lien déjà visité est-il bien \"Téléviseurs\" ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    { 
+                                                      "txt" : "Cliquez sur l’image suffisante pour répondre à la question",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajustez l'image pour obtenir une version claire et agréable.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Quelle version préférez-vous ?",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 11,
+                                      "title" : "Plage",
+                                      "type" : "Illustration",
+                                      "file_name" : "plage.jpeg",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Êtes-vous satisfait du rendu de cette image ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionner votre image préférée.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image pour qu'elle corresponde au mieux à vos attentes.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez votre image préférée.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    },
+                                    {
+                                      "order" : 12,
+                                      "title" : "undefined",
+                                      "type" : "Upload",
+                                      "file_name" : "undefined",
+                                      "instruction" : [
+                                                    {
+                                                      "txt" : "Êtes-vous satisfait de votre image ?",
+                                                      "module" : "Valid"
+                                                    },
+                                                    {
+                                                      "txt" : "Sélectionner votre image préférée.",
+                                                      "module" : "Select"
+                                                    },
+                                                    {
+                                                      "txt" : "Ajuster l'image pour qu'elle corresponde au mieux à vos attentes.",
+                                                      "module" : "Adjust"
+                                                    },
+                                                    {
+                                                      "txt" : "Choisissez votre image préférée.",
+                                                      "module" : "Choose"
+                                                    }
+                                      ]
+                                    }
+                        ]
+                      }
+          ]
+                  
+      }
+  }         
+
+}

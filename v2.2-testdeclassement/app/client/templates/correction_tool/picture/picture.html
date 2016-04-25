@@ -1,0 +1,13 @@
+<template name="Picture">
+        {{#if click}}
+            <a href="" class="linkPicture {{classLi}}">
+                <img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
+                {{#if imgLess}} Diminuer l'effet {{/if}}
+                {{#if imgMore}} Augmenter l'effet {{/if}}
+                {{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
+            </a>
+        {{else}}
+            <img template="{{template}}" class="render" id={{idImg}} src={{picture.src}} data-zoom-image={{picture.src}} alt={{picture.title}}/>
+            {{#if check}}<span class="check"><i class="fa fa-check"></i></span>{{/if}}
+        {{/if}}
+</template>

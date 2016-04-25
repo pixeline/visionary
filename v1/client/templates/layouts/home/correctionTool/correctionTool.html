@@ -1,0 +1,141 @@
+<!-- Template of the correction tool-->
+<template name="CorrectionTool"> 
+
+		<!-- progress bar and ariane wire -->
+	<div class="progress-label">
+		<ul>
+			<li>Série d'images 1</li>
+			<li>Série d'images 2</li>
+			<li>Choix d'images</li>
+		</ul>
+	</div>
+	<div id="progressBar">
+		<span></span>
+	</div>
+
+	<span class="row">
+				
+			<!-- container for each different picture -->
+		<div id="imgContent" class="col-md-7">
+			<img id="image" class="img-responsive" src="" >
+		</div>
+
+			<!-- container for questions-answers -->
+		<div id="QAcontainer" class="col-md-5">
+	  		<h2 id="question" class="questionLabel row"></h2>
+
+				<!-- form to validate answer -->
+			<form id="formQA" class="form-inline">
+				<label class="answerLabel control-label">Réponse : </label>
+				<div class="form-group">
+	  				<input  class="form-control" id="answer_number" type="number" name="quantity" min="1" max="100" value="">
+					<select class="form-control" id="answer_select"></select>
+				</div>
+				<span id="infoNumber">*Si vous ne percevez rien, laissez le champ vide.</span>
+				<br/>
+	  			<input type="submit" id="correction" class="btn btn-success" value="Valider">
+			</form>
+
+		</div>
+
+			<!-- container for filters with slider -->
+		<ul id="filters" class="col-md-5">
+			<p id="answerGiven"></p>
+	  		<p id="infoFilters">Utilisez les filtres afin d'être capable de répondre à la question.</p>
+
+				<!-- Choose type of color blindness to adapt correction -->
+			<ul id="choiceType" class="row">
+				<p id="questionType">Sélectionner l'avion que vous percevez le moins bien.</p>
+		  		<li class="col-md-3"><img class="typeChosen" id="protanope" src="pictures/prota.jpg"></li>
+		  		<li class="col-md-3"><img class="typeChosen" id="deuteranope" src="pictures/deute.jpg"></li>
+		  		<li class="col-md-3"><img class="typeChosen" id="tritanope" src="pictures/trita.jpg"></li>
+	  		</ul>
+
+				<!-- Call helpers and template to generate each filter (first pages) -->
+			{{#each filter}}
+				{{> Filter this}}
+			{{/each}}
+
+				<!-- buttons to reset and switch between each page -->
+		  	<form class="row" id="formFilter">
+	  			<button id="resetbtn" class="btn btn-warning">Réinitialiser les filtres</button>
+	  			<button id="next" class="btn btn-primary">Suivant</button>
+	  		</form>
+	  	</ul>
+
+			<!-- canevas for each picture to choose -->
+	  	<div id="choiceContent" class="row">
+	  		<h2 id="choicePicture" class="row">Choisissez votre image préférée :</h2>		
+	  		<span id="choiceImgContent" class="row col-md-12">
+	  			<div class="contentCheck col-md-4">
+					<img id="image" src="" >
+	  				<span class="check"><img class="img-responsive" src="pictures/icon_check.png"></span>
+	  			</div>
+	  			<div class="contentCheck col-md-4">
+					<img id="image" src="" >
+	  				<span class="check"><img class="img-responsive" src="pictures/icon_check.png"></span>
+	  			</div>
+	  			<div class="contentCheck col-md-4">
+					<img id="image" src="" >
+	  				<span class="check"><img class="img-responsive" src="pictures/icon_check.png"></span>
+	  			</div>
+			</span>
+			<p id="choiceError" class="row">Veuillez sélectionner une image avant de passer à la suivante.</p>
+		</div>
+
+	  		<!-- Form of the user to submit -->
+	  	<div class="col-md-3"></div>
+	  	<div id="field_user" class="col-md-6">
+			<form class="user_information form-horizontal">
+				<h3 class="row" >Veuillez compléter vos informations</h3>
+				<br/>
+					<!-- Call template to generate each input form -->
+				{{> UserForm field="Nom" type="text" required=true}}
+				{{> UserForm field="Prénom" type="text" required=true}}
+				{{> UserForm field="Email" type="email" required=false}}
+				{{> UserForm field="Age" type="text" required=true}}
+			    <div class="form-group" id="genreGroup" >
+			    	<label class="col-md-3 control-label"></label>
+			    	<div class="col-md-9">
+			    		<input type="radio" name="Sexe"  value="M"> Homme
+			    		<input type="radio" name="Sexe" value="F"> Femme
+			    		<span class="required"> *</span>
+			    	</div>
+			    	<div class="col-md-3 "></div>
+			    </div>
+		        <p class="row" >
+		        	<p class="col-md-6"><span class="required">*</span>Information requise</p>
+		        	<input type="submit" value="Valider" class="btn btn-success btn-md col-md-6" >
+		        </p>
+			</form>
+	  	</div> 
+	  	<div class="col-md-3"></div>
+
+	</span>
+			  
+</template>
+
+<!-- template for each filters-->
+<template name="Filter">
+
+	<li class="filter row center" id="{{this}}"> 
+		<label class="col-md-3" for="{{this}}">{{this}}</label>
+		<span class="filterSetting col-md-4"></span>
+		<button class="less">-</button>
+		<span class="filterValue">0</span>
+		<button class="more">+</button>
+	</li>
+
+</template>
+
+<!-- template for each input form-->
+<template name="UserForm">
+
+    <div class="form-group">
+    	<label class="col-md-3 control-label">{{field}}{{#if required}}<span class="required">*</span>{{/if}} : </label>
+    	<div class="col-md-9">
+    		<input type="{{type}}" name="{{field}}" class="form-control" placeholder="{{field}}" required>
+    	</div>
+    </div>
+
+</template>

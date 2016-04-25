@@ -1,0 +1,106 @@
+
+<!-- Template of the daltonization tool-->
+<template name="Daltonize">
+
+	<center>
+		<span class="row" id="simTxt">
+				<p class="col-md-3">Vision normale</p> 
+				<p class="col-md-3">Vision protanope</p>
+				<p class="col-md-3">Vision deuteranope</p>
+				<p class="col-md-3">Vision tritanope</p>
+		</span>
+		<span class="row" id="correcTxt"> 
+				<p class="col-md-3">Vision normale</p>
+				<p class="col-md-3">Vision daltonienne</p>
+				<p class="col-md-3">Correction</p>
+				<p class="col-md-3">Vision daltonienne - correction</p>
+		</span>
+		<span class="row" id="imgContentD">
+			<div class="col-md-3" id="img">
+				<p>Chargement...</p>
+				<img id="image" class="img-responsive" src="" alt="Test image">
+			</div>
+		</span>
+	</center>
+
+	<ul class="filterList">
+		<li class="row">
+			<span class="col-md-3"></span>
+		    <span class="filter row col-md-6" id="daltonize"> 
+				<label class="col-md-3" for="daltonize">Niveau de correction</label>
+				<div class="filterSetting col-md-4"></div>
+				<button class="less col-md-0.5">-</button>
+				<span class="filterValue col-md-0.5">0</span>
+				<button class="more col-md-0.5">+</button>
+		    </span>
+		</li>
+
+		<li class="row">
+		    <span class="col-md-3"></span>
+		    <span class="filter row col-md-6" id="transform"> 
+				<label class="col-md-3" for="transform">Affiner</label>
+				<div class="filterSetting col-md-4"></div>
+				<button class="less col-md-0.5">-</button>
+				<span class="filterValue col-md-0.5">0</span>
+				<button class="more col-md-0.5">+</button>
+		    </span>
+		</li>
+
+		<li class="row">
+		    <span class="col-md-3"></span>
+		    <span class="filter row col-md-6" id="saturation"> 
+				<label class="col-md-3" for="saturation">Saturation</label>
+				<div class="filterSetting col-md-4"></div>
+				<button class="less col-md-0.5">-</button>
+				<span class="filterValue col-md-0.5">0</span>
+				<button class="more col-md-0.5">+</button>
+		    </span>
+		</li>
+
+		<li class="row">
+		    <span class="col-md-3"></span>
+		    <span class="filter row col-md-6" id="teinte"> 
+				<label class="col-md-3" for="teinte">Teinte</label>
+				<div class="filterSetting col-md-4"></div>
+				<button class="less col-md-0.5">-</button>
+				<span class="filterValue col-md-0.5">0</span>
+				<button class="more col-md-0.5">+</button>
+		    </span>
+		</li>
+	</ul>
+	
+	<form class="img-change form-horizontal">
+		<span class="select row col-md-12" >
+			<label class="col-md-4 control-label">Changer d'image :</label>
+			<span class="col-md-2">
+				   <select id="img_select" >
+				   </select>
+			</span>
+		</span>
+
+		<span class="row col-md-12" >
+			<label class="col-md-4 control-label">Ajout d'image :</label>
+			<span class="col-md-2">
+				<input type="file" name="picUpload" class="myFileInput">
+			</span>
+		</span>
+
+		<span class="select row col-md-12" >
+			<label class="col-md-4 control-label">Supprimer cette image :</label>
+			<span class="col-md-2">
+				<input type="submit" id="img_remove_btn" class="btn btn-danger btn-sm" value="Supprimer"/>
+			</span>
+		</span>
+
+		<span class="row col-md-12" >
+			<input type="submit" id="sim" class="btn btn-primary btn-md" value="Simuler la vision daltonienne"/>
+			<input type="submit" id="correcP" class="btn btn-primary btn-md" value="Correction protanope"/>
+			<input type="submit" id="correcD" class="btn btn-primary btn-md" value="Correction deuteranope"/>
+			<input type="submit" id="correcT" class="btn btn-primary btn-md" value="Correction tritanope"/>
+		</span>
+	</form>
+	<form class="refresh">
+			<input type="submit" class="hidden"/>
+	</form>
+
+</template>
