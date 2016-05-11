@@ -1,0 +1,4 @@
+
+v2/build/
+*.tgz
+v2/node_modules/*
