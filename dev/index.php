@@ -70,9 +70,8 @@ $f3->route('GET /',
 		$f3->set('content', 'welcome.htm');
 		echo View::instance()->render('layout.htm');
 	}
-
-
 );
+
 $f3->route('GET /test',
 	function() {
 		echo 'Hello, world!';
@@ -84,8 +83,61 @@ $f3->route('GET /userref',
 		$f3->set('content', 'userref.htm');
 		echo View::instance()->render('layout.htm');
 	}
-
-
 );
+
+
+
+// home page
+$f3->route('GET /',function(){ });
+// check if vetted user and create a session
+$f3->route('GET /@unique_user_url',function(){ });
+
+// Admin login form
+$f3->route('GET /admin',function(){ });
+// Admin dashboard
+$f3->route('GET /admin/dashboard',function(){ });
+$f3->route('GET /admin/tests',function(){ });
+$f3->route('GET /admin/users',function(){ });
+$f3->route('GET /admin/analytics',function(){ });
+
+// Ask for login informations, here email only 
+$f3->route('GET /login',function(){ });
+$f3->route('POST /login',function($f3){ });
+
+// register a new user
+$f3->route('GET /gister',function(){ });
+// send informations
+$f3->route('POST /gister',function($f3){ });
+
+// send back to login if not connected
+$f3->route('GET /test',function(){ }); 
+$f3->route('POST /test',function($f3){ }); 
+
+// show results
+$f3->route('GET /result',function(){ }); 
+// send results
+$f3->route('POST /result',function($f3){ }); 
+
+
+/*
+	ReST interface:
+*/
+/*
+class Item {
+    function get() {}
+    function post() {}
+    function put() {}
+    function delete() {}
+}
+
+$f3->map('/cart/@item','Item');
+*/
+
+
+
+
+
+
+
 
 $f3->run();
