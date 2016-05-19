@@ -1,11 +1,12 @@
 <?php
 
 // Kickstart the framework
-$f3=require 'lib/base.php';
+$f3 = require 'lib/base.php';
 
 $f3->set('DEBUG', 3);
-if ((float)PCRE_VERSION<7.9)
+if ((float)PCRE_VERSION<7.9) {
 	trigger_error('PCRE version is out of date');
+}
 
 // Load configuration
 $f3->config('config.ini');
@@ -86,58 +87,45 @@ $f3->route('GET /userref',
 );
 
 
-
-// home page
+/*
+	register, for informations: name, email and birth date
+	nince to have : connexion with auth facebook & auth google
+*/
 $f3->route('GET /',function(){ });
-// check if vetted user and create a session
-$f3->route('GET /@unique_user_url',function(){ });
+/*
+	create a unique url
+	save information into db 
+	send to test url
+*/
+$f3->route('POST /',function($f3){ });
 
-// Admin login form
-$f3->route('GET /admin',function(){ });
+// do the test and save an anonymous user
+$f3->route('GET /test',function(){ }); 
+/* 
+	send back to '/'' if not good url
+	check if vetted
+*/	
+$f3->route('GET /test/@unique_test_url',function(){ });  
+
+/* 
+	results page 
+	url : /test/results
+	button try again that send back to 
+	if anonymous user ask for informations
+*/
+
+
+// check admin login form
+$f3->route('POST /admin',function($f3){ });
 // Admin dashboard
 $f3->route('GET /admin/dashboard',function(){ });
+// table data
 $f3->route('GET /admin/tests',function(){ });
+// table data
 $f3->route('GET /admin/users',function(){ });
+// charts
 $f3->route('GET /admin/analytics',function(){ });
 
-// Ask for login informations, here email only 
-$f3->route('GET /login',function(){ });
-$f3->route('POST /login',function($f3){ });
-
-// register a new user
-$f3->route('GET /gister',function(){ });
-// send informations
-$f3->route('POST /gister',function($f3){ });
-
-// send back to login if not connected
-$f3->route('GET /test',function(){ }); 
-$f3->route('POST /test',function($f3){ }); 
-
-// show results
-$f3->route('GET /result',function(){ }); 
-// send results
-$f3->route('POST /result',function($f3){ }); 
-
-
-/*
-	ReST interface:
-*/
-/*
-class Item {
-    function get() {}
-    function post() {}
-    function put() {}
-    function delete() {}
-}
-
-$f3->map('/cart/@item','Item');
-*/
-
-
-
-
-
-
-
+// [TODO] admin commands
 
 $f3->run();
