@@ -1,4 +1,6 @@
 
 v2/build/
 *.tgz
+*.bkp
+*.DS_Store
 v2/node_modules/*
