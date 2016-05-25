@@ -48,16 +48,10 @@ $f3->route('GET /userref',
 $f3->config('config.ini');
 
 $f3->route('GET /',function($f3) {
-	$f3->set('content', 'welcome.htm');
+	$f3->set('content', 'home.htm');
 	echo View::instance()->render('layout.htm');
 });
-/*
-$f3->route('GET /test',
-	function() {
-		echo 'Hello, world!';
-	}
-);
-*/
+
 /*
 	register, for informations: name, email and birth date
 	nince to have : connexion with auth facebook & auth google
@@ -70,7 +64,10 @@ $f3->route('GET /test',
 $f3->route('POST /',function($f3){ });
 
 // do the test and save an anonymous user
-$f3->route('GET /test',function(){ }); 
+$f3->route('GET /test',function(){
+	$f3->set('content', 'test.htm');
+	echo View::instance()->render('layout.htm');
+}); 
 /* 
 	send back to '/'' if not good url
 	check if vetted
