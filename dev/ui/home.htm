@@ -1,0 +1,57 @@
+<div class="content">
+
+    <div class="center">
+        <h1><a href="#"><img src="logo.png" alt="Visionary"></a></h1>
+    </div>
+    
+    <div class="main">
+        <h2>Veuillez remplir les champs suivants </h2>
+
+        <form action="test.html">
+        
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Votre email" value="">
+            </div>
+
+            <div>
+                <select id="year" name="year">
+                    <option selected disabled>Sélectinner votre année</option>
+                    <?php
+                        for($i = date("Y"); $i >= 1900; $i--){
+                            echo "<option value='".$i."'>".$i."</option>";
+                        }
+                    ?>
+                </select>
+            </div>
+    
+            <div>
+                <p>Genre : </p>
+                <label for="name">Homme</label>
+                <input type="radio" name="genre" value="Homme">
+                <label for="name">Femme</label>
+                <input type="radio" name="genre" value="Femme">
+                <label for="name">Autre</label>
+                <input type="radio" name="genre" value="Autre">
+            </div>
+            
+            <div>
+                <label for="town">Ville</label>
+                <input type="text" id="town" name="town" placeholder="Votre ville" value="">
+            </div>
+            
+            <div>
+                <label for="name">Votre prénom et nom</label>
+                <input type="text" id="name" name="name" placeholder="Votre prénom et nom" value="">
+            </div>
+            
+            <div>
+                <button>Enregistrer et commencer le test</button>
+                <button>Faire le test anonymement</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
