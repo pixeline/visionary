@@ -1,7 +1,7 @@
 <?php
 
-require 'config.php';
 require 'lib/Hashids/Hashids.php';
+require_once "app/functions.php";
 
 // Kickstart the framework
 $f3 = require 'lib/base.php';
@@ -13,6 +13,18 @@ if ((float)PCRE_VERSION<7.9) {
 
 // Load configuration
 $f3->config('config.ini');
+
+// set database
+$db = new \DB\SQL(
+	'mysql:host='.$f3->get("DB_HOST").';port='.$f3->get("DB_PORT").';dbname='.$f3->get("DB_NAME"), 
+	$f3->get("DB_USER"), 
+	$f3->get("DB_PASS"),
+	array(
+	    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
+	    \PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
+	    \PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
+	)
+);
 
 /* FAT FREE - HELPER */
 $f3->route('GET /userref',function($f3) {
@@ -40,22 +52,85 @@ $f3->route('GET /',function($f3) {
 	send to test url
 */
 $f3->route('POST /',function($f3){
-	//getUniqueURL($data);
+	global $db;
+	// check if post is filled
+	if(!empty($f3->get('POST'))){
+		//var_dump( );
+		$name       = $f3->get('POST.name');
+		$email      = $f3->get('POST.email');
+		$birth_date = $f3->get('POST.birth_date');
+		$gender     = $f3->get('POST.gender');
+		$town       = $f3->get('POST.town');
+
+		// check if user already exist
+		$user = isAlreadyRegistered($email);
+
+		// the user already exists
+		if($user){
+			//create a session for this user
+			$f3->set('SESSION.user',array(
+				'name'       => $user['name'],
+				'email'      => $user['email'],
+				'birth_date' => $user['birth_date'],
+				'gender'     => $user['gender'],
+				'town'       => $user['town'],
+				'role'       => $user['role'],
+			));
+
+		} else {
+			// if not add the new user
+			// sql create a user
+			$params = array(
+				'name'       => $name,       
+				'email'      => $email,      
+				'birth_date' => $birth_date, 
+				'gender'     => $gender,     
+				'town'       => $town,       
+			);
+
+			$query = 'INSERT INTO users (name, email, birth_date, gender, town) 
+						         VALUES (:name, :email, :birth_date, :gender, :town)';
+
+			$result = $db->exec($query, $params);
+
+			var_dump($result);
+
+		}
+		
+	}
+	
 });
 
 // do the test and save an anonymous user
 $f3->route('GET /test',function($f3){
+
+	$test_id = 12;
+
+	$unique_url = getUniqueURL($test_id);
+
+	echo $unique_url;
+
 	$f3->set('content', 'test.htm');
 	echo View::instance()->render('layout.htm');
 }); 
 
 $f3->route('GET /test/@unique_test_url',function($f3){ 
 
+	// si nouveau utilisateur
+		// cree un test
+	// si vetted
+		// si le test est accompli
+			//cree un nouveau test
+
+	$unique_url = getUniqueURL($data);
+
 	$uniqueURL = $f3->get('PARAMS.unique_test_url');
 	$test = getTestFromUrl($uniqueURL);
 
+	var_dump($f3);
+
 	// good url
-	if( $user ){
+	if( $test ){
 		$f3->set('test', $test);
 		$f3->set('content', 'test.htm');
 		echo View::instance()->render('layout.htm');
@@ -65,7 +140,7 @@ $f3->route('GET /test/@unique_test_url',function($f3){
 	}
 });
 
-$f3->route('GET /result',function($f3){
+$f3->route('POST /result',function($f3){
 	$f3->set('content', 'result.htm');
 	echo View::instance()->render('layout.htm');
 });
@@ -92,79 +167,58 @@ $f3->route('GET /admin/tests',function($f3){ });
 $f3->route('GET /admin/users',function($f3){ });
 // charts
 $f3->route('GET /admin/analytics',function($f3){ });
-
-
 */
-$f3->run();
 
 
-/* TOOLS */
 
-$unique_salt_value = "What a wonderful world!";
-$minimum_id_length = 8;
-$custom_alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
+//dump de la db 
+$f3->route('GET /mailchimp',function($f3){
 
+	// verifier si admin ou pas
+	// - a travers une session
+	// - et oauth
 
-function getUniqueURL($data){
-	$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
-	return $hashids->encode($data);
-}
+	//  - si on est connecté
+	// chercher dans la DB les personnes qui sont vetted
+	// boucle
+	//	- genère les urls de chaque persone SI elle n'en a pas // tips : dans un boucle
+	// affiche les resultats au format CSV dans un textarea
+	/*
+	//example 
 
-// http://colour-blindness.dev/test/k7PjJRr
-// k7PjJRr -> 1234567890
-function decodeUniqueURL($url){
-	$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
-	return $hashids->decode($url);
-}
+	Year,Make,Model,Description,Price
+	1997,Ford,E350,"ac, abs, moon",3000.00
+	1999,Chevy,"Venture ""Extended Edition""","",4900.00
+	1999,Chevy,"Venture ""Extended Edition, Very Large""",,5000.00
+	1996,Jeep,Grand Cherokee,"MUST SELL!
+	air, moon roof, loaded",4799.00
+	*/
 
-function show($arg){
-	echo "<pre><code>".print_r($arg, true)."</code></pre><br>";
-}
+	/*
+	// telechargeable
+	// output headers so that the file is downloaded rather than displayed
+	header('Content-Type: text/csv; charset=utf-8');
+	header('Content-Disposition: attachment; filename=data.csv');
 
-function getDatabase(){
-	$db_host		= 'localhost';
-	$db_user		= 'root';
-	$db_pass		= 'root';
-	$db_database	= 'visionary';
-	$db_port	    = '3306';
+	// create a file pointer connected to the output stream
+	$output = fopen('php://output', 'w');
 
-	$options = array(
-	    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
-	    \PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
-	    \PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
-	);
-	return new \DB\SQL('mysql:host='.$db_host.';port='.$db_port.';dbname='.$db_database, $db_user, $db_pass, $options);
-}
+	// output the column headings
+	fputcsv($output, array('Column 1', 'Column 2', 'Column 3'));
 
+	// fetch the data
+	mysql_connect('localhost', 'username', 'password');
+	mysql_select_db('database');
+	$rows = mysql_query('SELECT field1,field2,field3 FROM table');
 
-function getTestFromUrl($url){
-	$db = getDatabase();
-
-	$params = array("url"=>$url);
-	$query = "SELECT *, interface.name AS 'interface_name' 
-			FROM tests 
-			JOIN interface ON interface.id = tests.interface_id
-			JOIN users ON users.id = users_id
-			WHERE tests.unique_url =:url";
+	// loop over the rows, outputting them
+	while ($row = mysql_fetch_assoc($rows)) fputcsv($output, $row);
+	*/
 	
-
-	$result = $db->exec($query, $params);
-	//$getInfo = $db->exec("SELECT users_id, interface_id FROM tests WHERE unique_url=:url", array("url"=>$url));
-
-	if(!empty($result) && !empty($result[0])){
-		return $result[0];
-	}
-	return false;
-}
+});
 
 
 
-
-
-
-
-
-
+$f3->run();
 
 

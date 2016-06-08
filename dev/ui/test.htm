@@ -1,47 +1,70 @@
 <div class="content">
+    
+    <div id="test" class="test">
+        <section class="color-arrangement">
+            <ul id="list-normal" class="color-list"></ul>
+        </section>
 
-    <section class="color-arrangement">
-        <ul id="list-normal" class="color-list"></ul>
-    </section>
+        <div class="brienfing">
+            <div class="briefing-content">
 
-    <div class="brienfing">
-        <div class="briefing-content">
+                <h1 class='text-center'>Arrangez les couleurs pour former un dégradé</h1>
 
-            <h1 class='text-center'>Arrangez les couleurs pour former un dégradé</h1>
 
-            <p class="test-instruction text-center">
-                Astuce: commencez par la gauche et réarrangez les couleurs progressivement vers la droite
-            </p>
+               <?php show($test);  ?>
 
-            <div id="choices" class="list-inline">
-                <div class="pick">
-                    <a id="pick-normal">normal</a>
-                </div>
-                <div class="pick">
-                    <a id="pick-protan">protan</a>
-                </div>
-                <div class="pick">
-                    <a id="pick-deutan">deutan</a>
-                </div>
-                <div class="pick">
-                    <a id="pick-tritan">tritan</a>
-                </div>
-                <div class="pick">
-                    <a id="pick-deuteranormal">deuteranormal</a>
-                </div>
-                <div class="pick">
-                    <a id="pick-tritan-crossing">tritan crossing</a>
-                </div>
-                <div class="pick-other">
-                    <a id="pick-other">Autre</a>
-                </div>
+                <p class="test-instruction text-center">
+                    Astuce: commencez par la gauche et réarrangez les couleurs progressivement vers la droite
+                </p>
+
+                 <form action="/result" method="POST">
+
+                    <div id="choices" class="list-inline">
+                        <div class="pick"  id="pick-normal">
+                            <label for="normal">normal</label>
+                            <input type="radio" id="normal" name="gradient">
+                        </div>
+                        <div class="pick" id="pick-protan">
+                            <label for="protan" >protan</label>
+                            <input type="radio" id="protan" name="gradient">
+                        </div>
+                        <div class="pick"  id="pick-deutan">
+                            <label for="deutan">deutan</label>
+                            <input type="radio" id="deutan" name="gradient">
+                        </div>
+                        <div class="pick" id="pick-tritan">
+                            <label for="tritan" >tritan</label>
+                            <input type="radio" id="tritan" name="gradient">
+                        </div>
+                        <div class="pick" id="pick-deuteranormal">
+                            <label for="deuteranormal" >deuteranormal</label>
+                            <input type="radio" id="deuteranormal" name="gradient">
+                        </div>
+                        <div class="pick" id="pick-tritan-crossing">
+                            <label for="tritan-crossing" >protan</label>
+                            <input type="radio" id="tritan-crossing" name="gradient">
+                        </div>
+                        <div class="pick-other" id="pick-other">
+                            <label for="other">other</label>
+                            <input type="radio" id="other" name="gradient">
+                        </div>
+                    </div>
+                    
+                    <p class="text-center">
+                        <button>J'ai fini (et je suis sûr)</button>
+                        <button>J'ai fini (mais je suis pas certain)</button>
+                    </p>
+
+                </form>
             </div>
-           
-            <p class="text-center">
-                <button>J'ai fini (et je suis sûr)</button>
-                <button>J'ai fini (mais je suis pas certain)</button>
-            </p>
         </div>
     </div>
 
 </div>
+
+<script src="ui/js/jquery-1.12.0.min.js"></script>
+<script src="ui/js/tools.js"></script>
+<script src="ui/js/touch-dnd.js"></script>
+<script src="ui/js/velocity.js"></script>
+<script src="ui/js/velocity.ui.js"></script>
+<script src="ui/js/classement.js"></script>

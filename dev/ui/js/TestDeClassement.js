@@ -2,7 +2,11 @@ $(document).ready(function(){
 	/**
 		current user informations
 	*/
+
+	console.log("Hello");
+
 	var firstTrial = true;
+
 	var currentUser = {
 		name : null,
 		email : null,
@@ -11,100 +15,6 @@ $(document).ready(function(){
 		serie : null,
 		result : null,
 	}
-
-	// check the url
-    var testUrl = getUrlParameter('see');
-
-    // check if new user
-    if( testUrl ){
-    	var email = decode(testUrl);
-    	if( validateEmail(email) ){
-    		$("#email").val( email )
-    	}
-    } 
-    /*else {
-        // probably new user
-        firstTrial = true;
-        console.log("Normal url");
-    }*/
-
-    $('.tooltip').tooltipster();
-  	
-  	/**
-  		setup the form
-  	*/
-
-    var $alert = $("#alert");
-
-    $("form").on("submit", function(e){
-    	e.preventDefault();
-        $alert.empty().addClass("hide");
-        var name = $("input[name='name']").val();
-        var email = $("input[name='email']").val();
-        var alerts = [];
-
-        if( !validateEmail(email) ){
-            alerts.push( $("<li></li>").html("Le champ email n'est pas valide") );
-        } 
-
-        if( !validateFullName(name) ){
-            alerts.push( $("<li></li>").html("Le champ nom n'est pas valide") );
-        } 
-
-        if(alerts.length){
-            $.each(alerts, function(key, element){
-                $alert.append(element).removeClass("hide");
-            })
-        } else {
-        	// update user informations
-        	currentUser.name = name;
-        	currentUser.email = email;
-        	currentUser.url = encode(currentUser.email);
-        	//AlphabeticID.encode(Math.round(Math.random() * new Date()));
-
-	        // check if url exist
-	        $.ajax({type: "POST",
-	          url: "/test/userByUrl",
-	          dataType: "json",
-	          data : { url : currentUser.url },
-	          success: function(result){
-	          	console.log( result.data )
-	          	// url invalid test already made
-	            if(result.data.result){
-	            	firstTrial = false;
-	            	currentUser = result.data;
-	            	currentUser.serie = currentUser.serie.split(",").map(Number);
-
-	            	if( confirm("Vous avez déjà fait le test, voulez-vous le refaire ?")){
-	            		transitionToTest();
-	            	} else {
-	            		window.location.href = '/'; 
-	            	}
-	            } 
-
-	            if(!result.data){
-	            	firstTrial = true;
-	            	// url does not exist
-	            	console.log( "url does not exist" );
-	            	// show the test
-	            	transitionToTest();
-	            }
-	          }
-	        });
-        }
-    })
-
-    // animation to test
-    var transitionToTest = function(){
-    	// change url
-        window.history.pushState({}, '', '?see='+currentUser.url);
-         // nice an smooth transition
-    	$("#homeScreen").addClass("hide").velocity("transition.slideUpOut", { duration: 420 });
-        // build the test design
-        buildTest(function(){
-        	$("#test").removeClass("hide").velocity("transition.slideUpIn", { duration: 420 });
-        });
-    }
    
     var data = {},
     	stageWidth = 400, // 400
@@ -125,9 +35,11 @@ $(document).ready(function(){
         	"tritan" : "Tritane (Violet - jaune vert)",
         },
     	buildTest = function(callback){
-	    	$.getJSON("/test/data.json", function(result){
+	    	$.getJSON("ui/data/data.json", function(result){
 
 	    		data = result;
+
+	    		console.log(data)
 
 				colorOrder = data.colors; //shuffleArray(data.colors);
 
@@ -175,6 +87,7 @@ $(document).ready(function(){
 		},
 
 		updateOrder = function(){
+			console.log("updateOrder")
 			order = [];
 			$colorList.find("li").each(function () {
 				if($(this).data("item") !== undefined){
@@ -187,7 +100,10 @@ $(document).ready(function(){
 			order[0] = 0;
 			colorOrder = orderArray(data.colors, order);
 
+				console.log( sortable )
+				
 			if(sortable) {
+				
 				// http://ma.rkusa.st/touch-dnd/sortable.html
 				$('#list-normal').addClass("sortable").sortable({ 
 					disabled: false,
@@ -218,6 +134,7 @@ $(document).ready(function(){
 		},
 
 		checkResult = function() {
+			console.log("checkResult")
 	        $('.angle').html( result.majorAngle.toFixed(1) );
 	        $('.major_radius').html( result.majorRadius.toFixed(1) );
 	        $('.minor_radius').html( result.minorRadius.toFixed(1) );
@@ -283,7 +200,7 @@ $(document).ready(function(){
 		},
 
 		drawDom = function(){
-
+			console.log("drawDom")
 			$colorList.empty();
 
 			for(key = 0; key < colorOrder.length; key++){
@@ -300,7 +217,7 @@ $(document).ready(function(){
 		},
 
 		commands = function(){
-
+			console.log("commands")
 			$("html").addClass("testDeClassement");
 			// $("body").addClass("no-scroll");
 
@@ -451,4 +368,111 @@ $(document).ready(function(){
 				$stage.append($lineOrder);
 		};
 
+		console.log("Yooo")
+
+		buildTest(function(){
+			console.log("START")
+        	$("#test").removeClass("hide").velocity("transition.slideUpIn", { duration: 420 });
+        });
+
+
 })
+
+
+	/*
+	// check the url
+    var testUrl = getUrlParameter('see');
+
+    // check if new user
+    if( testUrl ){
+    	var email = decode(testUrl);
+    	if( validateEmail(email) ){
+    		$("#email").val( email )
+    	}
+    } 
+    */
+    /*else {
+        // probably new user
+        firstTrial = true;
+        console.log("Normal url");
+    }*/
+
+    // $('.tooltip').tooltipster();
+  	
+  	/**
+  		setup the form
+  	*/
+  	/*
+    var $alert = $("#alert");
+
+    $("form").on("submit", function(e){
+    	e.preventDefault();
+        $alert.empty().addClass("hide");
+        var name = $("input[name='name']").val();
+        var email = $("input[name='email']").val();
+        var alerts = [];
+
+        if( !validateEmail(email) ){
+            alerts.push( $("<li></li>").html("Le champ email n'est pas valide") );
+        } 
+
+        if( !validateFullName(name) ){
+            alerts.push( $("<li></li>").html("Le champ nom n'est pas valide") );
+        } 
+
+        if(alerts.length){
+            $.each(alerts, function(key, element){
+                $alert.append(element).removeClass("hide");
+            })
+        } else {
+        	// update user informations
+        	currentUser.name = name;
+        	currentUser.email = email;
+        	currentUser.url = encode(currentUser.email);
+        	//AlphabeticID.encode(Math.round(Math.random() * new Date()));
+
+	        // check if url exist
+	        $.ajax({type: "POST",
+	          url: "/test/userByUrl",
+	          dataType: "json",
+	          data : { url : currentUser.url },
+	          success: function(result){
+	          	console.log( result.data )
+	          	// url invalid test already made
+	            if(result.data.result){
+	            	firstTrial = false;
+	            	currentUser = result.data;
+	            	currentUser.serie = currentUser.serie.split(",").map(Number);
+
+	            	if( confirm("Vous avez déjà fait le test, voulez-vous le refaire ?")){
+	            		transitionToTest();
+	            	} else {
+	            		window.location.href = '/'; 
+	            	}
+	            } 
+
+	            if(!result.data){
+	            	firstTrial = true;
+	            	// url does not exist
+	            	console.log( "url does not exist" );
+	            	// show the test
+	            	transitionToTest();
+	            }
+	          }
+	        });
+        }
+    })
+
+    // animation to test
+    var transitionToTest = function(){
+    	// change url
+        window.history.pushState({}, '', '?see='+currentUser.url);
+         // nice an smooth transition
+    	$("#homeScreen").addClass("hide").velocity("transition.slideUpOut", { duration: 420 });
+        // build the test design
+        buildTest(function(){
+        	$("#test").removeClass("hide").velocity("transition.slideUpIn", { duration: 420 });
+        });
+    }
+    */
+

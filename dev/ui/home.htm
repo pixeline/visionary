@@ -7,7 +7,7 @@
     <div class="main">
         <h2>Veuillez remplir les champs suivants </h2>
 
-        <form action="test.html">
+        <form action="/" method="POST">
         
             <div>
                 <label for="email">Email</label>
@@ -15,7 +15,8 @@
             </div>
 
             <div>
-                <select id="year" name="year">
+                <label for="birth_date">birth date</label>
+                <select id="birth_date" name="birth_date">
                     <option selected disabled>Sélectinner votre année</option>
                     <?php
                         for($i = date("Y"); $i >= 1900; $i--){
@@ -28,11 +29,11 @@
             <div>
                 <p>Genre : </p>
                 <label for="name">Homme</label>
-                <input type="radio" name="genre" value="Homme">
+                <input type="radio" name="gender" value="Homme">
                 <label for="name">Femme</label>
-                <input type="radio" name="genre" value="Femme">
+                <input type="radio" name="gender" value="Femme">
                 <label for="name">Autre</label>
-                <input type="radio" name="genre" value="Autre">
+                <input type="radio" name="gender" value="Autre">
             </div>
             
             <div>
@@ -47,7 +48,7 @@
             
             <div>
                 <button>Enregistrer et commencer le test</button>
-                <button>Faire le test anonymement</button>
+                <a href="/test">Faire le test anonymement</button>
             </div>
 
         </form>

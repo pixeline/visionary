@@ -1,3 +1,4 @@
+<?php $projectRoot = $SCHEME.'://'.$HOST; ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -12,6 +13,8 @@
 	    <meta name="viewport" content="width=device-width" />
 
 	    <title>Colour Blindness</title>
+	
+		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
 
 	    <link rel="apple-touch-icon" sizes="57x57" href="ui/images/icons/apple-touch-icon-57x57.png">
 	    <link rel="apple-touch-icon" sizes="60x60" href="ui/images/icons/apple-touch-icon-60x60.png">
@@ -36,17 +39,15 @@
 		<link rel="stylesheet" href="ui/css/tooltipster.css">
 		<link rel="stylesheet" href="ui/css/styles.css">
 		<link rel="stylesheet" href="ui/css/TestDeClassement.css">
-
+		<!--
 		<script src="https://use.typekit.net/vyt6ezk.js"></script>
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
-
-		<base href="<?php echo $SCHEME.'://'.$HOST.':'.$PORT.$BASE.'/'; ?>" />
-		<link rel="stylesheet" href="lib/code.css" type="text/css" />
-		<link rel="stylesheet" href="ui/css/base.css" type="text/css" />
-		<link rel="stylesheet" href="ui/css/theme.css" type="text/css" />
+		-->
 
 	</head>
 	<body>
+	
 		<?php echo $this->render(Base::instance()->get('content')); ?>
+		
 	</body>
 </html>
