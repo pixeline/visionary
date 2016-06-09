@@ -27,7 +27,7 @@ COLLATE = utf8_general_ci;
 DROP TABLE IF EXISTS `visionary`.`users` ;
 
 CREATE TABLE IF NOT EXISTS `visionary`.`users` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
   `email` VARCHAR(255) NULL,
   `password` VARCHAR(255) NULL,
