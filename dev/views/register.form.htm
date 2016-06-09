@@ -1,0 +1,62 @@
+<h2>Veuillez remplir les champs suivants </h2>
+
+        <form action="/register" method="POST">
+            
+             <div>
+                <label for="name">Votre prénom et nom</label>
+                <input type="text" id="name" name="name" placeholder="Votre prénom et nom" value="">
+            </div>
+
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Votre email" value="">
+            </div>
+
+            <div>
+                <label for="birth_date">Année de naissance</label>
+                <select id="birth_date" name="birth_date">
+                    <option selected disabled>Année de naissance</option>
+                    <?php for($i = (date("Y")-3); $i >= 1900; $i--) : ?>
+                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+    
+            <div>
+                <p>Genre : </p>
+                <label for="male">Homme</label>
+                <input id="male" type="radio" name="gender" value="M" checked>
+                <label for="female">Femme</label>
+                <input id="female" type="radio" name="gender" value="F">
+            </div>
+            
+            <div>
+                <label for="country">Pays</label>
+                <select id="country" name="countries_iso">
+                    <?php foreach ($countries as $country): ?>
+                        <?php if( $country['iso'] == "BE") : ?>
+                            <option value="<?php echo $country['iso']; ?>" selected><?php echo $country["country_name"]; ?></option>
+                        <?php else: ?>
+                            <option value="<?php echo $country['iso']; ?>"><?php echo $country["country_name"]; ?></option>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            
+            <div>
+	            <label for="city">Code postal</label>
+	            <input type="text" id="postcode" name="city" autocomplete="shipping postal-code" size="6" placeholder="(ex: 5000)">
+            </div>
+
+            <div>
+	            <label for="password">Mot de passe souhaité</label>
+	            <input type="password" id="password" name="password" autocomplete="off">
+	            <p><small>(Minimum 8 caractères dont au moins un chiffre et une lettre majuscule. Préférez des phrases faciles à retenir, en incluant leur ponctuation.)</small></p>
+            </div>
+                        
+            <div>
+                <button type="submit" value="register">Enregistrer et commencer le test</button>
+                <button type="submit" value="anonym" class="button-as-link">Faire le test anonymement</button>
+            </div>
+
+        </form>

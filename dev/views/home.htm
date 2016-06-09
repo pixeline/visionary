@@ -1,62 +1,19 @@
 <div class="content">
 
     <div class="center">
-        <h1><a href="#"><img src="images/logo.png" alt="Visionary"></a></h1>
+		<a href="#"><img src="/assets/images/logo.png" alt="Visionary"></a>
     </div>
     
     <div class="main">
-        <h2>Veuillez remplir les champs suivants </h2>
-
-        <form action="/register" method="POST">
-            
-             <div>
-                <label for="name">Votre prénom et nom</label>
-                <input type="text" id="name" name="name" placeholder="Votre prénom et nom" value="">
-            </div>
-
-            <div>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Votre email" value="">
-            </div>
-
-            <div>
-                <label for="birth_date">Année de naissance</label>
-                <select id="birth_date" name="birth_date">
-                    <option selected disabled>Année de naissance</option>
-                    <?php for($i = date("Y"); $i >= 1900; $i--) : ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                    <?php endfor; ?>
-                </select>
-            </div>
-    
-            <div>
-                <p>Genre : </p>
-                <label for="male">Homme</label>
-                <input id="male" type="radio" name="gender" value="M" checked>
-                <label for="female">Femme</label>
-                <input id="female" type="radio" name="gender" value="F">
-            </div>
-            
-            <div>
-                <label for="country">Ville</label>
-                <select id="country" name="countries_iso">
-                    <?php foreach ($countries as $country): ?>
-                        <?php if( $country['iso'] == "BE") : ?>
-                            <option value="<?php echo $country['iso']; ?>" selected><?php echo $country["nom_fr"]; ?></option>
-                        <?php else: ?>
-                            <option value="<?php echo $country['iso']; ?>"><?php echo $country["nom_fr"]; ?></option>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            
-            
-            <div>
-                <button type="submit" value="register">Enregistrer et commencer le test</button>
-                <button type="submit" value="anonym">Faire le test anonymement</button>
-            </div>
-
-        </form>
+	    <h1>Êtes-vous une personne daltonienne?</h1>
+	    <p>Comment percevez-vous les couleurs?</p>
+	    
+	    <p>Vérifiez votre vision via un outil de pré-diagnostic du daltonisme.</p>	
+ 
+<p>Ce test a été mis au point dans le cadre du projet de recherche [Visionary].</p>
+<p>Veuillez préalablement vous enregistrer pour pouvoir effectuer le test. Vos informations restent strictement privées et ne seront utilisées qu'à des fins statistiques faisant avancer notre recherche en interne.</p>
+ 
+        <?php require 'views/register.form.htm'; ?>
 
     </div>
 

@@ -8,7 +8,7 @@ if( !empty($f3->get('POST')) ){
 	//pr( $f3->get('POST') );
 	//pr( $f3->get('SESSION.test') );
 
-	$display_register_form = false;
+	$f3->set('display_register_form', 'nope');
 
 	if( $f3->get('SESSION.user.id') ){
 
@@ -20,7 +20,7 @@ if( !empty($f3->get('POST')) ){
 		$datetime1 = new DateTime($started);
 		$datetime2 = new DateTime($test_end_date);
 		$interval = $datetime1->diff($datetime2);
-		$test_duration = $interval->format("%Y %m %d %H:%i:%s"); 
+		$test_duration = $interval->format("%Y %m %d %H:%i:%s");
 
 		// prepare the array for database
 		$test = $f3->get('SESSION.test');
@@ -34,23 +34,31 @@ if( !empty($f3->get('POST')) ){
 
 	} else {
 		// if anonymous user ask for informations
-		$display_register_form = true;
+		$f3->set('display_register_form', 'yup');
+
+		$countries = $db->exec("SELECT iso, nom_".$lang." 	as country_name FROM countries");
+
+		usort($countries, function ($a, $b) {
+				return strcasecmp($a['country_name'], $b['country_name']);
+			});
+
+		$f3->set('countries', $countries);
 	}
 
 	/*
-	$query = 'INSERT INTO test (users_id,interface_id,diag_serie,diag_result,diag_ratio,diag_confusion_angle,diag_major,diag_minor,diag_tes,diag_s_index,diag_c_index,unique_url,test_creation_date,test_start_date,test_end_date,test_duration,is_sure) 
+	$query = 'INSERT INTO test (users_id,interface_id,diag_serie,diag_result,diag_ratio,diag_confusion_angle,diag_major,diag_minor,diag_tes,diag_s_index,diag_c_index,unique_url,test_creation_date,test_start_date,test_end_date,test_duration,is_sure)
 			VALUES (:users_id,:interface_id,:diag_serie,:diag_result,:diag_ratio,:diag_confusion_angle,:diag_major,:diag_minor,:diag_tes,:diag_s_index,:diag_c_index,:unique_url,:test_creation_date,:test_start_date,:test_end_date,:test_duration,:is_sure)';
 
 	$result = $db->exec($query, $test);
 	*/
 
-	
+
 	$f3->set('content', 'views/result.htm');
 	echo View::instance()->render('views/layout.htm');
 
 
 } else {
-	
+
 	$f3->reroute('/test');
 }
 
@@ -81,17 +89,17 @@ $is_sure
 /*
 // sql create a user
 $user = array(
-	'name'           => $name,       
-	'email'          => $email,      
-	'birth_date'     => $birth_date, 
-	'vetted'         => $vetted,     
-	'gender'         => $gender,     
-	'role'           => $role,       
-	'countries_iso'  => $countries_iso,       
+	'name'           => $name,
+	'email'          => $email,
+	'birth_date'     => $birth_date,
+	'vetted'         => $vetted,
+	'gender'         => $gender,
+	'role'           => $role,
+	'countries_iso'  => $countries_iso,
 );
 
 // if not add the new user
-$query = 'INSERT INTO users (name, email, birth_date, vetted, gender, role, countries_iso) 
+$query = 'INSERT INTO users (name, email, birth_date, vetted, gender, role, countries_iso)
 			VALUES (:name, :email, :birth_date, :vetted, :gender, :role, :countries_iso)';
 
 $result = $db->exec($query, $user);
@@ -100,23 +108,23 @@ $result = $db->exec($query, $user);
 
 
 
-/* 
-	results page 
+/*
+	results page
 	url : /test/result
-	button try again that send back to 
-	
+	button try again that send back to
+
 */
 
 
 /*
 $user = array(
-	'name'           => $name,       
-	'email'          => $email,      
-	'birth_date'     => $birth_date, 
-	'vetted'         => $vetted,     
-	'gender'         => $gender,     
-	'role'           => $role,       
-	'countries_iso'  => $countries_iso,       
+	'name'           => $name,
+	'email'          => $email,
+	'birth_date'     => $birth_date,
+	'vetted'         => $vetted,
+	'gender'         => $gender,
+	'role'           => $role,
+	'countries_iso'  => $countries_iso,
 );
 $user['id'] = 0;
 

@@ -1,7 +1,7 @@
 <?php
 global $db, $lang;
 
-$interfaces = $db->exec("SELECT * FROM interfaces WHERE name = '".$f3->get('INTERCACE_VERSION')."'");
+$interfaces = $db->exec("SELECT * FROM interfaces WHERE name = '".$f3->get('INTERFACE_VERSION')."'");
 
 $interface_version = $interfaces[0]["id"];
 $unique_url = getUniqueURL();

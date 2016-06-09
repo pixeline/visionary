@@ -34,8 +34,10 @@ CREATE TABLE IF NOT EXISTS `visionary`.`users` (
   `birth_date` YEAR NULL,
   `vetted` TINYINT(1) NULL DEFAULT 0,
   `role` SET('user','admin') NULL DEFAULT 'user',
-  `gender` SET('M','F') NULL DEFAULT 'M',
+  `gender` SET('M','F','O') NULL DEFAULT 'M',
+  `postcode` VARCHAR(45) NULL,
   `countries_iso` VARCHAR(3) NOT NULL DEFAULT 'BE',
+  `last_login` DATETIME NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   INDEX `fk_users_countries1_idx` (`countries_iso` ASC),
@@ -53,9 +55,10 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `visionary`.`interfaces` ;
 
 CREATE TABLE IF NOT EXISTS `visionary`.`interfaces` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC))
 ENGINE = InnoDB;
 
 
@@ -65,7 +68,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `visionary`.`tests` ;
 
 CREATE TABLE IF NOT EXISTS `visionary`.`tests` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `users_id` INT NOT NULL,
   `interface_id` INT NOT NULL,
   `diag_serie` VARCHAR(255) NULL,
@@ -361,49 +364,49 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `visionary`;
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (1, 'Gilles Bazelaire', 'bichon@dogstudio.be', NULL, 1975, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (2, 'simon gauriaud', ' sim.gauriaud@gmail.com', NULL, 1993, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (3, 'Marc Van Hoey', 'marc.vanhoey@skynet.be', NULL, 1956, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (4, 'Abdel Bellahsini', 'a.bellahsini@gmail.com', NULL, 1980, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (5, 'Rafael Garcia', 'sylvinche@msn.com', NULL, 1975, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (6, 'Robin Devouge', 'robin.devouge@gmail.com', NULL, 1995, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (7, 'Sébastien Delforge', 'sebastien.delforge@heaj-eco.eu', NULL, 1969, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (8, 'Jeremy Caudron', 'Thebesttruk@gmail.com', NULL, 1994, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (9, 'Julien Alardot', 'alardot.j@gmail.com', NULL, 1996, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (10, 'Denis Maes', 'le_maes@icloud.com', NULL, 1988, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (11, 'Mehdi Khaddari', 'mehdi.khaddari@hotmail.com', NULL, 1993, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (12, 'Luc Henrard', 'luc.henrard@unamur.be', NULL, 1970, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (13, 'Simon Gauriaud', 'sim.gauriaud@gmail.com', NULL, 1993, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (14, 'Maxime-Emilien Hubert', 'hubert.maxime.emilien@gmail.com', NULL, 1991, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (15, 'Gwenaël Bierlier', 'Bierlier.gwenael@gmail.com', NULL, 1992, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (16, 'Sébastien Genot', 'sebastiengenot1@hotmail.be', NULL, 1992, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (17, 'Philippe Moulin', 'mouliphi@gmail.com', NULL, 1967, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (18, 'Christophe Goffart', 'christophe.goffart@gmail.com', NULL, 1988, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (19, 'André Herneupont ', 'andre0961@hotmail.com', NULL, 1961, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (20, 'Ludovic Trussart', 'ludovic.trussart@hotmail.com', NULL, 1996, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (21, 'marc antoine  Jacquet ', 'teamdriving@hotmail.com', NULL, 1984, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (22, 'Jean-Pierre Rihoux', 'dr.jp.rihoux@skynet.be', NULL, 1936, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (23, 'Dominique Fadeur', 'dominique.fadeur@unamur.be', NULL, 1965, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (24, 'Stephane Nemeth', 'stephane.nemeth@hotmail.com', NULL, 1960, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (25, 'Xavier Gillo', 'xgillo@me.com', NULL, 1965, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (26, 'Jonas Delange', 'jonas.delange@gmail.com', NULL, 1988, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (27, 'Nicolas Garcia Tunon', 'Garciatunonnicolas@gmail.com', NULL, 1988, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (28, 'Geoffrey-Christopher  Villette', 'villette.geoffrey@gmail.com', NULL, 1988, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (29, 'Benoît  Deconninck', 'bdeconninck@belgacom.be', NULL, 1967, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (30, 'gerard demierbe', 'gegebebe501@hotmail.com', NULL, 1951, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (31, 'Jean-Pierre Noël', 'jeanpierre.noel@skynet.be', NULL, 1970, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (32, 'Long Chen', 'longchen333@gmail.com', NULL, 1991, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (33, 'Jean-Marc Davril', 'jean-marc.davril@unamur.be', NULL, 1990, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (34, 'damien galloy', 'damien.galloy75@gmail.com', NULL, 1984, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (35, 'Olivier Rousseau', 'olivier.rousseau@ing.be', NULL, NULL, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (36, 'Bernard Piron', 'bernardpiron@live.be', NULL, 1972, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (37, 'Robin De Duytsche', 'robdeduy@mailoo.org', NULL, 1995, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (38, 'Alain ANDRE', 'alaingf@gmail.com', NULL, 1955, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (39, 'Alain Hubert', 'ahubert@ville.namur.be', NULL, 1954, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (40, 'Olivier Bouchat', 'bouch@freegates.be', NULL, 1973, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (41, 'Frédéric Delsaux', 'fredericdelsaux@gmail.com', NULL, 1976, 1, 'user', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (42, 'Alexandre Plennevaux', 'aplennevaux@gmail.com', NULL, 1973, 0, 'admin', 'M', 'BE');
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `countries_iso`) VALUES (43, 'Teddy Kishi', 'teddy.tdk@gmail.com', NULL, NULL, 0, 'admin', 'M', 'BE');
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (1, 'Gilles Bazelaire', 'bichon@dogstudio.be', NULL, 1975, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (2, 'simon gauriaud', ' sim.gauriaud@gmail.com', NULL, 1993, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (3, 'Marc Van Hoey', 'marc.vanhoey@skynet.be', NULL, 1956, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (4, 'Abdel Bellahsini', 'a.bellahsini@gmail.com', NULL, 1980, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (5, 'Rafael Garcia', 'sylvinche@msn.com', NULL, 1975, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (6, 'Robin Devouge', 'robin.devouge@gmail.com', NULL, 1995, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (7, 'Sébastien Delforge', 'sebastien.delforge@heaj-eco.eu', NULL, 1969, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (8, 'Jeremy Caudron', 'Thebesttruk@gmail.com', NULL, 1994, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (9, 'Julien Alardot', 'alardot.j@gmail.com', NULL, 1996, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (10, 'Denis Maes', 'le_maes@icloud.com', NULL, 1988, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (11, 'Mehdi Khaddari', 'mehdi.khaddari@hotmail.com', NULL, 1993, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (12, 'Luc Henrard', 'luc.henrard@unamur.be', NULL, 1970, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (13, 'Simon Gauriaud', 'sim.gauriaud@gmail.com', NULL, 1993, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (14, 'Maxime-Emilien Hubert', 'hubert.maxime.emilien@gmail.com', NULL, 1991, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (15, 'Gwenaël Bierlier', 'Bierlier.gwenael@gmail.com', NULL, 1992, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (16, 'Sébastien Genot', 'sebastiengenot1@hotmail.be', NULL, 1992, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (17, 'Philippe Moulin', 'mouliphi@gmail.com', NULL, 1967, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (18, 'Christophe Goffart', 'christophe.goffart@gmail.com', NULL, 1988, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (19, 'André Herneupont ', 'andre0961@hotmail.com', NULL, 1961, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (20, 'Ludovic Trussart', 'ludovic.trussart@hotmail.com', NULL, 1996, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (21, 'marc antoine  Jacquet ', 'teamdriving@hotmail.com', NULL, 1984, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (22, 'Jean-Pierre Rihoux', 'dr.jp.rihoux@skynet.be', NULL, 1936, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (23, 'Dominique Fadeur', 'dominique.fadeur@unamur.be', NULL, 1965, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (24, 'Stephane Nemeth', 'stephane.nemeth@hotmail.com', NULL, 1960, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (25, 'Xavier Gillo', 'xgillo@me.com', NULL, 1965, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (26, 'Jonas Delange', 'jonas.delange@gmail.com', NULL, 1988, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (27, 'Nicolas Garcia Tunon', 'Garciatunonnicolas@gmail.com', NULL, 1988, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (28, 'Geoffrey-Christopher  Villette', 'villette.geoffrey@gmail.com', NULL, 1988, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (29, 'Benoît  Deconninck', 'bdeconninck@belgacom.be', NULL, 1967, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (30, 'gerard demierbe', 'gegebebe501@hotmail.com', NULL, 1951, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (31, 'Jean-Pierre Noël', 'jeanpierre.noel@skynet.be', NULL, 1970, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (32, 'Long Chen', 'longchen333@gmail.com', NULL, 1991, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (33, 'Jean-Marc Davril', 'jean-marc.davril@unamur.be', NULL, 1990, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (34, 'damien galloy', 'damien.galloy75@gmail.com', NULL, 1984, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (35, 'Olivier Rousseau', 'olivier.rousseau@ing.be', NULL, NULL, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (36, 'Bernard Piron', 'bernardpiron@live.be', NULL, 1972, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (37, 'Robin De Duytsche', 'robdeduy@mailoo.org', NULL, 1995, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (38, 'Alain ANDRE', 'alaingf@gmail.com', NULL, 1955, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (39, 'Alain Hubert', 'ahubert@ville.namur.be', NULL, 1954, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (40, 'Olivier Bouchat', 'bouch@freegates.be', NULL, 1973, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (41, 'Frédéric Delsaux', 'fredericdelsaux@gmail.com', NULL, 1976, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (42, 'Alexandre Plennevaux', 'aplennevaux@gmail.com', NULL, 1973, 0, 'admin', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (43, 'Teddy Kishi', 'teddy.tdk@gmail.com', NULL, NULL, 0, 'admin', 'M', NULL, 'BE', NULL);
 
 COMMIT;
 

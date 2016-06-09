@@ -41,11 +41,19 @@
     <div>
         <button>Imprimer le test</button>
 
-        <?php if (true): ?>
-        <button>Recomencer le test</button>
-        <?php else: ?>
-        <button>Participer à la recherche en vous créant un compte</button>
-        <?php endif; ?>
+        <?php if ( $display_register_form !== 'yup') { ?>
+
+        <button>Recommencer le test</button>
+        
+        <?php } else { ?>
+        <h2>Participer à la recherche en vous créant un compte</h2>
+        <?php 
+        	require 'views/register.form.htm'; 
+        } 
+        
+        pr($_SESSION);
+        ?>
+
     </div>
     
 
