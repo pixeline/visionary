@@ -1,0 +1,112 @@
+
+  /***************************\
+  |  CSS for Profiler system  |
+  \***************************/
+
+* {
+	margin:0; 
+	padding:0;
+}
+
+body {
+	font:normal 100% "jaf-bernino-sans", sans-serif;
+	font-weight: lighter;
+	background-color:#fafafa;
+	color:#333;
+}
+ 
+header {
+	background-color:#fff;
+	position: relative;
+}
+
+header h3 {
+	color:#bbb;
+	text-align: center;
+	font-size: 1.0em;
+	font-family: "jaf-bernino-sans", sans-serif;
+	
+}
+
+header h2.titleCorrectionTool {
+	text-align: center;
+	font-size: 2.3em;
+	font-family: "kepler-std-display", serif;
+	padding:20px 15px;
+}
+
+
+.btnPrimary {
+	display: block;
+	padding:12px 25px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 4px;
+	width: 150px;
+	margin:20px auto 0 auto;
+	background-color:#0277BD;
+	color:#fff;
+	text-decoration: none;
+	font-weight: 500;
+	transition: background-color 0.5s ease;
+}
+
+.content {
+	padding-top:30px;
+	padding-bottom:30px;
+}
+
+.btnPrimary:hover {
+	background-color:#01579B;
+}
+
+
+/* ---------------------------------------------- 
+	INDEX.HTML // START PAGE 
+---------------------------------------------- */
+.home {
+	margin:50px 0;
+}
+
+.home .center {
+	max-width: 700px;
+	margin:0 auto;
+}
+
+.home h1 {
+	text-align: center;
+}
+
+.home .main {
+	background-color:#fff;
+	padding:50px;
+	border-top:solid 2px #0277BD;
+	margin-top:70px;
+}
+
+.home .main h2 {
+	font-size: 2.2em;
+	margin-bottom:50px;
+	font-family: "kepler-std-display", serif;
+	text-align: center;
+	color:#000;
+}
+
+.home .main p {
+	font-size: 1.3em;
+	line-height: 1.8em;
+	margin-bottom:30px;
+}
+
+/* ---------------------------------------------- 
+	TEST DE CLASSEMENT
+---------------------------------------------- */
+
+.home .main p span {
+	font-weight: 500;
+}
+
+/* TODO style for validation error */
+.error {
+    color : red;
+}
