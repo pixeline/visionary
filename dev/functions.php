@@ -6,6 +6,28 @@ $minimum_id_length = 8;
 $custom_alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 //$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 
+function getCoutries($lang = "fr"){
+	global $db;
+	$countries = $db->exec("SELECT iso, nom_".$lang." as country_name FROM countries");
+
+	usort($countries, function ($a, $b) {
+		return strcasecmp($a['country_name'], $b['country_name']);
+	});
+
+	return $countries;
+}
+
+// compute interval
+function getInterval($start, $end, $format = "%H:%i:%s"){
+	$datetime1 = new DateTime($start);
+	$datetime2 = new DateTime($end);
+	$interval = $datetime1->diff($datetime2);
+	return $interval->format($format);
+}
+// future translation
+function _($arg){
+	return $arg;
+}
 
 function pr($arg, $exit = false){
 	echo "<pre>".print_r($arg, true)."</pre>";
@@ -45,12 +67,11 @@ function getTestFromUrl($url){
 	global $db;
 
 	$params = array("url"=>$url);
-	$query = "SELECT *, interface.name AS 'interface_name' 
+	$query = "SELECT *, interfaces.name AS 'interface_name' 
 			FROM tests 
-			JOIN interface ON interface.id = tests.interface_id
+			JOIN interfaces ON interfaces.id = tests.interface_id
 			JOIN users ON users.id = users_id
 			WHERE tests.unique_url =:url";
-	
 
 	$result = $db->exec($query, $params);
 	//$getInfo = $db->exec("SELECT users_id, interface_id FROM tests WHERE unique_url=:url", array("url"=>$url));
@@ -61,10 +82,9 @@ function getTestFromUrl($url){
 	return false;
 }
 
-
-   function is_email_valid($email) {
-      return filter_var($email, FILTER_VALIDATE_EMAIL);
-   }
+function is_email_valid($email) {
+  return filter_var($email, FILTER_VALIDATE_EMAIL);
+}
 
 
 

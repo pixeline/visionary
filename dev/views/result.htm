@@ -12,22 +12,22 @@
         <table class="result-table">
             <thead>
                 <tr>
-                    <th title="">Angle</th>
-                    <th title="">Major</th>
-                    <th title="">Minor</th>
-                    <th title="">TES</th>
-                    <th title="">S-index</th>
-                    <th title="">C-index</th>
+                    <th title="Confusion Angle">Angle</th>
+                    <th title="Major Radius">Major</th>
+                    <th title="Minor Radius">Minor</th>
+                    <th title="Total Score of Error">TES</th>
+                    <th title="Selectivity Index">S-index</th>
+                    <th title="Confusion Index">C-index</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="angle"></td>
-                    <td class="major_radius"></td>
-                    <td class="minor_radius"></td>
-                    <td class="tes"></td>
-                    <td class="s_index"></td>
-                    <td class="c_index"></td>
+                    <td><?php echo $test["diag_confusion_angle"]; ?></td>
+                    <td><?php echo $test["diag_confusion_angle"]; ?></td>
+                    <td><?php echo $test["diag_confusion_angle"]; ?></td>
+                    <td><?php echo $test["diag_confusion_angle"]; ?></td>
+                    <td><?php echo $test["diag_confusion_angle"]; ?></td>
+                    <td><?php echo $test["diag_confusion_angle"]; ?></td>
                 </tr>
             </tbody>    
         </table>
@@ -41,22 +41,18 @@
     <div>
         <button>Imprimer le test</button>
 
-        <?php if ( $display_register_form !== 'yup') { ?>
+        <?php if( $display_register_form == 'yup'): ?>
 
-        <button>Recommencer le test</button>
-        
-        <?php } else { ?>
-        <h2>Participer à la recherche en vous créant un compte</h2>
-        <?php 
-        	require 'views/register.form.htm'; 
-        } 
-        
-        pr($_SESSION);
-        ?>
+            <h2>Participer à la recherche en vous créant un compte</h2>
 
+            <?php require 'views/register.form.htm'; ?>        
+        <?php else: ?>
+
+            <a href="/test">Recommencer le test</button>
+
+        <?php endif; ?>
+       
     </div>
     
 
 </div>
-
-<script src=""></script>

@@ -1,47 +1,43 @@
-<div class="content">
-    
-    <div id="test" class="test">
-        <section class="color-arrangement">
-            <ul id="list-normal" class="color-list"></ul>
-        </section>
+<div id="test" class="test" data-serie="<?php echo $test['diag_serie']; ?>">
 
-        <div class="brienfing">
-            <div class="briefing-content">
+    <section class="color-arrangement">
+        <ul id="list-normal" class="color-list"></ul>
+    </section>
 
-                <h1 class='text-center'>Arrangez les couleurs pour former un dégradé</h1>
+    <div class="brienfing">
+        <div class="briefing-content">
 
+            <h1 class='text-center'>Arrangez les couleurs pour former un dégradé</h1>
 
-                <p class="test-instruction text-center">
-                    Astuce: commencez par la gauche et réarrangez les couleurs progressivement vers la droite
-                </p>
-               
+            <p class="text-center">
+                Astuce: commencez par la gauche et réarrangez les couleurs progressivement vers la droite
+            </p>
 
-                <form action="/result" method="POST">
-                    
-                    <input type="hidden" id="serie" name="diag_serie">
-                    <input type="hidden" id="result" name="diag_result">
-                    <input type="hidden" id="ratio" name="diag_ratio">
-                    <input type="hidden" id="majorAngle" name="diag_confusion_angle">
-                    <input type="hidden" id="majorRadius" name="diag_major">
-                    <input type="hidden" id="minorRadius" name="diag_minor">
-                    <input type="hidden" id="tes" name="diag_tes">
-                    <input type="hidden" id="s_index" name="diag_s_index">
-                    <input type="hidden" id="c_index" name="diag_c_index">
-
+            <form action="/result" method="POST">
+                <input type="hidden" id="serie" name="diag_serie">
+                <input type="hidden" id="result" name="diag_result">
+                <input type="hidden" id="ratio" name="diag_ratio">
+                <input type="hidden" id="majorAngle" name="diag_confusion_angle">
+                <input type="hidden" id="majorRadius" name="diag_major">
+                <input type="hidden" id="minorRadius" name="diag_minor">
+                <input type="hidden" id="tes" name="diag_tes">
+                <input type="hidden" id="s_index" name="diag_s_index">
+                <input type="hidden" id="c_index" name="diag_c_index">
+                <?php if(!$test['diag_serie']): ?>
                     <p class="text-center">
                         <button type="submit" name="is_sure" value="1">J'ai fini (et je suis sûr)</button>
                         <button type="submit" name="is_sure" value="0">J'ai fini (mais je suis pas certain)</button>
                     </p>
-                </form>
-                
-            </div>
+                <?php endif; ?>
+            </form>
+            
         </div>
     </div>
-
 </div>
 
-<script src="js/tools.js"></script>
-<script src="js/touch-dnd.js"></script>
-<script src="js/velocity.js"></script>
-<script src="js/velocity.ui.js"></script>
-<script src="js/classement.js"></script>
+
+<script src="/assets/js/tools.js"></script>
+<script src="/assets/js/touch-dnd.js"></script>
+<script src="/assets/js/velocity.js"></script>
+<script src="/assets/js/velocity.ui.js"></script>
+<script src="/assets/js/classement.js"></script>

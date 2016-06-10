@@ -2,17 +2,9 @@
 
 global $db, $lang;
 
-
-$name_lang = "nom_".$lang;
-
-$countries = $db->exec("SELECT iso, ".$name_lang." FROM countries");
-
-usort($countries, function ($a, $b) {
-    return strcasecmp($a['nom_fr'],$b['nom_fr']);
-});
-
-$f3->set('countries', $countries);
+$f3->set('countries', getCoutries($lang) );
 $f3->set('content', 'views/home.htm');
+
 echo View::instance()->render('views/layout.htm');
 
 

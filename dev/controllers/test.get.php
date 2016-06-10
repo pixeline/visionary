@@ -11,7 +11,8 @@ $mysql_time = date("Y-m-d H:i:s");
 $f3->set('SESSION.test', array(
 	"interface_id" => $interface_version,
 	"unique_url" => $unique_url,
-	"test_start_date" => $mysql_time
+	"test_start_date" => $mysql_time,
+	"registered" => "no"
 ));
 
 $f3->set('content', 'views/test.htm');

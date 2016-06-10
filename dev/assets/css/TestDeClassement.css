@@ -1,28 +1,13 @@
 /* apply a natural box layout model to all elements, but allowing components to change */
 
-html.testDeClassement {
+html {
   box-sizing: border-box;
-   height: 100%;
 }
 *, *:before, *:after {
   box-sizing: inherit;
 }
-/*
-html.testDeClassement, .testDeClassement body {
-    color: #4A4A4A;
-}
 
-input[type=text],
-input[type=email] {
-     width: 48%;
-    padding: 12px 20px;
-    margin: 8px 1%;
-    box-sizing: border-box;
-    float: left;
-}
-
-
-#alert {
+.alert {
     display: block;
     float: left;
     padding: 10px;
@@ -31,46 +16,8 @@ input[type=email] {
     text-align: left;
     list-style-type: circle;
 }
-.btn-primary {
-    display: inline-block;
-    padding:12px 25px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 4px;
-    margin:20px auto 0 auto;
-    background-color:#0277BD;
-    color:#fff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: background-color 0.5s ease;
-    border:none;
-}
-.btn-primary:hover {
-    background-color:#01579B;
-}
-.btn-disabled {
-    background-color: #70A4C2;
-}
-
-.btn-disabled:hover {
-    background-color:#5785A0;
-}
 
 
-.btn-primary.sm {
-    display: block;
-    padding:6px 8px;
-    width: auto;
-    font-size: 12px;
-}
-
-.test {
-    width: 100%;
-    height: 100%;
-}
-.testDeClassement body {
-    height: inherit;
-}
 .no-scroll {
     overflow: hidden; 
 }
@@ -83,7 +30,6 @@ input[type=email] {
 
 .testDeClassement h1 {
     font-size: 2.5em;
-    /* margin-bottom: 20px; */
     margin: 30px 0;
     text-align: center;
 }
@@ -181,14 +127,12 @@ input[type=email] {
 }
 .testDeClassement .brienfing {
     height: 50%;
-    /*max-width: 700px;*/
     width: 80%;
     margin: 0 auto;
     display: table;
 }
 
 .testDeClassement .briefing-content {
-    /*margin: 50px auto;*/
     display: table-cell;
     vertical-align: middle;
     
@@ -330,17 +274,6 @@ input[type=email] {
 
 
 
-/* *********
-TEST DE RECONAISSANCE
-*************/
-
-#test-2 .color-arrangement {
-
-}
-#list-normal {}
-#list-normal li{
-    
-}
 .list-inline li {
     display: inline-block;
 }
@@ -366,10 +299,6 @@ TEST DE RECONAISSANCE
     border: 1px solid #0277BD;
     display: block;
     padding: 20px 0;
-    /*
-        background: #fff;
-        border-radius: 4px;
-    */
     background-size: contain;
     background-position: center;@
     text-align: center;
@@ -410,10 +339,6 @@ TEST DE RECONAISSANCE
 
 .placeholder {
     position: absolute;
-}
-
-a i {
-    margin-right : 8px;
 }
 
 #stage {

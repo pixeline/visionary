@@ -25,7 +25,7 @@ $(document).ready(function(){
         	"tritan" : "Tritane (Violet - jaune vert)",
         },
     	buildTest = function(callback){
-	    	$.getJSON("data/data.json", function(result){
+	    	$.getJSON("/assets/js/data/data.json", function(result){
 
 	    		data = result;
 
