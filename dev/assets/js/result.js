@@ -1,60 +1,27 @@
 $(document).ready(function(){
-	/**
-		current user informations
-	*/
-
-	console.log("Result")
-
-	var firstTrial = true;
-
-	var currentUser = {
-		name : null,
-		email : null,
-		url : null,
-		date : null,
-		serie : null,
-		result : null,
-	}
-   
     var data = {},
     	stageWidth = 400, // 400
 		stageHeight = 280, // 360
 		colorOrder = [],
-		points = [],
 		order = [],
 		$colorList = $("#list-normal"),
 		$btnPrint = $(".btn-print"),
-		colorListItems = "",
-		result = {},
-		sortable = false,
-		key, choice,
-		types = {
-        	"succeed" : "Aucun",
-        	"protan" : "Protane (Rouge - bleu vert)",
-        	"deutan" : "Deutan (Vert - rouge pourpre)",
-        	"tritan" : "Tritane (Violet - jaune vert)",
-        },
-    	buildTest = function(callback){
-	    	
-	    		data = result;
-
-	    		console.log(data)
-
-				colorOrder = data.colors; //shuffleArray(data.colors);
-
+		key, 
+    	buildResult = function(callback){
+	    	$.getJSON("/assets/js/data/data.json", function(json){
+	    		data = json;
+				order = $("#scheme").data("serie").split(",");
+				colorOrder = orderArray(data.colors, order);
 				scaleCoords();
-				drawDom();
+				drawGraph();
 
-				$('#choices .pick').shuffle();
-				$('#choices .pick').each(function(i, k){
-					$(this).find("a").text(i + 1);
-				});
 
-				commands();
+				$btnPrint.on("click", function(){
+					window.print();
+				})
 
-				$(window).trigger('resize');
+			})
     	},
-
 		scaleCoords = function(){
 			var n = data.colors.length;
 			var factor = stageWidth / 130;
@@ -80,121 +47,6 @@ $(document).ready(function(){
 			data.tritan.from = _s(data.tritan.from);
 			data.tritan.to = _s(data.tritan.to);
 		},
-
-		checkResult = function() {
-			console.log("checkResult")
-	        $('.angle').html( result.majorAngle.toFixed(1) );
-	        $('.major_radius').html( result.majorRadius.toFixed(1) );
-	        $('.minor_radius').html( result.minorRadius.toFixed(1) );
-	        $('.tes').html( result.tes.toFixed(1) );
-	        $('.s_index').html( result.s_index.toFixed(2) );
-	        $('.c_index').html( result.c_index.toFixed(2) );
-	        var cvd_type = "fail";
-	        // CVD Type Criterions:
-	        // C-index: 1.6 (for cvd vs. normal)
-	        // Protan > +0.7 > Deutan > -65.0 > Tritan
-	        if (result.c_index <= 1.6) {
-	          $('.cvd_type').html("n'êtes pas daltonien"); //not colorblind
-	          cvd_type = "succeed";
-	        } else if (result.majorAngle >= +0.7) {
-	          $('.cvd_type').html('êtes daltonien de type protanope'); //protan color vision
-	           cvd_type = "protan";
-	        } else if (result.majorAngle < -65) {
-	          $('.cvd_type').html('êtes daltonien de type tritanope');
-	          cvd_type = "tritan";
-	        } else {
-	          $('.cvd_type').html('êtes daltonien de type deuteranope');
-	          cvd_type = "deutan";
-	        }
-	        // Severity Criterions
-	        // C-index range: 1.6 - 4.2
-	        var adjusted_c = result.c_index;
-	        if (adjusted_c < 1.6) { adjusted_c = 1.6 };
-	        if (adjusted_c > 4.2) { adjusted_c = 4.2 };
-	        
-
-	        currentUser.serie = order;
-	        currentUser.result = cvd_type;
-
-
-	        $("#result-text span").text(types[cvd_type]);
-
-	        $('.severity_range').html( Math.round((adjusted_c - 1.6) * 100 / (4.2 - 1.6)) + "%" );  
-
-	        if(firstTrial){
-	        	$.ajax({type: "POST",
-				  url: "/test/newuser",
-				  dataType: "json",
-				  data : currentUser,
-				  success: function(result){
-				  	console.log( result )
-				  }
-				})	
-	        }
-	    },
-
-		commands = function(){
-			console.log("commands")
-			$("html").addClass("testDeClassement");
-			// $("body").addClass("no-scroll");
-
-			$btnPrint.on("click", function(){
-				window.print();
-			})
-
-			$("#show-final").on("click", function(e){
-				e.preventDefault();
-				if( $("#choices a.active").length ){
-					checkResult();
-					drawGraph();
-
-					$("#list-normal").addClass("no-border");
-					$("#test").velocity({ height: "140px"}, { duration : 1000, delay:500,  easing: "easeInBack" });
-					$(".color-arrangement").velocity({ height: "5px"}, { duration : 1000, delay:500,  easing: "easeInBack" });
-					$(".brienfing").velocity({ height: "100px"}, { duration : 1000, delay : 500,  easing : "easeInBack" });
-					// $("body").removeClass("no-scroll");
-
-					$("#result").removeClass("hide");
-
-					// $("#list-normal").addClass("no-border");
-
-					$("#choices").velocity("transition.slideDownOut");
-
-					$(this).velocity("transition.slideDownOut", function(){
-						$(".test-instruction").toggleClass("hide");
-						$(".result-instruction").toggleClass("hide");
-					});
-				}
-
-			})
-
-			$("#choices").on("click", "a", function(e){
-				e.preventDefault();
-				$("#choices a").removeClass("active");
-				$("#show-final").removeClass("btn-disabled");
-
-				$(this).addClass("active");
-				sortable = false;
-				switch($(this).attr("id")){ 
-					case "pick-normal": colorOrder = orderArray(data.colors, data.normal.scheme); choice = "normal"; break;
-					case "pick-protan": colorOrder = orderArray(data.colors, data.protan.scheme); choice = "protan"; break;
-					case "pick-deutan": colorOrder = orderArray(data.colors, data.deutan.scheme); choice = "deutan"; break;
-					case "pick-tritan": colorOrder = orderArray(data.colors, data.tritan.scheme); choice = "tritan"; break;
-					case "pick-deuteranormal": colorOrder = orderArray(data.colors, data.presets.tritanCrossing); choice = "deutan"; break;
-					case "pick-tritan-crossing": colorOrder = orderArray(data.colors, data.presets.deuteranomal); choice = "tritan"; break;
-					case "pick-other": colorOrder = shuffleArray(data.colors); choice = "other"; sortable = true; break;
-				}
-
-				$colorList.find("li").velocity("transition.slideUpOut", { 
-					duration: 400, 
-					stagger: 20, 
-					complete: function() {
-						drawDom();
-					}
-				})
-			})
-		},
-
 		drawGraph = function(){
 			// GRAPH
 			var $stage = $("#stage");
@@ -284,6 +136,11 @@ $(document).ready(function(){
 				$lineOrder.attr("points", points);
 				$stage.append($lineOrder);
 		};
+
+		if( $( "#stage" ).length ){
+			buildResult();	
+		}
+		
 
 })
 

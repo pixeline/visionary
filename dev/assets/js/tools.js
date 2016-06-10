@@ -138,7 +138,7 @@ var shuffleArray = function (arr) {
 var orderArray = function (arr, order){
   var newOrder = [];
   for(var i = 0; i < order.length; i++){
-    newOrder.push(arr[order[i]]);
+    newOrder.push(arr[parseInt(order[i])]);
   }
   return newOrder;
 }

@@ -27,6 +27,17 @@ if($test){
 		"registered" => "yes"
 	));
 
+	$user = array(
+		'name'           => $test["name"],
+		'email'          => $test["email"],
+		'birth_date'     => $test["birth_date"],
+		'vetted'         => $test["vetted"],
+		'gender'         => $test["gender"],
+		'role'           => $test["role"],
+		'countries_iso'  => $test["countries_iso"],
+	);
+
+	$f3->set('SESSION.user', $user);
 
 } else {
 	$f3->reroute('/test');

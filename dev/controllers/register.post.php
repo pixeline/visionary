@@ -2,6 +2,7 @@
 
 global $db, $lang;
 
+// register, for informations: name, email and birth date
 //$f3->get('SESSION.test.unique_url')
 
 // check if post is filled
@@ -34,21 +35,19 @@ if( !empty($f3->get('POST')) ){
 			$errors['gender'] = _("Veuillez indiquer votre genre.");
 		}
 		// valid email
-
 		if(!is_email_valid($email)){
 			$errors['email'] = _("L'adresse email est invalide. Veuillez vous assurer qu'il y a bien un @ et un . à sa droite.");
 		}
 
 		if(count($errors)>0){
 			$f3->set('SESSION.errors', $errors);
-
 			// [TODO] find an other solution
 			if( $f3->get('POST.user-type') == "register-and-finish" ){ 
 	        	$f3->reroute("/result");
 	        } else {
 	            $f3->reroute('/');
-	        }
-			exit;
+	        }	
+			exit;é
 		}
 
 		// check if user already exist

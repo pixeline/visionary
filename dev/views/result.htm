@@ -4,8 +4,8 @@
 
     <p>D'après ce test, vous semblez présenter un daltonisme de type <strong>deutéranope</strong> à <strong>95%</strong></p>
     
-    <div id="scheme">
-        <img src="" alt="">
+    <div id="scheme" data-serie="<?php echo $test['diag_serie']; ?>">
+        <svg id="stage" width="400" height="280"></svg>
     </div>
     
     <div>
@@ -39,7 +39,7 @@
      </div>
     
     <div>
-        <button>Imprimer le test</button>
+        <button class="btn-print">Imprimer le test</button>
 
         <?php if( $display_register_form == 'yup'): ?>
 

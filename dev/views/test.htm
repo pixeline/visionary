@@ -23,12 +23,10 @@
                 <input type="hidden" id="tes" name="diag_tes">
                 <input type="hidden" id="s_index" name="diag_s_index">
                 <input type="hidden" id="c_index" name="diag_c_index">
-                <?php if(!$test['diag_serie']): ?>
-                    <p class="text-center">
-                        <button type="submit" name="is_sure" value="1">J'ai fini (et je suis sûr)</button>
-                        <button type="submit" name="is_sure" value="0">J'ai fini (mais je suis pas certain)</button>
-                    </p>
-                <?php endif; ?>
+                <p class="text-center">
+                    <button type="submit" name="is_sure" value="1">J'ai fini (et je suis sûr)</button>
+                    <button type="submit" name="is_sure" value="0">J'ai fini (mais je suis pas certain)</button>
+                </p>
             </form>
             
         </div>
@@ -36,8 +34,3 @@
 </div>
 
 
-<script src="/assets/js/tools.js"></script>
-<script src="/assets/js/touch-dnd.js"></script>
-<script src="/assets/js/velocity.js"></script>
-<script src="/assets/js/velocity.ui.js"></script>
-<script src="/assets/js/classement.js"></script>
