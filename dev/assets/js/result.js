@@ -1,7 +1,7 @@
 $(document).ready(function(){
     var data = {},
-    	stageWidth = 400, // 400
-		stageHeight = 280, // 360
+    	stageWidth = parseInt($("#stage").attr("width")), // 400
+		stageHeight = parseInt($("#stage").attr("height")), // 360
 		colorOrder = [],
 		order = [],
 		$colorList = $("#list-normal"),
@@ -14,8 +14,7 @@ $(document).ready(function(){
 				colorOrder = orderArray(data.colors, order);
 				scaleCoords();
 				drawGraph();
-
-
+				
 				$btnPrint.on("click", function(){
 					window.print();
 				})
@@ -88,10 +87,13 @@ $(document).ready(function(){
 			    	.attr("x2", data.protan.to.x ).attr("y2", data.protan.to.y )
 			    	.attr("stroke", "#ffaaaa").attr("stroke-width", lineThick);
 
+			var textPosition = pointInAngleDist(5, data.protan.from, data.protan.to);
+
 			var $textProtan = $(document.createElementNS("http://www.w3.org/2000/svg","text"));
-				$textProtan.text("Protan")
-						.css({"font-size" : "12px","transform" : "translate(168px, 130px) rotate(-98deg)" })
-						.attr("x", 0).attr("y", 0);
+				$textProtan
+					.text("Protan")
+					.css({"font-size" : "12px","transform" : "translate("+textPosition.x+"px, "+textPosition.y+"px) rotate("+textPosition.angle+"deg)" })
+					.attr("x", 0).attr("y", 0);
 
 			//  DEUTANE
 			var $lineDeutane = $(document.createElementNS("http://www.w3.org/2000/svg","line"));
@@ -100,9 +102,12 @@ $(document).ready(function(){
 			    	.attr("x2", data.deutan.to.x ).attr("y2", data.deutan.to.y )
 			    	.attr("stroke", "#aaffaa").attr("stroke-width", lineThick);
 
+			var textPosition = pointInAngleDist(-10, data.deutan.from, data.deutan.to);
 			var $textDeutane = $(document.createElementNS("http://www.w3.org/2000/svg","text"));
-				$textDeutane.text("Deutane").attr("x", 0).attr("y", 0)
-						.css({"font-size" : "12px","transform" : "translate(190px, 138px) rotate(-78deg)" })
+				$textDeutane
+					.text("Deutane")
+					.css({"font-size" : "12px","transform" : "translate("+textPosition.x+"px, "+textPosition.y+"px) rotate("+textPosition.angle+"deg)" })
+					.attr("x", 0).attr("y", 0)
 
 			//  TRITANE
 			var $lineTritane = $(document.createElementNS("http://www.w3.org/2000/svg","line"));
@@ -111,18 +116,13 @@ $(document).ready(function(){
 			    	.attr("x2", data.tritan.to.x ).attr("y2", data.tritan.to.y )
 			    	.attr("stroke", "#aaaaff").attr("stroke-width", lineThick);
 
+			var textPosition = pointInAngleDist(-10, data.tritan.from, data.tritan.to);
 			var $textTritane = $(document.createElementNS("http://www.w3.org/2000/svg","text"));
-				$textTritane.text("Tritane").attr("x", 0).attr("y", 0)
-						.css({"font-size" : "12px","transform" : "translate(194px, 160px) rotate(-7deg)" })
+				$textTritane
+					.text("Tritane")
+					.css({"font-size" : "12px","transform" : "translate("+textPosition.x+"px, "+textPosition.y+"px) rotate("+textPosition.angle+"deg)" })
+					.attr("x", 0).attr("y", 0)
 
-			$stage.append($lineProtane);
-			$stage.append($textProtan);
-
-			$stage.append($lineDeutane);
-			$stage.append($textDeutane);
-
-			$stage.append($lineTritane);
-			$stage.append($textTritane);
 
 			var $lineOrder = $(document.createElementNS("http://www.w3.org/2000/svg","polyline"));
 				$lineOrder.attr("stroke", "#666666").attr("fill", "none").attr("stroke-width", lineThick);
@@ -135,12 +135,19 @@ $(document).ready(function(){
 				}
 				$lineOrder.attr("points", points);
 				$stage.append($lineOrder);
+
+			$stage.append($lineProtane);
+			$stage.append($lineDeutane);
+			$stage.append($lineTritane);
+
+			$stage.append($textProtan);
+			$stage.append($textDeutane);
+			$stage.append($textTritane);
 		};
 
 		if( $( "#stage" ).length ){
 			buildResult();	
 		}
-		
 
 })
 

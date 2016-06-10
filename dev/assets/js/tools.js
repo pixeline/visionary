@@ -148,6 +148,26 @@ var Vector = function(spot0, spot1) {
       this.v = spot1.v - spot0.v;
 }
 
+
+// get distance between
+function distanceBetween(x1, y1, x2, y2) {
+    var dx = x1 - x2, 
+        dy = y1 - y2;
+    return Math.sqrt(dx * dx + dy * dy);
+}
+
+
+
+function pointInAngleDist(offset, start, to){
+  var angle = Math.atan2(to.y - start.y - offset, to.x - start.x - offset);
+  var angleDeg = (angle * 180 / Math.PI).toFixed(2);
+  var dist = distanceBetween(start.x, start.y, to.x, to.y);
+  var x =  (start.x - offset) + Math.cos(angle) * (dist*.5); 
+  var y =  (start.y - offset) + Math.sin(angle) * (dist*.5); 
+  return { x : x, y : y, angle : angleDeg}
+}
+
+
 /************** MOI *******************/
 
 var MomentOfInertia = function(spots) {

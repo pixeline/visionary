@@ -47,7 +47,7 @@ if( !empty($f3->get('POST')) ){
 	        } else {
 	            $f3->reroute('/');
 	        }	
-			exit;é
+			exit;
 		}
 
 		// check if user already exist
