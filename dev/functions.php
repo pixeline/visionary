@@ -34,10 +34,10 @@ function pr($arg, $exit = false){
 	if($exit) exit;
 }
 
-function getUniqueURL(){
+function getUniqueURL($diff = 0){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
 	$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
-	return $hashids->encode(round(microtime(true)));
+	return $hashids->encode( round(microtime(true)) + intval($diff) );
 }
 
 // http://colour-blindness.dev/test/k7PjJRr
