@@ -59,7 +59,7 @@ $f3->route('GET /result/@unique_test_url',function($f3){ require 'controllers/re
 
 // [TODO] admin
 
-$f3->route('GET|POST /admin/mailchimp',function($f3){ require 'controllers/admin/gener.get.php'; });
+$f3->route('GET|POST /admin/mailchimp',function($f3){ require 'controllers/admin/mailchimp.get.php'; });
 /*
 // check admin login form
 $f3->route('POST /admin',function($f3){ });
