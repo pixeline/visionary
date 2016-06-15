@@ -29,7 +29,7 @@ $(document).ready(function(){
 					$(this).find("a").text(i + 1);
 				});
 
-				$("html").addClass("testDeClassement");
+				$("html").addClass("js-testDeClassement");
 
 				$(window).trigger('resize');
 				if(callback) {

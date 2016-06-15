@@ -31,7 +31,7 @@ if( !empty($f3->get('POST')) ){
 	$test["test_end_date"] =  $test_end_date;
 	$test["test_duration"] =  $test_duration;
 	
-	
+	pr($f3->get('SESSION'),true);
 	$query = 'INSERT INTO tests (diag_serie, diag_result, diag_ratio, diag_confusion_angle, diag_major, diag_minor, diag_tes, diag_s_index, diag_c_index, is_sure, interface_id, unique_url, test_start_date, test_creation_date, test_end_date, test_duration)
 			VALUES (:diag_serie,:diag_result,:diag_ratio,:diag_confusion_angle,:diag_major,:diag_minor,:diag_tes,:diag_s_index,:diag_c_index,:is_sure,:interface_id,:unique_url,:test_start_date,:test_creation_date,:test_end_date,:test_duration)';
 

@@ -46,7 +46,7 @@ $f3->route('POST /register',function($f3){ require 'controllers/register.post.ph
 
 // do the test and save an anonymous user
 
-$f3->route('GET /test',function($f3){ require 'controllers/test.get.php'; });
+$f3->route('@test: GET /test',function($f3){ require 'controllers/test.get.php'; });
 $f3->route('GET /test/@unique_test_url',function($f3){ require 'controllers/test-url.get.php'; });
 
 $f3->route('POST /result',function($f3){ require 'controllers/result.post.php'; }); 

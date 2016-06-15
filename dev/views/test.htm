@@ -4,14 +4,11 @@
         <ul id="list-normal" class="color-list"></ul>
     </section>
 
-    <div class="brienfing">
+    <div class="briefing">
         <div class="briefing-content">
 
-            <h1 class='text-center'>Arrangez les couleurs pour former un dégradé</h1>
-
-            <p class="text-center">
-                Astuce: commencez par la gauche et réarrangez les couleurs progressivement vers la droite
-            </p>
+            <h1 class="text-center">Arrangez les couleurs pour former un dégradé</h1>
+            <p class="text-center">Astuce: commencez par la gauche et réarrangez les couleurs progressivement vers la droite</p>
 
             <form action="/result" method="POST">
                 <input type="hidden" id="serie" name="diag_serie">
@@ -24,8 +21,8 @@
                 <input type="hidden" id="s_index" name="diag_s_index">
                 <input type="hidden" id="c_index" name="diag_c_index">
                 <p class="text-center">
-                    <button type="submit" name="is_sure" value="1">J'ai fini (et je suis sûr)</button>
-                    <button type="submit" name="is_sure" value="0">J'ai fini (mais je suis pas certain)</button>
+                    <button type="submit" name="is_sure" value="1" class="pure-button pure-button-primary">J'ai fini (et je suis sûr)</button>
+                    <button type="submit" name="is_sure" value="0" class="pure-button pure-button-primary">J'ai fini (mais je suis pas certain)</button>
                 </p>
             </form>
             

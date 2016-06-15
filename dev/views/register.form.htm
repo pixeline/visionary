@@ -1,7 +1,5 @@
-<h2>Veuillez remplir les champs suivants </h2>
 
-<form action="/register" method="POST">
-
+	
     <div>
         <?php 
             if( !empty($SESSION["errors"]) ):
@@ -9,68 +7,73 @@
             <div class="alert"><?php echo $error; ?></div>
         <?php endforeach; endif; ?>
     </div>
-    
-     <div>
-        <label for="name">Votre prénom et nom</label>
-        <input type="text" id="name" name="name" placeholder="Votre prénom et nom" value="">
-    </div>
+   
+    <p>Veuillez vous enregistrer pour participer à la recherche. Vos informations restent strictement privées et ne seront utilisées qu'à des fins statistiques.</p>
+    <form action="/register" method="POST" class="form pure-form pure-form-stacked form--register">
+	     <h2>Inscrivez-vous</h2>
+    <div class="pure-g">
+	    <div class="pure-u-1-2">
+        <label for="name">Prénom et nom <span class="voice--whisper">* obligatoire</span></label>
+        <input type="text" id="name" name="name" placeholder="Votre prénom et nom" value="" required>
 
-    <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Votre email" value="">
-    </div>
+	
+        <label for="email">Email <span class="voice--whisper">* obligatoire</span></label>
+        <input type="email" id="email" name="email" placeholder="Votre email" value="" required>
+		
+		<label for="password">Mot de passe souhaité</label>
+	    <input type="password" id="password" name="password" autocomplete="off" required>
+	        <p class="voice--whisper">Minimum 8 caractères dont au moins un chiffre et une lettre majuscule. Préférez une phrase facile à retenir en incluant sa ponctuation.</p>
+	</div>
 
-    <div>
-        <label for="birth_date">Année de naissance</label>
-        <select id="birth_date" name="birth_date">
+
+    <div class="pure-u-1-2">
+	    <fieldset class="border-left gutter--left">
+		    <label for="country">Pays de votre naissance</label>
+	        <select id="country" name="countries_iso" >
+	            <?php foreach ($countries as $country): ?>
+	                <?php if( $country['iso'] == "BE") : ?>
+	                    <option value="<?php echo $country['iso']; ?>" selected><?php echo $country["country_name"]; ?></option>
+	                <?php else: ?>
+	                    <option value="<?php echo $country['iso']; ?>"><?php echo $country["country_name"]; ?></option>
+	                <?php endif; ?>
+	            <?php endforeach; ?>
+	        </select>
+
+	        <label for="city">Code postal</label>
+	        <input type="text" id="postcode" name="city" autocomplete="shipping postal-code" size="8" placeholder="(ex: 5000)">	
+		
+			
+        <label for="birth_date">Année de naissance <span class="voice--whisper">* obligatoire</span></label>
+        <select id="birth_date" name="birth_date" required placeholder="Année de naissance">
             <option selected disabled>Année de naissance</option>
             <?php for($i = (date("Y")-3); $i >= 1900; $i--) : ?>
                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
             <?php endfor; ?>
         </select>
-    </div>
 
-    <div>
-        <p>Genre : </p>
-        <label for="male">Homme</label>
-        <input id="male" type="radio" name="gender" value="M" checked>
-        <label for="female">Femme</label>
-        <input id="female" type="radio" name="gender" value="F">
-        <label for="other">Femme</label>
-        <input id="other" type="radio" name="gender" value="O">
-    </div>
-    
-    <div>
-        <label for="country">Pays</label>
-        <select id="country" name="countries_iso">
-            <?php foreach ($countries as $country): ?>
-                <?php if( $country['iso'] == "BE") : ?>
-                    <option value="<?php echo $country['iso']; ?>" selected><?php echo $country["country_name"]; ?></option>
-                <?php else: ?>
-                    <option value="<?php echo $country['iso']; ?>"><?php echo $country["country_name"]; ?></option>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    
-    <div>
-        <label for="city">Code postal</label>
-        <input type="text" id="postcode" name="city" autocomplete="shipping postal-code" size="6" placeholder="(ex: 5000)">
-    </div>
 
-    <div>
-        <label for="password">Mot de passe souhaité</label>
-        <input type="password" id="password" name="password" autocomplete="off">
-        <p><small>(Minimum 8 caractères dont au moins un chiffre et une lettre majuscule. Préférez des phrases faciles à retenir, en incluant leur ponctuation.)</small></p>
+		<div class="pure-g">
+			<div class="pure-u-1" style="margin-bottom:0;padding-bottom:0"><label class="pure-radio"  style="margin-bottom:0;padding-bottom:0">Genre <span class="voice--whisper">* obligatoire</span></label> </div>
+			<div class="pure-u-md-5-24" style="margin-top:0;padding-top:0"><label for="male" class="pure-radio"><input id="male" type="radio" name="gender" value="M" checked> Homme</label></div>
+			<div class="pure-u-md-5-24" style="margin-top:0;padding-top:0"><label for="female" class="pure-radio"><input id="female" type="radio" name="gender" value="F"> Femme</label></div>
+			<div class="pure-u-md-5-24" style="margin-top:0;padding-top:0"><label for="other" class="pure-radio"><input id="other" type="radio" name="gender" value="O"> Autre</label></div>
+		</div>
+		
+	        
+	    </fieldset>
+	        </div>
+
+	    
     </div>
+     
 
     <div>
         <?php if( $display_register_form == 'yup'): ?>     
             <input  type="hidden" name="test_url" value="<?php echo $test['unique_url']; ?>">
-            <button type="submit" name="user-type" value="registered">Enregistrer mes informations</button>
+            <button type="submit" name="user-type" value="registered" class="pure-button pure-button-primary">Enregistrer mes informations</button>
          <?php else: ?>
-            <button type="submit" name="user-type" value="registered">Enregistrer et commencer le test</button>
-            <button type="submit" name="user-type" value="anonym" class="button-as-link">Faire le test anonymement</button>
+            <button type="submit" name="user-type" value="registered"  class="pure-button pure-button-primary">Enregistrer et démarrer le test</button>
+            <p><a href="/test">Faire le test anonymement</a></p>
          <?php endif; ?>
      </div>
 

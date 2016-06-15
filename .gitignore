@@ -4,5 +4,5 @@ v2/build/
 *.bkp
 *.DS_Store
 v2/node_modules/*
-
+*.sass-cache
 *.bak
