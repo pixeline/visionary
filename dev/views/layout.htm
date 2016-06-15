@@ -42,7 +42,10 @@
 
 		<?php echo $this->render(Base::instance()->get('content')); ?>
 		<?php
-pr($_SESSION);
+		if($DEBUG >2){
+			pr($_SESSION);
+		}
+
 ?>
 		<script src="assets/js/jquery-1.12.0.min.js"></script>
 		<script src="/assets/js/tools.js"></script>
