@@ -5,15 +5,16 @@ global $db, $lang;
 // check if post is filled and come from TEST
 if( !empty($f3->get('POST')) ){
 
-	$f3->set('display_register_form', 'nope');
+	$f3->set('display_register_form', 'no');
 	$test = $f3->get('POST');
 
-	if( !empty($f3->get('SESSION.user')) ){
+	//if( !empty($f3->get('SESSION.user')) ){
+	if( $f3->get('SESSION.user.id') == '1' ){
 		// get the user id
 		$test["users_id"] = $f3->get('SESSION.user.id');
 	} else {
 		// if anonymous user ask for informations
-		$f3->set('display_register_form', 'yup');
+		$f3->set('display_register_form', 'yes');
 		$f3->set('countries', getCoutries($lang) );
 	}
 
@@ -31,9 +32,9 @@ if( !empty($f3->get('POST')) ){
 	$test["test_end_date"] =  $test_end_date;
 	$test["test_duration"] =  $test_duration;
 	
-	pr($f3->get('SESSION'),true);
-	$query = 'INSERT INTO tests (diag_serie, diag_result, diag_ratio, diag_confusion_angle, diag_major, diag_minor, diag_tes, diag_s_index, diag_c_index, is_sure, interface_id, unique_url, test_start_date, test_creation_date, test_end_date, test_duration)
-			VALUES (:diag_serie,:diag_result,:diag_ratio,:diag_confusion_angle,:diag_major,:diag_minor,:diag_tes,:diag_s_index,:diag_c_index,:is_sure,:interface_id,:unique_url,:test_start_date,:test_creation_date,:test_end_date,:test_duration)';
+
+	$query = 'INSERT INTO tests (diag_serie, diag_result, diag_ratio, diag_confusion_angle, diag_major, diag_minor, diag_tes, diag_s_index, diag_c_index, is_sure, users_id, interface_id, unique_url, test_start_date, test_creation_date, test_end_date, test_duration)
+			VALUES (:diag_serie,:diag_result,:diag_ratio,:diag_confusion_angle,:diag_major,:diag_minor,:diag_tes,:diag_s_index,:diag_c_index,:is_sure,:users_id,:interface_id,:unique_url,:test_start_date,:test_creation_date,:test_end_date,:test_duration)';
 
 	$result = $db->exec($query, $test);
 

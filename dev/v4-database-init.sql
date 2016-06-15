@@ -365,7 +365,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `visionary`;
-INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (1, 'Gilles Bazelaire', 'bichon@dogstudio.be', NULL, 1975, 1, 'user', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (44, 'Gilles Bazelaire', 'bichon@dogstudio.be', NULL, 1975, 1, 'user', 'M', NULL, 'BE', NULL);
 INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (2, 'simon gauriaud', ' sim.gauriaud@gmail.com', NULL, 1993, 1, 'user', 'M', NULL, 'BE', NULL);
 INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (3, 'Marc Van Hoey', 'marc.vanhoey@skynet.be', NULL, 1956, 1, 'user', 'M', NULL, 'BE', NULL);
 INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (4, 'Abdel Bellahsini', 'a.bellahsini@gmail.com', NULL, 1980, 1, 'user', 'M', NULL, 'BE', NULL);
@@ -408,6 +408,7 @@ INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`
 INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (41, 'Frédéric Delsaux', 'fredericdelsaux@gmail.com', NULL, 1976, 1, 'user', 'M', NULL, 'BE', NULL);
 INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (42, 'Alexandre Plennevaux', 'aplennevaux@gmail.com', NULL, 1973, 0, 'admin', 'M', NULL, 'BE', NULL);
 INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (43, 'Teddy Kishi', 'teddy.tdk@gmail.com', NULL, NULL, 0, 'admin', 'M', NULL, 'BE', NULL);
+INSERT INTO `visionary`.`users` (`id`, `name`, `email`, `password`, `birth_date`, `vetted`, `role`, `gender`, `postcode`, `countries_iso`, `last_login`) VALUES (1, 'anonymous', 'none', NULL, 1970, 0, 'user', 'A', NULL, 'BE', NULL);
 
 COMMIT;
 

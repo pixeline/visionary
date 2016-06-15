@@ -3,8 +3,7 @@ $(document).ready(function(){
 		colorOrder = [],
 		order = [],
 		$colorList = $("#list-normal"),
-		$btnPrint = $(".btn-print"),
-		colorListItems = "",
+		colorListItems = '',
 		result = {},
 		sortable = true,
 		sortableIsActive = false,
@@ -39,7 +38,7 @@ $(document).ready(function(){
     	},
 		updateOrder = function(){
 
-			console.log("updateOrder");
+			//console.log("updateOrder");
 			order = [];
 			$colorList.find("li").each(function () {
 				if($(this).data("item") !== undefined){
@@ -90,7 +89,7 @@ $(document).ready(function(){
 		},
 
 		drawDom = function(){
-			console.log("drawDom")
+			//console.log("drawDom");
 			$colorList.empty();
 
 			for(key = 0; key < colorOrder.length; key++){
@@ -107,7 +106,7 @@ $(document).ready(function(){
 		},
 
 		checkResult = function() {
-			console.log("checkResult")
+			// console.log("checkResult");
 
 	        var cvd_type = "fail";
 	        // CVD Type Criterions:

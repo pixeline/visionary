@@ -462,6 +462,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/assets\/js\/min\/result-min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/assets\/js\/min\/result-min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/min\/min\/result-min-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/assets\/js\/result.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -2094,8 +2105,8 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "dev",
-	"displayValueWasSetByUser": 0,
+	"displayValue": "visionary-dev",
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "brackets_brown"
 	},
 "projectSettings": {

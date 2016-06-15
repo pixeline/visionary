@@ -9,11 +9,24 @@ $mysql_time = date("Y-m-d H:i:s");
 
 //create a session for this test
 $f3->set('SESSION.test', array(
-	"interface_id" => $interface_version,
-	"unique_url" => $unique_url,
-	"test_start_date" => $mysql_time,
-	"registered" => "no"
-));
+		"interface_id" => $interface_version,
+		"unique_url" => $unique_url,
+		"test_start_date" => $mysql_time,
+		"registered" => "no"
+	));
+$user = array(
+	'name'           => 'anonymous',
+	'email'          => 'none',
+	'birth_date'     => '1970',
+	'vetted'         => '1',
+	'gender'         => 'A',
+	'role'           => 'user',
+	'countries_iso'  => 'BE',
+	'id'			 => '1'
+);
+
+$f3->set('SESSION.user', $user);
+
 
 $f3->set('content', 'views/test.htm');
 echo View::instance()->render('views/layout.htm');

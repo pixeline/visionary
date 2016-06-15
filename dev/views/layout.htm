@@ -33,7 +33,7 @@
 	    <link rel="icon" type="image/png" href="assets/images/icons/android-chrome-192x192.png" sizes="192x192">
 
 	    <link rel="manifest" href="assets/manifest.json">
-	    <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#000000">
+	    <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#111111">
 		
 		<link rel="stylesheet" href="assets/css/app.css">
 	</head>
@@ -41,7 +41,9 @@
 		
 
 		<?php echo $this->render(Base::instance()->get('content')); ?>
-		
+		<?php
+pr($_SESSION);
+?>
 		<script src="assets/js/jquery-1.12.0.min.js"></script>
 		<script src="/assets/js/tools.js"></script>
 		<script src="/assets/js/touch-dnd.js"></script>

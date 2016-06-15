@@ -2,10 +2,10 @@
 global $db, $lang;
 
 // si nouveau utilisateur
-	// cree un test
+// cree un test
 // si vetted
-	// si le test est accompli
-		//cree un nouveau test
+// si le test est accompli
+//cree un nouveau test
 
 $unique_url = getUniqueURL($data);
 
@@ -21,11 +21,11 @@ if($test){
 
 	//create a session for this test
 	$f3->set('SESSION.test', array(
-		"interface_id" => $interface_version,
-		"unique_url" => $unique_url,
-		"test_start_date" => $mysql_time,
-		"registered" => "yes"
-	));
+			"interface_id" => $interface_version,
+			"unique_url" => $unique_url,
+			"test_start_date" => $mysql_time,
+			"registered" => "yes"
+		));
 
 	$user = array(
 		'name'           => $test["name"],

@@ -1,6 +1,9 @@
-<div class="content">
-    
-    <h2>Resultat</h2>  
+<div class="content center">
+    <main class="result text-center">
+	    	<a href="/" class="logo-home">
+			<img src="/assets/images/logo.png" alt="Retour à l'accueil">
+		</a>
+    <h1>Résultat</h1>  
 
     <p>D'après ce test, vous semblez présenter un daltonisme de type <strong>deutéranope</strong> à <strong>95%</strong></p>
     
@@ -8,8 +11,7 @@
         <svg id="stage" width="400" height="280"></svg>
     </div>
     
-    <div>
-        <table class="result-table">
+        <table class="pure-table center">
             <thead>
                 <tr>
                     <th title="Confusion Angle">Angle</th>
@@ -31,28 +33,20 @@
                 </tr>
             </tbody>    
         </table>
-    </div>
     
     <div>
-        <p>Ce test constitue un pré-diagnostic: vous pouvez <a href="#">l'imprimer</a> pour le montrer à un ophtalmologue qui testera votre vision dans des conditions cliniques contrôlées afin d'établir un diagnostic fiable.
+        <p>Ce test constitue un pré-diagnostic: vous pouvez <a href="#" class="js-print">l'imprimer</a> pour le montrer à un ophtalmologue qui testera votre vision dans des conditions cliniques contrôlées afin d'établir un diagnostic fiable.
         </p>
      </div>
-    
-    <div>
-        <button class="pure-button pure-button-primary btn-print">Imprimer le test</button>
+            <?php if( $display_register_form == 'yes'): ?>
 
-        <?php if( $display_register_form == 'yup'): ?>
-
-            <h2>Participer à la recherche en vous créant un compte</h2>
+            <h2>Participez à la recherche en vous créant un compte</h2>
 
             <?php require 'views/register.form.htm'; ?>        
-        <?php else: ?>
-
-            <a href="/test">Recommencer le test</button>
-
-        <?php endif; ?>
-       
+         <?php endif; ?>
+    <div class="text-center">
+        <button class="pure-button pure-button-primary js-print">Imprimer le test</button>
+        <a href="/test" class="pure-button pure-button-primary">Recommencer le test</a>
     </div>
-    
 
 </div>

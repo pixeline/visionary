@@ -5,7 +5,7 @@ $(document).ready(function(){
 		colorOrder = [],
 		order = [],
 		$colorList = $("#list-normal"),
-		$btnPrint = $(".btn-print"),
+		$btnPrint = $(".js-print"),
 		key, 
     	buildResult = function(callback){
 	    	$.getJSON("/assets/js/data/data.json", function(json){
