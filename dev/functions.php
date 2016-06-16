@@ -6,7 +6,7 @@ $minimum_id_length = 8;
 $custom_alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 //$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 
-function getCoutries($lang = "fr"){
+function getCountries($lang = "fr"){
 	global $db;
 	$countries = $db->exec("SELECT iso, nom_".$lang." as country_name FROM countries");
 

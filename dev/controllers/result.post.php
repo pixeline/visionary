@@ -19,7 +19,7 @@ if( !empty($f3->get('POST')) ){
 		// default to anonymous
 		$test["users_id"] = '1';
 		$f3->set('display_register_form', 'yes');
-		$f3->set('countries', getCoutries($lang) );
+		$f3->set('countries', getCountries($lang) );
 	}
 
 	// get date info

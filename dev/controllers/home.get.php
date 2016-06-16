@@ -2,7 +2,7 @@
 
 global $db, $lang;
 
-$f3->set('countries', getCoutries($lang) );
+$f3->set('countries', getCountries($lang) );
 $f3->set('content', 'views/home.htm');
 
 echo View::instance()->render('views/layout.htm');
