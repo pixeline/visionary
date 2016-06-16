@@ -18,23 +18,23 @@ $f3->config('config.ini');
 
 // set database
 $db = new \DB\SQL(
-	'mysql:host='.$f3->get("DB_HOST").';port='.$f3->get("DB_PORT").';dbname='.$f3->get("DB_NAME"), 
-	$f3->get("DB_USER"), 
+	'mysql:host='.$f3->get("DB_HOST").';port='.$f3->get("DB_PORT").';dbname='.$f3->get("DB_NAME"),
+	$f3->get("DB_USER"),
 	$f3->get("DB_PASS"),
 	array(
-	    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
-	    \PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
-	    \PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
+		\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
+		\PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
+		\PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
 	)
 );
 
 $lang = "fr";
 
 /* FAT FREE - HELPER */
-$f3->route('GET /userref',function($f3) {
-	$f3->set('content', 'userref.htm');
-	echo View::instance()->render('layout.htm');
-});
+$f3->route('GET /userref', function($f3) {
+		$f3->set('content', 'userref.htm');
+		echo View::instance()->render('layout.htm');
+	});
 
 /******************
      VISIONARY
@@ -42,24 +42,46 @@ $f3->route('GET /userref',function($f3) {
 
 
 $f3->route('GET /', function($f3) { require 'controllers/home.get.php'; });
-$f3->route('POST /register',function($f3){ require 'controllers/register.post.php'; });
+$f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
 
 // do the test and save an anonymous user
 
-$f3->route('@test: GET /test',function($f3){ require 'controllers/test.get.php'; });
-$f3->route('GET /test/@unique_test_url',function($f3){ require 'controllers/test-url.get.php'; });
+$f3->route('GET /test/@unique_test_url', function($f3){ require 'controllers/test.get.php'; });
+$f3->route('@test: GET /test', function($f3){ require 'controllers/test.get.php'; });
 
-$f3->route('POST|GET /result',function($f3){ require 'controllers/result.post.php'; }); 
-$f3->route('GET /result/@unique_test_url',function($f3){ require 'controllers/result-url.get.php'; });
+$f3->route('POST /result', function($f3){ require 'controllers/result.post.php'; });
+$f3->route('GET /result/@unique_test_url', function($f3){ require 'controllers/result-url.get.php'; });
+
+$f3->route('GET /logout', function($f3){
+		$f3->clear('SESSION');
+		// Unset all of the session variables.
+		session_start();
+		$_SESSION = array();
+
+		// If it's desired to kill the session, also delete the session cookie.
+		// Note: This will destroy the session, and not just the session data!
+		if (ini_get("session.use_cookies")) {
+			$params = session_get_cookie_params();
+			setcookie(session_name(), '', time() - 42000,
+				$params["path"], $params["domain"],
+				$params["secure"], $params["httponly"]
+			);
+		}
+
+		// Finally, destroy the session.
+		session_destroy();
+
+		$f3->reroute('/');
+	});
 
 /**
-	ADMIN
-**/
+ ADMIN
+ **/
 
 
 // [TODO] admin
 
-$f3->route('GET|POST /admin/mailchimp',function($f3){ require 'controllers/admin/mailchimp.get.php'; });
+$f3->route('GET|POST /admin/mailchimp', function($f3){ require 'controllers/admin/mailchimp.get.php'; });
 /*
 // check admin login form
 $f3->route('POST /admin',function($f3){ });
@@ -73,8 +95,6 @@ $f3->route('GET /admin/users',function($f3){ });
 $f3->route('GET /admin/analytics',function($f3){ });
 */
 
-//dump de la db 
+//dump de la db
 
 $f3->run();
-
-

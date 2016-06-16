@@ -76,7 +76,6 @@ function getTestFromUrl($url){
 			WHERE tests.unique_url =:url";
 
 	$result = $db->exec($query, $params);
-	//$getInfo = $db->exec("SELECT users_id, interface_id FROM tests WHERE unique_url=:url", array("url"=>$url));
 
 	if(!empty($result) && !empty($result[0])){
 		return $result[0];

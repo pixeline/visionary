@@ -1823,10 +1823,16 @@ a.pure-button-primary {
   font-weight: 500;
   padding: 12px 25px;
   transition: background-color 0.2s ease; }
-  .pure-button:hover,
+  .pure-button:hover, .pure-button:active, .pure-button:focus,
   .pure-button-primary:hover,
+  .pure-button-primary:active,
+  .pure-button-primary:focus,
   .button-primary:hover,
-  .btn-primary:hover {
+  .button-primary:active,
+  .button-primary:focus,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:focus {
     background-color: #013758; }
 
 .button-small {

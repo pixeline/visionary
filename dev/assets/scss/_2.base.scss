@@ -121,7 +121,9 @@ a.pure-button-primary{
 	font-weight: 500;
 	padding:12px 25px;
 	transition: background-color 0.2s ease;
-	&:hover {
+	&:hover,
+	&:active,
+	&:focus {
 		background-color:$dark-blue;
 	}
 }

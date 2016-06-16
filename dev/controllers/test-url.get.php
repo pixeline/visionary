@@ -40,13 +40,18 @@ if($test){
 	$f3->set('SESSION.user', $user);
 
 } else {
-	$f3->reroute('/test');
-	exit;
+
 }
 
+	$f3->reroute('/test');
+	exit;
+
+
+/*
 $f3->set('test', $test);
 $f3->set('content', 'views/test.htm');
 echo View::instance()->render('views/layout.htm');
+*/
 
 
 
