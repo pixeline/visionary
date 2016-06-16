@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <div class="content center">
     <main class="result text-center">
 	    	<a href="/" class="logo-home">
@@ -5,7 +9,7 @@
 		</a>
     <h1>Résultat</h1>  
 
-    <p class="voice--loud">D'après ce test, vous semblez présenter un daltonisme de type <strong>deutéranope</strong> à <strong>95%</strong></p>
+    <p class="voice--loud"><?php echo html_entity_decode($test['message']) ?></p>
     
     <div id="scheme" data-serie="<?php echo $test['diag_serie']; ?>">
         <svg id="stage" width="400" height="280"></svg>

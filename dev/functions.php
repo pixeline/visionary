@@ -25,11 +25,11 @@ function getInterval($start, $end, $format = "%H:%i:%s"){
 	return $interval->format($format);
 }
 // future translation
-/*
+
 function _($arg){
 	return $arg;
 }
-*/
+
 
 function pr($arg, $exit = false){
 	echo "<pre>".print_r($arg, true)."</pre>";
