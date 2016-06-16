@@ -38,15 +38,18 @@
         <p>Ce test constitue un pré-diagnostic: vous pouvez <a href="#" class="js-print">l'imprimer</a> pour le montrer à un ophtalmologue qui testera votre vision dans des conditions cliniques contrôlées afin d'établir un diagnostic fiable.
         </p>
      </div>
-            <?php if( $display_register_form == 'yes'): ?>
+     
+            <?php 
+            
+            if( $display_register_form == 'yes'): ?>
 
             <h2>Participez à la recherche en vous créant un compte</h2>
 
             <?php require 'views/register.form.htm'; ?>        
          <?php endif; ?>
-    <div class="text-center">
+    <p class="text-center">
         <button class="pure-button pure-button-primary js-print">Imprimer le test</button>
         <a href="/test" class="pure-button pure-button-primary">Recommencer le test</a>
-    </div>
+    </p>
 
 </div>

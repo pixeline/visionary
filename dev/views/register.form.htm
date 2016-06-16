@@ -9,7 +9,7 @@
     </div>
    
     <p>Veuillez vous enregistrer pour participer à la recherche. Vos informations restent strictement privées et ne seront utilisées qu'à des fins statistiques.</p>
-    <form action="/register" method="POST" class="form pure-form pure-form-stacked form--register">
+    <form action="/register" method="POST" class="form pure-form pure-form-stacked form--register text-left">
 	     <h2>Inscrivez-vous</h2>
     <div class="pure-g">
 	    <div class="pure-u-1-2">
@@ -67,14 +67,14 @@
     </div>
      
 
-    <div>
-        <?php if( $display_register_form == 'yup'): ?>     
+    <p>
+        <?php if( $display_register_form == 'yes'): ?>     
             <input  type="hidden" name="test_url" value="<?php echo $test['unique_url']; ?>">
             <button type="submit" name="user-type" value="registered" class="pure-button pure-button-primary">Enregistrer mes informations</button>
          <?php else: ?>
             <button type="submit" name="user-type" value="registered"  class="pure-button pure-button-primary">Enregistrer et démarrer le test</button>
-            <p><a href="/test">Faire le test anonymement</a></p>
+           
          <?php endif; ?>
-     </div>
+     </p>
 
 </form>

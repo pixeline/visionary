@@ -7,13 +7,17 @@ if( !empty($f3->get('POST')) ){
 
 	$f3->set('display_register_form', 'no');
 	$test = $f3->get('POST');
-
-	//if( !empty($f3->get('SESSION.user')) ){
-	if( $f3->get('SESSION.user.id') == '1' ){
+	
+	
+	
+	if( !empty($f3->get('SESSION.user.name')) && $f3->get('SESSION.user.name') !== 'anonymous' ){
 		// get the user id
 		$test["users_id"] = $f3->get('SESSION.user.id');
+
 	} else {
 		// if anonymous user ask for informations
+		// default to anonymous
+		$test["users_id"] = '1';
 		$f3->set('display_register_form', 'yes');
 		$f3->set('countries', getCoutries($lang) );
 	}
