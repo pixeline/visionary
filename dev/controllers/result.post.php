@@ -75,8 +75,7 @@ if (adjusted_c > 4.2) { adjusted_c = 4.2 };
 result.serie = order;
 result.result = cvd_type;
 result.ratio = Math.round((adjusted_c - 1.6) * 100 / (4.2 - 1.6)) + "%";
-pr($test);
-Array
+
 (
     [id] => 35
     [users_id] => 1
