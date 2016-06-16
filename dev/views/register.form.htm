@@ -14,14 +14,14 @@
     <div class="pure-g">
 	    <div class="pure-u-1-2">
         <label for="name">Prénom et nom <span class="voice--whisper">* obligatoire</span></label>
-        <input type="text" id="name" name="name" placeholder="Votre prénom et nom" value="" required>
+        <input type="text" id="name" name="name" placeholder="Votre prénom et nom" autocomplete="name" value="" required>
 
 	
         <label for="email">Email <span class="voice--whisper">* obligatoire</span></label>
-        <input type="email" id="email" name="email" placeholder="Votre email" value="" required>
+        <input type="email" id="email" name="email" placeholder="Votre email" value="" autocomplete="email" required>
 		
 		<label for="password">Mot de passe souhaité</label>
-	    <input type="password" id="password" name="password" autocomplete="off" required>
+	    <input type="password" id="password" name="password" autocomplete="new-password" required>
 	        <p class="voice--whisper">Minimum 8 caractères dont au moins un chiffre et une lettre majuscule. Préférez une phrase facile à retenir en incluant sa ponctuation.</p>
 	</div>
 
@@ -40,7 +40,7 @@
 	        </select>
 
 	        <label for="city">Code postal</label>
-	        <input type="text" id="postcode" name="city" autocomplete="shipping postal-code" size="8" placeholder="(ex: 5000)">	
+	        <input type="text" id="postcode" name="city" autocomplete="postal-code" size="8" placeholder="(ex: 5000)">	
 		
 			
         <label for="birth_date">Année de naissance <span class="voice--whisper">* obligatoire</span></label>

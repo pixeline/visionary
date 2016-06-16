@@ -20,6 +20,8 @@ if( !empty($f3->get('POST')) ){
 		$test["users_id"] = '1';
 		$f3->set('display_register_form', 'yes');
 		$f3->set('countries', getCountries($lang) );
+		// In the case the user wants to create an account after doing the test, we store it.
+		//$f3->set('SESSION.post', $test);
 	}
 
 	// get date info

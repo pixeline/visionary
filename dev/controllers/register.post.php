@@ -41,7 +41,7 @@ if( !empty($f3->get('POST')) ){
 
 		if(count($errors)>0){
 			$f3->set('SESSION.errors', $errors);
-			// [TODO] find an other solution
+			// [TODO] find another solution
 			if( $f3->get('POST.user-type') == "register-and-finish" ){ 
 	        	$f3->reroute("/result");
 	        } else {
@@ -67,7 +67,7 @@ if( !empty($f3->get('POST')) ){
 				'role'           => $role,
 				'countries_iso'  => $countries_iso,
 			);
-
+			
 			// if not add the new user
 			$query = 'INSERT INTO users (name, email, password, birth_date, vetted, gender, role, countries_iso)
 						VALUES (:name, :email, :password, :birth_date, :vetted, :gender, :role, :countries_iso)';
@@ -75,12 +75,16 @@ if( !empty($f3->get('POST')) ){
 			$result = $db->exec($query, $user);
 
 			$user['id'] = $db->lastInsertId();
-
+			
+			// Update the session
+			$f3->set('SESSION.user', $user);
+			
+			// If user chose to register after a test, save the test with his user_id.
 			if($f3->get('POST.test_url') != null ){
 
 				$db->exec(
-					"UPDATE tests SET users_id='?' WHERE unique_url='?'", 
-					array("unique_url"=>$f3->get('POST.test_url'))
+					"UPDATE tests SET users_id=':users_id' WHERE unique_url=':unique_url'", 
+					array(':users_id'=> $user['id'] , ':unique_url' => $f3->get('POST.test_url') )
 				);
 
 				$f3->reroute("/result/".$f3->get('POST.test_url'));

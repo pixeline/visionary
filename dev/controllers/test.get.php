@@ -8,6 +8,9 @@ global $db, $lang;
 */
 $unique_test_url = trim($f3->get('PARAMS.unique_test_url'));
 
+// delete previous test results from Session.
+//$f3->set('SESSION.post', array());
+
 if(!empty($unique_test_url)){
 
 	// Unique url query var present in URL, get relevant test data.
