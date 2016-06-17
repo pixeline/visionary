@@ -15,8 +15,10 @@ $(document).ready(function(){
 				scaleCoords();
 				drawGraph();
 				
-				$btnPrint.on("click", function(){
+				$btnPrint.on("click", function(e){
 					window.print();
+					e.preventDefault();
+					return false;
 				})
 
 			})
