@@ -4,7 +4,7 @@ global $db, $lang;
 	"TEST" CONTROLLER:
 	> if route is /test/@unique_test_url: get data then redirect to /test
 	> if route is /test  : check if session is not dry. If it is, populate session with default "anonymous" values.
-	
+
 */
 $unique_test_url = trim($f3->get('PARAMS.unique_test_url'));
 
@@ -32,9 +32,13 @@ if(!empty($unique_test_url)){
 			'gender'         => $test["gender"],
 			'role'           => $test["role"],
 			'countries_iso'  => $test["countries_iso"],
+			'id'           	 => $test["users_id"],
 		);
 		$f3->set('SESSION.test', $test);
 		$f3->set('SESSION.user', $user);
+		
+		// Update user's last login datetime...
+		$db->exec("UPDATE users SET last_login=:now WHERE id=:users_id", array(':now'=> date("Y-m-d H:i:s"), ':users_id'=>$test['users_id'] ));
 
 		// since we now have saved all data in the session, redirect /test/unique_url to /test
 		$f3->reroute('/test');
@@ -43,21 +47,11 @@ if(!empty($unique_test_url)){
 	}
 }
 
-if( empty($f3->get('SESSION.user.name')) || $f3->get('SESSION.user.name') == 'anonymous'){
+if( empty($f3->get('SESSION.user.name')) || ($f3->get('SESSION.user.name') == 'anonymous') ){
 
 	// User is unknown, let's link him to the Anonymous account
 	// Default test & user values (will be used if test is anonymous)
 
-	$interfaces = $db->exec("SELECT * FROM interfaces WHERE name = '".$f3->get('INTERFACE_VERSION')."'");
-	$interface_version = $interfaces[0]["id"];
-	$mysql_time = date("Y-m-d H:i:s");
-
-	$test = array(
-		"interface_id" => $interface_version,
-		"unique_url" => getUniqueURL(),
-		"test_start_date" => $mysql_time ,
-		"registered" => "no"
-	);
 	$user = array(
 		'name'           => 'anonymous',
 		'email'          => 'none',
@@ -68,9 +62,22 @@ if( empty($f3->get('SESSION.user.name')) || $f3->get('SESSION.user.name') == 'an
 		'countries_iso'  => 'BE',
 		'id'    => '1'
 	);
-
-	$f3->set('SESSION.test', $test);
 	$f3->set('SESSION.user', $user);
+}
+
+// If no test prepared for that user, create test
+if( empty($f3->get('SESSION.test') ) ) {
+	$interfaces = $db->exec("SELECT * FROM interfaces WHERE name = '".$f3->get('INTERFACE_VERSION')."'");
+	$interface_version = $interfaces[0]["id"];
+	$mysql_time = date("Y-m-d H:i:s");
+
+	$test = array(
+		"interface_id" => $interface_version,
+		"unique_url" => getUniqueURL(),
+		"test_start_date" => $mysql_time ,
+		"registered" => "no"
+	);
+	$f3->set('SESSION.test', $test);
 }
 
 $f3->set('test', $test);

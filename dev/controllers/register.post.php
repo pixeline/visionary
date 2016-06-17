@@ -18,13 +18,19 @@ if( !empty($f3->get('POST')) ){
 		$gender         = trim(strip_tags($f3->get('POST.gender')));
 		$role           = "user";
 		$countries_iso  = trim(strip_tags($f3->get('POST.countries_iso')));
+		$postcode  		= trim(strip_tags($f3->get('POST.postcode')));
 
 		// validations
 		$errors = array();
+		
+
 		// required fields: email, birthdate, gender
 		if(empty($email)){
 			$errors['email'] = _("Veuillez indiquer votre adresse email.");
 		}
+		// check if user already exist
+		$user = isAlreadyRegistered($email);
+		
 		if(empty($password )){
 			$errors['password'] = _("Veuillez indiquer votre mot de passe.");
 		}
@@ -50,8 +56,7 @@ if( !empty($f3->get('POST')) ){
 			exit;
 		}
 
-		// check if user already exist
-		$user = isAlreadyRegistered($email);
+
 
 		// the user does NOT already exist register him
 		if(!$user){
@@ -66,11 +71,13 @@ if( !empty($f3->get('POST')) ){
 				'gender'         => $gender,
 				'role'           => $role,
 				'countries_iso'  => $countries_iso,
+				'postcode'		 => $postcode,
+				'last_login'	 => date("Y-m-d H:i:s")
 			);
 			
 			// if not add the new user
-			$query = 'INSERT INTO users (name, email, password, birth_date, vetted, gender, role, countries_iso)
-						VALUES (:name, :email, :password, :birth_date, :vetted, :gender, :role, :countries_iso)';
+			$query = 'INSERT INTO users (name, email, password, birth_date, vetted, gender, role, countries_iso, postcode, last_login)
+						VALUES (:name, :email, :password, :birth_date, :vetted, :gender, :role, :countries_iso, :postcode, :last_login)';
 
 			$result = $db->exec($query, $user);
 
@@ -83,13 +90,16 @@ if( !empty($f3->get('POST')) ){
 			if($f3->get('POST.test_url') != null ){
 
 				$db->exec(
-					"UPDATE tests SET users_id=':users_id' WHERE unique_url=':unique_url'", 
+					"UPDATE tests SET users_id=:users_id WHERE unique_url=:unique_url", 
 					array(':users_id'=> $user['id'] , ':unique_url' => $f3->get('POST.test_url') )
 				);
 
 				$f3->reroute("/result/".$f3->get('POST.test_url'));
 			}
+		}else{
+			
 		}
+		$f3->set('SESSION.user', $user);
 
 	} else {
 		$user = array();

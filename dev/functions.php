@@ -73,7 +73,7 @@ function getTestFromUrl($url){
 			FROM tests 
 			JOIN interfaces ON interfaces.id = tests.interface_id
 			JOIN users ON users.id = users_id
-			WHERE tests.unique_url =:url";
+			WHERE tests.unique_url =:url ";
 
 	$result = $db->exec($query, $params);
 

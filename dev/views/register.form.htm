@@ -3,9 +3,15 @@
     <div>
         <?php 
             if( !empty($SESSION["errors"]) ):
+            ?>
+            <div class="feedback feedback--error">
+            <p class="voice--loud voice--error">Attention:</p>
+            <?
                 foreach($SESSION["errors"] as $error): ?>
-            <div class="alert"><?php echo $error; ?></div>
-        <?php endforeach; endif; ?>
+            <p class="voice--error"><?php echo $error; ?></p>
+        <?php endforeach;?>
+        </div>
+        <? endif; ?>
     </div>
    
     <p>Veuillez vous enregistrer pour participer à la recherche. Vos informations restent strictement privées et ne seront utilisées qu'à des fins statistiques.</p>
@@ -40,7 +46,7 @@
 	        </select>
 
 	        <label for="city">Code postal</label>
-	        <input type="text" id="postcode" name="city" autocomplete="postal-code" size="8" placeholder="(ex: 5000)">	
+	        <input type="text" id="postcode" name="postcode" autocomplete="postal-code" size="8" placeholder="(ex: 5000)">	
 		
 			
         <label for="birth_date">Année de naissance <span class="voice--whisper">* obligatoire</span></label>

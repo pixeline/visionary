@@ -167,6 +167,7 @@ a.pure-button-primary{
 
 .voice{
 	font-size:100%;
+	font-family: $font-sans !important;
 	&--info{
 		background-color:#FFFFDD;
 	}
@@ -183,10 +184,18 @@ a.pure-button-primary{
 	}
 	&--error{
 		color: $red;
+		font-weight: bold;
 	}
 }
 
-
+.feedback{
+	background:#FFFFDD;
+	border-left:2px solid $blue;
+	padding:.2rem 1rem;
+	&--error{
+		border-left-color:$red;
+	}
+}
 /* ---------------------------------------------- 
 	INDEX.HTML // START PAGE 
 ---------------------------------------------- */
