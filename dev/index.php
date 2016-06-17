@@ -8,13 +8,14 @@ require "functions.php";
 // Kickstart the framework
 $f3 = require 'lib/base.php';
 
-$f3->set('DEBUG', 3);
+$f3->set('DEBUG', 1);
 if ((float)PCRE_VERSION<7.9) {
 	trigger_error('PCRE version is out of date');
 }
 
 // Load configuration
-$f3->config('config.ini');
+$config_file = ( strpos($_SERVER['HTTP_HOST'], 'colour-blindness.org') ) ? 'config.live.ini': 'config.ini';
+$f3->config($config_file);
 
 // set database
 $db = new \DB\SQL(

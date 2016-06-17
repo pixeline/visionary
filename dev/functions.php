@@ -11,11 +11,12 @@ function getCountries($lang = "fr"){
 	$countries = $db->exec("SELECT iso, nom_".$lang." as country_name FROM countries");
 
 	usort($countries, function ($a, $b) {
-		return strcasecmp($a['country_name'], $b['country_name']);
-	});
+			return strcasecmp($a['country_name'], $b['country_name']);
+		});
 
 	return $countries;
 }
+
 
 // compute interval
 function getInterval($start, $end, $format = "%H:%i:%s"){
@@ -24,10 +25,15 @@ function getInterval($start, $end, $format = "%H:%i:%s"){
 	$interval = $datetime1->diff($datetime2);
 	return $interval->format($format);
 }
-// future translation
 
-function _($arg){
-	return $arg;
+
+// future translation
+if (!function_exists('_')){
+	function _($arg){
+		return $arg;
+	}
+
+
 }
 
 
@@ -36,11 +42,13 @@ function pr($arg, $exit = false){
 	if($exit) exit;
 }
 
+
 function getUniqueURL($diff = 0){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
 	$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 	return $hashids->encode( round(microtime(true)) + intval($diff) );
 }
+
 
 // http://colour-blindness.dev/test/k7PjJRr
 // k7PjJRr -> 1234567890
@@ -49,6 +57,7 @@ function decodeUniqueURL($url){
 	$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 	return $hashids->decode($url);
 }
+
 
 /*
 	check in the database if the email of the user exists
@@ -65,12 +74,13 @@ function isAlreadyRegistered($email){
 	return false;
 }
 
+
 function getTestFromUrl($url){
 	global $db;
 
 	$params = array("url"=>$url);
-	$query = "SELECT *, interfaces.name AS 'interface_name' 
-			FROM tests 
+	$query = "SELECT *, interfaces.name AS 'interface_name'
+			FROM tests
 			JOIN interfaces ON interfaces.id = tests.interface_id
 			JOIN users ON users.id = users_id
 			WHERE tests.unique_url =:url ";
@@ -83,14 +93,7 @@ function getTestFromUrl($url){
 	return false;
 }
 
+
 function is_email_valid($email) {
-  return filter_var($email, FILTER_VALIDATE_EMAIL);
+	return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
-
-
-
-
-
-
-
-
