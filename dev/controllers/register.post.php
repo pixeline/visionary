@@ -96,9 +96,8 @@ if( !empty($f3->get('POST')) ){
 
 				$f3->reroute("/result/".$f3->get('POST.test_url'));
 			}
-		}else{
-			
 		}
+		
 		$f3->set('SESSION.user', $user);
 
 	} else {
