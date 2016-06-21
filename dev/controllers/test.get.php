@@ -33,6 +33,7 @@ if(!empty($unique_test_url)){
 			'role'           => $test["role"],
 			'countries_iso'  => $test["countries_iso"],
 			'id'           	 => $test["users_id"],
+			'is_logged_in' 	 => 'ok'
 		);
 		$f3->set('SESSION.test', $test);
 		$f3->set('SESSION.user', $user);
@@ -60,7 +61,8 @@ if( empty($f3->get('SESSION.user.name')) || ($f3->get('SESSION.user.name') == 'a
 		'gender'         => 'A',
 		'role'           => 'user',
 		'countries_iso'  => 'BE',
-		'id'    => '1'
+		'id'    => '1',
+		'is_logged_in' 	 => 'ko'
 	);
 	$f3->set('SESSION.user', $user);
 }

@@ -69,6 +69,7 @@ function isAlreadyRegistered($email){
 	$result = $db->exec($query, $params);
 
 	if(!empty($result) && !empty($result[0])){
+		$result['is_logged_in'] = 'ok';
 		return $result[0];
 	}
 	return false;
