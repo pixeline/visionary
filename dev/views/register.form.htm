@@ -75,9 +75,9 @@
     <p>
         <?php if( $display_register_form == 'yes'): ?>     
             <input  type="hidden" name="test_url" value="<?php echo $test['unique_url']; ?>">
-            <button type="submit" name="user-type" value="registered" class="pure-button pure-button-primary">Enregistrer mes informations</button>
+            <button type="submit" name="user-type" value="registered" class="pure-button pure-button-primary"><i class="fa fa-save" aria-hidden="true"></i> Enregistrer mon test</button>
          <?php else: ?>
-            <button type="submit" name="user-type" value="registered"  class="pure-button pure-button-primary">Enregistrer et démarrer le test</button>
+            <button type="submit" name="user-type" value="registered"  class="pure-button pure-button-primary"><i class="fa fa-play" aria-hidden="true"></i> Enregistrer et démarrer le test</button>
            
          <?php endif; ?>
      </p>
