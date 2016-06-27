@@ -6,3 +6,5 @@ v2/build/
 v2/node_modules/*
 *.sass-cache
 *.bak
+
+dev/tmp/

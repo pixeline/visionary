@@ -98,3 +98,33 @@ function getTestFromUrl($url){
 function is_email_valid($email) {
 	return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
+
+
+function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plennevaux', $subject = 'Visionary', $message = 'welcome'){
+	global $f3;
+	$smtp = new SMTP ( $f3->get('SMTP_HOST'), $f3->get('SMTP_PORT'), $f3->get('SMTP_TRANSPORT'), $f3->get('SMTP_USER'), $f3->get('SMTP_PASS') );
+	$smtp->set('From', '"Visionary" <support@colour-blindness.org>');
+	$smtp->set('Content-type', 'text/html; charset=UTF-8');
+	$smtp->set('Errors-to', '<support@colour-blindness.org>');
+	$smtp->set('To', '"'.$to_name.'" <'.$to.'>');
+	$smtp->set('Subject', $subject);
+	
+	switch ($message){
+		
+		case 'your_test_results':
+		$template = 'emails/your_test_results.html';
+		break;
+		
+		case 'welcome':
+		default:
+		$template = 'emails/welcome.html';		
+		break;
+	}
+	
+	$message .= Template::instance()->render($template);
+	$message .= Template::instance()->render('emails/footer.html');
+	if(!$smtp->send($message)){
+		return $smtp->log();
+	}
+	return 'ok';
+}
