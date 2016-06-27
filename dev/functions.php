@@ -3,7 +3,7 @@
 
 $unique_salt_value = "What a wonderful world!";
 $minimum_id_length = 8;
-$custom_alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+$custom_alphabet = 'abcdefghijklmnopqrstuvwxyz1234567890';
 //$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 
 function getCountries($lang = "fr"){
@@ -45,7 +45,8 @@ function pr($arg, $exit = false){
 
 function getUniqueURL($diff = 0){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
-	$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
+	$hashids = new Hashids\Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
+	$hashids->_lower_max_int_value = PHP_INT_MAX;
 	return $hashids->encode( round(microtime(true)) + intval($diff) );
 }
 
@@ -54,7 +55,8 @@ function getUniqueURL($diff = 0){
 // k7PjJRr -> 1234567890
 function decodeUniqueURL($url){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
-	$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
+	$hashids = new Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
+	$hashids->_lower_max_int_value = PHP_INT_MAX;
 	return $hashids->decode($url);
 }
 
@@ -69,7 +71,7 @@ function isAlreadyRegistered($email){
 	$result = $db->exec($query, $params);
 
 	if(!empty($result) && !empty($result[0])){
-		$result['is_logged_in'] = 'ok';
+		$result[0]['is_logged_in'] = 'ok';
 		return $result[0];
 	}
 	return false;
@@ -100,27 +102,35 @@ function is_email_valid($email) {
 }
 
 
-function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plennevaux', $subject = 'Visionary', $message = 'welcome'){
+function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plennevaux', $message = 'welcome'){
+	if(empty($to) || !is_email_valid($to) ){
+		return false;
+	}
 	global $f3;
 	$smtp = new SMTP ( $f3->get('SMTP_HOST'), $f3->get('SMTP_PORT'), $f3->get('SMTP_TRANSPORT'), $f3->get('SMTP_USER'), $f3->get('SMTP_PASS') );
 	$smtp->set('From', '"Visionary" <support@colour-blindness.org>');
 	$smtp->set('Content-type', 'text/html; charset=UTF-8');
 	$smtp->set('Errors-to', '<support@colour-blindness.org>');
 	$smtp->set('To', '"'.$to_name.'" <'.$to.'>');
-	$smtp->set('Subject', $subject);
-	
+
+
 	switch ($message){
-		
-		case 'your_test_results':
+
+	case 'your_test_results':
+		$f3->set('your_test_url', $f3->get('WWWROOT') .'/result/'.$f3->get('SESSION.test.unique_url') );
+		$f3->set('fullname', $f3->get('SESSION.name'));
+		$f3->set('visionary_url', $f3->get('WWWROOT'));
 		$template = 'emails/your_test_results.html';
+		$subject = _('résultat de votre test de perception des couleurs');
 		break;
-		
-		case 'welcome':
-		default:
-		$template = 'emails/welcome.html';		
+
+	case 'welcome':
+	default:
+		$subject = _('informations sur votre compte');
+		$template = 'emails/welcome.html';
 		break;
 	}
-	
+	$smtp->set('Subject', 'Visionary: ' . $subject);
 	$message .= Template::instance()->render($template);
 	$message .= Template::instance()->render('emails/footer.html');
 	if(!$smtp->send($message)){

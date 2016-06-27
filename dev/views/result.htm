@@ -39,11 +39,37 @@
         <p>Ce test constitue un pré-diagnostic: vous pouvez <a href="#" class="js-print">l'imprimer</a> pour le montrer à un ophtalmologue qui testera votre vision dans des conditions cliniques contrôlées afin d'établir un diagnostic fiable.
         </p>
      </div>
-     
+     <div id="js-revoir">
+	     <div id="js-revoir-content">     <h2>Votre test</h2>
+     <table class="classement classement--user" style="width:100%;height:200px"><tr>
+	     <?php
+	     $diag_series = explode(',',$test['diag_serie']);
+	     foreach($diag_series as $index){
+		     $color = $classement['colors'][$index]['color'];
+		     ?>
+		     <td style="background:<?= $color; ?>">&nbsp;</td>
+		     <?php
+	     }
+	     ?></tr>
+     </table>
+     <h2>Le classement d'une vision "normale"</h2>
+          <table class="classement classement--normal" style="width:100%;height:200px"><tr>
+	     <?php
+	     foreach($classement['colors'] as $row){
+		     $color = $row['color'];
+		     ?>
+		     <td style="background:<?= $color; ?>">&nbsp;</td>
+		     <?php
+	     }
+	     ?></tr>
+     </table>
+	     </div>
+     </div>
+
             <?php 
-            
+            $display_register_form = 'no';
             if( $display_register_form == 'yes'): ?>
-			<fieldset>
+			<fieldset class="no-print">
             <h2>Participez à la recherche en vous créant un compte</h2>
 
             <?php require 'views/register.form.htm'; ?>

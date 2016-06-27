@@ -44,7 +44,9 @@ p {
 strong {
     font-weight: bolder;
 }
-
+fieldset{
+	border-color: $light-grey;
+}
 select{
 	width:auto;
 	max-width:200px; //to make sure select boxes stay inside their container
@@ -149,8 +151,12 @@ a.pure-button-primary{
 }
 
 .button-secondary {
-    background: rgb(66, 184, 221); /* this is a light blue */
-    background: $blue-light;
+	border:none;
+    background: transparent;
+   //  font-size: 92%;
+     color:$blue;
+     text-shadow: none;
+     padding:.5rem 1rem;
 }
 .button-as-link{
 	background:none;
@@ -231,6 +237,19 @@ main {
 	border-radius: 5px;
 	padding:0 2rem 2rem;
 	&--register{
+		
+	}
+}
+
+/*
+	RESULT
+*/
+#js-revoir{
+	border:1px solid $light-grey;
+	margin:1rem 0;
+	#js-revoir-content{
+		
+		padding:1rem;
 		
 	}
 }

@@ -12,12 +12,29 @@ $f3->set('DEBUG', 1);
 if ((float)PCRE_VERSION<7.9) {
 	trigger_error('PCRE version is out of date');
 }
+/*
+	Load configuration file, depending on domain name.
+*/ 
+//$config_file = ( strpos($_SERVER['HTTP_HOST'], 'colour-blindness.org') ) ? 'config.live.ini': 'config.ini';
 
-// Load configuration
-$config_file = ( strpos($_SERVER['HTTP_HOST'], 'colour-blindness.org') ) ? 'config.live.ini': 'config.ini';
+switch ($_SERVER['HTTP_HOST']){
+	case 'dev.colour-blindness.org':
+	$config_file= 'config.staging.ini';
+	break;
+	
+	case 'test-your.colour-blindness.org':
+	$config_file= 'config.production.ini';
+	break;
+	
+	default:
+	$config_file= 'config.ini';
+	break;
+}
 $f3->config($config_file);
 
-// set database
+/*
+	set database connexion
+*/
 $db = new \DB\SQL(
 	'mysql:host='.$f3->get("DB_HOST").';port='.$f3->get("DB_PORT").';dbname='.$f3->get("DB_NAME"),
 	$f3->get("DB_USER"),
@@ -42,40 +59,18 @@ $f3->route('GET /userref', function($f3) {
 *******************/
 
 
-$f3->route('GET /', function($f3) { 
-	
-	require 'controllers/home.get.php'; });
+$f3->route('GET /', function($f3) {  require 'controllers/home.get.php'; });
 $f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
 
 // do the test and save an anonymous user
 
-$f3->route('GET /test/@unique_test_url', function($f3){ require 'controllers/test.get.php'; });
-$f3->route('@test: GET /test', function($f3){ require 'controllers/test.get.php'; });
+$f3->route('GET @test: /test/@unique_test_url', function($f3){ require 'controllers/test.get.php'; });
+$f3->route('GET /test', function($f3){ require 'controllers/test.get.php'; });
 
-$f3->route('POST /result', function($f3){ require 'controllers/result.post.php'; });
-$f3->route('GET /result/@unique_test_url', function($f3){ require 'controllers/result-url.get.php'; });
+$f3->route('POST /test-save', function($f3){ require 'controllers/test-save.post.php'; });
+$f3->route('GET @result: /result/@unique_test_url', function($f3){ require 'controllers/result.get.php'; });
 
-$f3->route('GET /logout', function($f3){
-		$f3->clear('SESSION');
-		// Unset all of the session variables.
-		session_start();
-		$_SESSION = array();
-
-		// If it's desired to kill the session, also delete the session cookie.
-		// Note: This will destroy the session, and not just the session data!
-		if (ini_get("session.use_cookies")) {
-			$params = session_get_cookie_params();
-			setcookie(session_name(), '', time() - 42000,
-				$params["path"], $params["domain"],
-				$params["secure"], $params["httponly"]
-			);
-		}
-
-		// Finally, destroy the session.
-		session_destroy();
-
-		$f3->reroute('/');
-	});
+$f3->route('GET /logout', function($f3){ require 'controllers/logout.php'; });
 
 /**
  ADMIN

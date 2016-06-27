@@ -82,7 +82,7 @@ if( !empty($f3->get('POST')) ){
 			$result = $db->exec($query, $user);
 
 			$user['id'] = $db->lastInsertId();
-			
+			$user['is_logged_in']= 'ok';
 			// Update the session
 			$f3->set('SESSION.user', $user);
 			

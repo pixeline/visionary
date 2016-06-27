@@ -87,6 +87,7 @@ CREATE TABLE IF NOT EXISTS `visionary`.`tests` (
   `test_end_date` DATETIME NULL,
   `test_duration` DATETIME NULL,
   `is_sure` VARCHAR(45) NULL,
+  `finished` TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_tests_users_idx` (`users_id` ASC),
   INDEX `fk_tests_test_interface1_idx` (`interface_id` ASC),

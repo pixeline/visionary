@@ -28,9 +28,8 @@
 		
 		<label for="password">Mot de passe souhaité</label>
 	    <input type="password" id="password" name="password" autocomplete="new-password" required>
-	        <p class="voice--whisper">Minimum 8 caractères dont au moins un chiffre et une lettre majuscule. Préférez une phrase facile à retenir en incluant sa ponctuation.</p>
+	        <p class="voice--whisper" style="margin-right:1rem">Minimum 8 caractères dont au moins un chiffre et une lettre majuscule. Préférez une phrase facile à retenir en incluant sa ponctuation.</p>
 	</div>
-
 
     <div class="pure-u-1 pure-u-sm-1-2">
 	    <fieldset class="border-left gutter--left">
@@ -72,7 +71,7 @@
     </div>
      
 
-    <p>
+    <p class="text-center">
         <?php if( $display_register_form == 'yes'): ?>     
             <input  type="hidden" name="test_url" value="<?php echo $test['unique_url']; ?>">
             <button type="submit" name="user-type" value="registered" class="pure-button pure-button-primary"><i class="fa fa-save" aria-hidden="true"></i> Enregistrer mon test</button>

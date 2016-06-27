@@ -11,7 +11,7 @@
 	
 */
 
-//namespace Hashids;
+namespace Hashids;
 
 class Hashids { // implements HashGenerator 
 	
