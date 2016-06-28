@@ -17,7 +17,7 @@ $test = $f3->get('POST');
 
 
 // get date info
-$started = date($f3->get('SESSION.test.test_start_date'));
+$started = $f3->get('SESSION.test.test_start_date');
 $test_end_date = date("Y-m-d H:i:s");
 $test_duration = getInterval($started, $test_end_date);
 
