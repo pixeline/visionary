@@ -27,6 +27,9 @@ a {
     &:hover{
 	    color:$dark-blue;
     }
+    abbr[title]{
+	    border-bottom: none;
+    }
 }
 u,.underline{
 	// Pretty underlines
@@ -55,8 +58,14 @@ select{
 footer{
 	border-top:1px solid $light-grey;
 	margin-top:3rem;
+	opacity:.5;
+	transition: all 0.2s ease;
+	text-align: center;
 	p{
 		color:$grey;
+	}
+	&:hover{
+		opacity:1;
 	}
 }
 
