@@ -61,6 +61,7 @@ $f3->route('GET /userref', function($f3) {
 
 $f3->route('GET /', function($f3) {  require 'controllers/home.get.php'; });
 $f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
+$f3->route('GET /thank-you-for-registering', function($f3){ require 'controllers/thank-you-for-registering.get.php'; });
 
 // do the test and save an anonymous user
 

@@ -52,6 +52,14 @@ select{
 	max-width:200px; //to make sure select boxes stay inside their container
 }
 
+footer{
+	border-top:1px solid $light-grey;
+	margin-top:3rem;
+	p{
+		color:$grey;
+	}
+}
+
 // HELPERS
 // quick fix classes
 .content {

@@ -6,14 +6,17 @@ $minimum_id_length = 8;
 $custom_alphabet = 'abcdefghijklmnopqrstuvwxyz1234567890';
 //$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 
-function getCountries($lang = "fr"){
+function getCountries($lang = "fr", $id=''){
 	global $db;
+	if(!empty($id)){
+		$countries = $db->exec("SELECT nom_".$lang." as country_name FROM countries WHERE iso='$id'");
+		return $countries[0]['country_name'];
+	} 
 	$countries = $db->exec("SELECT iso, nom_".$lang." as country_name FROM countries");
 
 	usort($countries, function ($a, $b) {
 			return strcasecmp($a['country_name'], $b['country_name']);
 		});
-
 	return $countries;
 }
 
@@ -112,13 +115,14 @@ function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plenneva
 	$smtp->set('Content-type', 'text/html; charset=UTF-8');
 	$smtp->set('Errors-to', '<support@colour-blindness.org>');
 	$smtp->set('To', '"'.$to_name.'" <'.$to.'>');
+	$smtp->set('Bcc', '"Visionary Admin" <support@colour-blindness.org>');
 
 
 	switch ($message){
 
 	case 'your_test_results':
 		$f3->set('your_test_url', $f3->get('WWWROOT') .'/result/'.$f3->get('SESSION.test.unique_url') );
-		$f3->set('fullname', $f3->get('SESSION.name'));
+		$f3->set('fullname', $f3->get('SESSION.user.name'));
 		$f3->set('visionary_url', $f3->get('WWWROOT'));
 		$template = 'emails/your_test_results.html';
 		$subject = _('résultat de votre test de perception des couleurs');
@@ -130,8 +134,9 @@ function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plenneva
 		$template = 'emails/welcome.html';
 		break;
 	}
+	
 	$smtp->set('Subject', 'Visionary: ' . $subject);
-	$message .= Template::instance()->render($template);
+	$message = Template::instance()->render($template);
 	$message .= Template::instance()->render('emails/footer.html');
 	if(!$smtp->send($message)){
 		return $smtp->log();
