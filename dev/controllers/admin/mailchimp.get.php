@@ -14,7 +14,7 @@ if($f3->get("SESSION.user.role") == "admin" ){
 
 //  - si on est connecté
 // chercher dans la DB les personnes qui sont vetted
-$query = "SELECT *, NULL AS password FROM users WHERE vetted=:vetted";
+$query = "SELECT *, NULL AS password FROM users";
 $param = array("vetted" => "1");
 $users = $db->exec($query, $param);
 
