@@ -10,11 +10,7 @@ if( empty($f3->get('POST')) ){
 	exit;
 }
 
-
-
 $test = $f3->get('POST');
-
-
 
 // get date info
 $started = $f3->get('SESSION.test.test_start_date');

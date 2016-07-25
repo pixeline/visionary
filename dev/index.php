@@ -1,63 +1,78 @@
 <?php
-
+/*
+    create a session to allow modifications
+*/
 session_start();
 
-require "lib/Hashids/Hashids.php";
+/*
+    get files we need
+*/
 require "functions.php";
-
 // Kickstart the framework
 $f3 = require 'lib/base.php';
 
 $f3->set('DEBUG', 1);
 if ((float)PCRE_VERSION<7.9) {
-	trigger_error('PCRE version is out of date');
+    trigger_error('PCRE version is out of date');
 }
+
+//$f3->set('LOCALES','dict/');
+//$f3->set('LANGUAGE','fr');
+//$f3->set('FALLBACK','fr');  // French as default fallback language
+$lang = "fr";
+
+$LOCALE = array(
+    "fr" => "fra_FRA",
+    "nl" => "nl_NL",
+    //"en" => "en_GB",
+);
+
+$codeset = "UTF8";  // warning ! not UTF-8 with dash '-' 
+$language = $LOCALE[$lang];
+putenv("LANG=$language".'.'.$codeset); 
+setlocale(LC_ALL, $language); // pour toutes les constantes suivantes
+bindtextdomain($lang, "dict/"); 
+textdomain($lang);
+
 /*
-	Load configuration file, depending on domain name.
+    Load configuration file, depending on domain name.
 */ 
 //$config_file = ( strpos($_SERVER['HTTP_HOST'], 'colour-blindness.org') ) ? 'config.live.ini': 'config.ini';
 
 switch ($_SERVER['HTTP_HOST']){
-	case 'dev.colour-blindness.org':
-	$config_file= 'config.staging.ini';
-	break;
-	
-	case 'test-your.colour-blindness.org':
-	$config_file= 'config.production.ini';
-	break;
-	
-	default:
-	$config_file= 'config.ini';
-	break;
+    case 'dev.colour-blindness.org':        $config_file = 'config.staging.ini';     break;
+    case 'test-your.colour-blindness.org':  $config_file = 'config.production.ini';  break;
+    default:                                $config_file = 'config.ini';             break;
 }
+
 $f3->config($config_file);
 
+$f3->set('UI',"views/");
+
 /*
-	set database connexion
+    set database connexion
 */
 $db = new \DB\SQL(
-	'mysql:host='.$f3->get("DB_HOST").';port='.$f3->get("DB_PORT").';dbname='.$f3->get("DB_NAME"),
-	$f3->get("DB_USER"),
-	$f3->get("DB_PASS"),
-	array(
-		\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
-		\PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
-		\PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
-	)
+    'mysql:host='.$f3->get("DB_HOST").';port='.$f3->get("DB_PORT").';dbname='.$f3->get("DB_NAME"),
+    $f3->get("DB_USER"),
+    $f3->get("DB_PASS"),
+    array(
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, // generic attribute
+        \PDO::ATTR_PERSISTENT => TRUE,  // we want to use persistent connections
+        \PDO::MYSQL_ATTR_COMPRESS => TRUE, // MySQL-specific attribute
+    )
 );
 
-$lang = "fr";
 
 /* FAT FREE - HELPER */
 $f3->route('GET /userref', function($f3) {
-		$f3->set('content', 'userref.htm');
-		echo View::instance()->render('layout.htm');
-	});
+    $f3->set('content', 'userref.htm');
+    echo View::instance()->render('layout.htm');
+});
 
 /******************
      VISIONARY
 *******************/
-
 
 $f3->route('GET /', function($f3) {  require 'controllers/home.get.php'; });
 $f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
@@ -73,27 +88,24 @@ $f3->route('GET @result: /result/@unique_test_url', function($f3){ require 'cont
 
 $f3->route('GET /logout', function($f3){ require 'controllers/logout.php'; });
 
-/**
- ADMIN
- **/
+/******************
+    ADMIN
+*******************/
 
+// $f3->route('GET|POST /admin/mailchimp', function($f3){ require 'controllers/admin/tools/mailchimp.get.php'; });
+$f3->route('GET|POST /admin/fixdatabase', function($f3){ require 'controllers/admin/tools/fixdatabase.php'; });
 
-// [TODO] admin
-
-$f3->route('GET|POST /admin/mailchimp', function($f3){ require 'controllers/admin/mailchimp.get.php'; });
-/*
 // check admin login form
-$f3->route('POST /admin',function($f3){ });
+$f3->route('GET /admin',function($f3){ require 'controllers/admin/login.get.php'; });
 // Admin dashboard
-$f3->route('GET /admin/dashboard',function($f3){ });
+$f3->route('GET /admin/dashboard',function($f3){ require 'controllers/admin/dashboard.get.php'; });
 // table data
-$f3->route('GET /admin/tests',function($f3){ });
+$f3->route('GET /admin/tests',function($f3){ require 'controllers/admin/tests.get.php'; });
+$f3->route('GET /admin/test/@unique_test_url',function($f3){ require 'controllers/admin/test.get.php'; });
 // table data
-$f3->route('GET /admin/users',function($f3){ });
+$f3->route('GET /admin/users',function($f3){ require 'controllers/admin/users.get.php'; });
 // charts
-$f3->route('GET /admin/analytics',function($f3){ });
-*/
+$f3->route('GET /admin/analytics',function($f3){ require 'controllers/admin/analytics.get.php'; });
 
-//dump de la db
 
 $f3->run();

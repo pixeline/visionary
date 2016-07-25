@@ -1,0 +1,43 @@
+<div class="content center">
+    <div class="home">
+        <a href="/admin" class="logo-home">
+            <img src="/assets/images/logo.png" alt="Retour à l'accueil">
+        </a>
+    
+        <main>
+            <table class="pure-table pure-table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Postcode</th>
+                        <th>Country</th>
+                        <th>Last login</th>
+                        <th>Vetted</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <?php foreach ($users as $key => $user): ?>
+                        <tr>
+                            <td><?php echo $key; ?></td>
+                            <td><?php echo $user->name; ?></td>
+                            <td><?php echo $user->email; ?></td>
+                            <td><?php echo (date("Y") - $user->birth_date); ?></td>
+                            <td><?php echo ($user->gender == "M" ? "Homme":"Femme" ); ?></td>
+                            <td><?php echo $user->postcode; ?></td>
+                            <td><?php echo $user->countries_iso; ?></td>
+                            <td><?php echo $user->last_login; ?></td>
+                            <td><?php echo ($user->vetted ? "Invited" : "Normal"); ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </main>
+
+        <?php require "views/footer.htm"; ?>
+    </div>
+</div>
+

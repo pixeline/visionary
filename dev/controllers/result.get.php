@@ -5,7 +5,14 @@ $f3->set('display_register_form', 'no');
 $f3->clear('SESSION.test');
 
 $params = array("url"=>$uniqueURL);
-$query = "SELECT * FROM tests as t LEFT JOIN users as u  on u.id=t.users_id LEFT JOIN interfaces as i on i.id=t.interface_id WHERE unique_url=:url";
+$query = "SELECT * 
+          FROM tests AS t 
+          LEFT JOIN users AS u 
+          ON u.id=t.users_id 
+          LEFT JOIN interfaces AS i 
+          ON i.id=t.interface_id 
+          WHERE unique_url=:url";
+
 $test = $db->exec($query, $params);
 
 if(empty($test) || empty($test[0])){

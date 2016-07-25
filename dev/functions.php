@@ -29,35 +29,24 @@ function getInterval($start, $end, $format = "%H:%i:%s"){
 	return $interval->format($format);
 }
 
-
-// future translation
-if (!function_exists('_')){
-	function _($arg){
-		return $arg;
-	}
-
-
-}
-
-
 function pr($arg, $exit = false){
 	echo "<pre>".print_r($arg, true)."</pre>";
 	if($exit) exit;
 }
 
-
 function getUniqueURL($diff = 0){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
+	require "lib/Hashids/Hashids.php";
 	$hashids = new Hashids\Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 	$hashids->_lower_max_int_value = PHP_INT_MAX;
 	return $hashids->encode( round(microtime(true)) + intval($diff) );
 }
 
-
 // http://colour-blindness.dev/test/k7PjJRr
 // k7PjJRr -> 1234567890
 function decodeUniqueURL($url){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
+	require "lib/Hashids/Hashids.php";
 	$hashids = new Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
 	$hashids->_lower_max_int_value = PHP_INT_MAX;
 	return $hashids->decode($url);

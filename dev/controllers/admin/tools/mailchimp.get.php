@@ -90,7 +90,7 @@ $csv = ob_get_clean(); // ... then return it as a string
 
 
 $f3->set('csv', $csv);
-$f3->set('content', 'views/admin/mailchimp.htm');
+$f3->set('content', 'views/admin/tools/mailchimp.htm');
 echo View::instance()->render('views/layout.htm');
 
 
