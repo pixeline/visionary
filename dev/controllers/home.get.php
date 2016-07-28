@@ -2,6 +2,11 @@
 
 global $db, $lang;
 
+
+pr( $f3->get('POST') );
+pr( $f3->get('GET') );
+
+
 $f3->set('countries', getCountries($lang) );
 $f3->set('content', 'views/home.htm');
 

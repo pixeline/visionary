@@ -69,8 +69,7 @@
 
 	    
     </div>
-     
-
+   
     <p class="text-center">
         <?php if( $display_register_form == 'yes'): ?>     
             <input  type="hidden" name="test_url" value="<?php echo $test['unique_url']; ?>">
@@ -81,4 +80,16 @@
          <?php endif; ?>
      </p>
 
+</form>
+
+<form action="/register-auth" method="POST" class="form pure-form text-center">
+    <button type="submit" name="auth" value="google" class="pure-button ">
+        <i class="fa fa-play" aria-hidden="true"></i> Google
+    </button>
+    <button type="submit" name="auth" value="facebook" class="pure-button ">
+        <i class="fa fa-play" aria-hidden="true"></i> Facebook
+    </button>
+    <button type="submit" name="auth" value="twitter" class="pure-button ">
+        <i class="fa fa-play" aria-hidden="true"></i> Twitter
+    </button>
 </form>
