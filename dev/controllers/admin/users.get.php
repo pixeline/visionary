@@ -1,24 +1,16 @@
 <?php
 global $db, $lang;
-// verifier si admin ou pas
-// - a travers une session
-// - et oauth
-/*
-if($f3->get("SESSION.user.role") == "admin" ){
-	// display page
-} else {
-	$f3->reroute("/admin");
-}
-*/
 
+$get_all_users = $db->prepare( 
+	"SELECT *, NULL AS password FROM users", 
+	array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL)
+);
+$get_all_users->execute();
+$all_users = $get_all_users->fetchAll(PDO::FETCH_OBJ);
 
-//  - si on est connecté
-$query = "SELECT *, NULL AS password FROM users";
-$stmt = $db->prepare($query, array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL));
-$stmt->execute();
-$users = $stmt->fetchAll(PDO::FETCH_OBJ);
+$f3->set('users', $all_users);
+$f3->set('users_count', count($all_users) );
 
-$f3->set('users', $users);
 $f3->set('content', 'views/admin/users.htm');
 echo View::instance()->render('views/layout.htm');
 

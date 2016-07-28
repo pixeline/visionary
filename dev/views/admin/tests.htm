@@ -5,6 +5,19 @@
         </a>
     
         <main>
+
+        <p>tests total count : <?php echo $tests_count; ?></p>
+        <p>protan count : <?php echo $protan_count; ?></p>
+        <p>deutan count : <?php echo $deutan_count; ?></p>
+        <p>tritan count : <?php echo $tritan_count; ?></p>
+        <p>succeed count : <?php echo $succeed_count; ?></p>
+
+        <p>min time : <?php echo $min_time; ?> </p>
+        <p>max time : <?php echo $max_time; ?> </p>
+        <p>is sure_count : <?php echo $is_sure_count; ?> </p>
+        <p>finished count : <?php echo $finished_count; ?> </p>
+
+
             <table class="pure-table pure-table-horizontal">
                 <thead>
                     <tr>
@@ -37,6 +50,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
         </main>
 
         <?php require "views/footer.htm"; ?>

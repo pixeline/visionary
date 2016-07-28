@@ -69,7 +69,7 @@ $f3->route('GET /userref', function($f3) {
     $f3->set('content', 'userref.htm');
     echo View::instance()->render('layout.htm');
 });
-
+// TODO -> https://docs.google.com/document/d/1tZ0_hRKldBXz6yMWvEQdMaQolENAwgi5jIlCDtKwe-8/edit#
 /******************
      VISIONARY
 *******************/
@@ -88,15 +88,15 @@ $f3->route('GET @result: /result/@unique_test_url', function($f3){ require 'cont
 
 $f3->route('GET /logout', function($f3){ require 'controllers/logout.php'; });
 
+$f3->route('GET /account',function($f3){ require 'controllers/account.get.php'; });
+
+
 /******************
     ADMIN
 *******************/
 
-// $f3->route('GET|POST /admin/mailchimp', function($f3){ require 'controllers/admin/tools/mailchimp.get.php'; });
-$f3->route('GET|POST /admin/fixdatabase', function($f3){ require 'controllers/admin/tools/fixdatabase.php'; });
-
 // check admin login form
-$f3->route('GET /admin',function($f3){ require 'controllers/admin/login.get.php'; });
+$f3->route('GET|POST /login',function($f3){ require 'controllers/login.get.post.php'; });
 // Admin dashboard
 $f3->route('GET /admin/dashboard',function($f3){ require 'controllers/admin/dashboard.get.php'; });
 // table data
@@ -107,5 +107,9 @@ $f3->route('GET /admin/users',function($f3){ require 'controllers/admin/users.ge
 // charts
 $f3->route('GET /admin/analytics',function($f3){ require 'controllers/admin/analytics.get.php'; });
 
+
+// TOOLS FOR ADMIN
+$f3->route('GET|POST /admin/mailchimp', function($f3){ require 'controllers/admin/tools/mailchimp.get.php'; });
+$f3->route('GET|POST /admin/fixdatabase', function($f3){ require 'controllers/admin/tools/fixdatabase.php'; });
 
 $f3->run();
