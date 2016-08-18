@@ -47,6 +47,7 @@
 		<?php echo $this->render(Base::instance()->get('content')); ?>
 		<?php
 			if($DEBUG >2){
+				pr("SESSION LOG : on layout.htm");
 				pr($_SESSION);
 			}
 		?>

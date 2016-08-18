@@ -67,7 +67,7 @@ $db = new \DB\SQL(
 /* FAT FREE - HELPER */
 $f3->route('GET /userref', function($f3) {
     $f3->set('content', 'userref.htm');
-    echo View::instance()->render('layout.htm');
+    echo View::instance()->render('layout.htm@');
 });
 // TODO -> https://docs.google.com/document/d/1tZ0_hRKldBXz6yMWvEQdMaQolENAwgi5jIlCDtKwe-8/edit#
 /******************
