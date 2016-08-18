@@ -94,6 +94,13 @@ $f3->route('GET /account',function($f3){ require 'controllers/account.get.php'; 
 
 
 /******************
+    API
+*******************/
+
+$f3->route('GET|POST /api/@table/@id',function($f3){ require 'controllers/api.get.post.php'; });
+
+// Admin 
+/******************
     ADMIN
 *******************/
 

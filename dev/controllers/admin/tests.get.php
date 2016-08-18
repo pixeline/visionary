@@ -4,26 +4,27 @@ global $db, $lang;
 $test_id = trim($f3->get('PARAMS.test_id'));
 
 //default query to get all
-$query = "SELECT 
-	tests.diag_result, 
-	tests.diag_ratio, 
-	tests.finished, 
-	tests.unique_url, 
-	users.name AS username, 
-	users.email, 
-	users.birth_date, 
-	users.last_login, 
-	users.gender, 
-	users.vetted,
-	interfaces.name
-	FROM tests 
-LEFT JOIN users on users_id = users.id
-LEFT JOIN interfaces on interface_id = interfaces.id
-ORDER BY users_id"; 
+$get_all = $db->prepare(
+	"SELECT 
+		tests.diag_result, 
+		tests.diag_ratio, 
+		tests.finished, 
+		tests.unique_url, 
+		users.name AS username, 
+		users.email, 
+		users.birth_date, 
+		users.last_login, 
+		users.gender, 
+		users.vetted,
+		interfaces.name
+		FROM tests 
+	LEFT JOIN users on users_id = users.id
+	LEFT JOIN interfaces on interface_id = interfaces.id
+	ORDER BY users_id"
+	, array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL));
 
-$stmt = $db->prepare($query, array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL));
-$stmt->execute();
-$tests = $stmt->fetchAll(PDO::FETCH_OBJ);
+$get_all->execute();
+$tests = $get_all->fetchAll(PDO::FETCH_OBJ);
 
 $tests_counter = $db->prepare("SELECT count(*) AS tests_count FROM tests", array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL));
 $tests_counter->execute();
