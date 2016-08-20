@@ -16,16 +16,33 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 
 	$id = intval(clean($f3->get("PARAMS.id")));
 	$table = clean($f3->get("PARAMS.table"));
+	$selection = clean($f3->get("PARAMS.selection"));
+	
+	if(empty($selection)){
+		$selection = 'latest';
+	}
 
 	// check if autorised table
 	switch ($table) {
 		case 'user': 
 
-			$results = $db->exec("SELECT diag_result, diag_ratio, diag_serie FROM tests WHERE users_id=?", $id);
+			$sql = "SELECT diag_result, diag_ratio, diag_serie, email, test_end_date FROM tests LEFT JOIN users on users.id=tests.users_id WHERE users_id=? AND tests.finished='1' ORDER BY test_end_date DESC";
+			
+			if($selection === 'latest'){
+				$sql .= " LIMIT 0,1";
+			}
+
+			$results = $db->exec($sql, $id);
 
 			if(empty($results)){
 				$errors->error = "The selected ID doesn't exist"; 
 			}
+			
+			if($selection === 'latest'){
+				$results = $results[0];
+			}
+			
+			
 			break;
 		default: 
 			$errors->error = "The table '$table' does not exist.";
