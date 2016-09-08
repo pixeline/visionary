@@ -46,12 +46,15 @@
 
 var tests_total_count = parseInt("{{ @tests_count }}");
 var distinct_users_count = parseInt("{{ @distinct_users_count }}");
+
 var protan_count = parseInt("{{ @protan_count }}");
 var deutan_count = parseInt("{{ @deutan_count }}");
 var tritan_count = parseInt("{{ @tritan_count }}");
 var succeed_count = parseInt("{{ @succeed_count }}");
+
 var finished_count = parseInt("{{ @finished_count }}");
 var abandon_count = parseInt("{{ @tests_count - @finished_count }}");
+
 var finished_ratio = parseFloat("{{ (100/@tests_count) * @finished_count }}");
 var abandon_ratio = parseFloat("{{ (100/@tests_count) * (@tests_count - $finished_count) }}");
 var min_time = "{{ @min_time }}";
@@ -61,13 +64,9 @@ var is_sure_count =  parseInt(" {{ @is_sure_count }} ");
 console.log( d3 )
 
 var chart = function (dataSet) {
-    var width = 320, //960,
-        height = 320, //500,
+    var width = 260, //960,
+        height = 260, //500,
         radius = Math.min(width, height) / 2;
-
-    //var color = ["red","blue","green","orange","pink","grey"]; 
-    //var color = d3.scaleOrdinal().range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
-    var color = d3.schemeCategory10;
 
     var pie = d3.pie()
         .value(function(d) { return d.count; })
@@ -89,7 +88,7 @@ var chart = function (dataSet) {
       .attr("class", "arc");
 
     g.append("path")
-          .attr("fill", function(d, i) { return color[i]; })
+          .attr("fill", function(d, i) { return d3.schemeCategory10[i]; })
           .attr("d", arc)
  
 
@@ -109,6 +108,18 @@ var daltonism = [
     { "type" : "tritan", "count" : tritan_count }
 ]
 
+var tests_counting = [
+    { "type" : "Total", "count" : tests_total_count },
+    { "type" : "Distinct", "count" : distinct_users_count }
+]
+
+var abandon = [
+    { "type" : "finished", "count" : finished_count },
+    { "type" : "abandoned", "count" : abandon_count }
+]
+
 chart(daltonism);
+chart(tests_counting);
+chart(abandon);
 
 </script>
