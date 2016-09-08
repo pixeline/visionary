@@ -1,46 +1,35 @@
-<div class="content center">
-    <div class="home">
-        <a href="/login" class="logo-home">
-            <img src="/assets/images/logo.png" alt="Retour à l'accueil">
-        </a>
-    
-        <main>
 
-        <p>Users count : <?php echo $users_count; ?></p>
+<h1>Tests</h1>
 
-            <table class="pure-table pure-table-horizontal">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Postcode</th>
-                        <th>Country</th>
-                        <th>Last login</th>
-                        <th>Vetted</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <?php foreach ($users as $key => $user): ?>
-                        <tr class="<?php if($key % 2 == 1) echo 'pure-table-odd' ?> ">
-                            <td><?php echo $key; ?></td>
-                            <td><?php echo $user->name; ?></td>
-                            <td><?php echo $user->email; ?></td>
-                            <td><?php echo (date("Y") - $user->birth_date); ?></td>
-                            <td><?php echo ($user->gender == "M" ? "Homme":"Femme" ); ?></td>
-                            <td><?php echo $user->postcode; ?></td>
-                            <td><?php echo $user->countries_iso; ?></td>
-                            <td><?php echo $user->last_login; ?></td>
-                            <td><?php echo ($user->vetted ? "Invited" : "Normal"); ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </main>
+<p>Users count : {{ @users_count }}</p>
 
-        <?php require "views/footer.htm"; ?>
-    </div>
-</div>
-
+    <table class="pure-table pure-table-horizontal">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Postcode</th>
+                <th>Country</th>
+                <th>Last login</th>
+                <th>Vetted</th>
+            </tr>
+        </thead>
+        <tbody>
+            <repeat group="{{ @users }}" value="{{ @user }}" counter="{{ @key }}">
+                <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}">
+                    <td>{{ @user->id }}</td>
+                    <td>{{ @user->name }}</td>
+                    <td>{{ @user->email }}</td>
+                    <td>{{ date("Y") - @user->birth_date }}</td>
+                    <td>{{ @user->gender == "M" ? "Homme":"Femme" }}</td>
+                    <td>{{ @user->postcode }}</td>
+                    <td>{{ @user->countries_iso }}</td>
+                    <td>{{ @user->last_login }}</td>
+                    <td>{{ @user->vetted ? "Invited" : "Normal" }}</td>
+                </tr>
+            </repeat>
+        </tbody>
+    </table>

@@ -1,58 +1,104 @@
-<div class="content center">
-    <div class="home">
-        <a href="/admin" class="logo-home">
-            <img src="/assets/images/logo.png" alt="Retour à l'accueil">
-        </a>
-    
-        <main>
+<h1>Tests</h1>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <ul>
+                    <li>tests total count : {{ @tests_count }}</li>
+                    <li>distinct users count : {{ @distinct_users_count }}</li>
+                    <li>protan count : {{ @protan_count }}</li>
+                    <li>deutan count : {{ @deutan_count }}</li>
+                    <li>tritan count : {{ @tritan_count }}</li>
+                    <li>succeed count : {{ @succeed_count }}</li>
+                </ul>
+            </td>
 
-        <p>tests total count : <?php echo $tests_count; ?></p>
-        <p>protan count : <?php echo $protan_count; ?></p>
-        <p>deutan count : <?php echo $deutan_count; ?></p>
-        <p>tritan count : <?php echo $tritan_count; ?></p>
-        <p>succeed count : <?php echo $succeed_count; ?></p>
+            <td>
+                <ul>
+                    <li>finished count : {{ @finished_count }}</li>
+                    <li>abandon count : {{ @tests_count - @finished_count; }} </li>
+                    <li>abandon count : {{ ($tests_count - $finished_count) }} </li>
+                    <li>finished ratio : {{ round((100/$tests_count) * $finished_count, 2) . " / 100%" }} </li>
+                    <li>abandon ratio : {{ round((100/$tests_count) * ($tests_count - $finished_count), 2) . " / 100%" }} </li>
+                </ul>
+            </td>
 
-        <p>min time : <?php echo $min_time; ?> </p>
-        <p>max time : <?php echo $max_time; ?> </p>
-        <p>is sure_count : <?php echo $is_sure_count; ?> </p>
-        <p>finished count : <?php echo $finished_count; ?> </p>
+            <td>
+                <ul>
+                    <li>min time : {{ @min_time }} </li>
+                    <li>max time : {{ @max_time }}</li>
+                    <li>is sure count : {{ @is_sure_count }}</li>
+                </ul>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<br>
+
+<form method="GET">
+<fieldset>
+    <label>Order by : 
+        <select name="order" >
+            <option value="tests.id"> tests id </option>
+            <option value="tests.diag_result"> diag result </option>
+            <option value="tests.diag_ratio"> diag ratio </option>
+            <option value="tests.finished"> tests finished </option>
+            <option value="users.birth_date"> users birth_date </option>
+            <option value="users.last_login"> users last_login </option>
+            <option value="users.gender"> users gender </option>
+            <option value="users.vetted"> users vetted </option>
+        </select>
+    </label>
+     | 
+    <label for="">
+        Sort order 
+        <input type="radio" name="sorting" value="ASC" checked="checked"> ASC
+        <input type="radio" name="sorting" value="DESC"> DESC
+    </label>
+     | 
+    <label for="">
+        <input type="submit">
+    </label>
+</fieldset>
+</form>
+
+<table class="pure-table pure-table-horizontal">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Result</th>
+            <th>Ratio</th>
+            <th>Finished</th>
+            <th>Trials</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Last login</th>
+            <th>Vetted</th>
+            <th>Voir</th>
+        </tr>
+    </thead>
+    <tbody>
+
+    <repeat group="{{ @tests }}" value="{{ @test }}" counter="{{ @key }}">
+        <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}">
+            <td>{{ @test->id }}</td>
+            <td>{{ @test->username }}</td>
+            <td>{{ @test->diag_result }}</td>
+            <td>{{ @test->diag_ratio }}</td>
+            <td>{{ @test->finished ? "finished" : "unfinished" }}</td>
+            <td>{{ @distinct_users_trials[@test->users_id]["test_count"] }}</td>
+            <td>{{ date("Y") - @test->birth_date }}</td>
+            <td>{{ @test->gender == "M" ? "Homme":"Femme" }}</td>
+            <td>{{ @test->last_login }}</td>
+            <td>{{ @test->vetted ? "Invited" : "Normal" }}</td>
+            <td><a href="/admin/test/{{ @$test->unique_url }}">Voir</a></td>
+        </tr>
+    </repeat>
 
 
-            <table class="pure-table pure-table-horizontal">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Result</th>
-                        <th>Ratio</th>
-                        <th>Finished</th>
-                        <th>Age</th>
-                        <th>Gender</th>
-                        <th>Last login</th>
-                        <th>Vetted</th>
-                        <th>Voir</th>
-                    </tr>
-                </thead>
-                <tbody>
-                   <?php foreach ($tests as $key => $test): ?>
-                        <tr class="<?php if($key % 2 == 1) echo 'pure-table-odd' ?> ">
-                            <td><?php echo $key; ?></td>
-                            <td><?php echo $test->username; ?></td>
-                            <td><?php echo $test->diag_result; ?></td>
-                            <td><?php echo $test->diag_ratio; ?></td>
-                            <td><?php echo ($test->finished ? "finished" : "unfinished"); ?></td>
-                            <td><?php echo (date("Y") - $test->birth_date); ?></td>
-                            <td><?php echo ($test->gender == "M" ? "Homme":"Femme" ); ?></td>
-                            <td><?php echo $test->last_login; ?></td>
-                            <td><?php echo ($test->vetted ? "Invited" : "Normal"); ?></td>
-                            <td><a href="/admin/test/<?php echo $test->unique_url; ?>">Voir</a></td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-
-        </main>
-
-        <?php require "views/footer.htm"; ?>
-    </div>
-</div>
+       
+    </tbody>
+</table>

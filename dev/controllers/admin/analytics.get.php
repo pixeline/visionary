@@ -84,12 +84,13 @@ $f3->set('is_sure_count', $is_sure->fetch(PDO::FETCH_OBJ)->is_sure );
 $f3->set('finished_count', $finished->fetch(PDO::FETCH_OBJ)->finished );
 
 
+
 //$f3->set('content', 'views/admin/tests.htm');
 //echo View::instance()->render('views/layout.htm');
 
 
 echo View::instance()->render('views/admin/header.htm'); 
-echo Template::instance()->render('admin/tests.htm');
+echo Template::instance()->render('admin/analytics.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
 
 

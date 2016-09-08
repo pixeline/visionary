@@ -1,0 +1,114 @@
+<h1>Analytics</h1>
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                <ul>
+                    <li>tests total count : {{ @tests_count }}</li>
+                    <li>distinct users count : {{ @distinct_users_count }}</li>
+                    <li>protan count : {{ @protan_count }}</li>
+                    <li>deutan count : {{ @deutan_count }}</li>
+                    <li>tritan count : {{ @tritan_count }}</li>
+                    <li>succeed count : {{ @succeed_count }}</li>
+                </ul>
+            </td>
+
+            <td>
+                <ul>
+                    <li>finished count : {{ @finished_count }}</li>
+                    <li>abandon count : {{ @tests_count - @finished_count }} </li>
+                    <li>finished ratio : {{ round((100/@tests_count) * @finished_count, 2) . " / 100%" }} </li>
+                    <li>abandon ratio : {{ round((100/@tests_count) * (@tests_count - $finished_count), 2) . " / 100%" }} </li>
+                </ul>
+            </td>
+
+            <td>
+                <ul>
+                    <li>min time : {{ @min_time }} </li>
+                    <li>max time : {{ @max_time }}</li>
+                    <li>is sure count : {{ @is_sure_count }}</li>
+                </ul>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="charts-container">
+
+</div>
+
+
+<script src="assets/js/d3.min.js"></script>
+<script>
+
+
+var tests_total_count = parseInt("{{ @tests_count }}");
+var distinct_users_count = parseInt("{{ @distinct_users_count }}");
+var protan_count = parseInt("{{ @protan_count }}");
+var deutan_count = parseInt("{{ @deutan_count }}");
+var tritan_count = parseInt("{{ @tritan_count }}");
+var succeed_count = parseInt("{{ @succeed_count }}");
+var finished_count = parseInt("{{ @finished_count }}");
+var abandon_count = parseInt("{{ @tests_count - @finished_count }}");
+var finished_ratio = parseFloat("{{ (100/@tests_count) * @finished_count }}");
+var abandon_ratio = parseFloat("{{ (100/@tests_count) * (@tests_count - $finished_count) }}");
+var min_time = "{{ @min_time }}";
+var max_time = "{{ @max_time }}";
+var is_sure_count =  parseInt(" {{ @is_sure_count }} ");
+
+console.log( d3 )
+
+var chart = function (dataSet) {
+    var width = 320, //960,
+        height = 320, //500,
+        radius = Math.min(width, height) / 2;
+
+    //var color = ["red","blue","green","orange","pink","grey"]; 
+    //var color = d3.scaleOrdinal().range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    var color = d3.schemeCategory10;
+
+    var pie = d3.pie()
+        .value(function(d) { return d.count; })
+        .sort(null);
+
+    var arc = d3.arc()
+        .innerRadius(radius - 100)
+        .outerRadius(radius - 20);
+
+    var svg = d3.select(".charts-container").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+      .append("g")
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var g = svg.datum(dataSet).selectAll(".arc")
+      .data(pie)
+    .enter().append("g")
+      .attr("class", "arc");
+
+    g.append("path")
+          .attr("fill", function(d, i) { return color[i]; })
+          .attr("d", arc)
+ 
+
+    g.append("text")
+      .attr("transform", function(d) {
+        console.log( arc )
+         return "translate(" + arc.centroid(d) +")"; 
+      })
+      .text(function(d) { return d.data.type; });
+}
+
+
+var daltonism = [
+    { "type" : "normal", "count" : succeed_count },
+    { "type" : "protan", "count" : protan_count },
+    { "type" : "deutan", "count" : deutan_count },
+    { "type" : "tritan", "count" : tritan_count }
+]
+
+chart(daltonism);
+
+</script>

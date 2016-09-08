@@ -11,9 +11,8 @@ $all_users = $get_all_users->fetchAll(PDO::FETCH_OBJ);
 $f3->set('users', $all_users);
 $f3->set('users_count', count($all_users) );
 
-$f3->set('content', 'views/admin/users.htm');
-echo View::instance()->render('views/layout.htm');
 
+echo View::instance()->render('views/admin/header.htm'); 
+echo Template::instance()->render('admin/users.htm');
+echo View::instance()->render('views/admin/footer.htm'); 
 
-
-	
