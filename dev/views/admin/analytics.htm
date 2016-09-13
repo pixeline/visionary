@@ -90,16 +90,13 @@ var chart = function (dataSet) {
     g.append("path")
           .attr("fill", function(d, i) { return d3.schemeCategory10[i]; })
           .attr("d", arc)
- 
 
     g.append("text")
       .attr("transform", function(d) {
-        console.log( arc )
          return "translate(" + arc.centroid(d) +")"; 
       })
       .text(function(d) { return d.data.type; });
 }
-
 
 var daltonism = [
     { "type" : "normal", "count" : succeed_count },
