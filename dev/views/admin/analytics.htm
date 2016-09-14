@@ -64,8 +64,8 @@ var is_sure_count =  parseInt(" {{ @is_sure_count }} ");
 console.log( d3 )
 
 var chart = function (dataSet) {
-    var width = 260, //960,
-        height = 260, //500,
+    var width = 320, //960,
+        height = 320, //500,
         radius = Math.min(width, height) / 2;
 
     var pie = d3.pie()
@@ -115,8 +115,19 @@ var abandon = [
     { "type" : "abandoned", "count" : abandon_count }
 ]
 
+var conviction = [
+    { "type" : "sure", "count" : is_sure_count },
+    { "type" : "not sure", "count" : tests_total_count-is_sure_count }
+]
+
+// protan sure ?
+// deutan sure ?
+// tritan sure ?
+// normal sure ?
+
 chart(daltonism);
 chart(tests_counting);
 chart(abandon);
+chart(conviction);
 
 </script>

@@ -1,6 +1,10 @@
 <?php
 global $db, $lang;
 
+if( $f3->get("SESSION.user.role") !== "admin"){
+	$f3->reroute("/admin");
+} 
+
 // http://colour-blindness.dev/admin/tests?order=result
 
 $order = "users_id";
@@ -90,6 +94,7 @@ $f3->set('finished_count', $finished->fetch(PDO::FETCH_OBJ)->finished );
 
 
 echo View::instance()->render('views/admin/header.htm'); 
+echo View::instance()->render('views/admin/nav-admin.htm'); 
 echo Template::instance()->render('admin/analytics.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
 

@@ -1,21 +1,32 @@
+<div class="content center">
+	<div class="home">
+		<a href="/" class="logo-home">
+			<img src="/assets/images/logo.png" alt="Retour à l'accueil">
+		</a>
+    
+		<main>
 
-<h1>Login admin</h1>
+			<h1>Login admin</h1>
 
-<form action="/login" method="POST" class="pure-form pure-form-stacked">
-    <fieldset>
-        <legend>A Stacked Form</legend>
+			<form action="/admin" method="POST" class="pure-form pure-form-stacked">
+			    <fieldset>
 
-        <label for="email">Email</label>
-        <input id="email"  name="email" type="email" value="" placeholder="Email">
+			        <label for="email">Email</label>
+			        <input id="email"  name="email" type="email" value="" placeholder="Email">
 
-        <label for="password">Password</label>
-        <input id="password"  name="password" type="password" value="" placeholder="Password">
+			        <label for="password">Password</label>
+			        <input id="password"  name="password" type="password" value="" placeholder="Password">
 
-        <button type="submit" name="action" value="login" class="pure-button pure-button-primary">Sign in</button>
-    </fieldset>
-</form>
+			        <button type="submit" name="action" value="login" class="pure-button pure-button-primary">Sign in</button>
+			    </fieldset>
+			</form>
 
+			<?php foreach($errors as $error):?>
+			    <p><?php echo $error; ?></p>
+			<?php endforeach;?>
 
-<repeat group="{{ @errors }}" value="{{ @error }}">
-    <p>{{ @error }}</p>
-</repeat>
+		</main>
+
+		<?php require "views/footer.htm"; ?>
+	</div>
+</div>

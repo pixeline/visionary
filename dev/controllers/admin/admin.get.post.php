@@ -1,21 +1,10 @@
 <?php
 global $db, $lang;
 // verifier si admin ou pas
-// - a travers une session
-// - et oauth
-/*
-if($f3->get("SESSION.user.role") == "admin" ){
-	// display page
-} else {
-	$f3->reroute("/admin");
-}
-*/
-//  - si on est connecté
+// > a travers une session
+// > et oauth
+// > check if user has already made the test and registered
 
-/*
-	> check if user has already made the test and registered
-*/
-//pr( !!empty($f3->get("SESSION.user") ) );
 $errors = array();
 
 if($f3->get("POST")){
@@ -57,16 +46,25 @@ if($f3->get("POST")){
 	}
 } 
 
-if( !empty($f3->get("SESSION.user")) && !empty($f3->get("SESSION.user")) && $f3->get("SESSION.user.is_logged_in") == "ok" ){
-	if( $f3->get("SESSION.user.role") == "admin"){
-		$f3->reroute("admin/dashboard");	
-	} else {
-		$f3->reroute("profil");	
-	}
+if( 
+	!empty($f3->get("SESSION.user")) && 
+	!empty($f3->get("SESSION.user")) && 
+	$f3->get("SESSION.user.is_logged_in") == "ok" ){
+
+
+	$db->exec(
+			"UPDATE users SET last_login=:now WHERE id=:users_id", 
+				array(
+				':now'=> date("Y-m-d H:i:s"), 
+				':users_id'=> $f3->get("SESSION.user.id")
+				)
+			);
+
+	$f3->reroute("admin/user");
 }
 
 $f3->set('errors', $errors);
 
-echo View::instance()->render('views/admin/header.htm'); 
-echo Template::instance()->render('login.htm');
-echo View::instance()->render('views/admin/footer.htm'); 
+$f3->set('content', 'views/admin/login.htm');
+echo View::instance()->render('views/layout.htm');
+

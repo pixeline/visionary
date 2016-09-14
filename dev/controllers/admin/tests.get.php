@@ -1,6 +1,10 @@
 <?php
 global $db, $lang;
 
+if( $f3->get("SESSION.user.role") !== "admin"){
+	$f3->reroute("/admin");
+} 
+
 // http://colour-blindness.dev/admin/tests?order=result
 
 $order = "users_id";
@@ -13,7 +17,6 @@ if( !empty($f3->get("GET.order")) ){
 if( !empty($f3->get("GET.sorting")) ){
 	$sorting = trim($f3->get('GET.sorting'));
 }
-
 
 //default query to get all
 $get_all = $db->prepare(
@@ -87,8 +90,8 @@ $f3->set('finished_count', $finished->fetch(PDO::FETCH_OBJ)->finished );
 //$f3->set('content', 'views/admin/tests.htm');
 //echo View::instance()->render('views/layout.htm');
 
-
 echo View::instance()->render('views/admin/header.htm'); 
+echo View::instance()->render('views/admin/nav-admin.htm'); 
 echo Template::instance()->render('admin/tests.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
 

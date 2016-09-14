@@ -105,14 +105,15 @@ $f3->route('GET|POST /api/@table/@id/@selection',function($f3){ require 'control
 *******************/
 
 // check admin login form
-$f3->route('GET|POST /login',function($f3){ require 'controllers/login.get.post.php'; });
-// Admin dashboard
-$f3->route('GET /admin/dashboard',function($f3){ require 'controllers/admin/dashboard.get.php'; });
-// table data
+$f3->route('GET|POST /admin',function($f3){ require 'controllers/admin/admin.get.post.php'; });
+
+// user
+$f3->route('GET|POST /admin/user',function($f3){ require 'controllers/admin/user.get.post.php'; });
+$f3->route('GET /admin/users',function($f3){ require 'controllers/admin/users.get.php'; });
+$f3->route('GET /admin/vetted',function($f3){ require 'controllers/admin/vetted.get.php'; });
 $f3->route('GET /admin/tests',function($f3){ require 'controllers/admin/tests.get.php'; });
 $f3->route('GET /admin/test/@unique_test_url',function($f3){ require 'controllers/admin/test.get.php'; });
-// table data
-$f3->route('GET /admin/users',function($f3){ require 'controllers/admin/users.get.php'; });
+
 // charts
 $f3->route('GET /admin/analytics',function($f3){ require 'controllers/admin/analytics.get.php'; });
 

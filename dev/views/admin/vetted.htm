@@ -1,0 +1,28 @@
+
+<h1>Tests</h1>
+
+<p>Vetted users count : {{ @users_count }}</p>
+    <table class="pure-table center">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Diagnostic</th>
+                <th>tests date</th>
+                <th>Finished</th>
+            </tr>
+        </thead>
+        <tbody>
+            <repeat group="{{ @users }}" value="{{ @user }}" counter="{{ @key }}">
+                <tr class="{{ @key%2 ? '' : 'pure-table-odd'}} " >
+                    <td>{{ @user->id }}</td>
+                    <td>{{ @user->name }}</td>
+                    <td>{{ @user->email }}</td>
+                    <td>{{ @user->tests_diagnostic }}</td>
+                    <td>{{ @user->tests_date }}</td>
+                    <td>{{ @user->tests_done ? "Finished" : "Not done yet" }}</td>
+                </tr>
+            </repeat>
+        </tbody>
+    </table>

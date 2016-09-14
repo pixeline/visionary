@@ -1,0 +1,77 @@
+<h1>Mon profil</h1>
+
+<div class="pure-g">
+	    <div class="pure-u-1 pure-u-sm-1-2">
+			<form action="/admin/user" method="POST" class="form pure-form pure-form-stacked text-left">
+					
+				<label for="name">Name</label>
+				<input type="text" name="name" value="{{ @user->name }}">
+
+				<label for="email">Email</label>
+				<input type="text" name="email" value="{{ @user->email }}">
+
+				<label for="birth_date">Birth date</label>
+				<input type="text" name="birth_date" value="{{ @user->birth_date }}">
+
+				<label for="gender">Gender</label>
+				<input type="text" name="gender" value="{{ @user->gender }}">
+
+				<label for="countries_iso">Country</label>
+				<input type="text" name="countries_iso" value="{{ @user->countries_iso }}">
+
+				<input type="hidden" name="id" value="{{ @user->id }}">
+
+				<input type="submit" class="pure-button pure-button-primary" value="Modifier">
+
+			</form>
+
+		</div>
+	</div>
+
+<h1>Mes tests</h1>
+<div class="pure-g">
+	<div class="pure-u-1 pure-u-sm-1-2">
+		
+        <table class="pure-table pure-table-horizontal">
+            <thead>
+                <tr>
+                    <th>Result</th>
+                    <th>Ratio</th>
+                    <th>test_end_date</th>
+                    <th>test_duration</th>
+                    <th>is_sure</th>
+                    <th>Finished</th>
+                    <th>Voir</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            <repeat group="{{ @tests }}" value="{{ @test }}" counter="{{ @key }}">
+                <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}">
+                    <!--<td>{{ @test->diag_serie }}</td>-->
+                    <td>{{ @test->diag_result }}</td>
+                    <td>{{ @test->diag_ratio }}</td>
+                    <td>{{ @test->test_end_date }}</td>
+                    <td>{{ @test->test_duration }}</td>
+                    <td>{{ @test->is_sure }}</td>
+                    <td>{{ @test->finished ? "finished" : "unfinished" }}</td>
+                    <td><a href="/admin/test/{{ @$test->unique_url }}">Voir</a></td>
+                </tr>
+            </repeat>
+            <!--id] => 66
+            [users_id] => 43
+            [interface_id] => 1
+            [diag_confusion_angle] => 21.2
+            [diag_major] => 34.7
+            [diag_minor] => 28.5
+            [diag_tes] => 44.9
+            [diag_s_index] => 1.22
+            [diag_c_index] => 3.76
+            -->
+            </tbody>
+        </table>
+
+	</div>
+</div>
+
+   
