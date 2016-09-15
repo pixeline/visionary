@@ -17,7 +17,6 @@
                 <ul>
                     <li>finished count : {{ @finished_count }}</li>
                     <li>abandon count : {{ @tests_count - @finished_count }} </li>
-                    <li>abandon count : {{ ($tests_count - $finished_count) }} </li>
                     <li>finished ratio : {{ round((100/$tests_count) * $finished_count, 2) . " / 100%" }} </li>
                     <li>abandon ratio : {{ round((100/$tests_count) * ($tests_count - $finished_count), 2) . " / 100%" }} </li>
                 </ul>

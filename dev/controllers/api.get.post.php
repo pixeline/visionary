@@ -14,8 +14,18 @@ $errors = new stdClass();
 $allowed_tables = array("country", "interface","test","user");// tests users
 
 if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARAMS.table")) ){
+	
+	$seek = "users_id";
 
-	$id = intval(clean($f3->get("PARAMS.id")));
+	if( is_email_valid( trim($f3->get("PARAMS.id")) ) ){
+		// the is in fact an email
+		$seek = "email";
+		$seek_value = trim($f3->get("PARAMS.id"));
+	} else {
+		// must be an ID
+		$seek_value = intval(clean($f3->get("PARAMS.id")));
+	}
+
 	$table = clean($f3->get("PARAMS.table"));
 	$selection = clean($f3->get("PARAMS.selection"));
 
@@ -25,17 +35,17 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 
 			$sql = "SELECT diag_result, diag_ratio, diag_serie, email, test_end_date 
 				FROM tests LEFT JOIN users on users.id=tests.users_id 
-				WHERE users_id=? AND tests.finished='1' 
+				WHERE ".$seek."=? AND tests.finished='1' 
 				ORDER BY test_end_date DESC";
 			
 			if($selection === 'latest'){
 				$sql .= " LIMIT 0,1";
 			}
 
-			$results = $db->exec($sql, $id);
+			$results = $db->exec($sql, $seek_value);
 
 			if(empty($results)){
-				$errors->error = "The selected ID doesn't exist"; 
+				$errors->error = "The selected ".$seek." doesn't exist"; 
 			}
 			
 			if($selection === 'latest'){

@@ -1,6 +1,5 @@
 <?php
 
-
 $unique_salt_value = "What a wonderful world!";
 $minimum_id_length = 8;
 $custom_alphabet = 'abcdefghijklmnopqrstuvwxyz1234567890';
@@ -56,7 +55,6 @@ function decodeUniqueURL($url){
 	return $hashids->decode($url);
 }
 
-
 /*
 	check in the database if the email of the user exists
 */
@@ -72,7 +70,6 @@ function isAlreadyRegistered($email){
 	}
 	return false;
 }
-
 
 function getTestFromUrl($url){
 	global $db;
@@ -92,11 +89,80 @@ function getTestFromUrl($url){
 	return false;
 }
 
+function getOS() { 
+    $os_platform = "Unknown OS Platform";
+    $os_array = array(
+        '/windows nt 10/i'     =>  'Windows 10',
+        '/windows nt 6.3/i'     =>  'Windows 8.1',
+        '/windows nt 6.2/i'     =>  'Windows 8',
+        '/windows nt 6.1/i'     =>  'Windows 7',
+        '/windows nt 6.0/i'     =>  'Windows Vista',
+        '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
+        '/windows nt 5.1/i'     =>  'Windows XP',
+        '/windows xp/i'         =>  'Windows XP',
+        '/windows nt 5.0/i'     =>  'Windows 2000',
+        '/windows me/i'         =>  'Windows ME',
+        '/win98/i'              =>  'Windows 98',
+        '/win95/i'              =>  'Windows 95',
+        '/win16/i'              =>  'Windows 3.11',
+        '/macintosh|mac os x/i' =>  'Mac OS X',
+        '/mac_powerpc/i'        =>  'Mac OS 9',
+        '/linux/i'              =>  'Linux',
+        '/ubuntu/i'             =>  'Ubuntu',
+        '/iphone/i'             =>  'iPhone',
+        '/ipod/i'               =>  'iPod',
+        '/ipad/i'               =>  'iPad',
+        '/iOS/i'               =>  'iOS',
+        '/android/i'            =>  'Android',
+        '/blackberry/i'         =>  'BlackBerry',
+        '/webos/i'              =>  'Mobile'
+    );
+
+    foreach ($os_array as $regex => $value) { 
+        if (preg_match($regex, $_SERVER['HTTP_USER_AGENT'])) {
+            $os_platform = $value;
+        }
+    }   
+    return $os_platform;
+}
+
+function getSystemProfil(){
+	require 'lib/Mobile_Detect.php';
+
+	$detect = new Mobile_Detect();
+
+	$detector = array();
+	$detector["device"] = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'desktop');
+
+	if( $detect->isMobile() ){
+	    if( $detect->isiOS() ){
+	        $detector["OS"] = "IOS " . $detect->version("iOS");
+	    } else if( $detect->isAndroidOS() ){
+	        $detector["OS"] = "Android " . $detect->version("Android");
+	    } else {
+	        $detector["OS"] = "Other";        
+	    }
+	} else {
+	     $detector["OS"] = getOS();
+	}
+
+	if( $detect->version("IE") ){
+	    $detector["browser"] = "Internet Explorer " . $detect->version("IE"); 
+	} else if( $detect->version("Chrome") ){
+	    $detector["browser"] = "Chrome ". $detect->version("Chrome");
+	} else if( $detect->version("Firefox") ){
+	    $detector["browser"] = "Firefox ". $detect->version("Firefox");
+	} else if( $detect->version("Safari") ){
+	    $detector["browser"] = "Safari ". $detect->version("Safari");
+	} else  {
+	    $detector["browser"] = "Other";
+	}
+	return $detector;
+}
 
 function is_email_valid($email) {
 	return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
-
 
 function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plennevaux', $message = 'welcome'){
 	if(empty($to) || !is_email_valid($to) ){
@@ -136,3 +202,5 @@ function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plenneva
 	}
 	return 'ok';
 }
+
+

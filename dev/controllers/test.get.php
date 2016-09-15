@@ -81,6 +81,15 @@ if(!empty($unique_test_url)){
 }
 
 if( empty(trim($f3->get('SESSION.test.unique_url'))) || $f3->get('SESSION.test.finished') == '1' ) {
+
+
+	$detector = getSystemProfil();
+
+	/*
+	- une colonne "device" valeurs : "phone", "smartphone", "tablet", "desktop", quelque chose comme cela
+	- une colonne "OS" os + os version
+	- une colonne "browser" : browser + browser version
+	*/
 	
 	// If no test prepared for that user, create a new test
 	
@@ -94,11 +103,14 @@ if( empty(trim($f3->get('SESSION.test.unique_url'))) || $f3->get('SESSION.test.f
 		"interface_id" 		    => $interface_version,
 		"unique_url" 		    => getUniqueURL(),
 		"test_creation_date" 	=> date("Y-m-d H:i:s"),
-		"test_start_date" 	    => date("Y-m-d H:i:s")
+		"test_start_date" 	    => date("Y-m-d H:i:s"),
+		"device"	  			=> $detector["device"],
+		"os"	   				=> $detector["OS"],
+		"browser"	 			=> $detector["browser"]
 	);
 	
 	$db->exec(
-		"INSERT INTO tests(users_id, interface_id, unique_url, test_creation_date, test_start_date) VALUES (:users_id,:interface_id,:unique_url,:test_creation_date,:test_start_date)", 
+		"INSERT INTO tests(users_id, interface_id, unique_url, test_creation_date, test_start_date,device,os,browser) VALUES (:users_id,:interface_id,:unique_url,:test_creation_date,:test_start_date,:device,:os,:browser)", 
 		$test
 	);
 
