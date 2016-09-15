@@ -82,17 +82,34 @@
 
 </form>
 
-<form action="/register-auth" method="POST" class="form pure-form text-center">
-    <button type="submit" name="auth" value="google" class="pure-button ">
-        <i class="fa fa-play" aria-hidden="true"></i> Google
-    </button>
-    <button type="submit" name="auth" value="facebook" class="pure-button ">
-        <i class="fa fa-play" aria-hidden="true"></i> Facebook
-    </button>
-    <button type="submit" name="auth" value="twitter" class="pure-button ">
-        <i class="fa fa-play" aria-hidden="true"></i> Twitter
-    </button>
-    <button type="submit" name="logout" value="1" class="pure-button ">
-        <i class="fa fa-play" aria-hidden="true"></i> logout
-    </button>
+<br>
+<form action="/register-auth" method="POST" class="form pure-form ">
+    
+    <h2>Connexion</h2>
+
+    <div class="pure-g">
+        <button type="submit" name="auth" value="facebook" class="pure-button pure-button-primary">
+            <i class="fa fa-facebook" aria-hidden="true"></i> Facebook
+        </button>
+    </div>
+
+    <h3>Par email</h3>
+
+    <div class="pure-g">
+        <label for="email" class="hidden">Email</label>
+        <input id="email"  name="email" type="email" value="" placeholder="Email">
+
+        <label for="password" class="hidden">Mot de passe</label>
+        <input id="password"  name="password" type="password" value="" placeholder="Mot de passe">
+
+        <button type="submit" name="action" value="login" class="pure-button pure-button-primary">Sign in</button>
+    </div>
+
+    <h3>Déconnexion</h3>
+
+    <a href="/logout" class="pure-menu-link">
+        <i class="fa fa-sign-out" aria-hidden="true"></i> Log out
+    </a>
+    
+   
 </form>

@@ -1,20 +1,36 @@
-
 <h1>Fix database</h1>
 
 <form action="/admin/fixdatabase" method="POST">
-    <p>
-        <button class="pure-button pure-button-primary" type="submit" name="action" value="default_users">Create default users</button>
-    </p>
-    <p>
-        <button class="pure-button pure-button-primary" type="submit" name="action" value="fix_creation_date">FIX Test Creation Date</button class="pure-button pure-button-primary">
-    </p>
-    <p>
-        <button class="pure-button pure-button-primary" type="submit" name="action" value="delete_empty_creation_date">DELETE EMPTY Test Creation Date</button class="pure-button pure-button-primary">
-    </p>
-    <p>
-        <button class="pure-button pure-button-primary" type="submit" name="action" value="fix_test_duration">FIX Test Duration</button>
-    </p>
-    
+    <ol>
+        <li>
+            <p>Crée les utilisateurs suivants Protan, Deutan, Tritan, Normal,Il crée aussi un test correspondant a chaque deficience.</p>
+            <button class="pure-button button-warning" type="submit" name="action" value="default_users">
+            Create default users
+            </button>
+            <hr>
+        </li>
+        <li>
+            <p>Correction du bug de la date de creation 1, Mise à jour de tout les tests (test_creation_date = start_date )</p>
+            <button class="pure-button button-warning" type="submit" name="action" value="fix_creation_date">
+            FIX Test Creation Date
+            </button>
+            <hr>
+        </li> 
+
+        <li>
+            <p>Correction du bug de la date de creation 2, Supprime de la base de donnée les tests sans date de création</p>
+            <button class="pure-button button-warning" type="submit" name="action" value="delete_empty_creation_date">DELETE EMPTY Test Creation Date
+            </button>
+            <hr>
+        </li>
+        <li>
+            <p>Correction du bug des test duration mal calculés (WHERE test_duration = '00:00:00')</p>
+            <button class="pure-button button-warning" type="submit" name="action" value="fix_test_duration">
+            FIX Test Duration
+            </button>
+            <hr>
+        </li>
+    </ol>
 </form>
 
-<p>{{ @message }}</p>
+<p>Message : {{ @message }}</p>

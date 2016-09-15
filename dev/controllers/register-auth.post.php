@@ -1,13 +1,14 @@
 <?php
 global $db, $lang;
 // check if post is filled
-/*
 if( empty($f3->get('POST')) ){
 	$f3->reroute('/');
 	exit;
 }
-*/
+
 require("lib/hybridauth/Hybrid/Auth.php");
+
+$errors = array();
 
 $hybridauth = new Hybrid_Auth(array(
 	"base_url" => "http://colour-blindness.dev/lib/hybridauth/",
@@ -46,27 +47,62 @@ $hybridauth = new Hybrid_Auth(array(
 	"debug_file" => ""
 ));
 
-if($f3->get('POST.auth')){
-	// Try to authenticate the user with a given provider
-	try {
-		switch ($f3->get('POST.auth')) {
-			case 'twitter': 
-				$auth = $hybridauth->authenticate("Twitter");  // $auth_params = array("hauth_return_to"=>"/");
-			break;
-			case 'facebook': 
-				$auth = $hybridauth->authenticate("Facebook");  // $auth_params = array("hauth_return_to"=>"/");
-			break;
-			case 'google': 
-				$auth = $hybridauth->authenticate("Google");  // $auth_params = array("hauth_return_to"=>"/");
-			break;
-			default: $f3->reroute('/'); break;
+if( 
+	!empty($f3->get('POST.action')) && 
+	!empty($f3->get('POST.email')) && 
+	!empty($f3->get('POST.password'))
+){
+	$action = clean($f3->get("POST.action"));
+	$useremail = trim($f3->get("POST.email"));
+	$password = trim($f3->get("POST.password"));
+	
+	if( $action == "login" && !empty($useremail) && !empty($password) && is_email_valid($useremail) ){ 
+
+		$stmt = $db->prepare(
+			"SELECT *, NULL AS password FROM users WHERE email=:useremail AND password=:password", 
+			array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL)
+		);
+		$stmt->bindParam(':useremail', $useremail);
+		$stmt->bindParam(':password', $password);
+		$stmt->execute();
+		$user_result = $stmt->fetch(PDO::FETCH_OBJ);
+
+		if( !empty($user_result) ){
+			$user = array(
+				'name'           => $user_result->name,
+				'email'          => $user_result->email,
+				'birth_date'     => $user_result->birth_date,
+				'vetted'         => $user_result->vetted,
+				'gender'         => $user_result->gender,
+				'role'           => $user_result->role,
+				'countries_iso'  => $user_result->countries_iso,
+				'id'           	 => $user_result->id,
+				'is_logged_in' 	 => 'ok'
+			);
+			$f3->set('SESSION.user', $user);
+		} else {
+			$errors[] = _("Email or password is not valid");
 		}
+	} else {
+		$errors[] = _("Missing or not valid email or password");
+	}
+} 
+
+// Try to authenticate the user with a given provider
+if( !empty($f3->get('POST.auth')) && $f3->get('POST.auth') == "facebook"){
+	
+	try {
+		$auth = $hybridauth->authenticate("Facebook");  // $auth_params = array("hauth_return_to"=>"/");
 	} catch( Exception $e ){
 		echo "Ooophs, we got an error: " . $e->getMessage();
 	}
+	// For logout => $hybridauth->logoutAllProviders(); 
 
 	$user_profile = $auth->getUserProfile();
 
+	pr( $user_profile );
+
+	/*
 	$birth_date_time = $user_profile->birthDay."-".$user_profile->birthMonth."-".$user_profile->birthYear;
 	$birth_date_time = DateTime::createFromFormat('Y-M-D', $birth_date_time);
 	$profile_birth_date = date("Y") - intval(clean($user_profile->age));
@@ -88,12 +124,8 @@ if($f3->get('POST.auth')){
 		'is_logged_in' 	 => "ok"
 	);
 
-
 	//$f3->reroute('/');
-}
-
-
-
+	/*
 	pr( "GET SESSION DATA" );
 	pr( $hybridauth->getSessionData() );
 
@@ -104,89 +136,31 @@ if($f3->get('POST.auth')){
 
 	pr( $hybridauth->getUserContacts() );
 	pr( "GET SESSION api" );
-
 	pr( $hybridauth->getUserActivity() );
-
-	/*
-	pr( "BIRTH DATE_TIME" );
-	pr( $birth_date_time );
-
-	pr( "USER PROFILE" );
-	pr( $user_profile );
-
-	pr( "USER" );
-	pr( $user );
 	*/
-
-
-if($f3->get('POST.logout')){
-	$hybridauth->logoutAllProviders(); 
-	$f3->reroute('/');
 }
 
+// check if all is ok then go to the test
+if( 
+	!empty($f3->get("SESSION.user")) && 
+	!empty($f3->get("SESSION.user")) && 
+	$f3->get("SESSION.user.is_logged_in") == "ok" ){
+	$db->exec(
+			"UPDATE users SET last_login=:now WHERE id=:users_id", 
+				array(
+				':now'=> date("Y-m-d H:i:s"), 
+				':users_id'=> $f3->get("SESSION.user.id")
+				)
+			);
 
-/*
-class UsersController extends AppController {
-
-	public function provider($provider = null) {
-
-		require_once( WWW_ROOT . 'hybridauth/Hybrid/Auth.php' );
-
-		$hybridauth_config = array(
-			"base_url" => 'http://' . $_SERVER['HTTP_HOST'] . $this->base . "/users/provider/", // well watev, set yours
-			"providers" => array(
-				"Google" => array(
-					"enabled" => true,
-					"keys" => array("id" => GOOGLE_ID, "secret" => GOOGLE_SECRET),
-					"scope" => "https://www.googleapis.com/aut..., https://www.googleapis.com/aut..."
-				),
-				"Facebook" => array(
-					"enabled" => true,
-					"keys" => array("id" => FB_APP_ID, "secret" => FB_APP_SECRET),
-					"scope" => "email",
-				),
-				"LinkedIn" => array(
-					"enabled" => true,
-					"keys" => array("key" => LI_API_KEY, "secret" => LI_SECRET_KEY),
-					"scope" => "email",
-				),
-			)
-		);
-
-		try {
-			// create an instance for Hybridauth with the configuration file path as parameter
-			$hybridauth = new Hybrid_Auth($hybridauth_config);
-			// try to authenticate the selected $provider
-			$adapter = $hybridauth->authenticate($provider);
-			// grab the user profile
-			$user_profile = $adapter->getUserProfile();
-			$this->set('user_profile', $user_profile);
-
-		} catch (Exception $e) {
-			// Display the recived error
-			switch ($e->getCode()) {
-				case 0 : $error = "Unspecified error.";break;
-				case 1 : $error = "Hybriauth configuration error.";break;
-				case 2 : $error = "Provider not properly configured.";break;
-				case 3 : $error = "Unknown or disabled provider.";break;
-				case 4 : $error = "Missing provider application credentials.";break;
-				case 5 : $error = "Authentification failed. The user has canceled the authentication or the provider refused the connection.";break;
-				case 6 : 
-					$error = "User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again.";
-					$adapter->logout();
-				break;
-
-				case 7 : 
-					$error = "User not connected to the provider.";
-					$adapter->logout();
-				break;
-
-			}
-			// well, basically your should not display this to the end user, just give him a hint and move on..
-			$error .= "Original error message: " . $e->getMessage();
-			$error .= "<hr/> Trace:" . $e->getTraceAsString() . "";
-			$this->set('error', $error);
-		}
-	}
+	$f3->reroute("/test");
 }
-*/
+
+$f3->set('errors', $errors);
+
+
+
+
+
+
+
