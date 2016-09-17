@@ -13,14 +13,6 @@ $errors = array();
 $hybridauth = new Hybrid_Auth(array(
 	"base_url" => "http://colour-blindness.dev/lib/hybridauth/",
 	"providers" => array(
-		// https://console.developers.google.com/apis/credentials
-		"Google" => array(
-			"enabled" => true,
-			"keys" => array(
-				"id" => "368063427013-ltnpiq8efno16upv0as5ebvnqt814riv.apps.googleusercontent.com", 
-				"secret" => "OPZ5L6d7tLb5g_WpQSP-toqv"
-			),
-		),
 		// https://developers.facebook.com/apps/
 		// Invalid Scopes: read_stream. 
 		"Facebook" => array(
@@ -29,10 +21,20 @@ $hybridauth = new Hybrid_Auth(array(
 				"id" => "1751429198461349", 
 				"secret" => "007a6018a2f21f3ff337f563191b9882"
 			),
-			"scope" => "email", //, user_about_me, user_birthday, user_hometown
-			//"display" => "popup",
+			"scope" => "email, user_about_me, user_birthday, user_hometown",
+			"display" => "popup",
 			"trustForwarded" => false
 		),
+		// https://console.developers.google.com/apis/credentials
+		/*
+		"Google" => array(
+			"enabled" => true,
+			"keys" => array(
+				"id" => "368063427013-ltnpiq8efno16upv0as5ebvnqt814riv.apps.googleusercontent.com", 
+				"secret" => "OPZ5L6d7tLb5g_WpQSP-toqv"
+			),
+		),
+		
 		// https://apps.twitter.com/
 		"Twitter" => array(
 			"enabled" => true,
@@ -42,6 +44,7 @@ $hybridauth = new Hybrid_Auth(array(
 			),
 			"includeEmail" => true
 		)
+		*/
 	),
 	"debug_mode" => false ,
 	"debug_file" => ""
@@ -55,7 +58,7 @@ if(
 	$action = clean($f3->get("POST.action"));
 	$useremail = trim($f3->get("POST.email"));
 	$password = trim($f3->get("POST.password"));
-	
+
 	if( $action == "login" && !empty($useremail) && !empty($password) && is_email_valid($useremail) ){ 
 
 		$stmt = $db->prepare(
@@ -100,7 +103,38 @@ if( !empty($f3->get('POST.auth')) && $f3->get('POST.auth') == "facebook"){
 
 	$user_profile = $auth->getUserProfile();
 
-	pr( $user_profile );
+	//pr( $user_profile );
+
+/*
+	Hybrid_User_Profile Object
+(
+    [identifier] => 625662140928344
+    [webSiteURL] => 
+    [profileURL] => https://www.facebook.com/app_scoped_user_id/625662140928344/
+    [photoURL] => https://graph.facebook.com/625662140928344/picture?width=150&height=150
+    [displayName] => Teddy Ka
+    [description] => 
+    [firstName] => Teddy
+    [lastName] => Ka
+    [gender] => male
+    [language] => fr_FR
+    [age] => 
+    [birthDay] => 31
+    [birthMonth] => 1
+    [birthYear] => 1986
+    [email] => teddy.k@hotmail.com
+    [emailVerified] => teddy.k@hotmail.com
+    [phone] => 
+    [address] => 
+    [country] => 
+    [region] => 
+    [city] => 
+    [zip] => 
+    [username] => 
+    [coverInfoURL] => https://graph.facebook.com/625662140928344?fields=cover&access_token=EAAY46mM5OaUBAAT6dZCgcxW4wRAK7ZARi6MsLYgLZBra79lm5YfjZCZABLPJeCdgE5CizrZBJ31WJTOIOOD9ZBAb5Lc68Ybkms7ZC0LXeJOw5ZBbTab6ypZCbXoIPvIpvZB6a9rnLx5nRhiZCnZCwSC8f3EGH7NUd8Xwm2wYZD
+)
+
+*/
 
 	/*
 	$birth_date_time = $user_profile->birthDay."-".$user_profile->birthMonth."-".$user_profile->birthYear;
