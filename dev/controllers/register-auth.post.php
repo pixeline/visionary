@@ -51,7 +51,6 @@ $hybridauth = new Hybrid_Auth(array(
 ));
 
 
-pr( $f3->get("POST") );
 
 //	!empty($f3->get('POST.action')) && 
 if( 
@@ -103,9 +102,7 @@ if(
 	// For logout => $hybridauth->logoutAllProviders(); 
 
 	$user_profile = $auth->getUserProfile();
-
 	$user = isAlreadyRegistered($user_profile->email);
-
 	// the user does NOT already exist register him
 	if(!$user){
 		$user = array(
@@ -126,14 +123,14 @@ if(
 						VALUES (:name, :email, :password, :birth_date, :vetted, :gender, :role, :countries_iso, :postcode, :last_login)';
 
 		$result = $db->exec($query, $user);
-
 		$user['id'] = $db->lastInsertId();
-		$user['is_logged_in']= 'ok';
 		// Update the session
-		$f3->set('SESSION.user', $user);
-	}
+		//$f3->set('SESSION.user', $user);
+	} 
 
-
+	$user['is_logged_in'] = 'ok';
+	// Update the session
+	$f3->set('SESSION.user', $user);
 }
 
 // check if all is ok then go to the test
