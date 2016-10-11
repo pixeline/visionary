@@ -43,18 +43,22 @@ $hybridauth = new Hybrid_Auth(array(
 				"secret" => "mqborpMy21qqYojgl00PY61USqmcsCqvjWXWcG7o8"
 			),
 			"includeEmail" => true
-		)
-		*/
+		)*/
+		
 	),
 	"debug_mode" => false ,
 	"debug_file" => ""
 ));
 
+
+pr( $f3->get("POST") );
+
+//	!empty($f3->get('POST.action')) && 
 if( 
-	!empty($f3->get('POST.action')) && 
 	!empty($f3->get('POST.email')) && 
 	!empty($f3->get('POST.password'))
 ){
+
 	$action = clean($f3->get("POST.action"));
 	$useremail = trim($f3->get("POST.email"));
 	$password = trim($f3->get("POST.password"));
@@ -89,11 +93,8 @@ if(
 	} else {
 		$errors[] = _("Missing or not valid email or password");
 	}
-} 
-
-// Try to authenticate the user with a given provider
-if( !empty($f3->get('POST.auth')) && $f3->get('POST.auth') == "facebook"){
-	
+} else if( !empty($f3->get('POST.auth')) && $f3->get('POST.auth') == "facebook"){
+	// Try to authenticate the user with a given provider
 	try {
 		$auth = $hybridauth->authenticate("Facebook");  // $auth_params = array("hauth_return_to"=>"/");
 	} catch( Exception $e ){
@@ -103,75 +104,36 @@ if( !empty($f3->get('POST.auth')) && $f3->get('POST.auth') == "facebook"){
 
 	$user_profile = $auth->getUserProfile();
 
-	//pr( $user_profile );
+	$user = isAlreadyRegistered($user_profile->email);
 
-/*
-	Hybrid_User_Profile Object
-(
-    [identifier] => 625662140928344
-    [webSiteURL] => 
-    [profileURL] => https://www.facebook.com/app_scoped_user_id/625662140928344/
-    [photoURL] => https://graph.facebook.com/625662140928344/picture?width=150&height=150
-    [displayName] => Teddy Ka
-    [description] => 
-    [firstName] => Teddy
-    [lastName] => Ka
-    [gender] => male
-    [language] => fr_FR
-    [age] => 
-    [birthDay] => 31
-    [birthMonth] => 1
-    [birthYear] => 1986
-    [email] => teddy.k@hotmail.com
-    [emailVerified] => teddy.k@hotmail.com
-    [phone] => 
-    [address] => 
-    [country] => 
-    [region] => 
-    [city] => 
-    [zip] => 
-    [username] => 
-    [coverInfoURL] => https://graph.facebook.com/625662140928344?fields=cover&access_token=EAAY46mM5OaUBAAT6dZCgcxW4wRAK7ZARi6MsLYgLZBra79lm5YfjZCZABLPJeCdgE5CizrZBJ31WJTOIOOD9ZBAb5Lc68Ybkms7ZC0LXeJOw5ZBbTab6ypZCbXoIPvIpvZB6a9rnLx5nRhiZCnZCwSC8f3EGH7NUd8Xwm2wYZD
-)
+	// the user does NOT already exist register him
+	if(!$user){
+		$user = array(
+			'name'           => $user_profile->firstName." ".$user_profile->lastName,
+			'email'          => $user_profile->email,
+			'password'		 => "",
+			'birth_date'     => $user_profile->birthYear,
+			'vetted'         => "0",
+			'gender'         => $user_profile->gender == "male" ? "M" : "F",
+			'role'           => "user",
+			'countries_iso'  => "BE",
+			'postcode'		 => "",
+			'last_login'	 => date("Y-m-d H:i:s")
+		);
 
-*/
+		// if not add the new user
+		$query = 'INSERT INTO users (name, email, password, birth_date, vetted, gender, role, countries_iso, postcode, last_login)
+						VALUES (:name, :email, :password, :birth_date, :vetted, :gender, :role, :countries_iso, :postcode, :last_login)';
 
-	/*
-	$birth_date_time = $user_profile->birthDay."-".$user_profile->birthMonth."-".$user_profile->birthYear;
-	$birth_date_time = DateTime::createFromFormat('Y-M-D', $birth_date_time);
-	$profile_birth_date = date("Y") - intval(clean($user_profile->age));
+		$result = $db->exec($query, $user);
 
-	$name = $user_profile->firstName." ".$user_profile->lastName;
-
-	if( empty(trim($name)) ){
-		$name = $user_profile->displayName;
+		$user['id'] = $db->lastInsertId();
+		$user['is_logged_in']= 'ok';
+		// Update the session
+		$f3->set('SESSION.user', $user);
 	}
 
-	$user = array(
-		'name'           => empty(trim($name)) ? "anonymous" : $name,
-		'email'          => empty(trim($user_profile->email)) ? "none" : $user_profile->email,
-		'birth_date'     => empty(trim($profile_birth_date)) ? "1970" : $birth_date_time,
-		'vetted'         => "0",
-		'gender'         => empty(trim($user_profile->gender)) ? "A" : $user_profile->gender,
-		'role'           => "user",
-		'countries_iso'  => empty(trim($user_profile->country)) ? "BE" : $user_profile->country, 
-		'is_logged_in' 	 => "ok"
-	);
 
-	//$f3->reroute('/');
-	/*
-	pr( "GET SESSION DATA" );
-	pr( $hybridauth->getSessionData() );
-
-	pr( "GET SESSION api" );
-
-	pr( $hybridauth->getAccessToken() );
-	pr( "GET SESSION api" );
-
-	pr( $hybridauth->getUserContacts() );
-	pr( "GET SESSION api" );
-	pr( $hybridauth->getUserActivity() );
-	*/
 }
 
 // check if all is ok then go to the test

@@ -1,6 +1,7 @@
 <?php
 global $db, $lang;
 
+
 // check if user is connected
 if( empty($f3->get("SESSION")) || empty($f3->get("SESSION.user")) ){
 	$f3->reroute("/admin");
@@ -10,12 +11,13 @@ if( !empty($f3->get('POST')) ){
 	$params = $f3->get('POST');
 
 	$result = $db->exec("UPDATE users SET name=?,email=?,birth_date=?,gender=?,countries_iso=? WHERE id=?", array(
-		$params["name"],
-	    $params["email"],
-	    $params["birth_date"],
-	    $params["gender"],
-	    $params["countries_iso"],
-	    $params["id"])
+			$params["name"],
+	    	$params["email"],
+	    	$params["birth_date"],
+	    	$params["gender"],
+	    	$params["countries_iso"],
+	    	$params["id"]
+	    )
     );
 }
 
@@ -39,5 +41,6 @@ if( $f3->get("SESSION.user.role") === "admin"){
 } 
 echo Template::instance()->render('admin/user.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
+
 
 

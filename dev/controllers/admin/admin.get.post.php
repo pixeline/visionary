@@ -7,6 +7,8 @@ global $db, $lang;
 
 $errors = array();
 
+
+
 if($f3->get("POST")){
 
 	$action = trim($f3->get("POST.action"));
@@ -67,4 +69,5 @@ $f3->set('errors', $errors);
 
 $f3->set('content', 'views/admin/login.htm');
 echo View::instance()->render('views/layout.htm');
+
 
