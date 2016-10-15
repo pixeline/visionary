@@ -8,7 +8,6 @@ if( empty($f3->get('POST')) ){
 	exit;
 }
 
-
 if( $f3->get('POST.user-type') == "registered" ){
 	// get post data
 	$name           = trim(strip_tags($f3->get('POST.name')));
@@ -23,7 +22,6 @@ if( $f3->get('POST.user-type') == "registered" ){
 
 	// validations
 	$errors = array();
-
 
 	// required fields: email, birthdate, gender
 	if(empty($email)){

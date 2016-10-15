@@ -1,53 +1,53 @@
 <div class="content center">
-	<div class="home">
-		<a href="/" class="logo-home">
-			<img src="/assets/images/logo.png" alt="Retour à l'accueil">
-		</a>
-    
-		<main>
+    <div class="home">
+        <a href="/" class="logo-home">
+            <img src="/assets/images/logo.png" alt="Retour à l'accueil">
+        </a>
 
-		<h1>Merci <?php echo $_SESSION['user']['name'] ?>!</h1>
-		<p>Votre compte a bien été enregistré. Nous vous remercions sincèrement pour votre intérêt et votre participation. Vous contribuerez ainsi à améliorer l'expérience numérique de près d'un homme sur 12 et d'une femme sur 200 dans le monde.</p>
-		
-		<p class="text-center">Vous pouvez dès à présent <br> <a  class="pure-button pure-button-primary" href="/test"><i class="fa fa-play" aria-hidden="true"></i> Tester votre vision des couleurs</a></p>
-		<fieldset>
-			<legend>Vos informations</legend>
-			<table class="pure-table pure-table-horizontal pure-table-striped" style="width:400px;margin:auto">
-				<thead>
-				<tr>
-					<th>Champ</th>
-					<th>Valeur</th>
-				</tr>
-				</thead>
-				<tbody>
-				<?php
-				$hidden_fields= array('is_logged_in' , 'id','last_login' , 'vetted' ,'gender', 'role', 'password');
-				foreach($_SESSION['user'] as $k => $v){
-					if ( in_array($k, $hidden_fields )) continue;
-					if($k == 'name') $k= 'Nom';
-					if($k == 'postcode') $k= 'Code postal';
-					if($k == 'countries_iso') {
-						$k= 'Pays';
-						$v = getCountries('fr', $v);
-					}
-						if($k == 'birth_date') $k= 'Date de naissance';
-					?>
-					<tr>
-						<td><?php echo $k ?></td>
-						<td><?php echo $v ?></td>
-					</tr>
-					<?php
-				}
-				
-				?>
-				</tbody>
-			</table>
-		</fieldset>
-		
+        <main>
 
-		<?php require "views/footer.htm"; ?>
-				 <p><a href="/logout" style="float:right;color:#DDD;" class="no-underline">Déconnexion</a></p>
-		</main>
+        <h1>Merci <?php echo $_SESSION['user']['name'] ?>!</h1>
+        <p>Votre compte a bien été enregistré. Nous vous remercions sincèrement pour votre intérêt et votre participation. Vous contribuerez ainsi à améliorer l'expérience numérique de près d'un homme sur 12 et d'une femme sur 200 dans le monde.</p>
+        
+        <p class="text-center">Vous pouvez dès à présent <br> <a  class="pure-button pure-button-primary" href="/test"><i class="fa fa-play" aria-hidden="true"></i> Tester votre vision des couleurs</a></p>
+        <fieldset>
+            <legend>Vos informations</legend>
+            <table class="pure-table pure-table-horizontal pure-table-striped" style="width:400px;margin:auto">
+                <thead>
+                <tr>
+                    <th>Champ</th>
+                    <th>Valeur</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $hidden_fields= array('is_logged_in' , 'id','last_login' , 'vetted' ,'gender', 'role', 'password');
+                foreach($_SESSION['user'] as $k => $v){
+                    if ( in_array($k, $hidden_fields )) continue;
+                    if($k == 'name') $k= 'Nom';
+                    if($k == 'postcode') $k= 'Code postal';
+                    if($k == 'countries_iso') {
+                        $k= 'Pays';
+                        $v = getCountries('fr', $v);
+                    }
+                        if($k == 'birth_date') $k= 'Date de naissance';
+                    ?>
+                    <tr>
+                        <td><?php echo $k ?></td>
+                        <td><?php echo $v ?></td>
+                    </tr>
+                    <?php
+                }
+                
+                ?>
+                </tbody>
+            </table>
+        </fieldset>
+        
 
-	</div>
+        <?php require "views/footer.htm"; ?>
+                 <p><a href="/logout" style="float:right;color:#DDD;" class="no-underline">Déconnexion</a></p>
+        </main>
+
+    </div>
 </div>

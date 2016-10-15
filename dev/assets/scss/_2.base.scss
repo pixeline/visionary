@@ -190,6 +190,37 @@ a.pure-button-primary{
 	margin-right:6px;
 }
 
+
+.button-social {
+	background-color: #0277BD;
+    border-radius: 4px;
+    text-shadow: none;
+    font-weight: 300;
+    padding: 8px 25px 6px;
+    -webkit-transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease;
+    border: 0 transparent;
+    color: #fff;
+}
+.button-facebook {
+	background : $color-facebook;
+	&:hover {
+		background : darken($color-facebook, 25%);
+	}
+} 
+.button-twitter {
+	background : $color-twitter;
+	&:hover {
+		background : darken($color-twitter, 25%);
+	}
+} 
+.button-google {
+	background : $color-google;
+	&:hover {
+		background : darken($color-google, 25%);
+	}
+} 
+
 /* ---------------------------------------------- 
 	THE VOICE
 	// this class set is used to convey specific expressions in a coherent, global system: the voice of your application. 

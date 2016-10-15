@@ -1,6 +1,12 @@
 <?php
-// Unset all of the session variables.
 
+require("lib/hybridauth/Hybrid/Auth.php");
+require("auth-config.php");
+
+$hybridauth = new Hybrid_Auth($auth_config);
+$hybridauth->logoutAllProviders();
+
+// Unset all of the session variables.
 $f3->clear('SESSION');
 $_SESSION = array();
 

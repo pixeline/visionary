@@ -1,6 +1,5 @@
 <?php
 global $db, $lang;
-
 /*
 	"TEST" CONTROLLER:
 	> if route is /test/@unique_test_url: get data then redirect to /test
@@ -81,7 +80,6 @@ if(!empty($unique_test_url)){
 }
 
 if( empty(trim($f3->get('SESSION.test.unique_url'))) || $f3->get('SESSION.test.finished') == '1' ) {
-
 
 	$detector = getSystemProfil();
 

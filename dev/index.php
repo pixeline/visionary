@@ -76,8 +76,9 @@ $f3->route('GET /userref', function($f3) {
      VISIONARY
 *******************/
 
-$f3->route('GET /', function($f3) {  require 'controllers/home.get.php'; });
+$f3->route('GET /', function($f3){  require 'controllers/home.get.php'; });
 $f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
+$f3->route('POST /login', function($f3){ require 'controllers/login.post.php'; });
 $f3->route('GET|POST /register-auth', function($f3){ require 'controllers/register-auth.post.php'; });
 //$f3->route('GET /register-auth', function($f3){ require 'controllers/register-auth.get.php'; });
 $f3->route('GET /thank-you-for-registering', function($f3){ require 'controllers/thank-you-for-registering.get.php'; });
@@ -92,32 +93,32 @@ $f3->route('GET @result: /result/@unique_test_url', function($f3){ require 'cont
 
 $f3->route('GET /logout', function($f3){ require 'controllers/logout.php'; });
 
-$f3->route('GET /account',function($f3){ require 'controllers/account.get.php'; });
+$f3->route('GET /account', function($f3){ require 'controllers/account.get.php'; });
 
 
 /******************
     API
 *******************/
-$f3->route('GET|POST /api/@table/@id',function($f3){ require 'controllers/api.get.post.php'; });
-$f3->route('GET|POST /api/@table/@id/@selection',function($f3){ require 'controllers/api.get.post.php'; });
+$f3->route('GET|POST /api/@table/@id', function($f3){ require 'controllers/api.get.post.php'; });
+$f3->route('GET|POST /api/@table/@id/@selection', function($f3){ require 'controllers/api.get.post.php'; });
 
-// Admin 
+
 /******************
     ADMIN
 *******************/
 
 // check admin login form
-$f3->route('GET|POST /admin',function($f3){ require 'controllers/admin/admin.get.post.php'; });
+$f3->route('GET|POST /admin', function($f3){ require 'controllers/admin/admin.get.post.php'; });
 
 // user
-$f3->route('GET|POST /admin/user',function($f3){ require 'controllers/admin/user.get.post.php'; });
-$f3->route('GET /admin/users',function($f3){ require 'controllers/admin/users.get.php'; });
-$f3->route('GET /admin/vetted',function($f3){ require 'controllers/admin/vetted.get.php'; });
-$f3->route('GET /admin/tests',function($f3){ require 'controllers/admin/tests.get.php'; });
-$f3->route('GET /admin/test/@unique_test_url',function($f3){ require 'controllers/admin/test.get.php'; });
+$f3->route('GET|POST /admin/user', function($f3){ require 'controllers/admin/user.get.post.php'; });
+$f3->route('GET /admin/users', function($f3){ require 'controllers/admin/users.get.php'; });
+$f3->route('GET /admin/vetted', function($f3){ require 'controllers/admin/vetted.get.php'; });
+$f3->route('GET /admin/tests', function($f3){ require 'controllers/admin/tests.get.php'; });
+$f3->route('GET /admin/test/@unique_test_url', function($f3){ require 'controllers/admin/test.get.php'; });
 
 // charts
-$f3->route('GET /admin/analytics',function($f3){ require 'controllers/admin/analytics.get.php'; });
+$f3->route('GET /admin/analytics', function($f3){ require 'controllers/admin/analytics.get.php'; });
 
 
 // TOOLS FOR ADMIN

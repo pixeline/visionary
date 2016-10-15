@@ -31,14 +31,24 @@ $get_tests->execute(array($f3->get("SESSION.user.id")));
 $tests = $get_tests->fetchAll(PDO::FETCH_OBJ);
 
 
+$years = array();
+for($i = (date("Y")-3); $i >= 1900; $i--){
+	$years[] = $i;
+}
+
+
 $f3->set('user', $user);
 $f3->set('tests', $tests);
+$f3->set('years', $years );
+$f3->set('countries', getCountries($lang) );
 
 echo View::instance()->render('views/admin/header.htm'); 
 // check if user is  admin
 if( $f3->get("SESSION.user.role") === "admin"){
 	echo View::instance()->render('views/admin/nav-admin.htm'); 
-} 
+} else {
+	echo View::instance()->render('views/admin/nav-user.htm'); 
+}
 echo Template::instance()->render('admin/user.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
 
