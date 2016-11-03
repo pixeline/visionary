@@ -190,7 +190,15 @@ a.pure-button-primary{
 	margin-right:6px;
 }
 
-
+.link {
+    display: inline-block;
+    border: none;
+    background: none;
+	color : #0277BD;
+	text-decoration : underline;
+	outline : 0;
+}
+.btn-block { display:block; width:100%; }
 .button-social {
 	background-color: #0277BD;
     border-radius: 4px;
@@ -221,6 +229,37 @@ a.pure-button-primary{
 	}
 } 
 
+.subscribre {
+	//margin : 0 auto;
+	//width : 386px;
+	.button-social {
+		width: 100%;
+		margin-bottom: 6px;
+	}
+	.separator {
+	    background: none;
+	    height: 34px;
+	    position: relative;
+	    text-align: center;
+	    margin-bottom: 6px;
+
+	    span {
+		    background-color: #ffffff;
+		    display: inline-block;
+		    padding: 8px;
+		}
+		hr {
+		    margin: -18px auto 10px;
+		    width: 100%;
+		    border: 0;
+		    border-top: 1px solid #DDD;
+		}
+	}
+	.btn-block {
+		outline: none;
+	}
+
+}
 /* ---------------------------------------------- 
 	THE VOICE
 	// this class set is used to convey specific expressions in a coherent, global system: the voice of your application. 
@@ -301,3 +340,5 @@ main {
 		
 	}
 }
+
+
