@@ -3,33 +3,41 @@
 
 <p>Users count : {{ @users_count }}</p>
 
-    <table class="pure-table pure-table-horizontal">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Postcode</th>
-                <th>Country</th>
-                <th>Last login</th>
-                <th>Vetted</th>
+<table class="pure-table pure-table-horizontal tablesorter">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Postcode</th>
+            <th>Country</th>
+            <th>Last login</th>
+            <th>Vetted</th>
+        </tr>
+    </thead>
+    <tbody>
+        <repeat group="{{ @users }}" value="{{ @user }}" counter="{{ @key }}">
+            <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}">
+                <td>{{ @user->id }}</td>
+                <td>{{ @user->name }}</td>
+                <td>{{ @user->email }}</td>
+                <td>{{ date("Y") - @user->birth_date }}</td>
+                <td>{{ @user->gender == "M" ? "Homme":"Femme" }}</td>
+                <td>{{ @user->postcode }}</td>
+                <td>{{ @user->countries_iso }}</td>
+                <td>{{ @user->last_login }}</td>
+                <td>{{ @user->vetted ? "Invited" : "Normal" }}</td>
             </tr>
-        </thead>
-        <tbody>
-            <repeat group="{{ @users }}" value="{{ @user }}" counter="{{ @key }}">
-                <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}">
-                    <td>{{ @user->id }}</td>
-                    <td>{{ @user->name }}</td>
-                    <td>{{ @user->email }}</td>
-                    <td>{{ date("Y") - @user->birth_date }}</td>
-                    <td>{{ @user->gender == "M" ? "Homme":"Femme" }}</td>
-                    <td>{{ @user->postcode }}</td>
-                    <td>{{ @user->countries_iso }}</td>
-                    <td>{{ @user->last_login }}</td>
-                    <td>{{ @user->vetted ? "Invited" : "Normal" }}</td>
-                </tr>
-            </repeat>
-        </tbody>
-    </table>
+        </repeat>
+    </tbody>
+</table>
+
+<script src="/assets/js/jquery-1.12.0.min.js"></script>
+<script src="/assets/js/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("table").tablesorter({debug: false})
+    });
+</script>

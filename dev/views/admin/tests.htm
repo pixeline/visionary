@@ -1,69 +1,6 @@
 <h1>Tests</h1>
-<table>
-    <tbody>
-        <tr>
-            <td>
-                <ul>
-                    <li>tests total count : {{ @tests_count }}</li>
-                    <li>distinct users count : {{ @distinct_users_count }}</li>
-                    <li>protan count : {{ @protan_count }}</li>
-                    <li>deutan count : {{ @deutan_count }}</li>
-                    <li>tritan count : {{ @tritan_count }}</li>
-                    <li>succeed count : {{ @succeed_count }}</li>
-                </ul>
-            </td>
 
-            <td>
-                <ul>
-                    <li>finished count : {{ @finished_count }}</li>
-                    <li>abandon count : {{ @tests_count - @finished_count }} </li>
-                    <li>finished ratio : {{ round((100/$tests_count) * $finished_count, 2) . " / 100%" }} </li>
-                    <li>abandon ratio : {{ round((100/$tests_count) * ($tests_count - $finished_count), 2) . " / 100%" }} </li>
-                </ul>
-            </td>
-
-            <td>
-                <ul>
-                    <li>min time : {{ @min_time }} </li>
-                    <li>max time : {{ @max_time }}</li>
-                    <li>is sure count : {{ @is_sure_count }}</li>
-                </ul>
-            </td>
-        </tr>
-
-    </tbody>
-</table>
-
-<br>
-
-<form method="GET">
-<fieldset>
-    <label>Order by : 
-        <select name="order" >
-            <option value="tests.id"> tests id </option>
-            <option value="tests.diag_result"> diag result </option>
-            <option value="tests.diag_ratio"> diag ratio </option>
-            <option value="tests.finished"> tests finished </option>
-            <option value="users.birth_date"> users birth_date </option>
-            <option value="users.last_login"> users last_login </option>
-            <option value="users.gender"> users gender </option>
-            <option value="users.vetted"> users vetted </option>
-        </select>
-    </label>
-     | 
-    <label for="">
-        Sort order 
-        <input type="radio" name="sorting" value="ASC" checked="checked"> ASC
-        <input type="radio" name="sorting" value="DESC"> DESC
-    </label>
-     | 
-    <label for="">
-        <input type="submit">
-    </label>
-</fieldset>
-</form>
-
-<table class="pure-table pure-table-horizontal">
+<table class="pure-table pure-table-horizontal tablesorter">
     <thead>
         <tr>
             <th>#</th>
@@ -101,3 +38,12 @@
        
     </tbody>
 </table>
+
+<script src="/assets/js/jquery-1.12.0.min.js"></script>
+<script src="/assets/js/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("table").tablesorter({debug: false})
+    });
+</script>
+

@@ -5,19 +5,19 @@
 
 <h3>Diagnostique</h3>
 <ul>
-    <li>Nombre de protanope : {{ @protan_count }}</li>
-    <li>Nombre de deuteranope : {{ @deutan_count }}</li>
-    <li>Nombre de tritanope : {{ @tritan_count }}</li>
-    <li>Nombre de personnes ayant réussi : {{ @succeed_count }}</li>
+    <li>Nombre de testes protanope : {{ @protan_count }}</li>
+    <li>Nombre de testes deuteranope : {{ @deutan_count }}</li>
+    <li>Nombre de testes tritanope : {{ @tritan_count }}</li>
+    <li>Nombre de testes réussi : {{ @succeed_count }}</li>
 </ul>
 
 <h3>Données</h3>
 <ul>
-    <li>Nombre de tests en tout, dans le temps : {{ @tests_count }}</li>
+    <li>Nombre total de testes effectués : {{ @tests_count }}</li>
     <li>Nombre d'utilisateurs ayant effectué le test : {{ @distinct_users_count }}</li>
-    <li>Nombre de personnes ayant fini le teste: {{ @finished_count }}</li>
-    <li>Nombre de personnes ayant abandoné : {{ @tests_count - @finished_count }} </li>
-    <li>Nombre de personnes étant sure de leurs réponse : {{ @is_sure_count }}</li>
+    <li>Nombre de testes ayant été fini : {{ @finished_count }}</li>
+    <li>Nombre de testes ayant été abandoné : {{ @tests_count - @finished_count }} </li>
+    <li>Nombre de testes ayant été sure de la réponse : {{ @is_sure_count }}</li>
 </ul>
 
 <h3>Temps</h3>
@@ -28,9 +28,8 @@
 
 <h3>Taux</h3>
 <ul>
-    <li>Taux de personnes ayant fini : {{ round((100/@tests_count) * @finished_count, 2) . " / 100%" }} </li>
+    <li>Taux de testes ayant été fini : {{ round((100/@tests_count) * @finished_count, 2) . " / 100%" }} </li>
     <li>Taux d'abandon : {{ round((100/@tests_count) * (@tests_count - $finished_count), 2) . " / 100%" }} </li>
-
 
     <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par type de daltonisme ?</li>
     <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par degré de daltonisme ?</li>
