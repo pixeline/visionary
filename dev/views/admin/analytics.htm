@@ -1,39 +1,61 @@
 <h1>Analytics</h1>
 
-<table>
-    <tbody>
-        <tr>
-            <td>
-                <ul>
-                    <li>tests total count : {{ @tests_count }}</li>
-                    <li>distinct users count : {{ @distinct_users_count }}</li>
-                    <li>protan count : {{ @protan_count }}</li>
-                    <li>deutan count : {{ @deutan_count }}</li>
-                    <li>tritan count : {{ @tritan_count }}</li>
-                    <li>succeed count : {{ @succeed_count }}</li>
-                </ul>
-            </td>
 
-            <td>
-                <ul>
-                    <li>finished count : {{ @finished_count }}</li>
-                    <li>abandon count : {{ @tests_count - @finished_count }} </li>
-                    <li>finished ratio : {{ round((100/@tests_count) * @finished_count, 2) . " / 100%" }} </li>
-                    <li>abandon ratio : {{ round((100/@tests_count) * (@tests_count - $finished_count), 2) . " / 100%" }} </li>
-                </ul>
-            </td>
+<h2>Questions</h2>
 
-            <td>
-                <ul>
-                    <li>min time : {{ @min_time }} </li>
-                    <li>max time : {{ @max_time }}</li>
-                    <li>is sure count : {{ @is_sure_count }}</li>
-                </ul>
-            </td>
-        </tr>
+<h3>Diagnostique</h3>
+<ul>
+    <li>Nombre de protanope : {{ @protan_count }}</li>
+    <li>Nombre de deuteranope : {{ @deutan_count }}</li>
+    <li>Nombre de tritanope : {{ @tritan_count }}</li>
+    <li>Nombre de personnes ayant réussi : {{ @succeed_count }}</li>
+</ul>
 
-    </tbody>
-</table>
+<h3>Données</h3>
+<ul>
+    <li>Nombre de tests en tout, dans le temps : {{ @tests_count }}</li>
+    <li>Nombre d'utilisateurs ayant effectué le test : {{ @distinct_users_count }}</li>
+    <li>Nombre de personnes ayant fini le teste: {{ @finished_count }}</li>
+    <li>Nombre de personnes ayant abandoné : {{ @tests_count - @finished_count }} </li>
+    <li>Nombre de personnes étant sure de leurs réponse : {{ @is_sure_count }}</li>
+</ul>
+
+<h3>Temps</h3>
+<ul>
+    <li>Temps minimum pour réaliser le teste : {{ @min_time }} </li>
+    <li>Temps maximum pour réaliser le teste : {{ @max_time }}</li>
+</ul>
+
+<h3>Taux</h3>
+<ul>
+    <li>Taux de personnes ayant fini : {{ round((100/@tests_count) * @finished_count, 2) . " / 100%" }} </li>
+    <li>Taux d'abandon : {{ round((100/@tests_count) * (@tests_count - $finished_count), 2) . " / 100%" }} </li>
+
+
+    <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par type de daltonisme ?</li>
+    <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par degré de daltonisme ?</li>
+</ul>
+
+<h3>Combien de fois par personne ?</h3>
+<ul>
+    <repeat group="{{ @distinct_users_trials }}" value="{{ @user }}" counter="{{ @key }}">
+        <li>{{ @user["username"] }}, {{ @user["test_count"] }}</li>
+    </repeat>
+</ul>
+
+
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <pattern id="Dot" x="0" y="0" width="100" height="100">
+          <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
+        </pattern>
+
+        <pattern id="Lines" x="0" y="0" width="0.1" height="0.1">
+          <line x1="0" y1="0" x2="100" y2="100" stroke="green" stroke-width="1" />
+        </pattern>
+
+  </defs>
+</svg>
 
 <div class="charts-container">
 
@@ -61,9 +83,9 @@ var min_time = "{{ @min_time }}";
 var max_time = "{{ @max_time }}";
 var is_sure_count =  parseInt(" {{ @is_sure_count }} ");
 
-console.log( d3 )
+//console.log( d3 )
 
-var chart = function (dataSet) {
+var chart = function (dataSet, question) {
     var width = 320, //960,
         height = 320, //500,
         radius = Math.min(width, height) / 2;
@@ -88,6 +110,7 @@ var chart = function (dataSet) {
       .attr("class", "arc");
 
     g.append("path")
+          //.attr("fill", "url(#Lines)")
           .attr("fill", function(d, i) { return d3.schemeCategory10[i]; })
           .attr("d", arc)
 

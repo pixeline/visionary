@@ -18,7 +18,6 @@ if( !empty($f3->get("GET.sorting")) ){
 	$sorting = trim($f3->get('GET.sorting'));
 }
 
-
 //default query to get all
 $get_all = $db->prepare(
 	"SELECT 
@@ -53,15 +52,28 @@ $diag_result_counter = $db->prepare(
 	 SELECT diag_result, count(diag_result) AS count FROM tests WHERE diag_result = 'deutan' UNION 
 	 SELECT diag_result, count(diag_result) AS count FROM tests WHERE diag_result = 'tritan' UNION 
 	 SELECT diag_result, count(diag_result) AS count FROM tests WHERE diag_result = 'succeed'"
-	, array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL));
-
+	, array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL)
+);
 $diag_result_counter->execute();
 $diag_result = $diag_result_counter->fetchAll(PDO::FETCH_OBJ);
+
+/*
+$diag_result_series = $db->prepare(
+	"SELECT diag_serie, diag_result
+		FROM tests WHERE diag_result = 'protan' GROUP BY diag_result"
+	, array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL)
+);
+
+$diag_result_series->execute();
+$diag_series = $diag_result_series->fetchAll(PDO::FETCH_OBJ);
+*/
+
 
 $min_time = $db->query("SELECT MIN(test_duration) AS min_test_duration FROM tests");
 $max_time = $db->query("SELECT MAX(test_duration) AS max_test_duration FROM tests");
 $is_sure = $db->query("SELECT count(is_sure) AS is_sure FROM tests WHERE is_sure = 1");
 $finished = $db->query("SELECT count(finished) AS finished FROM tests WHERE finished = 1");
+
 
 // count tests per persons
 $distinct_users_trials = array();
@@ -72,6 +84,13 @@ foreach ($tests as $test) {
 		$distinct_users_trials[$test->users_id]["test_count"]++;
 	}
 }
+
+usort($distinct_users_trials, function($a, $b) {
+    return $a['test_count'] - $b['test_count'];
+});
+
+$distinct_users_trials = array_reverse($distinct_users_trials);
+
 
 $f3->set('tests', $tests);
 $f3->set('tests_count', $result_counter->tests_count);
