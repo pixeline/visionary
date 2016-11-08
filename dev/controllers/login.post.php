@@ -63,7 +63,7 @@ if(
 }
 
 $f3->set('errors', $errors);
-
+$f3->reroute('/');
 
 
 

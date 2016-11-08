@@ -36,6 +36,10 @@ $(document).ready(function(){
 	    urlRegex = /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/,
 	    dateRegex = /\d{4}-\d{1,2}-\d{1,2}/;
 
+	$("#login-mail").on("click", function(event){
+		$("#login-mail-form").fadeIn().removeClass("hidden");
+	});
+
 	$("#auth-register").submit(function(event){
 		
 		var $name = $( "input[name*='name']" );

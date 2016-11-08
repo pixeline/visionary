@@ -84,6 +84,9 @@ footer{
 .block {
     display: block;
 }
+.block-full {
+    width: 100%;
+}
 .show {
     display: block;
     opacity: 1;
@@ -99,6 +102,9 @@ footer{
 }
 
 .pull-left {
+    float: left;
+}
+.pull-right {
     float: left;
 }
 .offst-top-20 {
@@ -120,6 +126,14 @@ a.pure-button-primary{
 	color:white;
 }
 
+.pure-g > div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.l-box {
+    padding: 0.5rem 0.8rem;
+}
 /* ---------------------------------------------- 
 	BUTTONS & CALLS TO ACTION 
 ---------------------------------------------- */
@@ -226,6 +240,14 @@ a.pure-button-primary{
 	background : $color-google;
 	&:hover {
 		background : darken($color-google, 25%);
+	}
+}
+.button-email {
+	background : darken($white, 10%);
+	color:#333;
+	&:hover {
+		background : darken($white, 25%);
+		color:#000;
 	}
 } 
 
@@ -342,7 +364,14 @@ main {
 }
 
 
-
+.form--login  {
+	padding: 1rem 0;
+	margin-bottom: 1rem;
+	input {
+		width: 100%;
+	}
+	
+}
 /* 
 	tables 
 */
@@ -354,6 +383,7 @@ table.tablesorter {
 	width: 100%;
 	text-align: left;
 }
+
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
 	background-color: #e6EEEE;
 	border: 1px solid #FFF;
@@ -384,4 +414,5 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
 background-color: #8dbdd8;
 }
+table.tablesorter tbody tr:hover td { background:#ebebeb; }
 

@@ -110,23 +110,48 @@
                 <form action="/register-auth" method="POST" class="list-auth">
                     <div class="social-buttons">
                         <button type="submit" name="auth" value="facebook" class="button-social button-facebook ">
-                            <i class="fa fa-facebook" aria-hidden="true"></i> Facebook
+                            <i class="fa fa-facebook"></i> Facebook
                         </button>
                         <button type="submit" name="auth" value="google" class="button-social button-google ">
-                            <i class="fa fa-google" aria-hidden="true"></i> Google
+                            <i class="fa fa-google"></i> Google
                         </button>
                         <button type="submit" name="auth" value="twitter" class="button-social button-twitter">
-                            <i class="fa fa-twitter" aria-hidden="true"></i> Twitter
+                            <i class="fa fa-twitter"></i> Twitter
+                        </button>
+                        <button type="button" id="login-mail" class="button-social button-email">
+                            <i class="fa fa-envelope"></i> Email
                         </button>
                     </div>
-                    <div class="separator">
+                    
+                </form>
+                <div id="login-mail-form" class="hidden">
+
+                    <form action="/login" method="POST" class="form pure-form pure-form-stacked form--login text-left">
+                        <div class="pure-g">
+                            <div class="pure-u-1 pure-u-md-1-2 l-box">
+                                <label for="email" class=""><?php echo _("Email"); ?> <span class="voice--whisper">* obligatoire</span></label>
+                                <input id="email"  name="email" type="email" value="" placeholder="Email" required>
+                            </div>
+                            <div class="pure-u-1 pure-u-md-1-2 l-box">
+                                <label for="password" class=""><?php echo _("Mot de passe "); ?> <span class="voice--whisper">* obligatoire</span></label>
+                                <input id="password"  name="password" type="password" value="" placeholder="Mot de passe" required>
+                            </div>
+                            <br>
+                            <div class="block block-full text-center">
+                                <button type="submit" name="action" value="login" class="pure-button pure-button-primary">
+                                    <?php echo _("Se connecter"); ?>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="separator">
                       <span>ou</span>
                       <hr>
                     </div>
-                </form>
                 <div class="social-buttons">
                     <button type="button" id="subscribe-mail" class="button-social pure-button-primary btn-block ">
-                        <i class="fa fa-envelope" aria-hidden="true"></i> Inscription avec l'adresse e-mail
+                        <i class="fa fa-envelope"></i> Inscription avec l'adresse e-mail
                     </button>
                     <div class="text-center">
                         <a href="/test" class="link">Faire le test anonymement</a>
@@ -136,18 +161,7 @@
         </div>
     </div>
     <!--<p>Ou</p>
-    <form action="/login" method="POST">
-        
-        <div class="pure-g">
-            <label for="email" class="hidden">Email</label>
-            <input id="email"  name="email" type="email" value="" placeholder="Email">
-
-            <label for="password" class="hidden">Mot de passe</label>
-            <input id="password"  name="password" type="password" value="" placeholder="Mot de passe">
-
-            <button type="submit" name="action" value="login" class="pure-button pure-button-primary">Sign in</button>
-        </div>
-    </form>
+    
     -->
 </div>
 <!--

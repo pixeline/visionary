@@ -3,7 +3,7 @@
 	    	<a href="/admin" class="logo-home">
 			<img src="/assets/images/logo.png" alt="Retour à l'accueil">
 		</a>
-    <p class="voice--whisper text-right">visionary diagnostic: v4</p>
+    <p class="voice--whisper text-right"><?php echo getCurrentVersion(); ?></p>
     <h1>Résultat du test de classement</h1> 
 
     <p class="voice--loud"><?php echo html_entity_decode($test['message']) ?></p>

@@ -88,7 +88,3 @@ if( $f3->get('POST.user-type') == "registered" ){
 $f3->set('SESSION.user', $user);
 $f3->reroute('/thank-you-for-registering');
 
-
-
-
-//  pr($f3->get('POST'), true);

@@ -9,7 +9,6 @@ if( empty($f3->get("SESSION")) || empty($f3->get("SESSION.user")) ){
 
 if( !empty($f3->get('POST')) ){
 	$params = $f3->get('POST');
-
 	$result = $db->exec("UPDATE users SET name=?,email=?,birth_date=?,gender=?,countries_iso=? WHERE id=?", array(
 			$params["name"],
 	    	$params["email"],
