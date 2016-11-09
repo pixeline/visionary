@@ -25,6 +25,7 @@ $get_all = $db->prepare(
 		tests.users_id, 
 		tests.diag_result, 
 		tests.diag_ratio, 
+		tests.diag_serie, 
 		tests.finished, 
 		tests.unique_url, 
 		users.name AS username, 

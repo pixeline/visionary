@@ -1,3 +1,37 @@
+<style>
+    #info {
+        position: absolute;
+        /*left: 20px;*/
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 2px 4px 10px rgba(0,0,0, 0.4);
+        border:1px solid rgba(0,0,0, 0.4);
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    #info:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 0 6px 10px;
+        border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+        top: calc(50% - 6px);
+        left: 100%;
+    }
+    .color-list {
+        list-style: none;
+        padding: 0;
+    }
+    .color-list li {
+        width: 14px;
+        height: 14px;
+        float: left;
+    }
+</style>
+
 <h1>Tests</h1>
 
 <table class="pure-table pure-table-horizontal tablesorter">
@@ -38,31 +72,7 @@
     </tbody>
 </table>
 
-<style>
-    #info {
-        position: absolute;
-        left: 20px;
-        border-radius: 4px;
-        background: #fff;
-        box-shadow: 2px 4px 10px rgba(0,0,0, 0.4);
-        border:1px solid rgba(0,0,0, 0.4);
-        padding: 10px;
-        font-size: 12px;
-    }
 
-    #info:after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 6px 0 6px 10px;
-        border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
-        top: calc(50% - 6px);
-        left: 100%;
-    }
-
-</style>
 
 <div id="info"></div>
 
@@ -73,29 +83,56 @@
     var testData = {{json_encode(@tests)}};
 
     $(function() {
+
+        var id, offset, info, data, html, list, series, i;
+
+
         $("table").tablesorter({debug: false});
+
+
+        var colors = ["#3781C1","#3583B4","#3B84A7","#39859C","#3B8690","#3F8782","#588473","#6C8164","#837B5D","#907660","#9E6E6F","#9F6D7C","#9C6D89","#927099","#8F6FA4","#8073B2"];
 
         var $info = $("#info");
 
-        $("tbody tr").on("mouseover", function(){
-            $info.show();
-           var id = $(this).attr("id");
-           var offset = $( this ).offset();
+        $info.hide();
 
-            var info = testData.filter(function(test){
+        $("tbody, #info").on("mouseenter", function(){
+            $info.show();
+        })
+        $("tbody, #info").on("mouseleave", function(){
+            $info.hide();
+        })
+
+        $("tbody tr").on("mouseover", function(){
+            id = $(this).attr("id");
+            offset = $( this ).offset();
+
+            info = testData.filter(function(test){
                 if(test.id == id){
                     return true;
                 }
             });
-            var data = info[0];
-            var html = "";
+
+            data = info[0];
+            html = "";
+            list = "";
+            series = [];
+
+            if(data.diag_serie && data.diag_serie.length > 0){
+                series = data.diag_serie.split(",");
+                list = "<ul class='color-list'>";
+                for (i = 0; i < series.length; i++) {
+                    list += "<li style='background:"+colors[series[i]]+"';></li>"
+                }
+                list+="</ul>";
+            }
 
             //html += "<div>birth_date : "+data.birth_date+"</div>";
             //html += "<div>diag_ratio : "+data.diag_ratio+"</div>";
             //html += "<div>diag_result : "+data.diag_result+"</div>";
             
             //html += "<div>finished : "+data.finished+"</div>";
-           // html += "<div>gender : "+data.gender+"</div>";
+            // html += "<div>gender : "+data.gender+"</div>";
             //html += "<div>id : "+data.id+"</div>";
             //html += "<div>last_login : "+data.last_login+"</div>";
             html += "<div>interface : "+data.name+"</div>";
@@ -104,17 +141,17 @@
             html += "<div>email : <a href='mailto:"+data.email+"' target='_blank'> "+data.email+"</a></div>";
             html += "<div>Temps : "+data.test_duration+"</div>";
             //html += "<div>users_id : "+data.users_id+"</div>";
-            html += "<div>Teste : <a href='/admin/test/"+data.unique_url+"' target='_blank'>Lien vers le test</a></div>";
+            html += "<div>Lien : <a href='/admin/test/"+data.unique_url+"' target='_blank'>Teste</a></div>";
             //html += "<div>vetted : "+data.vetted+"</div>";
 
+            html += "<div>"+list+"</div>";
+
             $info.css({
+                "left" : (offset.left - 20 )+"px",
                 "top" : (offset.top - $info.height()/2 )+"px"
             }).html(html);
         })
-
-        $("tbody tr").on("mouseout", function(){
-            $info.hide();
-        })
+        
     });
 
     

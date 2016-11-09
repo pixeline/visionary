@@ -25,6 +25,7 @@ $get_all = $db->prepare(
 		tests.users_id, 
 		tests.diag_result, 
 		tests.diag_ratio, 
+		tests.diag_serie, 
 		tests.test_start_date, 
 		tests.test_end_date, 
 		tests.test_duration, 
