@@ -164,10 +164,6 @@ function is_email_valid($email) {
 	return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-function getCurrentVersion(){
-	return "visionary diagnostic: v5";
-}
-
 function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plennevaux', $message = 'welcome'){
 	if(empty($to) || !is_email_valid($to) ){
 		return false;

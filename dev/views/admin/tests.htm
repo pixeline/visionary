@@ -1,80 +1,46 @@
-<style>
-    #info {
-        position: absolute;
-        /*left: 20px;*/
-        border-radius: 4px;
-        background: #fff;
-        box-shadow: 2px 4px 10px rgba(0,0,0, 0.4);
-        border:1px solid rgba(0,0,0, 0.4);
-        padding: 10px;
-        font-size: 12px;
-    }
+<div class="admin-tests">
+    <h1>Tests</h1>
 
-    #info:after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-width: 6px 0 6px 10px;
-        border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
-        top: calc(50% - 6px);
-        left: 100%;
-    }
-    .color-list {
-        list-style: none;
-        padding: 0;
-    }
-    .color-list li {
-        width: 14px;
-        height: 14px;
-        float: left;
-    }
-</style>
+    <table class="pure-table pure-table-horizontal tablesorter">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Result</th>
+                <th>Ratio</th>
+                <th>Finished</th>
+                <th>Trials</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Last login</th>
+                <th>Vetted</th>
+                <th>Voir</th>
+            </tr>
+        </thead>
+        <tbody>
 
-<h1>Tests</h1>
+        <repeat group="{{ @tests }}" value="{{ @test }}" counter="{{ @key }}">
+            <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}" id="{{ @test->id }}">
+                <td>{{ @key }}</td>
+                <td>{{ @test->username }}</td>
+                <td>{{ @test->diag_result }}</td>
+                <td>{{ @test->diag_ratio }}</td>
+                <td>{{ @test->finished ? "finished" : "unfinished" }}</td>
+                <td>{{ @distinct_users_trials[@test->users_id]["test_count"] }}</td>
+                <td>{{ date("Y") - @test->birth_date }}</td>
+                <td>{{ @test->gender == "M" ? "Homme":"Femme" }}</td>
+                <td>{{ @test->last_login }}</td>
+                <td>{{ @test->vetted ? "Invited" : "Normal" }}</td>
+                <td><a href="/admin/test/{{ @$test->unique_url }}">Voir</a></td>
+            </tr>
+        </repeat>
 
-<table class="pure-table pure-table-horizontal tablesorter">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Result</th>
-            <th>Ratio</th>
-            <th>Finished</th>
-            <th>Trials</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Last login</th>
-            <th>Vetted</th>
-            <th>Voir</th>
-        </tr>
-    </thead>
-    <tbody>
+           
+        </tbody>
+    </table>
 
-    <repeat group="{{ @tests }}" value="{{ @test }}" counter="{{ @key }}">
-        <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}" id="{{ @test->id }}">
-            <td>{{ @key }}</td>
-            <td>{{ @test->username }}</td>
-            <td>{{ @test->diag_result }}</td>
-            <td>{{ @test->diag_ratio }}</td>
-            <td>{{ @test->finished ? "finished" : "unfinished" }}</td>
-            <td>{{ @distinct_users_trials[@test->users_id]["test_count"] }}</td>
-            <td>{{ date("Y") - @test->birth_date }}</td>
-            <td>{{ @test->gender == "M" ? "Homme":"Femme" }}</td>
-            <td>{{ @test->last_login }}</td>
-            <td>{{ @test->vetted ? "Invited" : "Normal" }}</td>
-            <td><a href="/admin/test/{{ @$test->unique_url }}">Voir</a></td>
-        </tr>
-    </repeat>
-
-       
-    </tbody>
-</table>
-
-
-
-<div id="info"></div>
+    <div id="info"></div>
+</div>
 
 <script src="/assets/js/jquery-1.12.0.min.js"></script>
 <script src="/assets/js/jquery.tablesorter.js"></script>
@@ -86,9 +52,7 @@
 
         var id, offset, info, data, html, list, series, i;
 
-
         $("table").tablesorter({debug: false});
-
 
         var colors = ["#3781C1","#3583B4","#3B84A7","#39859C","#3B8690","#3F8782","#588473","#6C8164","#837B5D","#907660","#9E6E6F","#9F6D7C","#9C6D89","#927099","#8F6FA4","#8073B2"];
 
@@ -135,10 +99,11 @@
             // html += "<div>gender : "+data.gender+"</div>";
             //html += "<div>id : "+data.id+"</div>";
             //html += "<div>last_login : "+data.last_login+"</div>";
-            html += "<div>interface : "+data.name+"</div>";
+            html += "<div>Interface : "+data.name+"</div>";
             //html += "<div>unique_url : "+data.unique_url+"</div>";
-            html += "<div>username : "+data.username+"</div>";
-            html += "<div>email : <a href='mailto:"+data.email+"' target='_blank'> "+data.email+"</a></div>";
+            html += "<div>Name : "+data.username+"</div>";
+            html += "<div>Genre : "+(data.gender == "M"? "Homme" : "Femme")+"</div>";
+            html += "<div>Email : <a href='mailto:"+data.email+"' target='_blank'> "+data.email+"</a></div>";
             html += "<div>Temps : "+data.test_duration+"</div>";
             //html += "<div>users_id : "+data.users_id+"</div>";
             html += "<div>Lien : <a href='/admin/test/"+data.unique_url+"' target='_blank'>Teste</a></div>";

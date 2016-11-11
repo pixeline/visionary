@@ -6,20 +6,21 @@
     
 		<main>
 
-			<h1>Login admin</h1>
+			<h1>Connexion</h1>
 
-			<form action="/admin" method="POST" class="pure-form pure-form-stacked">
-			    <fieldset>
-
-			        <label for="email">Email</label>
-			        <input id="email"  name="email" type="email" value="" placeholder="Email">
-
-			        <label for="password">Password</label>
-			        <input id="password"  name="password" type="password" value="" placeholder="Password">
-
-			        <button type="submit" name="action" value="login" class="pure-button pure-button-primary">Sign in</button>
-			    </fieldset>
-			</form>
+			<div id="connexion-form" class="pure-g">
+		        <div class="pure-u-1-4"></div>
+		        <div class="pure-u-1-2">
+		            <div class="subscribre">
+		            	<p>Veuillez vous connecter pour acceder à l'espace admin. Vos informations restent strictement privées et ne seront utilisées qu'à des fins statistiques.</p>
+		                <div class="text-center">
+		                    <a href="/" id="subscribe-mail" class="button-social pure-button-primary btn-block ">
+		                        Aller vers le formulaire
+		                    </a>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
 
 			<?php foreach($errors as $error):?>
 			    <p><?php echo $error; ?></p>

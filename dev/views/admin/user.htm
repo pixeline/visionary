@@ -71,14 +71,14 @@
         </div>
         
     </div>
-     <input type="hidden" name="id" value="{{@user->id}}"> 
+    <input type="hidden" name="id" value="{{@user->id}}"> 
     <input type="submit" class="pure-button pure-button-primary" value="Modifier">
 </form>
 
 
 <h1>Mes tests</h1>
 <div class="pure-g">
-	<div class="pure-u-1 ">
+	<div class="pure-u-1">
         <table class="pure-table pure-table-horizontal">
             <thead>
                 <tr>
@@ -106,6 +106,12 @@
             </repeat>
             </tbody>
         </table>
+
+        <p>
+            <a class="pure-button pure-button-primary" href="/test">
+                <i class="fa fa-play" aria-hidden="true"></i> Faire un autre test
+            </a>
+        </p>
 	</div>
 </div>
 

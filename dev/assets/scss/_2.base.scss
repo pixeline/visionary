@@ -351,6 +351,110 @@ main {
 }
 
 /*
+	admin tests
+*/
+.admin-tests {
+	 #info {
+        position: absolute;
+        /*left: 20px;*/
+        border-radius: 4px;
+        background: #fff;
+        box-shadow: 2px 4px 10px rgba(0,0,0, 0.4);
+        border:1px solid rgba(0,0,0, 0.4);
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    #info:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 0 6px 10px;
+        border-color: transparent transparent transparent rgba(0, 0, 0, 0.8);
+        top: calc(50% - 6px);
+        left: 100%;
+    }
+    .color-list {
+        list-style: none;
+        padding: 0;
+    }
+    .color-list li {
+        width: 14px;
+        height: 14px;
+        float: left;
+    }
+}
+/*
+	admin analytics
+*/
+.admin-analytics {
+	svg {
+        /*border: 1px solid black;*/
+    }
+    g {}
+    
+    .user polyline { stroke-width: 1px;  }
+    .user:hover circle { stroke: white; stroke-width : 2px; }
+    .user:hover polyline { stroke-width : 4px;   }
+
+    .red { color:red; }
+    .blue { color:blue; }
+    .green { color:green; }
+
+    .unique-color .protans circle {
+        fill :red;
+    }
+    .unique-color .protans polyline {
+        stroke :red;
+    }
+
+    .unique-color .deutans circle {
+        fill :blue;
+    }
+    .unique-color .deutans polyline {
+        stroke :blue;
+    }
+    .unique-color .tritans circle {
+        fill :green;
+    }
+    .unique-color .tritans polyline {
+        stroke :green;
+    }
+    
+    .unique-line .user { display: none;  }
+    .unique-line .user.first { display: block;  }
+    
+    .profiles .hovered .user { opacity: 0.4 !important; }
+    .profiles .hovered .user.hover { opacity: 1 !important;  }
+    .profiles .hovered .user.hover polyline {  stroke-width : 4px !important;  }
+    
+    .tooltipdiv {
+        position: absolute;
+        /*left: 20px;*/
+        border-radius: 4px;
+        background: rgba(255,255,255, 0.84);
+        box-shadow: 2px 4px 10px rgba(0,0,0, 0.4);
+        border:1px solid rgba(0,0,0, 0.4);
+        padding: 10px;
+        font-size: 12px;
+    }
+    .color-list {
+        list-style: none;
+        padding: 0;
+    }
+    .color-list li {
+        width: 14px;
+        height: 14px;
+        float: left;
+    }
+
+    .list-nbr {}
+    .list-nbr span { padding : 2px; border-radius: 2px; background: rgba(100,200,255, .3); }
+
+}
+/*
 	RESULT
 */
 #js-revoir{

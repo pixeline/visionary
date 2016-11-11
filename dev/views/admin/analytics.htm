@@ -1,160 +1,110 @@
+<div class="admin-analytics">
 
-<h1>Analytics</h1>
-
-
-<h2>Questions</h2>
-
-<h3>Diagnostique</h3>
-<ul>
-    <li>Nombre de testes protanope : {{ @protan_count }}</li>
-    <li>Nombre de testes deuteranope : {{ @deutan_count }}</li>
-    <li>Nombre de testes tritanope : {{ @tritan_count }}</li>
-    <li>Nombre de testes réussi : {{ @succeed_count }}</li>
-</ul>
-
-<h3>Données</h3>
-<ul>
-    <li>Nombre total de testes effectués : {{ @tests_count }}</li>
-    <li>Nombre d'utilisateurs ayant effectué le test : {{ @distinct_users_count }}</li>
-    <li>Nombre de testes ayant été fini : {{ @finished_count }}</li>
-    <li>Nombre de testes ayant été abandoné : {{ @tests_count - @finished_count }} </li>
-    <li>Nombre de testes ayant été sure de la réponse : {{ @is_sure_count }}</li>
-</ul>
-
-<h3>Temps</h3>
-<ul>
-    <li>Temps minimum pour réaliser le teste : {{ @min_time }} </li>
-    <li>Temps maximum pour réaliser le teste : {{ @max_time }}</li>
-</ul>
-
-<h3>Taux</h3>
-<ul>
-    <li>Taux de testes ayant été fini : {{ round((100/@tests_count) * @finished_count, 2) . " / 100%" }} </li>
-    <li>Taux d'abandon : {{ round((100/@tests_count) * (@tests_count - $finished_count), 2) . " / 100%" }} </li>
-
-    <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par type de daltonisme ?</li>
-    <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par degré de daltonisme ?</li>
-</ul>
-
-<h3>Combien de fois par personne ?</h3>
-<ul>
-    <repeat group="{{ @distinct_users_trials }}" value="{{ @user }}" counter="{{ @key }}">
-        <li>{{ @user["username"] }}, {{ @user["test_count"] }}</li>
-    </repeat>
-</ul>
+    <h1>Analytics</h1>
 
 
-<style>
-    svg {
-        /*border: 1px solid black;*/
-    }
-    g {}
+    <h2>Questions</h2>
+
+    <h3>Diagnostique</h3>
+    <ul>
+        <li>Nombre de tests protanope : {{ @protan_count }}</li>
+        <li>Nombre de tests deuteranope : {{ @deutan_count }}</li>
+        <li>Nombre de tests tritanope : {{ @tritan_count }}</li>
+        <li>Nombre de tests réussi : {{ @succeed_count }}</li>
+    </ul>
+
+    <h3>Données</h3>
+    <ul>
+        <li>Nombre total de tests effectués : {{ @tests_count }}</li>
+        <li>Nombre d'utilisateurs ayant effectué le test : {{ @distinct_users_count }}</li>
+        <li>Nombre de tests ayant été fini : {{ @finished_count }}</li>
+        <li>Nombre de tests ayant été abandoné : {{ @tests_count - @finished_count }} </li>
+        <li>Nombre de tests ayant été sure de la réponse : {{ @is_sure_count }}</li>
+    </ul>
+
+    <h3>Temps</h3>
+    <ul>
+        <li>Temps minimum pour réaliser le test : {{ @min_time }} </li>
+        <li>Temps maximum pour réaliser le test : {{ @max_time }}</li>
+    </ul>
+
+    <h3>Taux</h3>
+    <ul>
+        <li>Taux de tests ayant été fini : {{ round((100/@tests_count) * @finished_count, 2) . " / 100%" }} </li>
+        <li>Taux d'abandon : {{ round((100/@tests_count) * (@tests_count - $finished_count), 2) . " / 100%" }} </li>
+
+        <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par type de daltonisme ?</li>
+        <li>[work in progress] : Est-ce qu'il y a une pattern d'ordre des tiles par degré de daltonisme ?</li>
+    </ul>
+
+    <h3>Combien de fois par personne ?</h3>
+    <ul class="list-inline list-nbr">
+        <repeat group="{{ @distinct_users_trials }}" value="{{ @user }}" counter="{{ @key }}">
+            <li>{{ @user["username"] }} : <span>{{ @user["test_count"] }}</span>,</li>
+        </repeat>
+    </ul>
+
+
     
-    polyline {
-        opacity: 0.5;
-        stroke-width: 1px;
-    }
-    polyline:hover {
-        stroke-width : 4px;
-        opacity: 1;
-    }
+    <h2>Tests</h2>
 
-    .red { color:red; }
-    .blue { color:blue; }
-    .green { color:green; }
+    <div id="controls">
+        <div>
+            <input id="unique-color" type="checkbox" checked>
+            <label for="unique-color">Une couleur par catégorie</label>
+        </div>
+        <div>
+            <input id="unique-line" type="checkbox">
+            <label for="unique-line">Line unique par catégorie</label>
+        </div>
+        <br>
+        <div>
+            <input id="protans" type="checkbox" checked>
+            <label for="protans">Test diagnostiqué "protanope"</label>
+        </div>
+        <div>
+            <input id="deutans" type="checkbox">
+            <label for="deutans">Test diagnostiqué "deuteranope"</label>
+        </div>
+        <div>
+            <input id="tritans" type="checkbox">
+            <label for="tritans">Test diagnostiqué "tritanope"</label>
+        </div>
 
-    .unique-color .protans circle {
-        fill :red;
-    }
-    .unique-color .protans polyline {
-        stroke :red;
-    }
-
-    .unique-color .deutans circle {
-        fill :blue;
-    }
-    .unique-color .deutans polyline {
-        stroke :blue;
-    }
-
-    .unique-color .tritans circle {
-        fill :green;
-    }
-    .unique-color .tritans polyline {
-        stroke :green;
-    }
-    
-    .unique-line .user { display: none;  }
-    .unique-line .user:first-child { display: block;  }
-    
-
-</style>
-
-
-<br>
-<hr>
-<br>
-
-
-<div id="controls">
-    <div>
-        <input id="unique-color" type="checkbox">
-        <label for="unique-color">Une couleur par ctégorie</label>
-    </div>
-    <div>
-        <input id="unique-line" type="checkbox">
-        <label for="unique-line">Line unique par catégorie</label>
-    </div>
-    <br>
-    <div>
-        <input id="protans" type="checkbox" checked>
-        <label for="protans">Test diagnostiqué "protanope"</label>
-    </div>
-    <div>
-        <input id="deutans" type="checkbox">
-        <label for="deutans">Test diagnostiqué "deuteranope"</label>
-    </div>
-    <div>
-        <input id="tritans" type="checkbox">
-        <label for="tritans">Test diagnostiqué "tritanope"</label>
+        <div id="color-legend" class="">
+            <h3>Légende</h3>
+            <ul>
+                <li class="red">Protanope</li>
+                <li class="blue">Deuteranope</li>
+                <li class="green">Tritanope</li>
+            </ul>
+        </div>
     </div>
 
-    <div id="color-legend" class="hide">
-        <h3>Légende</h3>
-        <ul>
-            <li class="red"><span></span> protanope</li>
-            <li class="blue"><span></span> deuteranope</li>
-            <li class="green"><span></span> tritanope</li>
-        </ul>
-    </div>
+    <div class="graph-container" class=""></div>
+
+    <hr>
+
+    <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
+        <defs>
+            <pattern id="Dot" x="0" y="0" width="100" height="100">
+              <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
+            </pattern>
+
+            <pattern id="Lines" x="0" y="0" width="0.1" height="0.1">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="green" stroke-width="1" />
+            </pattern>
+      </defs>
+    </svg>
+
+    <div class="charts-container"></div>
 </div>
-
-<div class="graph-container"></div>
-
-<br>
-<hr>
-<br>
-
-
-<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg" version="1.1" class="hidden">
-    <defs>
-        <pattern id="Dot" x="0" y="0" width="100" height="100">
-          <rect x="0" y="0" width="50" height="50" fill="skyblue"/>
-        </pattern>
-
-        <pattern id="Lines" x="0" y="0" width="0.1" height="0.1">
-          <line x1="0" y1="0" x2="100" y2="100" stroke="green" stroke-width="1" />
-        </pattern>
-  </defs>
-</svg>
-
-<div class="charts-container"></div>
-
 
 <script src="assets/js/d3.min.js"></script>
 <script src="assets/js/d3-extended.js"></script>
 <script>
 
+// help : https://www.dashingd3js.com/svg-basic-shapes-and-d3js
 var jsonData = {{ json_encode(@tests) }};
 
 var tests_total_count = parseInt("{{ @tests_count }}");
@@ -244,35 +194,39 @@ chart(abandon);
 chart(conviction);
 
 
-
-
-console.log( jsonData );
-
 var colour = d3.scaleOrdinal(d3.schemeCategory10);
 
 jsonData.forEach(function(el, i){
     el["color"] = colour(i);
 })
 
+var profilesArr = [
+    { name : "protans" },
+    { name : "deutans" },
+    { name : "tritans" }
+];
 
-
-console.log( colour )
-
-var width = 790, //960,
-    height = 800, //500,
-    serieMax = [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-
-
-var arrProtan = jsonData.filter(function(data){
+profilesArr[0].data = jsonData.filter(function(data){
     if(data.diag_result == "protan" && data.diag_serie){ return true; }
 })
-var arrDeutan = jsonData.filter(function(data){
+profilesArr[1].data = jsonData.filter(function(data){
     if(data.diag_result == "deutan" && data.diag_serie){ return true; }
 })
-var arrTritan = jsonData.filter(function(data){
+profilesArr[2].data = jsonData.filter(function(data){
     if(data.diag_result == "tritan" && data.diag_serie){ return true; }
 })
 
+var sortByRatio = function(a, b){
+    return parseInt(b.diag_ratio) - parseInt(a.diag_ratio);
+}
+profilesArr.forEach(function(obj, k){
+    obj.data.sort(sortByRatio);
+})
+
+
+var width = 790,
+    height = 720,
+    serieMax = [0, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 
 var getData = function(d){ return d; }
 
@@ -280,13 +234,13 @@ var svg = d3.select(".graph-container")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("id", "graph");
+    .attr("id", "graph")
+    .attr("class", "unique-color");
     //.append("g")
     //.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
 var letterWidth = 8;
 var lineThick = 1;
-
 
 var xAxis = svg.append("text").attr("x",width-120).attr("y",38).attr("fill","#54a4ce").text("Index de la couleur");
 
@@ -307,7 +261,6 @@ var yAxis = svg.append("g");
         .attr("x", 0)
         .attr("y", function(d, i){ return (80+letterWidth/2) + (i * 40); })
         .text(getData); 
-
 
 var tinyCircleRadius = 4;
 var bigCircleRadius = 12;
@@ -358,143 +311,167 @@ var dot = svg.append("g").attr("class", "dots");
             .style("stroke-width", 2)
             .style("fill", "transparent");
 
+
+ var tooltip = d3.select(".admin-analytics")
+        .append("div")
+        .attr('class','tooltipdiv')
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .text("a simple tooltip");
+
+
+var getUserData = function(d, i){
+    var user, values, j, k, users = [], serie = [];
+
+    /*
+    for (k = 0; k < d.data.length; k++) {
+        user = d.data[k];
+        values = d.data[k].diag_serie.split(",");
+        serie = [];
+        for (j = 0; j < values.length; j++) {
+            serie.push({
+                index : values[j],
+                color : user.color
+            })
+        }
+        user.serie = serie;
+        users.push(user);
+    }*/
+
+    console.log( d )
+
+    //return users;
+    return [];
+}
+
+var getSerie = function(d, i){
+    var values = d.diag_serie.split(",");
+    var output = [];
+    for (var i = 0; i < values.length; i++) {
+        output.push({
+            index : values[i],
+            color : d.color
+        })
+    }
+    return output;
+}
+
+var colors = ["#3781C1","#3583B4","#3B84A7","#39859C","#3B8690","#3F8782","#588473","#6C8164","#837B5D","#907660","#9E6E6F","#9F6D7C","#9C6D89","#927099","#8F6FA4","#8073B2"];
+
 /************************
-    PROTANS
+    TREE
 ************************/
 
-var protans = svg.append("g").attr("class", "protans");
-var userProtanGroup = protans.selectAll()
-        .data(arrProtan)
-        .enter()
-        .append("g").attr("class", "user");
+var profileGroup = svg
+    .append("g")
+    .attr("class", "profiles");
 
-    userProtanGroup.selectAll()
-        .data(function(d, i){
-            var values = d.diag_serie.split(",");
-            var output = [];
-            for (var i = 0; i < values.length; i++) {
-                output.push({
-                    index : values[i],
-                    color : d.color
+var profiles = profileGroup.selectAll()
+        .data(profilesArr)
+        .enter()
+        .append("g").attr("class", function(d,i){ 
+                var hide = "" 
+                if(i>0){ hide = "hide" }; 
+                return d.name + " " +hide;
+            })
+            .selectAll()
+            .data(function(d,i){ return d.data; })
+            .enter()
+            .append("g")
+                .attr("class", function(d,i){
+                    var firstClass = ""
+                    if(i == 0){
+                        firstClass = "first"
+                    }
+                    return "user " + firstClass;
                 })
-            }
-            return output;
-        })
-        .enter()
-        .append("circle")
-        .attr("r", tinyCircleRadius)
-        .attr("cx", function(d,i){ return matrixGrid[i][parseInt(d.index)].x; } ) 
-        .attr("cy", function(d,i){ return matrixGrid[i][parseInt(d.index)].y; } )
-        .attr("fill", function(d, i) { return d.color; })
+                .attr("style", function(d, i){ 
+                    var opacity = 0.1;
+                    var value = parseInt(d.diag_ratio);
+                    if(value > 20){  opacity = 0.2; }
+                    if(value > 40){  opacity = 0.6; }
+                    if(value > 60){  opacity = 0.8; }
+                    if(value > 80){  opacity = 1; }
+                    return "opacity:"+opacity+"; fill:"+d.color+";"; //stroke:"+d.color+";
+                })
+                .on("mouseover", function(data){
+                    d3.select(this).moveToFront();
+                    d3.select(this).addClass("hover");
+                    d3.select(this.parentNode).addClass("hovered");
+                  
+                    var html = "", list = "", series = [];
 
-    userProtanGroup.append("polyline")
+                    //if(data.diag_serie && data.diag_serie.length > 0){
+                        series = data.diag_serie.split(",");
+                        list = "<ul class='color-list'>";
+                        for (i = 0; i < series.length; i++) {
+                            list += "<li style='background:"+colors[series[i]]+"';></li>"
+                        }
+                        list+="</ul>";
+                    //}
+
+                    //html += "<div>birth_date : "+data.birth_date+"</div>";
+                    html += "<div>Niveau : "+data.diag_ratio+"</div>";
+                    //html += "<div>finished : "+data.finished+"</div>";
+                    //html += "<div>Test ID : "+data.id+", User ID : "+data.users_id+"</div>";
+                    html += "<div>Interface : "+data.name+"</div>";
+                    html += "<div>Genre : "+(data.gender == "M"? "Homme" : "Femme")+"</div>";
+                    //html += "<div>vetted : "+data.vetted+"</div>";
+                    html += "<div>Name : "+data.username+"</div>";
+                    html += "<div>Email : <a href='mailto:"+data.email+"' target='_blank'> "+data.email+"</a></div>";
+                    html += "<div>Temps : "+data.test_duration+"</div>";
+                    //html += "<div>users_id : "+data.users_id+"</div>";
+                    html += "<div>Lien : <a href='/admin/test/"+data.unique_url+"' target='_blank'>Teste</a></div>";
+                    html += "<div>Série : "+data.diag_serie+"</div>";
+                    
+
+                    html += "<div>"+list+"</div>";
+
+                    tooltip.style("visibility", "visible").html(html);
+                })
+                .on("mousemove", function(){
+                    tooltip
+                        .style("top",(d3.event.pageY-10)+"px")
+                        .style("left",(d3.event.pageX+10)+"px");
+                })
+                .on("mouseout", function(){
+                    d3.select(this).removeClass("hover");
+                    d3.select(this.parentNode).removeClass("hovered");
+                    tooltip.style("visibility", "hidden");
+                });
+
+    profiles.append("polyline")
         .attr("fill", "none")
-        .attr("stroke", function(d, i){ return d.color; })
-        //.attr("stroke", function(d, i) { return d.color; } )
+        .attr("stroke", function(d, i) { return d.color; } )
+        .attr("style", function(d, i) { 
+            var stroke = (parseInt(d.diag_ratio)/100) + 0.2;
+            return "stroke-width:"+stroke+"px"; 
+        })
         .attr("points", function(d, i) { 
-            var string = "";
-            var arr = d.diag_serie.split(",");
+            var string = "",
+                arr = d.diag_serie.split(",");
             for (var j = 0; j < arr.length; j++) {
                  string += matrixGrid[j][arr[j]].x +","+matrixGrid[j][arr[j]].y+" ";
             }
             return string;
         })
-        .on('mouseover', function(d) {
-            d3.select(this).moveToFront();
-        })
+
+    profiles.selectAll()
+        .data(getSerie)
+            .enter()
+            .append("circle")
+                .attr("r", tinyCircleRadius)
+                .attr("cx", function(d,i){ return matrixGrid[i][parseInt(d.index)].x; })
+                .attr("cy", function(d,i){ return matrixGrid[i][parseInt(d.index)].y; } )
+                //.attr("fill", function(d, i) { return d.color; })
+                
 
 
-/************************
-    DEUTANS
-************************/
+    /*
+        INTERRACTIONS
+    */
 
-var deutans = svg.append("g").attr("class", "deutans hide");
-var userDeutanGroup = deutans.selectAll()
-                        .data(arrDeutan)
-                        .enter()
-                        .append("g").attr("class", "user");
-
-    userDeutanGroup.selectAll()
-        .data(function(d, i){
-            var values = d.diag_serie.split(",");
-            var output = [];
-            for (var i = 0; i < values.length; i++) {
-                output.push({
-                    index : values[i],
-                    color : d.color
-                })
-            }
-            return output;
-        })
-        .enter()
-        .append("circle")
-        .attr("r", tinyCircleRadius)
-        .attr("cx", function(d,i){ return matrixGrid[i][parseInt(d.index)].x; } ) 
-        .attr("cy", function(d,i){ return matrixGrid[i][parseInt(d.index)].y; } )
-        .attr("fill", function(d, i) { return d.color; })
-
-    userDeutanGroup.append("polyline")
-        .attr("fill", "none")
-        .attr("stroke", function(d, i){ return d.color; })
-        //.attr("stroke", function(d, i) { return d.color; } )
-        .attr("points", function(d, i) { 
-            var string = "";
-            var arr = d.diag_serie.split(",");
-            for (var j = 0; j < arr.length; j++) {
-                 string += matrixGrid[j][arr[j]].x +","+matrixGrid[j][arr[j]].y+" ";
-            }
-            return string;
-        })
-        .on('mouseover', function(d) {
-            d3.select(this).moveToFront();
-        })
-
-/************************
-    TRITAN
-************************/
-
-var tritans = svg.append("g").attr("class", "tritans hide");
-var userTritanGroup = tritans.selectAll()
-                        .data(arrTritan)
-                        .enter()
-                        .append("g").attr("class", "user");
-
-    userTritanGroup.selectAll()
-        .data(function(d, i){
-            var values = d.diag_serie.split(",");
-            var output = [];
-            for (var i = 0; i < values.length; i++) {
-                output.push({
-                    index : values[i],
-                    color : d.color
-                })
-            }
-            return output;
-        })
-        .enter()
-        .append("circle")
-        .attr("r", tinyCircleRadius)
-        .attr("cx", function(d,i){ return matrixGrid[i][parseInt(d.index)].x; } ) 
-        .attr("cy", function(d,i){ return matrixGrid[i][parseInt(d.index)].y; } )
-        .attr("fill", function(d, i) { return d.color; })
-
-    userTritanGroup.append("polyline")
-        .attr("fill", "none")
-        .attr("stroke", function(d, i){ return d.color; })
-        //.attr("stroke", function(d, i) { return d.color; } )
-        .attr("points", function(d, i) { 
-            var string = "";
-            var arr = d.diag_serie.split(",");
-            for (var j = 0; j < arr.length; j++) {
-                 string += matrixGrid[j][arr[j]].x +","+matrixGrid[j][arr[j]].y+" ";
-            }
-            return string;
-        })
-        .on('mouseover', function(d) {
-            d3.select(this).moveToFront();
-        })
-
-   
     d3.selectAll("#controls input").on("click", function(){
         var self = this;
         switch(self.id){
@@ -510,11 +487,10 @@ var userTritanGroup = tritans.selectAll()
             case "unique-color" :
                 if(self.checked){
                       d3.select("#graph").addClass("unique-color");
-                        d3.select("#color-legend").removeClass("hide");   
+                      d3.select("#color-legend").removeClass("hide");   
                 } else {
                     d3.select("#graph").removeClass("unique-color");
                      d3.select("#color-legend").addClass("hide");
-                    
                 }
             break;
             case "unique-line" :

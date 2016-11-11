@@ -59,7 +59,8 @@ if(
             )
         );
 
-    $f3->reroute("/test");
+    //$f3->reroute("/test");
+    $f3->reroute('/thank-you-for-registering');
 }
 
 $f3->set('errors', $errors);

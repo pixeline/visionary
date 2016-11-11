@@ -7,9 +7,14 @@
         <main>
 
         <h1>Merci <?php echo $_SESSION['user']['name'] ?>!</h1>
+        
         <p>Votre compte a bien été enregistré. Nous vous remercions sincèrement pour votre intérêt et votre participation. Vous contribuerez ainsi à améliorer l'expérience numérique de près d'un homme sur 12 et d'une femme sur 200 dans le monde.</p>
         
-        <p class="text-center">Vous pouvez dès à présent <br> <a  class="pure-button pure-button-primary" href="/test"><i class="fa fa-play" aria-hidden="true"></i> Tester votre vision des couleurs</a></p>
+        <p class="text-center">Vous pouvez dès à présent <br> 
+            <a  class="pure-button pure-button-primary" href="/test">
+                <i class="fa fa-play" aria-hidden="true"></i> Tester votre vision des couleurs
+            </a>
+        </p>
         <fieldset>
             <legend>Vos informations</legend>
             <table class="pure-table pure-table-horizontal pure-table-striped" style="width:400px;margin:auto">
@@ -42,6 +47,9 @@
                 ?>
                 </tbody>
             </table>
+            <p class="text-center">
+                <a  class="link" href="/admin/user">Modifier mes informations</a>
+            </p>
         </fieldset>
         
 
