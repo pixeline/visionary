@@ -22,7 +22,9 @@ $auth_config = array(
 			"keys" => array(
 				"id" => "368063427013-ltnpiq8efno16upv0as5ebvnqt814riv.apps.googleusercontent.com", 
 				"secret" => "OPZ5L6d7tLb5g_WpQSP-toqv"
-			)
+			),
+			"scope" => "https://www.googleapis.com/auth/userinfo.profile ". // optional
+                               "https://www.googleapis.com/auth/userinfo.email", // optional
 		),
 		// https://apps.twitter.com/
 		"Twitter" => array(

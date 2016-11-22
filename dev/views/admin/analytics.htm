@@ -49,36 +49,45 @@
     <h2>Tests</h2>
 
     <div id="controls">
+        <!--
         <div>
             <input id="unique-color" type="checkbox" checked>
             <label for="unique-color">Une couleur par catégorie</label>
         </div>
+        -->
         <div>
             <input id="unique-line" type="checkbox">
             <label for="unique-line">Line unique par catégorie</label>
+            <form class="strengths hide">
+                <label><input type="radio" name="filter-strong" value="hight" checked> Degré le plus fort </label> 
+                <label><input type="radio" name="filter-strong" value="medium"> Degré moyen</label> 
+                <label><input type="radio" name="filter-strong" value="low"> Degré faible</label> 
+            </form>
+
         </div>
         <br>
         <div>
             <input id="protans" type="checkbox" checked>
-            <label for="protans">Test diagnostiqué "protanope"</label>
+            <label for="protans">Test diagnostiqué <span class="red">"protanope"</span></label>
         </div>
         <div>
             <input id="deutans" type="checkbox">
-            <label for="deutans">Test diagnostiqué "deuteranope"</label>
+            <label for="deutans">Test diagnostiqué <span class="blue">"deuteranope"</span></label>
         </div>
         <div>
             <input id="tritans" type="checkbox">
-            <label for="tritans">Test diagnostiqué "tritanope"</label>
+            <label for="tritans">Test diagnostiqué<span class="green"> "tritanope"</span></label>
         </div>
 
-        <div id="color-legend" class="">
-            <h3>Légende</h3>
-            <ul>
-                <li class="red">Protanope</li>
-                <li class="blue">Deuteranope</li>
-                <li class="green">Tritanope</li>
-            </ul>
-        </div>
+        <br>
+
+        <form class="filters">
+            Filtres : 
+            <label><input type="radio" name="filter" value="all" checked> Tout </label> 
+            <label><input type="radio" name="filter" value="vetted"> Vetted only </label> 
+            <label><input type="radio" name="filter" value="anonymous"> Exclude Anonymous Users</label> 
+        </form>
+
     </div>
 
     <div class="graph-container" class=""></div>
@@ -100,9 +109,24 @@
     <div class="charts-container"></div>
 </div>
 
+<script src="assets/js/jquery-1.12.0.min.js"></script>
 <script src="assets/js/d3.min.js"></script>
 <script src="assets/js/d3-extended.js"></script>
 <script>
+
+function closest(num, arr) {
+    var curr = parseInt(arr[0]);
+    var diff = Math.abs (num - curr);
+    for (var val = 0; val < arr.length; val++) {
+        var newdiff = Math.abs (num - parseInt(arr[val]) );
+        if (newdiff < diff) {
+            diff = newdiff;
+            curr = parseInt(arr[val]); 
+        }
+    }
+    return curr;
+}
+//{ "value":parseInt(arr[val]), "key":val };
 
 // help : https://www.dashingd3js.com/svg-basic-shapes-and-d3js
 var jsonData = {{ json_encode(@tests) }};
@@ -223,6 +247,32 @@ profilesArr.forEach(function(obj, k){
     obj.data.sort(sortByRatio);
 })
 
+profilesArr.forEach(function(obj, k){
+    
+    var key = Math.floor(obj.data.length/2);
+    var addition = 0;
+    var arr = [];
+
+    obj.data.forEach(function(user, i){
+        var int = parseInt(user.diag_ratio);
+        addition += int;
+        arr.push(int);
+    })
+
+    var close = closest( addition/obj.data.length, arr);
+    for (var i = 0; i < obj.data.length; i++) {
+        if(parseInt(obj.data[i].diag_ratio) == close){
+            obj.data[i].isMedium = true;
+            break;
+        }
+    }
+    for (var i = 0; i < obj.data.length; i++) {
+        if( i == obj.data.length-1){
+            obj.data[i].isLast = true;
+        }
+    }
+})
+
 
 var width = 790,
     height = 720,
@@ -242,7 +292,25 @@ var svg = d3.select(".graph-container")
 var letterWidth = 8;
 var lineThick = 1;
 
-var xAxis = svg.append("text").attr("x",width-120).attr("y",38).attr("fill","#54a4ce").text("Index de la couleur");
+svg.append("text")
+    .attr("x",width-120)
+    .attr("y",38)
+    .attr("fill","#54a4ce")
+    .text("Index de la couleur");
+
+
+svg.append("text")
+    .attr("x", 0)
+    .attr("y",710)
+    .attr("fill","#54a4ce")
+    .text("Index de la séquence");
+
+svg.append("text")
+    .attr("x", width-120)
+    .attr("y",710)
+    .attr("fill","#a4a4a4")
+    .text("Séquence correcte");
+
 
 var xAxis = svg.append("g");
     xAxis.selectAll().data(serieMax)
@@ -312,13 +380,15 @@ var dot = svg.append("g").attr("class", "dots");
             .style("fill", "transparent");
 
 
- var tooltip = d3.select(".admin-analytics")
+ var tooltip = d3.select(".graph-container")
         .append("div")
         .attr('class','tooltipdiv')
         .style("position", "absolute")
+        .style("top", "15%")
+        .style("right", " -40px")
         .style("z-index", "10")
-        .style("visibility", "hidden")
-        .text("a simple tooltip");
+        //.style("visibility", "hidden")
+        .text("Passer la souris sur un élément");
 
 
 var getUserData = function(d, i){
@@ -380,11 +450,27 @@ var profiles = profileGroup.selectAll()
             .enter()
             .append("g")
                 .attr("class", function(d,i){
-                    var firstClass = ""
+
+                    var classes = ["user"];
+
                     if(i == 0){
-                        firstClass = "first"
+                        classes.push("first");
                     }
-                    return "user " + firstClass;
+                    if(d.vetted == "1"){
+                        classes.push("vetted");
+                    }
+                    if(d.username == "anonymous"){
+                        classes.push("anonymous");
+                    }
+                    if(d.isMedium){
+                         classes.push("medium");
+                    }
+
+                    if(d.isLast){
+                         classes.push("low");
+                    }
+
+                    return classes.join(" "); 
                 })
                 .attr("style", function(d, i){ 
                     var opacity = 0.1;
@@ -431,23 +517,24 @@ var profiles = profileGroup.selectAll()
                     tooltip.style("visibility", "visible").html(html);
                 })
                 .on("mousemove", function(){
-                    tooltip
+                    /*tooltip
                         .style("top",(d3.event.pageY-10)+"px")
                         .style("left",(d3.event.pageX+10)+"px");
+                        */
                 })
                 .on("mouseout", function(){
                     d3.select(this).removeClass("hover");
                     d3.select(this.parentNode).removeClass("hovered");
-                    tooltip.style("visibility", "hidden");
+                    //tooltip.style("visibility", "hidden");
                 });
 
     profiles.append("polyline")
         .attr("fill", "none")
         .attr("stroke", function(d, i) { return d.color; } )
-        .attr("style", function(d, i) { 
+        /*.attr("style", function(d, i) { 
             var stroke = (parseInt(d.diag_ratio)/100) + 0.2;
             return "stroke-width:"+stroke+"px"; 
-        })
+        })*/
         .attr("points", function(d, i) { 
             var string = "",
                 arr = d.diag_serie.split(",");
@@ -465,8 +552,47 @@ var profiles = profileGroup.selectAll()
                 .attr("cx", function(d,i){ return matrixGrid[i][parseInt(d.index)].x; })
                 .attr("cy", function(d,i){ return matrixGrid[i][parseInt(d.index)].y; } )
                 //.attr("fill", function(d, i) { return d.color; })
-                
 
+   
+        $(".strengths input").on("click", function(){
+
+            //console.log( $(this).val() )
+
+            d3.selectAll(".user").addClass("hide");
+
+            switch( $(this).val() ){
+                case "hight" :
+                    d3.selectAll(".user.first").removeClass("hide");
+                break;
+                case "medium" :
+                    d3.selectAll(".user.medium").removeClass("hide");
+                break;
+                case "low":
+                    d3.selectAll(".user.low").removeClass("hide");
+                break;
+            }
+        })
+    
+
+        $(".filters input").on("click", function(){
+
+            switch( $(this).val()){
+                case "all" :
+                    d3.selectAll(".user").removeClass("hide");
+                break;
+                case "vetted" :
+                    d3.selectAll(".user").addClass("hide");
+                    d3.selectAll(".user.vetted").removeClass("hide");
+                break;
+                case "anonymous":
+                    d3.selectAll(".user").removeClass("hide");
+                    d3.selectAll(".user.anonymous").addClass("hide");
+                break;
+            }
+        })
+    
+
+    
 
     /*
         INTERRACTIONS
@@ -495,9 +621,16 @@ var profiles = profileGroup.selectAll()
             break;
             case "unique-line" :
                 if(self.checked){
-                    d3.select("#graph").addClass("unique-line");
+                    //d3.select("#graph").addClass("unique-line");
+                    d3.select(".strengths").removeClass("hide");
+
+                    d3.selectAll(".user").addClass("hide");
+                    d3.selectAll(".user.first").removeClass("hide");
+
                 } else {
-                    d3.select("#graph").removeClass("unique-line");
+                    d3.select(".strengths").addClass("hide");
+                    d3.selectAll(".user").removeClass("hide");
+                    //d3.select("#graph").removeClass("unique-line");
                 }
             break;
         }

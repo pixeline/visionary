@@ -104,8 +104,36 @@
     </div>
     <br>
     <div id="connexion-form" class="pure-g">
-        <div class="pure-u-1-4"></div>
         <div class="pure-u-1-2">
+             <div id="login-mail-form" class="">
+
+                    <form action="/login" method="POST" class="form pure-form pure-form-stacked form--login text-left">
+                        <div class="pure-g">
+                            <div class="pure-u-1 pure-u-md-1-1 l-box">
+                                <label for="email" class=""><?php echo _("Email"); ?> <span class="voice--whisper">* obligatoire</span></label>
+                                <input id="email"  name="email" type="email" value="" placeholder="Email" required>
+                            </div>
+                            <div class="pure-u-1 pure-u-md-1-1 l-box">
+                                <label for="password" class=""><?php echo _("Mot de passe "); ?> <span class="voice--whisper">* obligatoire</span></label>
+                                <input id="password"  name="password" type="password" value="" placeholder="Mot de passe" required>
+                            </div>
+                            <br>
+                            <div class="block block-full l-box"><!-- text-center -->
+                                <button type="submit" name="action" value="login" class="pure-button pure-button-primary">
+                                    <?php echo _("Se connecter"); ?>
+                                </button>
+                                <a id="subscribe-mail" class="link">Pas de compte ? Enregistrez-vous</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <div class="pure-u-1-8">
+            <div class="text-center separator-or">
+                <span>ou</span>
+            </div>
+        </div>
+        <div class="pure-u-1-3">
             <div class="subscribre">
                 <form action="/register-auth" method="POST" class="list-auth">
                     <div class="social-buttons">
@@ -118,42 +146,18 @@
                         <button type="submit" name="auth" value="twitter" class="button-social button-twitter">
                             <i class="fa fa-twitter"></i> Twitter
                         </button>
+                        <!--
                         <button type="button" id="login-mail" class="button-social button-email">
                             <i class="fa fa-envelope"></i> Email
                         </button>
+                        -->
                     </div>
                 </form>
-                <div id="login-mail-form" class="hidden">
-
-                    <form action="/login" method="POST" class="form pure-form pure-form-stacked form--login text-left">
-                        <div class="pure-g">
-                            <div class="pure-u-1 pure-u-md-1-2 l-box">
-                                <label for="email" class=""><?php echo _("Email"); ?> <span class="voice--whisper">* obligatoire</span></label>
-                                <input id="email"  name="email" type="email" value="" placeholder="Email" required>
-                            </div>
-                            <div class="pure-u-1 pure-u-md-1-2 l-box">
-                                <label for="password" class=""><?php echo _("Mot de passe "); ?> <span class="voice--whisper">* obligatoire</span></label>
-                                <input id="password"  name="password" type="password" value="" placeholder="Mot de passe" required>
-                            </div>
-                            <br>
-                            <div class="block block-full text-center">
-                                <button type="submit" name="action" value="login" class="pure-button pure-button-primary">
-                                    <?php echo _("Se connecter"); ?>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="separator">
-                      <span>ou</span>
-                      <hr>
-                    </div>
+              
                 <div class="social-buttons">
-                    <button type="button" id="subscribe-mail" class="button-social pure-button-primary btn-block ">
-                        <i class="fa fa-envelope"></i> Inscription avec l'adresse e-mail
-                    </button>
+                   
                     <div class="text-center">
-                        <a href="/test" class="link">Faire le test anonymement</a>
+                         <span>ou</span> <a href="/test" class="link"> Faire le test anonymement</a>
                     </div>
                 </div>
             </div>
