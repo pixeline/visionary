@@ -53,6 +53,14 @@
         <link rel="stylesheet" href="assets/css/app.css">
     </head>
     <body>
+
+        <?php if($_SESSION['user']['is_logged_in'] =='ok'): ?>
+            <div class="pure-g">
+                <div class="pure-u-1 inner-row">
+                    <i class="fa fa-user fa-2xx"></i> <a href="/admin"><?php echo $_SESSION['user']['name']; ?></a>
+                </div>
+            </div>
+        <?php  endif; ?>
         
         <?php echo $this->render(Base::instance()->get('content')); ?>
         <?php

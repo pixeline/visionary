@@ -1,20 +1,55 @@
 <?php
  
-$auth_config = array(
-	"base_url" => $f3->get('WWWROOT')."/lib/hybridauth/",
-	"providers" => array(
-		// https://developers.facebook.com/apps/
-		// Invalid Scopes: read_stream. 
-		"Facebook" => array(
+
+
+switch ($_SERVER['HTTP_HOST']){
+
+    case 'dev.colour-blindness.org':        
+    	$facebook = array(
+			"enabled" => true,
+			"keys" => array(
+				"id" => "1818042085133393", 
+				"secret" => "e184f78f3cbe5fa8ec28ec7ab95c1fe8"
+			),
+			"scope" => "email, user_birthday, user_hometown",
+			//"display" => "popup",
+			"trustForwarded" => false
+		);
+    break;
+    case 'test-your.colour-blindness.org':  
+    	$facebook = array(
 			"enabled" => true,
 			"keys" => array(
 				"id" => "1751429198461349", 
 				"secret" => "007a6018a2f21f3ff337f563191b9882"
 			),
-			"scope" => "email, user_about_me, user_birthday, user_hometown",
+			"scope" => "email, user_birthday, user_hometown",
 			//"display" => "popup",
 			"trustForwarded" => false
-		),
+		);
+    break;
+    default:                                
+    	$facebook = array(
+			"enabled" => true,
+			"keys" => array(
+				"id" => "1751429198461349", 
+				"secret" => "007a6018a2f21f3ff337f563191b9882"
+			),
+			"scope" => "email, user_birthday, user_hometown",
+			//"display" => "popup",
+			"trustForwarded" => false
+		);         
+    break;
+}
+
+
+
+$auth_config = array(
+	"base_url" => $f3->get('WWWROOT')."/lib/hybridauth/",
+	"providers" => array(
+		// https://developers.facebook.com/apps/
+		// Invalid Scopes: read_stream. 
+		"Facebook" => $facebook,
 		// https://console.developers.google.com/apis/credentials
 		
 		"Google" => array(
