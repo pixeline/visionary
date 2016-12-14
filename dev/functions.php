@@ -1,6 +1,7 @@
 <?php
 
 $unique_salt_value = "What a wonderful world!";
+
 $minimum_id_length = 8;
 $custom_alphabet = 'abcdefghijklmnopqrstuvwxyz1234567890';
 //$hashids = new \Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
@@ -22,6 +23,31 @@ function getCountries($lang = "fr", $id=''){
 function clean($string) {
    //$string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
    return trim(preg_replace('/[^A-Za-z0-9\-]/', '', $string)); // Removes special chars.
+}
+
+
+function createToken($sub, $days=2){
+	require 'lib/JWT/JWT.php';
+    $token_secret = 'As you think so shall you become';
+    $payload = [
+        'sub' => $sub,
+        'iat' => time(),
+        'exp' => time() + ($days * 24 * 60 * 60)
+    ];
+
+    // 14 j // 2 * 7 * 24 * 60 * 60
+    return JWT::encode($payload, $token_secret);
+}
+
+function decodeToken($token){
+	require 'lib/JWT/JWT.php';
+    $token_secret = 'As you think so shall you become';
+
+    $decoded = JWT::decode($token, $token_secret, array('HS256')); 
+    if($decoded->sub){
+    	return $decoded->sub;
+    }
+    return false;
 }
 
 // compute interval
