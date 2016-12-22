@@ -1256,6 +1256,24 @@
 		"oAP": "\/controllers\/logout.php",
 		"oF": 0
 		},
+	"\/controllers\/oauth\/login.post.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/controllers\/oauth\/login.post.php",
+		"oF": 0
+		},
+	"\/controllers\/oauth\/me.get.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/controllers\/oauth\/me.get.php",
+		"oF": 0
+		},
+	"\/controllers\/oauth\/tests.get.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/controllers\/oauth\/tests.get.php",
+		"oF": 0
+		},
 	"\/controllers\/register-auth.get.php": {
 		"ft": 8192,
 		"oA": 0,
@@ -2070,6 +2088,30 @@
 		"oAP": "\/lib\/image.php",
 		"oF": 0
 		},
+	"\/lib\/JWT\/BeforeValidException.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/JWT\/BeforeValidException.php",
+		"oF": 0
+		},
+	"\/lib\/JWT\/ExpiredException.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/JWT\/ExpiredException.php",
+		"oF": 0
+		},
+	"\/lib\/JWT\/JWT.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/JWT\/JWT.php",
+		"oF": 0
+		},
+	"\/lib\/JWT\/SignatureInvalidException.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/JWT\/SignatureInvalidException.php",
+		"oF": 0
+		},
 	"\/lib\/log.php": {
 		"ft": 8192,
 		"oA": 0,
@@ -2308,6 +2350,12 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/views\/admin\/vetted.htm",
+		"oF": 0
+		},
+	"\/views\/api.htm": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/views\/api.htm",
 		"oF": 0
 		},
 	"\/views\/browserconfig.xml": {

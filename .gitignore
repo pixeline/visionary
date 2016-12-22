@@ -8,3 +8,5 @@ v2/node_modules/*
 *.bak
 
 dev/tmp/
+
+*.codekit3
