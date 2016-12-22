@@ -4,17 +4,33 @@
 	{
 		"name": "Process All Remaining Files and Folders",
 		"stepType": 1,
-		"uuidString": "1211D920-003A-4EB8-9318-36C024C3AA1B"
+		"uuidString": "C71E6B8E-C3E3-4199-90C1-3464B9E6F9F6"
 		}
 	],
 "creatorBuild": "25479",
 "files": {
+	"\/.htaccess": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/.htaccess",
+		"oF": 0
+		},
+	"\/assets\/admin\/pure-min.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/assets\/admin\/pure-min-min.css",
+		"oF": 0,
+		"oS": 0
+		},
 	"\/assets\/css\/app.css": {
 		"aP": 0,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/assets\/css\/app-min.css",
 		"oF": 0,
 		"oS": 0
@@ -303,7 +319,7 @@
 		},
 	"\/assets\/images\/icons\/mstile-150x150.png": {
 		"ft": 32768,
-		"iS": 718,
+		"iS": 2979,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-150x150.png",
 		"oF": 0,
@@ -311,7 +327,7 @@
 		},
 	"\/assets\/images\/icons\/mstile-310x150.png": {
 		"ft": 32768,
-		"iS": 660,
+		"iS": 3220,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-310x150.png",
 		"oF": 0,
@@ -319,7 +335,7 @@
 		},
 	"\/assets\/images\/icons\/mstile-310x310.png": {
 		"ft": 32768,
-		"iS": 1118,
+		"iS": 6429,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-310x310.png",
 		"oF": 0,
@@ -428,7 +444,7 @@
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/app-min.js",
-		"oF": 2,
+		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
@@ -436,7 +452,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/classement-min.js",
+		"oAP": "\/assets\/js\/min\/classement-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -445,7 +461,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/d3-extended-min.js",
+		"oAP": "\/assets\/js\/min\/d3-extended-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -454,7 +470,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/d3-min.js",
+		"oAP": "\/assets\/js\/min\/d3-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -463,7 +479,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/d3.min-min.js",
+		"oAP": "\/assets\/js\/min\/d3.min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -480,7 +496,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/jquery-1.12.0.min-min.js",
+		"oAP": "\/assets\/js\/min\/jquery-1.12.0.min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -489,7 +505,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/jquery.tablesorter-min.js",
+		"oAP": "\/assets\/js\/min\/jquery.tablesorter-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -498,7 +514,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/jquery.tooltipster-min.js",
+		"oAP": "\/assets\/js\/min\/jquery.tooltipster-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -506,8 +522,8 @@
 	"\/assets\/js\/min\/app-min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/min\/app-min-min.js",
+		"oA": 1,
+		"oAP": "\/assets\/js\/min\/min\/app-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -515,8 +531,8 @@
 	"\/assets\/js\/min\/classement-min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/min\/classement-min-min.js",
+		"oA": 1,
+		"oAP": "\/assets\/js\/min\/min\/classement-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -524,8 +540,8 @@
 	"\/assets\/js\/min\/d3-extended-min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/min\/d3-extended-min-min.js",
+		"oA": 1,
+		"oAP": "\/assets\/js\/min\/min\/d3-extended-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -533,8 +549,8 @@
 	"\/assets\/js\/min\/result-min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/min\/result-min-min.js",
+		"oA": 1,
+		"oAP": "\/assets\/js\/min\/min\/result-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -542,8 +558,8 @@
 	"\/assets\/js\/min\/tools-min.js": {
 		"ft": 64,
 		"mi": 1,
-		"oA": 0,
-		"oAP": "\/assets\/js\/min\/tools-min-min.js",
+		"oA": 1,
+		"oAP": "\/assets\/js\/min\/min\/tools-min-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -552,7 +568,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/result-min.js",
+		"oAP": "\/assets\/js\/min\/result-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -561,7 +577,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/TestDeClassement-min.js",
+		"oAP": "\/assets\/js\/min\/TestDeClassement-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -570,7 +586,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/tinyurl-min.js",
+		"oAP": "\/assets\/js\/min\/tinyurl-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -579,7 +595,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/tools-min.js",
+		"oAP": "\/assets\/js\/min\/tools-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -588,7 +604,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/touch-dnd-min.js",
+		"oAP": "\/assets\/js\/min\/touch-dnd-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -597,7 +613,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/validate-min.js",
+		"oAP": "\/assets\/js\/min\/validate-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -606,7 +622,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/velocity-min.js",
+		"oAP": "\/assets\/js\/min\/velocity-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -615,7 +631,7 @@
 		"ft": 64,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/assets\/js\/velocity.ui-min.js",
+		"oAP": "\/assets\/js\/min\/velocity.ui-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -802,7 +818,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_0.settings.css",
+		"oAP": "\/assets\/css\/_0.settings.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -815,7 +831,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_1.pure.css",
+		"oAP": "\/assets\/css\/_1.pure.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -828,7 +844,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_2.base.css",
+		"oAP": "\/assets\/css\/_2.base.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -841,7 +857,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_3.test-de-classement.css",
+		"oAP": "\/assets\/css\/_3.test-de-classement.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -854,7 +870,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_4.tablet.css",
+		"oAP": "\/assets\/css\/_4.tablet.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -867,7 +883,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_5.desktop.css",
+		"oAP": "\/assets\/css\/_5.desktop.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -880,7 +896,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_6.print.css",
+		"oAP": "\/assets\/css\/_6.print.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -893,7 +909,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/_underlines.css",
+		"oAP": "\/assets\/css\/_underlines.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -906,13 +922,13 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/assets\/scss\/admin.css",
+		"oAP": "\/assets\/css\/admin.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
 	"\/assets\/scss\/app.scss": {
-		"aP": 0,
+		"aP": 1,
 		"bl": 0,
 		"dP": 10,
 		"dS": 0,
@@ -920,7 +936,7 @@
 		"ma": 1,
 		"oA": 0,
 		"oAP": "\/assets\/css\/app.css",
-		"oF": 3,
+		"oF": 0,
 		"oS": 3,
 		"uL": 1
 		},
@@ -932,7 +948,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_animated.css",
+		"oAP": "\/assets\/scss\/css\/_animated.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -945,7 +961,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_bordered-pulled.css",
+		"oAP": "\/assets\/scss\/css\/_bordered-pulled.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -958,7 +974,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_core.css",
+		"oAP": "\/assets\/scss\/css\/_core.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -971,7 +987,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_fixed-width.css",
+		"oAP": "\/assets\/scss\/css\/_fixed-width.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -984,7 +1000,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_icons.css",
+		"oAP": "\/assets\/scss\/css\/_icons.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -997,7 +1013,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_larger.css",
+		"oAP": "\/assets\/scss\/css\/_larger.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1010,7 +1026,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_list.css",
+		"oAP": "\/assets\/scss\/css\/_list.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1023,7 +1039,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_mixins.css",
+		"oAP": "\/assets\/scss\/css\/_mixins.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1036,7 +1052,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_path.css",
+		"oAP": "\/assets\/scss\/css\/_path.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1049,7 +1065,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_rotated-flipped.css",
+		"oAP": "\/assets\/scss\/css\/_rotated-flipped.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1062,7 +1078,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_screen-reader.css",
+		"oAP": "\/assets\/scss\/css\/_screen-reader.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1075,7 +1091,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_stacked.css",
+		"oAP": "\/assets\/scss\/css\/_stacked.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1088,7 +1104,7 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/_variables.css",
+		"oAP": "\/assets\/scss\/css\/_variables.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
@@ -1101,21 +1117,1289 @@
 		"ft": 4,
 		"ma": 0,
 		"oA": 1,
-		"oAP": "\/assets\/scss\/font-awesome\/font-awesome.css",
+		"oAP": "\/assets\/scss\/css\/font-awesome.css",
 		"oF": 0,
 		"oS": 0,
 		"uL": 1
 		},
-	"\/controllers\/index.app.php": {
+	"\/auth-config.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/auth-config.php",
+		"oF": 0
+		},
+	"\/client_id.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/client_id-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/config.ini": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/controllers\/index.app.php",
+		"oAP": "\/config.ini",
+		"oF": 0
+		},
+	"\/config.production.ini": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/config.production.ini",
+		"oF": 0
+		},
+	"\/config.staging.ini": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/config.staging.ini",
+		"oF": 0
+		},
+	"\/controllers\/account.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/account.get.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/admin.get.post.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/admin.get.post.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/analytics.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/analytics.get.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/test.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/test.get.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/tests.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/tests.get.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/tools\/fixdatabase.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/tools\/fixdatabase.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/tools\/mailchimp.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/tools\/mailchimp.get.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/user.get.post.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/user.get.post.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/users.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/users.get.php",
+		"oF": 0
+		},
+	"\/controllers\/admin\/vetted.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/admin\/vetted.get.php",
+		"oF": 0
+		},
+	"\/controllers\/api.get.post.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/api.get.post.php",
+		"oF": 0
+		},
+	"\/controllers\/Authentication.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/Authentication.php",
+		"oF": 0
+		},
+	"\/controllers\/data.classement.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/data.classement.php",
+		"oF": 0
+		},
+	"\/controllers\/home.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/home.get.php",
+		"oF": 0
+		},
+	"\/controllers\/languages.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/languages.php",
+		"oF": 0
+		},
+	"\/controllers\/login.post.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/login.post.php",
+		"oF": 0
+		},
+	"\/controllers\/logout.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/logout.php",
+		"oF": 0
+		},
+	"\/controllers\/register-auth.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/register-auth.get.php",
+		"oF": 0
+		},
+	"\/controllers\/register-auth.post.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/register-auth.post.php",
+		"oF": 0
+		},
+	"\/controllers\/register.post.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/register.post.php",
+		"oF": 0
+		},
+	"\/controllers\/result-url.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/result-url.get.php",
+		"oF": 0
+		},
+	"\/controllers\/result.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/result.get.php",
+		"oF": 0
+		},
+	"\/controllers\/test-save.post.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/test-save.post.php",
+		"oF": 0
+		},
+	"\/controllers\/test.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/test.get.php",
+		"oF": 0
+		},
+	"\/controllers\/thank-you-for-registering.get.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/controllers\/thank-you-for-registering.get.php",
+		"oF": 0
+		},
+	"\/database.mwb": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/database.mwb",
+		"oF": 0
+		},
+	"\/database.mwb.bak": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/database.mwb.bak",
+		"oF": 0
+		},
+	"\/dict\/nl_NL\/LC_MESSAGES\/nl.mo": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/dict\/nl_NL\/LC_MESSAGES\/nl.mo",
+		"oF": 0
+		},
+	"\/dict\/nl_NL\/LC_MESSAGES\/nl.po": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/dict\/nl_NL\/LC_MESSAGES\/nl.po",
+		"oF": 0
+		},
+	"\/functions.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/functions.php",
 		"oF": 0
 		},
 	"\/index.php": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 0,
 		"oAP": "\/index.php",
+		"oF": 0
+		},
+	"\/lib\/audit.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/audit.php",
+		"oF": 0
+		},
+	"\/lib\/auth.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/auth.php",
+		"oF": 0
+		},
+	"\/lib\/base.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/base.php",
+		"oF": 0
+		},
+	"\/lib\/basket.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/basket.php",
+		"oF": 0
+		},
+	"\/lib\/bcrypt.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/bcrypt.php",
+		"oF": 0
+		},
+	"\/lib\/CHANGELOG": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/CHANGELOG",
+		"oF": 0
+		},
+	"\/lib\/code.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/lib\/code-min.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/lib\/COPYING": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/COPYING",
+		"oF": 0
+		},
+	"\/lib\/db\/cursor.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/cursor.php",
+		"oF": 0
+		},
+	"\/lib\/db\/jig.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/jig.php",
+		"oF": 0
+		},
+	"\/lib\/db\/jig\/mapper.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/jig\/mapper.php",
+		"oF": 0
+		},
+	"\/lib\/db\/jig\/session.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/jig\/session.php",
+		"oF": 0
+		},
+	"\/lib\/db\/mongo.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/mongo.php",
+		"oF": 0
+		},
+	"\/lib\/db\/mongo\/mapper.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/mongo\/mapper.php",
+		"oF": 0
+		},
+	"\/lib\/db\/mongo\/session.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/mongo\/session.php",
+		"oF": 0
+		},
+	"\/lib\/db\/sql.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/sql.php",
+		"oF": 0
+		},
+	"\/lib\/db\/sql\/mapper.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/sql\/mapper.php",
+		"oF": 0
+		},
+	"\/lib\/db\/sql\/session.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/db\/sql\/session.php",
+		"oF": 0
+		},
+	"\/lib\/f3.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/f3.php",
+		"oF": 0
+		},
+	"\/lib\/Hashids\/HashGenerator.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/Hashids\/HashGenerator.php",
+		"oF": 0
+		},
+	"\/lib\/Hashids\/Hashids.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/Hashids\/Hashids.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-500px\/Providers\/px500.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-500px\/Providers\/px500.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-beatsmusic\/Providers\/BeatsMusic.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-beatsmusic\/Providers\/BeatsMusic.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-bitbucket\/Providers\/BitBucket.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-bitbucket\/Providers\/BitBucket.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-citrix\/Providers\/Citrix.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-citrix\/Providers\/Citrix.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-deezer\/Providers\/Deezer.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-deezer\/Providers\/Deezer.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-disqus\/Providers\/Disqus.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-disqus\/Providers\/Disqus.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-draugiem\/Providers\/Draugiem.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-draugiem\/Providers\/Draugiem.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-draugiem\/thirdparty\/Draugiem\/DraugiemApi.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-draugiem\/thirdparty\/Draugiem\/DraugiemApi.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-dribbble\/Providers\/Dribbble.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-dribbble\/Providers\/Dribbble.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-dropbox\/Providers\/Dropbox.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-dropbox\/Providers\/Dropbox.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-drupaloauth2\/Providers\/DrupalOAuth2.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-drupaloauth2\/Providers\/DrupalOAuth2.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-freeagent\/Providers\/Freeagent.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-freeagent\/Providers\/Freeagent.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-github\/Providers\/GitHub.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-github\/Providers\/GitHub.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-goodreads\/Providers\/Goodreads.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-goodreads\/Providers\/Goodreads.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-google-openid\/Providers\/Google.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-google-openid\/Providers\/Google.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-Identica\/Providers\/Identica.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-Identica\/Providers\/Identica.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-instagram\/Providers\/Instagram.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-instagram\/Providers\/Instagram.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-lastfm\/Providers\/LastFM.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-lastfm\/Providers\/LastFM.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-lastfm\/thirdparty\/LastFM\/LastFM.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-lastfm\/thirdparty\/LastFM\/LastFM.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-latch\/Providers\/Latch.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-latch\/Providers\/Latch.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-mailchimp\/Providers\/MailChimp.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-mailchimp\/Providers\/MailChimp.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-mailru\/Providers\/Mailru.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-mailru\/Providers\/Mailru.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-murmur\/Providers\/Murmur.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-murmur\/Providers\/Murmur.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-odnoklassniki\/Providers\/Odnoklassniki.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-odnoklassniki\/Providers\/Odnoklassniki.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-paypal-openid\/Providers\/PaypalOpenID.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-paypal-openid\/Providers\/PaypalOpenID.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-paypal\/Providers\/Paypal.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-paypal\/Providers\/Paypal.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-paypal\/thirdparty\/Paypal\/PaypalOAuth2Client.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-paypal\/thirdparty\/Paypal\/PaypalOAuth2Client.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-pixelpin\/Providers\/PixelPin.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-pixelpin\/Providers\/PixelPin.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-pixnet\/Providers\/Pixnet.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-pixnet\/Providers\/Pixnet.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-plurk\/Providers\/Plurk.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-plurk\/Providers\/Plurk.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-qq\/Providers\/QQ.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-qq\/Providers\/QQ.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-rdio\/Providers\/Rdio.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-rdio\/Providers\/Rdio.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-rhapsody\/Providers\/Rhapsody.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-rhapsody\/Providers\/Rhapsody.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-sina\/Providers\/Sina.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-sina\/Providers\/Sina.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-sina\/thirdparty\/Sina\/saetv2.ex.class.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-sina\/thirdparty\/Sina\/saetv2.ex.class.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-sina\/thirdparty\/Sina\/Sina.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-sina\/thirdparty\/Sina\/Sina.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-skyrock\/Providers\/Skyrock.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-skyrock\/Providers\/Skyrock.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-slack\/Providers\/Slack.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-slack\/Providers\/Slack.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-soundcloud\/Providers\/SoundCloud.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-soundcloud\/Providers\/SoundCloud.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-steam\/Providers\/Steam.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-steam\/Providers\/Steam.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-tumblr\/Providers\/Tumblr.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-tumblr\/Providers\/Tumblr.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-twitchtv\/Providers\/TwitchTV.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-twitchtv\/Providers\/TwitchTV.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-vimeo\/Providers\/Vimeo.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-vimeo\/Providers\/Vimeo.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-vimeo\/thirdparty\/Vimeo\/Vimeo.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-vimeo\/thirdparty\/Vimeo\/Vimeo.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-vkontakte\/Providers\/Vkontakte.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-vkontakte\/Providers\/Vkontakte.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-wargaming\/Providers\/WarGaming.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-wargaming\/Providers\/WarGaming.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-wordpress\/Providers\/WordPress.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-wordpress\/Providers\/WordPress.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XING.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XING.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGJob.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGJob.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGJobLocation.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGJobLocation.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGUser.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGUser.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGUserPictureSize.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-xing\/Providers\/XINGUserPictureSize.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-xuite\/Providers\/Xuite.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-xuite\/Providers\/Xuite.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-yahoo-openid\/Providers\/Yahoo.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-yahoo-openid\/Providers\/Yahoo.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-yammer\/Providers\/Yammer.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-yammer\/Providers\/Yammer.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-yammer\/thirdparty\/Yammer\/Yammer.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-yammer\/thirdparty\/Yammer\/Yammer.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/hybridauth-yandex\/Providers\/Yandex.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/hybridauth-yandex\/Providers\/Yandex.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/additional-providers\/Install.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/additional-providers\/Install.html",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/config.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/config.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Auth.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Auth.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Endpoint.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Endpoint.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Error.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Error.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Exception.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Exception.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/index.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/index.html",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Logger.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Logger.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Provider_Adapter.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Provider_Adapter.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Provider_Model.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Provider_Model.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Provider_Model_OAuth1.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Provider_Model_OAuth1.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Provider_Model_OAuth2.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Provider_Model_OAuth2.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Provider_Model_OpenID.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Provider_Model_OpenID.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/AOL.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/AOL.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/Facebook.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/Facebook.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/Foursquare.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/Foursquare.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/Google.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/Google.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/LinkedIn.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/LinkedIn.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/Live.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/Live.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/OpenID.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/OpenID.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/Twitter.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/Twitter.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Providers\/Yahoo.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Providers\/Yahoo.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/resources\/index.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/resources\/index.html",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/resources\/openid_policy.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/resources\/openid_policy.html",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/resources\/openid_realm.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/resources\/openid_realm.html",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/resources\/openid_xrds.xml": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/resources\/openid_xrds.xml",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/Storage.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/Storage.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/StorageInterface.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/StorageInterface.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/Facebook\/base_facebook.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/Facebook\/base_facebook.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/Facebook\/facebook.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/Facebook\/facebook.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/Facebook\/fb_ca_chain_bundle.crt": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/Facebook\/fb_ca_chain_bundle.crt",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/index.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/index.html",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/LinkedIn\/LinkedIn.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/LinkedIn\/LinkedIn.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/OAuth\/OAuth.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/OAuth\/OAuth.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/OAuth\/OAuth1Client.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/OAuth\/OAuth1Client.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/OAuth\/OAuth2Client.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/OAuth\/OAuth2Client.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/thirdparty\/OpenID\/LightOpenID.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/thirdparty\/OpenID\/LightOpenID.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/User.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/User.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/User_Activity.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/User_Activity.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/User_Contact.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/User_Contact.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/Hybrid\/User_Profile.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/Hybrid\/User_Profile.php",
+		"oF": 0
+		},
+	"\/lib\/hybridauth\/index.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/hybridauth\/index.php",
+		"oF": 0
+		},
+	"\/lib\/image.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/image.php",
+		"oF": 0
+		},
+	"\/lib\/log.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/log.php",
+		"oF": 0
+		},
+	"\/lib\/magic.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/magic.php",
+		"oF": 0
+		},
+	"\/lib\/markdown.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/markdown.php",
+		"oF": 0
+		},
+	"\/lib\/matrix.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/matrix.php",
+		"oF": 0
+		},
+	"\/lib\/Mobile_Detect.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/Mobile_Detect.php",
+		"oF": 0
+		},
+	"\/lib\/session.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/session.php",
+		"oF": 0
+		},
+	"\/lib\/smtp.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/smtp.php",
+		"oF": 0
+		},
+	"\/lib\/template.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/template.php",
+		"oF": 0
+		},
+	"\/lib\/test.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/test.php",
+		"oF": 0
+		},
+	"\/lib\/utf.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/utf.php",
+		"oF": 0
+		},
+	"\/lib\/web.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/web.php",
+		"oF": 0
+		},
+	"\/lib\/web\/geo.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/web\/geo.php",
+		"oF": 0
+		},
+	"\/lib\/web\/google\/staticmap.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/web\/google\/staticmap.php",
+		"oF": 0
+		},
+	"\/lib\/web\/openid.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/web\/openid.php",
+		"oF": 0
+		},
+	"\/lib\/web\/pingback.php": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/lib\/web\/pingback.php",
+		"oF": 0
+		},
+	"\/readme.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/readme.html",
+		"oF": 0
+		},
+	"\/readme.md": {
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"eLB": 0,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"oA": 0,
+		"oAP": "\/readme.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
+	"\/tmp\/15s60eem26snu.1ckrdadjumoii.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.1ckrdadjumoii.php",
+		"oF": 0
+		},
+	"\/tmp\/15s60eem26snu.1js7y3vowjcrc.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.1js7y3vowjcrc.php",
+		"oF": 0
+		},
+	"\/tmp\/15s60eem26snu.2p0ilao24logo.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.2p0ilao24logo.php",
+		"oF": 0
+		},
+	"\/tmp\/15s60eem26snu.2yvqr7atxgkkk.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.2yvqr7atxgkkk.php",
+		"oF": 0
+		},
+	"\/v4-database-init.sql": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/v4-database-init.sql",
+		"oF": 0
+		},
+	"\/views\/account.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/account.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/analytics.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/analytics.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/footer.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/footer.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/header.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/header.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/login.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/login.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/nav-admin.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/nav-admin.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/nav-user.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/nav-user.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/result.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/result.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/show-test.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/show-test.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/test.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/test.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/tests.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/tests.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/tools\/fixdatabase.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/tools\/fixdatabase.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/tools\/mailchimp.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/tools\/mailchimp.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/user.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/user.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/users.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/users.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/vetted.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/admin\/vetted.htm",
+		"oF": 0
+		},
+	"\/views\/browserconfig.xml": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/views\/browserconfig.xml",
+		"oF": 0
+		},
+	"\/views\/emails\/footer.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/emails\/footer.html",
+		"oF": 0
+		},
+	"\/views\/emails\/welcome.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/emails\/welcome.html",
+		"oF": 0
+		},
+	"\/views\/emails\/your_test_results.html": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/emails\/your_test_results.html",
+		"oF": 0
+		},
+	"\/views\/footer.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/footer.htm",
+		"oF": 0
+		},
+	"\/views\/home.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/home.htm",
+		"oF": 0
+		},
+	"\/views\/layout.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/layout.htm",
+		"oF": 0
+		},
+	"\/views\/manifest.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/views\/manifest-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/views\/readme.md": {
+		"cS": 0,
+		"eF": 1,
+		"eL": 1,
+		"eLB": 0,
+		"ema": 1,
+		"eSQ": 1,
+		"ft": 4096,
+		"oA": 0,
+		"oAP": "\/views\/readme.html",
+		"oF": 0,
+		"oFM": 0,
+		"oS": 0,
+		"pHT": 0,
+		"pME": 1,
+		"rFN": 0,
+		"uCM": 0
+		},
+	"\/views\/register.form.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/register.form.htm",
+		"oF": 0
+		},
+	"\/views\/result.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/result.htm",
+		"oF": 0
+		},
+	"\/views\/test.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/test.htm",
+		"oF": 0
+		},
+	"\/views\/thank-you-for-registering.htm": {
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/views\/thank-you-for-registering.htm",
 		"oF": 0
 		}
 	},
@@ -1124,14 +2408,14 @@
 "manualImportLinks": {
 	},
 "projectAttributes": {
-	"creationDate": 503839050,
-	"displayValue": "html-css-js-boilerplate",
-	"displayValueWasSetByUser": 0,
-	"iconImageName": "meme-soon"
+	"creationDate": 503845943,
+	"displayValue": "visionary-dev",
+	"displayValueWasSetByUser": 1,
+	"iconImageName": "meme-grumpy"
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
-	"alwaysUseExternalServer": 0,
+	"alwaysUseExternalServer": 1,
 	"animateCSSInjections": 1,
 	"autoBuildNewItems": 1,
 	"autoprefixerBrowserString": "> 1%, last 2 versions, Firefox ESR, Opera 12.1",
@@ -2453,7 +3737,7 @@
 			}
 		},
 	"esLintSourceType": 0,
-	"externalServerAddress": "http:\/\/localhost:8888",
+	"externalServerAddress": "http:\/\/colour-blindness.dev",
 	"gitIgnoreBuildFolder": 1,
 	"hideConfigFile": 0,
 	"jsCheckerReservedNamesString": "",
@@ -2463,7 +3747,7 @@
 			"flagValue": -1
 			},
 		"bitwise": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"boss": {
@@ -2487,7 +3771,7 @@
 			"flagValue": -1
 			},
 		"curly": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"debug": {
@@ -2503,11 +3787,11 @@
 			"flagValue": -1
 			},
 		"elision": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"eqeqeq": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"eqnull": {
@@ -2535,7 +3819,7 @@
 			"flagValue": -1
 			},
 		"freeze": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"funcscope": {
@@ -2567,7 +3851,7 @@
 			"flagValue": -1
 			},
 		"jquery": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"lastsemic": {
@@ -2575,7 +3859,7 @@
 			"flagValue": -1
 			},
 		"latedef": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"laxbreak": {
@@ -2627,11 +3911,11 @@
 			"flagValue": -1
 			},
 		"newcap": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"noarg": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"nocomma": {
@@ -2651,7 +3935,7 @@
 			"flagValue": -1
 			},
 		"nonew": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"nonstandard": {
@@ -2659,7 +3943,7 @@
 			"flagValue": -1
 			},
 		"notypeof": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"noyield": {
@@ -2691,7 +3975,7 @@
 			"flagValue": -1
 			},
 		"regexp": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"rhino": {
@@ -2731,11 +4015,11 @@
 			"flagValue": -1
 			},
 		"undef": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"unused": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"varstmt": {
@@ -2866,7 +4150,7 @@
 		"autoOutputPathRelativePath": "\/min",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0,
+		"autoOutputPathStyle": 2,
 		"createSourceMap": 0,
 		"minifyOutput": 1,
 		"syntaxCheckerStyle": 1,
@@ -2894,8 +4178,8 @@
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.html",
 		"autoOutputPathRelativePath": "",
-		"autoOutputPathReplace1": "kit",
-		"autoOutputPathReplace2": "html",
+		"autoOutputPathReplace1": "",
+		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0
 		},
 	"languageDefaultsLESS": {
@@ -2905,8 +4189,8 @@
 		"autoOutputPathRelativePath": "..\/css",
 		"autoOutputPathReplace1": "less",
 		"autoOutputPathReplace2": "css",
-		"autoOutputPathStyle": 0,
-		"createSourceMap": 1,
+		"autoOutputPathStyle": 2,
+		"createSourceMap": 0,
 		"disableJavascript": 0,
 		"ieCompatibility": 1,
 		"outputStyle": 0,
@@ -2969,7 +4253,7 @@
 		"autoOutputPathRelativePath": "..\/css",
 		"autoOutputPathReplace1": "sass",
 		"autoOutputPathReplace2": "css",
-		"autoOutputPathStyle": 0,
+		"autoOutputPathStyle": 2,
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"decimalPrecision": 10,
@@ -2997,7 +4281,7 @@
 		"autoOutputPathRelativePath": "..\/css",
 		"autoOutputPathReplace1": "stylus",
 		"autoOutputPathReplace2": "css",
-		"autoOutputPathStyle": 0,
+		"autoOutputPathStyle": 2,
 		"createSourceMap": 0,
 		"debugStyle": 0,
 		"importCSS": 0,
@@ -3021,7 +4305,7 @@
 		"autoOutputPathRelativePath": "\/js",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 0,
+		"autoOutputPathStyle": 2,
 		"createDeclarationFile": 0,
 		"createSourceMap": 0,
 		"jsxMode": 0,
@@ -3162,7 +4446,7 @@
 			"flagValue": -1
 			},
 		"screw-ie8": {
-			"active": 1,
+			"active": 0,
 			"flagValue": -1
 			},
 		"semicolons": {
