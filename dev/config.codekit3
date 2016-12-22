@@ -113,6 +113,22 @@
 		"oF": 0,
 		"opt": 0
 		},
+	"\/assets\/images\/facebook-og-image.jpg": {
+		"ft": 16384,
+		"iS": 21256,
+		"oA": 0,
+		"oAP": "\/assets\/images\/facebook-og-image.jpg",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/assets\/images\/facebook-og-image.png": {
+		"ft": 32768,
+		"iS": 13056,
+		"oA": 0,
+		"oAP": "\/assets\/images\/facebook-og-image.png",
+		"oF": 0,
+		"opt": 1
+		},
 	"\/assets\/images\/graph.png": {
 		"ft": 32768,
 		"iS": 121319,
