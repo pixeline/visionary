@@ -55,7 +55,7 @@ if($auth_connected){
 			'gender'         => $user_profile->gender == "male" ? "M" : "F",
 			'role'           => "user",
 			'countries_iso'  => "BE",
-			'postcode'		 => "",
+			'postcode'		 => $user_profile->zip,
 			'last_login'	 => date("Y-m-d H:i:s")
 		);
 		// if not add the new user

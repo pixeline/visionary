@@ -31,6 +31,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/assets\/images\/facebook-og-image.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 7200,
+		"inputAbbreviatedPath": "\/assets\/images\/facebook-og-image.png",
+		"outputAbbreviatedPath": "\/assets\/images\/facebook-og-image.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/assets\/images\/graph.png": {
 		"fileType": 32768,
 		"ignore": 0,
