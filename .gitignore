@@ -10,3 +10,7 @@ v2/node_modules/*
 dev/tmp/
 
 *.codekit3
+
+dev/config.codekit3
+
+*.codekit3
