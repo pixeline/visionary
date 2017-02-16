@@ -107,6 +107,7 @@ $f3->route('POST /api/oauth', function($f3){ require 'controllers/oauth/login.po
 $f3->route('GET /api/oauth/me', function($f3){ require 'controllers/oauth/me.get.php'; });
 $f3->route('GET /api/oauth/me/tests', function($f3){ require 'controllers/oauth/tests.get.php'; });
 
+$f3->route('POST /api/subscribe', function($f3){ require 'controllers/oauth/subscribe.post.php'; });
 
 /******************
     ADMIN

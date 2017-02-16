@@ -17,6 +17,9 @@ if( $hybridauth->isConnectedWith("Google") ){
 	$auth_connected = true;
 	$user_profile = $auth->getUserProfile();
 
+	$token = $auth->getAccessToken()["access_token"];
+	$token_provider = "google_token";
+
 	$user_profile->gender = strtoupper(substr($user_profile->gender, 0, 1));
 }
 
@@ -28,6 +31,9 @@ if( $hybridauth->isConnectedWith("Facebook") ){
 	}
 	$auth_connected = true;
 	$user_profile = $auth->getUserProfile();
+
+	$token = $auth->getAccessToken()["access_token"];
+	$token_provider = "facebook_token";
 }
 
 if( $hybridauth->isConnectedWith("Twitter") ){
@@ -38,7 +44,9 @@ if( $hybridauth->isConnectedWith("Twitter") ){
 	}
 	$auth_connected = true;
 	$user_profile = $auth->getUserProfile();
-	
+
+	$token = $auth->getAccessToken()["access_token"];
+	$token_provider = "twitter_token";
 }
 
 if($auth_connected){
@@ -58,6 +66,7 @@ if($auth_connected){
 			'postcode'		 => $user_profile->zip,
 			'last_login'	 => date("Y-m-d H:i:s")
 		);
+
 		// if not add the new user
 		$query = 'INSERT INTO users (name, email, password, birth_date, vetted, gender, role, countries_iso, postcode, last_login)
 						VALUES (:name, :email, :password, :birth_date, :vetted, :gender, :role, :countries_iso, :postcode, :last_login)';
@@ -65,9 +74,19 @@ if($auth_connected){
 		$result = $db->exec($query, $user);
 		$user['id'] = $db->lastInsertId();
 	}
+
+	//update token
+	$token = $auth->getAccessToken()["access_token"];
+	$token_provider = "facebook_token";
+
+	$db->exec(
+		"UPDATE users SET ".$token_provider."=:token WHERE id=:users_id", 
+		array(':token'=> $token, ':users_id'=> $user['id'])
+	);
 }
 
 if($user){
+
 	$user['is_logged_in'] = 'ok';
 	// Update the session
 	$f3->set('SESSION.user', $user);
@@ -75,7 +94,7 @@ if($user){
 		"UPDATE users SET last_login=:now WHERE id=:users_id", 
 		array(':now'=> date("Y-m-d H:i:s"), ':users_id'=> $f3->get("SESSION.user.id"))
 	);
-	$f3->reroute("/test");
+	//$f3->reroute("/test");
 }
 
 $f3->set('countries', getCountries($lang) );
