@@ -1,6 +1,5 @@
 
 v2/build/
-site-v2/
 *.tgz
 *.bkp
 *.DS_Store
