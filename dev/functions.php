@@ -210,12 +210,12 @@ function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plenneva
 		$f3->set('fullname', $f3->get('SESSION.user.name'));
 		$f3->set('visionary_url', $f3->get('WWWROOT'));
 		$template = 'emails/your_test_results.html';
-		$subject = _('résultat de votre test de perception des couleurs');
+		$subject = __('résultat de votre test de perception des couleurs');
 		break;
 
 	case 'welcome':
 	default:
-		$subject = _('informations sur votre compte');
+		$subject = __('informations sur votre compte');
 		$template = 'emails/welcome.html';
 		break;
 	}
@@ -229,4 +229,9 @@ function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plenneva
 	return 'ok';
 }
 
-
+function _e($str){
+	echo gettext($str);
+}
+function __($str){
+	return gettext($str);
+}

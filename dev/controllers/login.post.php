@@ -39,10 +39,10 @@ if(
             );
             $f3->set('SESSION.user', $user);
         } else {
-            $errors[] = _("Email or password is not valid");
+            $errors[] = __("Email or password is not valid");
         }
     } else {
-        $errors[] = _("Missing or not valid email or password");
+        $errors[] = __("Missing or not valid email or password");
     }
 } 
 

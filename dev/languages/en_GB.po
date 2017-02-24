@@ -1,14 +1,78 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2017-01-14 18:45+0100\n"
-"PO-Revision-Date: 2017-01-14 18:47+0100\n"
+"Project-Id-Version: Visionary\n"
+"POT-Creation-Date: 2017-01-15 00:26+0100\n"
+"PO-Revision-Date: 2017-01-15 00:26+0100\n"
 "Last-Translator: Alexandre Plennevaux <alexandre@pixeline.be>\n"
 "Language-Team: \n"
+"Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.11\n"
-"X-Poedit-Basepath: .\n"
+"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: en_GB\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: assets\n"
+
+#: controllers/admin/admin.get.post.php:43 controllers/login.post.php:42
+msgid "Email or password is not valid"
+msgstr "Email or password is not valid"
+
+#: controllers/admin/admin.get.post.php:47 controllers/login.post.php:45
+msgid "Missing or not valid email or password"
+msgstr ""
+
+#: controllers/register.post.php:28
+msgid "Veuillez indiquer votre adresse email."
+msgstr ""
+
+#: controllers/register.post.php:34
+msgid "Veuillez indiquer votre mot de passe."
+msgstr ""
+
+#: controllers/register.post.php:37
+msgid "Veuillez indiquer votre année de naissance."
+msgstr ""
+
+#: controllers/register.post.php:40
+msgid "Veuillez indiquer votre genre."
+msgstr ""
+
+#: controllers/register.post.php:44
+msgid ""
+"L'adresse email est invalide. Veuillez vous assurer qu'il y a bien un @ et "
+"un . à sa droite."
+msgstr ""
+
+#: controllers/result.get.php:30
+msgid "D'après ce test, vous  n'êtes pas daltonien."
+msgstr ""
+
+#: controllers/result.get.php:37
+msgid ""
+"D'après ce test, vous avez un daltonisme de type <strong>protanope</strong> "
+"à "
+msgstr ""
+
+#: controllers/result.get.php:39
+msgid ""
+"D'après ce test, vous avez un daltonisme de type <strong>tritanope</strong> "
+"à "
+msgstr ""
+
+#: controllers/result.get.php:41
+msgid ""
+"D'après ce test, vous avez un daltonisme de type <strong>deuteranope</"
+"strong> à "
+msgstr ""
+
+#: functions.php:213
+msgid "résultat de votre test de perception des couleurs"
+msgstr ""
+
+#: functions.php:218
+msgid "informations sur votre compte"
+msgstr ""

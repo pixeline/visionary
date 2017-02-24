@@ -27,18 +27,18 @@ $adjusted_c_index = ($test['diag_c_index']>4.2) ? 4.2 : $test['diag_c_index'];
 
 $cvd_ratio = round(($adjusted_c_index - 1.6) * 100 / (4.2 - 1.6)) ."%";
 	
-$message = _("D'après ce test, vous  n'êtes pas daltonien.");
+$message = __("D'après ce test, vous  n'êtes pas daltonien.");
 
 if($test['diag_c_index'] > 1.6){
 
 	$is_colorblind = true;
 
 	if ($test['diag_confusion_angle'] >= 0.7){
-		$message = _("D'après ce test, vous avez un daltonisme de type <strong>protanope</strong> à ");
+		$message = __("D'après ce test, vous avez un daltonisme de type <strong>protanope</strong> à ");
 	} else if ($test['diag_confusion_angle'] < -65) {
-			$message = _("D'après ce test, vous avez un daltonisme de type <strong>tritanope</strong> à ");
+			$message = __("D'après ce test, vous avez un daltonisme de type <strong>tritanope</strong> à ");
 	} else {
-		$message = _("D'après ce test, vous avez un daltonisme de type <strong>deuteranope</strong> à ");
+		$message = __("D'après ce test, vous avez un daltonisme de type <strong>deuteranope</strong> à ");
 	}
 
 	$message .= ($is_colorblind) ? "<strong>$cvd_ratio</strong>." : '';

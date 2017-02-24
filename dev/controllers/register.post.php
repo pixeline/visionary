@@ -25,23 +25,23 @@ if( $f3->get('POST.user-type') == "registered" ){
 
 	// required fields: email, birthdate, gender
 	if(empty($email)){
-		$errors['email'] = _("Veuillez indiquer votre adresse email.");
+		$errors['email'] = __("Veuillez indiquer votre adresse email.");
 	}
 	// check if user already exist
 	$user = isAlreadyRegistered($email);
 
 	if(empty($password )){
-		$errors['password'] = _("Veuillez indiquer votre mot de passe.");
+		$errors['password'] = __("Veuillez indiquer votre mot de passe.");
 	}
 	if(empty($birth_date)){
-		$errors['birth_date'] = _("Veuillez indiquer votre année de naissance.");
+		$errors['birth_date'] = __("Veuillez indiquer votre année de naissance.");
 	}
 	if(empty($gender)){
-		$errors['gender'] = _("Veuillez indiquer votre genre.");
+		$errors['gender'] = __("Veuillez indiquer votre genre.");
 	}
 	// valid email
 	if(!is_email_valid($email)){
-		$errors['email'] = _("L'adresse email est invalide. Veuillez vous assurer qu'il y a bien un @ et un . à sa droite.");
+		$errors['email'] = __("L'adresse email est invalide. Veuillez vous assurer qu'il y a bien un @ et un . à sa droite.");
 	}
 
 	if(count($errors)>0){
