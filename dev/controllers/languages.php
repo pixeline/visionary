@@ -51,4 +51,4 @@ if (!function_exists('_')){
 		}
 	}
 
-setLanguage();
+//setLanguage();

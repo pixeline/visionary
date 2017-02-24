@@ -7,7 +7,7 @@ if(
 ){
 
 	$email = trim($f3->get("POST.email"));
-    //$password = trim($f3->get("POST.password"));
+    $password = trim($f3->get("POST.password"));
     
     $stmt = $db->prepare(
         "SELECT id FROM users WHERE email=:useremail AND password=:password", // 

@@ -77,7 +77,7 @@ if($auth_connected){
 
 	//update token
 	$token = $auth->getAccessToken()["access_token"];
-	$token_provider = "facebook_token";
+	//$token_provider = "facebook_token";
 
 	$db->exec(
 		"UPDATE users SET ".$token_provider."=:token WHERE id=:users_id", 
