@@ -99,15 +99,15 @@ $f3->route('GET /account', function($f3){ require 'controllers/account.get.php';
 /******************
     API
 *******************/
+$f3->route('GET /api/oauth/me/tests', function($f3){ require 'controllers/oauth/tests.get.php'; });
 $f3->route('GET|POST /api/@table/@id', function($f3){ require 'controllers/api.get.post.php'; });
 $f3->route('GET|POST /api/@table/@id/@selection', function($f3){ require 'controllers/api.get.post.php'; });
 
-$f3->route('GET /api', function($f3){ echo View::instance()->render('views/api.htm'); });
+$f3->route('POST /api/register', function($f3){ require 'controllers/api.register.post.php'; });
+$f3->route('POST /api/subscribe',function($f3){ require 'controllers/api.register.post.php'; });
 $f3->route('POST /api/oauth', function($f3){ require 'controllers/oauth/login.post.php'; });
 $f3->route('GET /api/oauth/me', function($f3){ require 'controllers/oauth/me.get.php'; });
-$f3->route('GET /api/oauth/me/tests', function($f3){ require 'controllers/oauth/tests.get.php'; });
-
-$f3->route('POST /api/subscribe', function($f3){ require 'controllers/oauth/subscribe.post.php'; });
+$f3->route('GET /api', function($f3){ echo View::instance()->render('views/api.htm'); });
 
 /******************
     ADMIN

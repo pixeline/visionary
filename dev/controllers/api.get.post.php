@@ -1,20 +1,20 @@
 <?php
 global $db, $lang;
 
-// #api Mettre en place un webservice qui sera utilisé par l'extension chrome: 
+// #api Mettre en place un webservice qui sera utilisé par l'extension chrome:
 // user/54 -> retourne le type de daltonisme (diag_result et diag_serie)
 
 /**
-	use : /api/user/7/
-	use : /api/user/7/latest
-*/
+ use : /api/user/7/
+ use : /api/user/7/latest
+ */
 
 $errors = new stdClass();
 
-$allowed_tables = array("country", "interface","test","user");// tests users
+$allowed_tables = array("country", "interface", "test", "user");// tests users
 
 if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARAMS.table")) ){
-	
+
 	$seek = "users_id";
 
 	if( is_email_valid( trim($f3->get("PARAMS.id")) ) ){
@@ -31,40 +31,45 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 
 	// check if autorised table
 	switch ($table) {
-		case 'user': 
+	case 'user':
 
-			$sql = "SELECT diag_result, diag_ratio, diag_serie, email, test_end_date 
-				FROM tests LEFT JOIN users on users.id=tests.users_id 
-				WHERE ".$seek."=? AND tests.finished='1' 
+		$sql = "SELECT diag_result, diag_ratio, diag_serie, email, test_end_date
+				FROM tests LEFT JOIN users on users.id=tests.users_id
+				WHERE ".$seek."=? AND tests.finished='1'
 				ORDER BY test_end_date DESC";
-			
-			if($selection === 'latest'){
-				$sql .= " LIMIT 0,1";
-			}
 
+		if($selection === 'latest'){
+			$sql .= " LIMIT 0,1";
+		}
+
+		$results = $db->exec($sql, $seek_value);
+
+		if(empty($results)){
+			$errors->error = "User ".$seek." hasn't made any test.";
+			// Perhaps the user hasn't made any test, so we simply get his user data.
+			
+			$sql = 'SELECT * FROM users WHERE users.'.$seek.'=?';
 			$results = $db->exec($sql, $seek_value);
-
 			if(empty($results)){
-				$errors->error = "The selected ".$seek." doesn't exist"; 
+				$errors->error = "User ".$seek." does not exist.";
 			}
-			
-			if($selection === 'latest'){
-				$results = $results[0];
-			}
-			
-			break;
-		default: 
-			$errors->error = "The table '$table' does not exist.";
+		} else if($selection === 'latest'){
+			$results = $results[0];
+		}
+		
+		break;
+		
+	default:
+		$errors->error = "The table '$table' does not exist.";
 		break;
 	}
-	
+
 	// return json if no errors
 	header('Content-Type: application/json');
 	if( empty($errors->error) ){
 		echo json_encode($results);
 	} else {
 		echo json_encode($errors);
-		
 	}
-	
-} 
+
+}
