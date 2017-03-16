@@ -17,7 +17,7 @@ if(
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$user) {
-        $err = array('error' => 'Wrong email', 'code' => 401 );
+        $err = array('error' => 'Cet email n\'est pas reconnu.', 'code' => 401 );
         echo json_encode($err);
         exit;
     }
