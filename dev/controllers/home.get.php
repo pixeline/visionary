@@ -96,9 +96,11 @@ if($user){
 	);
 	//$f3->reroute("/test");
 }
-
+if( !empty($f3->get('SESSION.errors') ) ){
+	$f3->set('errors', $f3->get('SESSION.errors'));
+	
+}
 $f3->set('countries', getCountries($lang) );
 $f3->set('content', 'views/home.htm');
-
 echo View::instance()->render('views/layout.htm');
- 
+$f3->clear('SESSION.errors');

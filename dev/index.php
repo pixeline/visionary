@@ -80,7 +80,6 @@ $f3->route('GET /', function($f3){  require 'controllers/home.get.php'; });
 $f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
 $f3->route('POST /login', function($f3){ require 'controllers/login.post.php'; });
 $f3->route('GET|POST /register-auth', function($f3){ require 'controllers/register-auth.post.php'; });
-//$f3->route('GET /register-auth', function($f3){ require 'controllers/register-auth.get.php'; });
 $f3->route('GET /thank-you-for-registering', function($f3){ require 'controllers/thank-you-for-registering.get.php'; });
 
 // do the test and save an anonymous user

@@ -10,14 +10,16 @@ $(document).ready(function(){
 		$('i.fa', this).stop().toggleClass('fa-rotate-180');
 	});
 
-	var $subscribeMail = $("#subscribe-mail");
-	var $registerForm = $("#register-form");
+	$("#subscribe-mail").on("click", function(e){
+		e.preventDefault();
+		$("#connexion-form").addClass("hidden");
+		$("#register-form").fadeIn().removeClass("hidden");	
+	});
 
-	$subscribeMail.on("click", function(){
-		$subscribeMail.fadeOut("fast", function(){
-			$("#connexion-form").addClass("hidden");
-			$registerForm.fadeIn().removeClass("hidden");	
-		});
+	$("#login-mail").on("click", function(e){
+		e.preventDefault();
+		$("#register-form").addClass("hidden");
+		$("#connexion-form").fadeIn().removeClass("hidden");
 	});
 
 	var ruleRegex = /^(.+?)\[(.+)\]$/,
@@ -35,10 +37,6 @@ $(document).ready(function(){
 	    numericDashRegex = /^[\d\-\s]+$/,
 	    urlRegex = /^((http|https):\/\/(\w+:{0,1}\w*@)?(\S+)|)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/,
 	    dateRegex = /\d{4}-\d{1,2}-\d{1,2}/;
-
-	$("#login-mail").on("click", function(event){
-		$("#login-mail-form").fadeIn().removeClass("hidden");
-	});
 
 	$("#auth-register").submit(function(event){
 		

@@ -39,10 +39,10 @@ if(
             );
             $f3->set('SESSION.user', $user);
         } else {
-            $errors[] = _("Email or password is not valid");
+            $errors[] = _("Email et/ou mot de passe inconnu. Peut-être devez-vous vous créer un compte?");
         }
     } else {
-        $errors[] = _("Missing or not valid email or password");
+        $errors[] = _("Il manque l'email ou le mot de passe.");
     }
 } 
 
@@ -63,7 +63,7 @@ if(
     $f3->reroute('/thank-you-for-registering');
 }
 
-$f3->set('errors', $errors);
+$f3->set('SESSION.errors', $errors);
 $f3->reroute('/');
 
 
