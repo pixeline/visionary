@@ -2324,6 +2324,209 @@
 		"rFN": 0,
 		"uCM": 0
 		},
+	"\/situations\/cubeportfolio\/css\/cubeportfolio.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/situations\/cubeportfolio\/css\/cubeportfolio-min.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/situations\/cubeportfolio\/css\/cubeportfolio.min.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/situations\/cubeportfolio\/css\/cubeportfolio.min-min.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/situations\/cubeportfolio\/img\/cbp-sprite.png": {
+		"ft": 32768,
+		"iS": 8717,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/cubeportfolio\/img\/cbp-sprite.png",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/cubeportfolio\/img\/cbp-sprite.psd": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/situations\/cubeportfolio\/img\/cbp-sprite.psd",
+		"oF": 0
+		},
+	"\/situations\/cubeportfolio\/js\/jquery.cubeportfolio.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/situations\/cubeportfolio\/js\/min\/jquery.cubeportfolio-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/situations\/cubeportfolio\/js\/jquery.cubeportfolio.min.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/situations\/cubeportfolio\/js\/min\/jquery.cubeportfolio.min-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/situations\/images\/bayern-vs-porto_avec-aide.jpg": {
+		"ft": 16384,
+		"iS": 348168,
+		"oA": 0,
+		"oAP": "\/situations\/images\/bayern-vs-porto_avec-aide.jpg",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/carte-prix-immobilier-paris_correction_2.jpg": {
+		"ft": 16384,
+		"iS": 858944,
+		"oA": 0,
+		"oAP": "\/situations\/images\/carte-prix-immobilier-paris_correction_2.jpg",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/ishihara-17.png": {
+		"ft": 32768,
+		"iS": 155683,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/ishihara-17.png",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/ishihara-25.png": {
+		"ft": 32768,
+		"iS": 159542,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/ishihara-25.png",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/link_blurred.png": {
+		"ft": 32768,
+		"iS": 50473,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/link_blurred.png",
+		"oF": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"\/situations\/images\/metro_correction2.png": {
+		"ft": 32768,
+		"iS": 661870,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/metro_correction2.png",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/ovh-dns.png": {
+		"ft": 32768,
+		"iS": 107950,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/ovh-dns.png",
+		"oF": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"\/situations\/images\/pomme-rouge-dans-pommier.jpg": {
+		"ft": 16384,
+		"iS": 148718,
+		"oA": 0,
+		"oAP": "\/situations\/images\/pomme-rouge-dans-pommier.jpg",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/protanopia_round.jpg": {
+		"ft": 16384,
+		"iS": 12427,
+		"oA": 0,
+		"oAP": "\/situations\/images\/protanopia_round.jpg",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/quelle-saison.png": {
+		"ft": 32768,
+		"iS": 1317775,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/quelle-saison.png",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/reverse-ishihara-animaux.jpg": {
+		"ft": 16384,
+		"iS": 4399458,
+		"oA": 0,
+		"oAP": "\/situations\/images\/reverse-ishihara-animaux.jpg",
+		"oF": 0,
+		"opt": 1,
+		"q": 100
+		},
+	"\/situations\/images\/trading-ProRealTime.png": {
+		"ft": 32768,
+		"iS": 72151,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/trading-ProRealTime.png",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/trivial.jpg": {
+		"ft": 16384,
+		"iS": 112853,
+		"oA": 0,
+		"oAP": "\/situations\/images\/trivial.jpg",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/images\/visionary_carte-de-france.png": {
+		"ft": 32768,
+		"iS": 746495,
+		"l": 1,
+		"oA": 0,
+		"oAP": "\/situations\/images\/visionary_carte-de-france.png",
+		"oF": 0,
+		"opt": 0,
+		"q": 100
+		},
+	"\/situations\/index.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/situations\/index.php",
+		"oF": 0
+		},
+	"\/situations\/js\/main.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/situations\/js\/min\/main-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
 	"\/tmp\/15s60eem26snu.1ckrdadjumoii.php": {
 		"ft": 8192,
 		"oA": 2,
