@@ -1,4 +1,3 @@
-
 v2/build/
 *.tgz
 *.bkp
@@ -6,7 +5,9 @@ v2/build/
 v2/node_modules/*
 *.sass-cache
 *.bak
-
 dev/tmp/
-
 *.codekit3
+dev/config.production.ini
+dev/config.staging.ini
+dev/database.mwb.bak
+dev/*.sql
