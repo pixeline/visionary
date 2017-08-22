@@ -57,16 +57,16 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			'user_email'=> FILTER_VALIDATE_EMAIL,
 		);
 		$inputs = filter_var_array($f3->get('POST'), $args);
-		
+
 		$sql_keys = implode(',', array_keys($args));
 		$sql_values = implode(',' , $inputs);
 		$sql = "INSERT INTO bugtracker ($sql_keys) VALUES( $sql_values);";
 		$results = $db->exec( $sql );
-		
+
 		header('Content-Type: application/json; charset=utf-8');
-		echo json_encode('result' => $results);
+		echo json_encode( array('result' => $results));
 		exit;
-		
+
 		break;
 
 	case 'user':
