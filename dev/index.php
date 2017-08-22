@@ -121,6 +121,9 @@ $f3->route('GET /admin/users', function($f3){ require 'controllers/admin/users.g
 $f3->route('GET /admin/vetted', function($f3){ require 'controllers/admin/vetted.get.php'; });
 $f3->route('GET /admin/tests', function($f3){ require 'controllers/admin/tests.get.php'; });
 $f3->route('GET /admin/test/@unique_test_url', function($f3){ require 'controllers/admin/test.get.php'; });
+$f3->route('GET /admin/bugtracker', function($f3){ require 'controllers/admin/bugtracker.php'; });
+$f3->route('GET|POST /admin/bugtracker/@action/@id', function($f3){ require 'controllers/admin/bugtracker.php'; });
+
 
 // charts
 $f3->route('GET /admin/analytics', function($f3){ require 'controllers/admin/analytics.get.php'; });

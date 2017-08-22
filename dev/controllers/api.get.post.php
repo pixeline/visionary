@@ -11,7 +11,7 @@ global $db, $lang;
 
 $errors = new stdClass();
 
-$allowed_tables = array("country", "interface", "test", "user");// tests users
+$allowed_tables = array("country", "interface", "test", "user", "bugtracker");// tests users
 
 if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARAMS.table")) ){
 
