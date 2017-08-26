@@ -15,9 +15,9 @@ if($f3->get("POST")){
 	$useremail = trim($f3->get("POST.email"));
 	$password = trim($f3->get("POST.password"));
 
-	if( $action == "login" && !empty($useremail) && !empty($password) && is_email_valid($useremail) ){ 
+	if( $action == "login" && !empty($useremail) && !empty($password) && is_email_valid($useremail) ){
 		$stmt = $db->prepare(
-			"SELECT *, NULL AS password FROM users WHERE email=:useremail AND password=:password", 
+			"SELECT *, NULL AS password FROM users WHERE email=:useremail AND password=:password",
 			array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL)
 		);
 		$stmt->bindParam(':useremail', $useremail);
@@ -34,33 +34,30 @@ if($f3->get("POST")){
 				'gender'         => $user_result->gender,
 				'role'           => $user_result->role,
 				'countries_iso'  => $user_result->countries_iso,
-				'id'           	 => $user_result->id,
-				'is_logged_in' 	 => 'ok'
+				'id'             => $user_result->id,
+				'is_logged_in'   => 'ok'
 			);
 
 			$f3->set('SESSION.user', $user);
 		} else {
 			$errors[] = _("Email or password is not valid");
 		}
-		
+
 	} else {
 		$errors[] = _("Missing or not valid email or password");
 	}
-} 
+}
 
-if( 
-	!empty($f3->get("SESSION.user")) && 
-	!empty($f3->get("SESSION.user")) && 
-	$f3->get("SESSION.user.is_logged_in") == "ok" ){
+if( !empty($f3->get("SESSION.user")) && $f3->get("SESSION.user.is_logged_in") == "ok" ){
 
 
 	$db->exec(
-			"UPDATE users SET last_login=:now WHERE id=:users_id", 
-				array(
-				':now'=> date("Y-m-d H:i:s"), 
-				':users_id'=> $f3->get("SESSION.user.id")
-				)
-			);
+		"UPDATE users SET last_login=:now WHERE id=:users_id",
+		array(
+			':now'=> date("Y-m-d H:i:s"),
+			':users_id'=> $f3->get("SESSION.user.id")
+		)
+	);
 
 	$f3->reroute("admin/user");
 }
@@ -69,5 +66,3 @@ $f3->set('errors', $errors);
 
 $f3->set('content', 'views/admin/login.htm');
 echo View::instance()->render('views/layout.htm');
-
-

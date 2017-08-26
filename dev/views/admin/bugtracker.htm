@@ -1,0 +1,46 @@
+<div class="admin-analytics">
+
+    <h1><i class="fa fa-bug" aria-hidden="true"></i> Bug Tracker</h1>
+
+<p><span class="big" style="font-size:24px">{{ @bugs_count }} daltonian bugs</span></p>
+
+<table class="pure-table pure-table-horizontal tablesorter bugs">
+    <thead>
+        <tr>
+	        <th>Date du rapport</th>
+            <th style="max-width:100px">URL</th>
+            <th>Titre de la page</th>
+            <th>Tech</th>
+            <th>Utilisateur</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <repeat group="{{ @bugs }}" value="{{ @bug }}" counter="{{ @key }}">
+            <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}">
+	            <td>{{ @bug->creation_date }}</td>
+                <td style="max-width:100px"><a target="_blank" title="Voir la page (nouvelle fenêtre)" href="{{ @bug->page_url }}">{{ @bug->page_url }}</a></td>
+                <td>{{ @bug->page_title }}</td>
+                <td><strong>OS:</strong> {{ @bug->operating_system }}<br>{{ 
+	                
+	                $browser = new Browser(@bug->browser);
+	                $browser->getPlatform();
+	                }}<br><strong>Ecran:</strong> {{ @bug->screen_width }}x{{ @bug->screen_height }}
+	            </td>
+                <td>{{ @bug->profile_name }}</td>
+<td></td>
+                <td>{{ @bug->screenshot_description }}<br>
+	            <a href="{{ @bug->screenshot }}" target="_blank"><img src="{{ @bug->screenshot_cropped_result }}"></a>
+                </td>
+            </tr>
+        </repeat>
+    </tbody>
+</table>
+
+<script src="/assets/js/jquery-1.12.0.min.js"></script>
+<script src="/assets/js/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("table").tablesorter({debug: false})
+    });
+</script>

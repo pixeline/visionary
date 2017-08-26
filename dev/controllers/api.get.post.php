@@ -66,7 +66,17 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			'user_email'=> FILTER_VALIDATE_EMAIL,
 		);
 		foreach($_POST as $k => $v){
-			$_POST[$k] = urldecode($v);
+			if( 'screenshot' == $k || 'screenshot_cropped_result' == $k){
+				// store base64 image data into an image file...
+				
+				$file_type = ( 'screenshot_cropped_result' == $k ) ? 'crop': '';
+				$filename_path = $file_type.'_'.md5(time().uniqid()).".jpg"; 
+				$decoded=base64_decode($v); 
+				file_put_contents('uploads/'.$filename_path,$decoded);
+				$_POST[$k] = 'uploads/'.$filename_path;
+			}else{
+				$_POST[$k] = urldecode($v);			
+			}
 		}
 		$inputs = filter_var_array($_POST, $args);
 		if (($inputs != null and $inputs != FALSE) ){

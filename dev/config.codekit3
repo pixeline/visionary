@@ -7,7 +7,7 @@
 		"uuidString": "C71E6B8E-C3E3-4199-90C1-3464B9E6F9F6"
 		}
 	],
-"creatorBuild": "25704",
+"creatorBuild": "25900",
 "files": {
 	"\/.htaccess": {
 		"ft": 8192,
@@ -24,6 +24,16 @@
 		"oAP": "\/assets\/admin\/pure-min-min.css",
 		"oF": 0,
 		"oS": 0
+		},
+	"\/assets\/css\/admin.css": {
+		"aP": 0,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 2,
+		"oAP": "\/assets\/css\/admin-min.css",
+		"oF": 0,
+		"oS": 3
 		},
 	"\/assets\/css\/app.css": {
 		"aP": 0,
@@ -100,11 +110,12 @@
 	"\/assets\/images\/bitcoin.png": {
 		"ft": 32768,
 		"iS": 5939,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/bitcoin.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/desc.gif": {
@@ -118,191 +129,210 @@
 	"\/assets\/images\/facebook-og-image.png": {
 		"ft": 32768,
 		"iS": 13056,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/facebook-og-image.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 1,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/graph.png": {
 		"ft": 32768,
 		"iS": 121319,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/graph.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/android-chrome-144x144.png": {
 		"ft": 32768,
 		"iS": 693,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/android-chrome-144x144.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/android-chrome-192x192.png": {
 		"ft": 32768,
 		"iS": 911,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/android-chrome-192x192.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/android-chrome-36x36.png": {
 		"ft": 32768,
 		"iS": 289,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/android-chrome-36x36.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/android-chrome-48x48.png": {
 		"ft": 32768,
 		"iS": 367,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/android-chrome-48x48.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/android-chrome-72x72.png": {
 		"ft": 32768,
 		"iS": 461,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/android-chrome-72x72.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/android-chrome-96x96.png": {
 		"ft": 32768,
 		"iS": 620,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/android-chrome-96x96.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-114x114.png": {
 		"ft": 32768,
 		"iS": 623,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-114x114.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-120x120.png": {
 		"ft": 32768,
 		"iS": 715,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-120x120.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-144x144.png": {
 		"ft": 32768,
 		"iS": 696,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-144x144.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-152x152.png": {
 		"ft": 32768,
 		"iS": 723,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-152x152.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-180x180.png": {
 		"ft": 32768,
 		"iS": 835,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-180x180.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-57x57.png": {
 		"ft": 32768,
 		"iS": 425,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-57x57.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-60x60.png": {
 		"ft": 32768,
 		"iS": 407,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-60x60.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-72x72.png": {
 		"ft": 32768,
 		"iS": 448,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-72x72.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-76x76.png": {
 		"ft": 32768,
 		"iS": 469,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-76x76.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon-precomposed.png": {
 		"ft": 32768,
 		"iS": 1259,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon-precomposed.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/apple-touch-icon.png": {
 		"ft": 32768,
 		"iS": 835,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/apple-touch-icon.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/browserconfig.xml": {
@@ -314,41 +344,45 @@
 	"\/assets\/images\/icons\/favicon-16x16.png": {
 		"ft": 32768,
 		"iS": 221,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/favicon-16x16.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/favicon-194x194.png": {
 		"ft": 32768,
 		"iS": 932,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/favicon-194x194.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/favicon-32x32.png": {
 		"ft": 32768,
 		"iS": 300,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/favicon-32x32.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/favicon-96x96.png": {
 		"ft": 32768,
 		"iS": 558,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/favicon-96x96.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/favicon.ico": {
@@ -368,51 +402,56 @@
 	"\/assets\/images\/icons\/mstile-144x144.png": {
 		"ft": 32768,
 		"iS": 775,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-144x144.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/mstile-150x150.png": {
 		"ft": 32768,
 		"iS": 2979,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-150x150.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/mstile-310x150.png": {
 		"ft": 32768,
 		"iS": 3220,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-310x150.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/mstile-310x310.png": {
 		"ft": 32768,
 		"iS": 6429,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-310x310.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/mstile-70x70.png": {
 		"ft": 32768,
 		"iS": 560,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/icons\/mstile-70x70.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/icons\/safari-pinned-tab.svg": {
@@ -428,105 +467,116 @@
 	"\/assets\/images\/logo.png": {
 		"ft": 32768,
 		"iS": 2930,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/logo.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/paypal.png": {
 		"ft": 32768,
 		"iS": 3127,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/paypal.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/test\/deutan.png": {
 		"ft": 32768,
 		"iS": 26766,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/test\/deutan.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/test\/deuteranormal.png": {
 		"ft": 32768,
 		"iS": 26765,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/test\/deuteranormal.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/test\/normal.png": {
 		"ft": 32768,
 		"iS": 26759,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/test\/normal.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/test\/protan.png": {
 		"ft": 32768,
 		"iS": 26770,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/test\/protan.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/test\/tritan-crossing.png": {
 		"ft": 32768,
 		"iS": 26764,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/test\/tritan-crossing.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/test\/tritan.png": {
 		"ft": 32768,
 		"iS": 6521,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/test\/tritan.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/twitter.png": {
 		"ft": 32768,
 		"iS": 7675,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/twitter.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/images\/visionary-carre-black-128.png": {
 		"ft": 32768,
 		"iS": 17292,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/assets\/images\/visionary-carre-black-128.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/assets\/js\/app.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/app-min.js",
@@ -536,6 +586,7 @@
 		},
 	"\/assets\/js\/classement.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/classement-min.js",
@@ -545,6 +596,7 @@
 		},
 	"\/assets\/js\/d3-extended.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/d3-extended-min.js",
@@ -554,6 +606,7 @@
 		},
 	"\/assets\/js\/d3.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/d3-min.js",
@@ -563,6 +616,7 @@
 		},
 	"\/assets\/js\/d3.min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/d3.min-min.js",
@@ -580,6 +634,7 @@
 		},
 	"\/assets\/js\/jquery-1.12.0.min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/jquery-1.12.0.min-min.js",
@@ -589,6 +644,7 @@
 		},
 	"\/assets\/js\/jquery.tablesorter.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/jquery.tablesorter-min.js",
@@ -598,6 +654,7 @@
 		},
 	"\/assets\/js\/jquery.tooltipster.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/jquery.tooltipster-min.js",
@@ -607,6 +664,7 @@
 		},
 	"\/assets\/js\/min\/app-min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 1,
 		"oAP": "\/assets\/js\/min\/min\/app-min-min.js",
@@ -616,6 +674,7 @@
 		},
 	"\/assets\/js\/min\/classement-min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 1,
 		"oAP": "\/assets\/js\/min\/min\/classement-min-min.js",
@@ -625,6 +684,7 @@
 		},
 	"\/assets\/js\/min\/d3-extended-min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 1,
 		"oAP": "\/assets\/js\/min\/min\/d3-extended-min-min.js",
@@ -634,6 +694,7 @@
 		},
 	"\/assets\/js\/min\/result-min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 1,
 		"oAP": "\/assets\/js\/min\/min\/result-min-min.js",
@@ -643,6 +704,7 @@
 		},
 	"\/assets\/js\/min\/tools-min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 1,
 		"oAP": "\/assets\/js\/min\/min\/tools-min-min.js",
@@ -652,6 +714,7 @@
 		},
 	"\/assets\/js\/result.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/result-min.js",
@@ -661,6 +724,7 @@
 		},
 	"\/assets\/js\/TestDeClassement.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/TestDeClassement-min.js",
@@ -670,6 +734,7 @@
 		},
 	"\/assets\/js\/tinyurl.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/tinyurl-min.js",
@@ -679,6 +744,7 @@
 		},
 	"\/assets\/js\/tools.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/tools-min.js",
@@ -688,6 +754,7 @@
 		},
 	"\/assets\/js\/touch-dnd.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/touch-dnd-min.js",
@@ -697,6 +764,7 @@
 		},
 	"\/assets\/js\/validate.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/validate-min.js",
@@ -706,6 +774,7 @@
 		},
 	"\/assets\/js\/velocity.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/velocity-min.js",
@@ -715,6 +784,7 @@
 		},
 	"\/assets\/js\/velocity.ui.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/assets\/js\/min\/velocity.ui-min.js",
@@ -1258,6 +1328,12 @@
 		"oAP": "\/controllers\/admin\/analytics.get.php",
 		"oF": 0
 		},
+	"\/controllers\/admin\/bugtracker.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/controllers\/admin\/bugtracker.php",
+		"oF": 0
+		},
 	"\/controllers\/admin\/test.get.php": {
 		"ft": 8192,
 		"oA": 0,
@@ -1484,6 +1560,12 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/lib\/bcrypt.php",
+		"oF": 0
+		},
+	"\/lib\/Browser.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/lib\/Browser.php",
 		"oF": 0
 		},
 	"\/lib\/CHANGELOG": {
@@ -2347,11 +2429,12 @@
 	"\/situations\/cubeportfolio\/img\/cbp-sprite.png": {
 		"ft": 32768,
 		"iS": 8717,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/cubeportfolio\/img\/cbp-sprite.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/cubeportfolio\/img\/cbp-sprite.psd": {
@@ -2362,6 +2445,7 @@
 		},
 	"\/situations\/cubeportfolio\/js\/jquery.cubeportfolio.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/situations\/cubeportfolio\/js\/min\/jquery.cubeportfolio-min.js",
@@ -2371,6 +2455,7 @@
 		},
 	"\/situations\/cubeportfolio\/js\/jquery.cubeportfolio.min.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/situations\/cubeportfolio\/js\/min\/jquery.cubeportfolio.min-min.js",
@@ -2384,6 +2469,7 @@
 		"oA": 0,
 		"oAP": "\/situations\/images\/bayern-vs-porto_avec-aide.jpg",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
@@ -2393,57 +2479,63 @@
 		"oA": 0,
 		"oAP": "\/situations\/images\/carte-prix-immobilier-paris_correction_2.jpg",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
 	"\/situations\/images\/ishihara-17.png": {
 		"ft": 32768,
 		"iS": 155683,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/ishihara-17.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/images\/ishihara-25.png": {
 		"ft": 32768,
 		"iS": 159542,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/ishihara-25.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/images\/link_blurred.png": {
 		"ft": 32768,
 		"iS": 50473,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/link_blurred.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 1,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/images\/metro_correction2.png": {
 		"ft": 32768,
 		"iS": 661870,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/metro_correction2.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/images\/ovh-dns.png": {
 		"ft": 32768,
 		"iS": 107950,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/ovh-dns.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 1,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/images\/pomme-rouge-dans-pommier.jpg": {
@@ -2452,6 +2544,7 @@
 		"oA": 0,
 		"oAP": "\/situations\/images\/pomme-rouge-dans-pommier.jpg",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
@@ -2461,17 +2554,19 @@
 		"oA": 0,
 		"oAP": "\/situations\/images\/protanopia_round.jpg",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
 	"\/situations\/images\/quelle-saison.png": {
 		"ft": 32768,
 		"iS": 1317775,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/quelle-saison.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/images\/reverse-ishihara-animaux.jpg": {
@@ -2480,17 +2575,19 @@
 		"oA": 0,
 		"oAP": "\/situations\/images\/reverse-ishihara-animaux.jpg",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 1,
 		"q": 100
 		},
 	"\/situations\/images\/trading-ProRealTime.png": {
 		"ft": 32768,
 		"iS": 72151,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/trading-ProRealTime.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/images\/trivial.jpg": {
@@ -2499,17 +2596,19 @@
 		"oA": 0,
 		"oAP": "\/situations\/images\/trivial.jpg",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
 		"q": 100
 		},
 	"\/situations\/images\/visionary_carte-de-france.png": {
 		"ft": 32768,
 		"iS": 746495,
-		"l": 1,
 		"oA": 0,
 		"oAP": "\/situations\/images\/visionary_carte-de-france.png",
 		"oF": 0,
+		"oIPL": 0,
 		"opt": 0,
+		"oT": 1,
 		"q": 100
 		},
 	"\/situations\/index.php": {
@@ -2520,12 +2619,19 @@
 		},
 	"\/situations\/js\/main.js": {
 		"ft": 64,
+		"ma": 0,
 		"mi": 1,
 		"oA": 0,
 		"oAP": "\/situations\/js\/min\/main-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
+		},
+	"\/tmp\/15s60eem26snu.16aow8bp2jpr3.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.16aow8bp2jpr3.php",
+		"oF": 0
 		},
 	"\/tmp\/15s60eem26snu.1ckrdadjumoii.php": {
 		"ft": 8192,
@@ -2539,6 +2645,12 @@
 		"oAP": "\/tmp\/15s60eem26snu.1js7y3vowjcrc.php",
 		"oF": 0
 		},
+	"\/tmp\/15s60eem26snu.2gsyup4dy86co.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.2gsyup4dy86co.php",
+		"oF": 0
+		},
 	"\/tmp\/15s60eem26snu.2p0ilao24logo.php": {
 		"ft": 8192,
 		"oA": 2,
@@ -2549,6 +2661,18 @@
 		"ft": 8192,
 		"oA": 2,
 		"oAP": "\/tmp\/15s60eem26snu.2yvqr7atxgkkk.php",
+		"oF": 0
+		},
+	"\/tmp\/15s60eem26snu.3cmvhg6f4a4gc.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.3cmvhg6f4a4gc.php",
+		"oF": 0
+		},
+	"\/tmp\/15s60eem26snu.u92x0vk05b0t.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/tmp\/15s60eem26snu.u92x0vk05b0t.php",
 		"oF": 0
 		},
 	"\/v4-database-init.sql": {
@@ -2567,6 +2691,12 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/views\/admin\/analytics.htm",
+		"oF": 0
+		},
+	"\/views\/admin\/bugtracker.htm": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/views\/admin\/bugtracker.htm",
 		"oF": 0
 		},
 	"\/views\/admin\/footer.htm": {
@@ -2749,6 +2879,18 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/views\/thank-you-for-registering.htm",
+		"oF": 0
+		},
+	"\/visionary_live_dump-23-08-2017-bugtracker.sql": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/visionary_live_dump-23-08-2017-bugtracker.sql",
+		"oF": 0
+		},
+	"\/visionary_live_dump-23-08-2017.sql": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/visionary_live_dump-23-08-2017.sql",
 		"oF": 0
 		}
 	},
@@ -3164,6 +3306,10 @@
 			"active": 0,
 			"optionString": "{'setWithoutGet': true, 'getWithoutSet': false}"
 			},
+		"array-bracket-newline": {
+			"active": 0,
+			"optionString": "{'multiline': true, 'minItems': null}"
+			},
 		"array-bracket-spacing": {
 			"active": 0,
 			"optionString": "'never', {'singleValue': false, 'objectsInArrays': false, 'arraysInArrays': false}"
@@ -3171,6 +3317,10 @@
 		"array-callback-return": {
 			"active": 0,
 			"optionString": ""
+			},
+		"array-element-newline": {
+			"active": 0,
+			"optionString": "'always'"
 			},
 		"arrow-body-style": {
 			"active": 0,
@@ -3268,6 +3418,10 @@
 			"active": 0,
 			"optionString": "'always', {'null': 'always'}"
 			},
+		"for-direction": {
+			"active": 0,
+			"optionString": ""
+			},
 		"func-call-spacing": {
 			"active": 0,
 			"optionString": "'never'"
@@ -3287,6 +3441,10 @@
 		"generator-star-spacing": {
 			"active": 0,
 			"optionString": "{'before': true, 'after': false}"
+			},
+		"getter-return": {
+			"active": 0,
+			"optionString": "{'allowImplicit': false}"
 			},
 		"global-require": {
 			"active": 0,
@@ -3415,6 +3573,10 @@
 		"no-bitwise": {
 			"active": 0,
 			"optionString": "{'allow': ['~'], 'int32Hint': true}"
+			},
+		"no-buffer-constructor": {
+			"active": 0,
+			"optionString": ""
 			},
 		"no-caller": {
 			"active": 0,
@@ -3720,6 +3882,10 @@
 			"active": 0,
 			"optionString": ""
 			},
+		"no-prototype-builtins": {
+			"active": 0,
+			"optionString": ""
+			},
 		"no-redeclare": {
 			"active": 1,
 			"optionString": "{'builtinGlobals': false}"
@@ -3956,6 +4122,10 @@
 			"active": 0,
 			"optionString": "{'blocks': 'always', 'switches': 'always', 'classes': 'always'}"
 			},
+		"padding-line-between-statements": {
+			"active": 0,
+			"optionString": "{blankLine: 'always', prev:'*', next:'return'}"
+			},
 		"prefer-arrow-callback": {
 			"active": 0,
 			"optionString": ""
@@ -4024,6 +4194,10 @@
 			"active": 0,
 			"optionString": "{'before': false, 'after': true}"
 			},
+		"semi-style": {
+			"active": 0,
+			"optionString": "'last'"
+			},
 		"sort-imports": {
 			"active": 0,
 			"optionString": "{'ignoreCase': false, 'ignoreMemberSort': true, 'memberSyntaxSortOrder': ['none', 'all', 'multiple', 'single']}"
@@ -4063,6 +4237,10 @@
 		"strict": {
 			"active": 0,
 			"optionString": "'safe'"
+			},
+		"switch-colon-spacing": {
+			"active": 0,
+			"optionString": "{'after': true, 'before': false}"
 			},
 		"symbol-description": {
 			"active": 0,
@@ -4544,14 +4722,6 @@
 		"orderOutput": 0,
 		"outputStyle": 1
 		},
-	"languageDefaultsJSX": {
-		"autoOutputAction": 0,
-		"autoOutputPathFilenamePattern": "*.js",
-		"autoOutputPathRelativePath": "",
-		"autoOutputPathReplace1": "jsx",
-		"autoOutputPathReplace2": "js",
-		"autoOutputPathStyle": 0
-		},
 	"languageDefaultsKIT": {
 		"autoOutputAction": 0,
 		"autoOutputPathFilenamePattern": "*.html",
@@ -4614,7 +4784,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
-		"enableLossy": 1,
+		"optimizerType": 1,
 		"quality": 100
 		},
 	"languageDefaultsPUG": {
@@ -4700,9 +4870,11 @@
 		},
 	"languageDefaultsUserDefined": [
 		],
+	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
 	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules",
 	"sourceFolderName": "source",
+	"susyVersion": 3,
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {
 		"ascii-only": {

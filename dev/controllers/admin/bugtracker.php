@@ -4,29 +4,45 @@ global $db, $lang;
 /*
 	Bugtracker module  TODO
 */
+if( $f3->get("SESSION.user.role") !== "admin"){
+	$f3->reroute("/admin");
+}
 
 $action = clean($f3->get("PARAMS.action"));
 $id = clean($f3->get("PARAMS.id")); // bug id
-pr($_GET);
+
 switch( $action){
-	
-	case 'view-bug':
+
+case 'view-bug':
 	// show bug report detail
 	break;
 
-	case 'edit-bug':
+case 'edit-bug':
 	// show bug report detail
 	if(empty($id)){
 		die("Invalid request: missing bug id.");
 	}
-	
-	break;	
-	
-	default:
+
+	break;
+
+default:
 	// show dashboard
+	$get_all_bugs = $db->prepare(
+		"SELECT * FROM bugtracker ORDER BY id DESC",
+		array(PDO::ATTR_CURSOR, PDO::CURSOR_SCROLL)
+	);
+	$get_all_bugs->execute();
+	$all_bugs = $get_all_bugs->fetchAll(PDO::FETCH_OBJ);
+
+	$f3->set('bugs', $all_bugs);
+	$f3->set('bugs_count', count($all_bugs) );
+
+
+
 	break;
 }
 
-//$f3->set('content', 'views/admin/bugtracker.htm');
-echo View::instance()->render('views/layout.htm');
-
+echo View::instance()->render('views/admin/header.htm');
+echo View::instance()->render('views/admin/nav-admin.htm');
+echo Template::instance()->render('admin/bugtracker.htm');
+echo View::instance()->render('views/admin/footer.htm'); 
