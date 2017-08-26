@@ -9,6 +9,7 @@ global $db, $lang;
  use : /api/user/7/latest
  */
 
+
 $errors = new stdClass();
 
 $allowed_tables = array("country", "interface", "test", "user", "bugtracker");// tests users
@@ -34,15 +35,23 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 
 
 	case 'bugtracker':
+
+		/*
+		header('Content-Type: application/json; charset=utf-8');
+		echo json_encode( $_POST );
+		exit;
+*/
+
 		// This route can only be used to POST bug reports to the DB.
-		if( empty($f3->get('POST'))  || empty($f3->get('POST.profile_name'))  || empty($f3->get('POST.user_email')) ){
-			$result= ['status'=> "error", 'data'=> 'Invalid Request: missing data.'];
+
+		if( empty($_POST)  || empty($_POST['profile_name'])  || empty($_POST['user_email'] ) ){
+			$result= ['status'=> "error", 'data'=> 'Invalid Request: missing data in POST.'];
 			echo json_encode($result);
 			exit;
 		}
 		$args = array(
 			'page_title' => FILTER_SANITIZE_STRING,
-			'page_url' => FILTER_VALIDATE_URL,
+			'page_url' => FILTER_SANITIZE_URL,
 			'diag_label' => FILTER_SANITIZE_STRING,
 			'diag_ratio'=> FILTER_SANITIZE_STRING,
 			'user_agent'=> FILTER_SANITIZE_STRING,
@@ -56,18 +65,43 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			'severity'=>FILTER_SANITIZE_STRING,
 			'user_email'=> FILTER_VALIDATE_EMAIL,
 		);
-		$inputs = filter_var_array($f3->get('POST'), $args);
+		foreach($_POST as $k => $v){
+			$_POST[$k] = urldecode($v);
+		}
+		$inputs = filter_var_array($_POST, $args);
+		if (($inputs != null and $inputs != FALSE) ){
 
-		$sql_keys = implode(',', array_keys($args));
-		$sql_values = implode(',' , $inputs);
-		$sql = "INSERT INTO bugtracker ($sql_keys) VALUES( $sql_values);";
-		$results = $db->exec( $sql );
+			$sql_keys = implode(',', array_keys($args));
+
+			$placeholders = array();
+			foreach($args as $k=> $v){
+				$placeholders[]= '?';
+			}
+			$placeholders = implode(',', $placeholders);
+
+			$sql = "INSERT INTO bugtracker ($sql_keys) VALUES( $placeholders);";
+
+			$stmt = $db->prepare( $sql );
+			$results= $stmt->execute( array_values($inputs) );
+
+			if(!$results){
+				$results = "Insert into db failed: sql = $sql";
+			} else{
+				$results = "$results bug successfully inserted.";
+			}
+		} else{
+			$results = "Insert into db failed: sql = $sql";
+
+		}
 
 		header('Content-Type: application/json; charset=utf-8');
 		echo json_encode( array('result' => $results));
 		exit;
 
 		break;
+
+
+
 
 	case 'user':
 
