@@ -17,7 +17,7 @@ $f3->set('users_count', count($all_users) );
 
 
 echo View::instance()->render('views/admin/header.htm'); 
-echo View::instance()->render('views/admin/nav-admin.htm'); 
+echo Template::instance()->render('admin/nav-admin.htm');
 echo Template::instance()->render('admin/users.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
 

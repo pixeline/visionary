@@ -30,6 +30,6 @@ $f3->set('users', $vetted_users);
 $f3->set('users_count', count($vetted_users) );
 
 echo View::instance()->render('views/admin/header.htm'); 
-echo View::instance()->render('views/admin/nav-admin.htm'); 
+echo Template::instance()->render('admin/nav-admin.htm');
 echo Template::instance()->render('admin/vetted.htm');
 echo View::instance()->render('views/admin/footer.htm'); 

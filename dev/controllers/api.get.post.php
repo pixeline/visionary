@@ -9,9 +9,10 @@ global $db, $lang;
  use : /api/user/7/latest
  */
 
+
 $errors = new stdClass();
 
-$allowed_tables = array("country", "interface", "test", "user");// tests users
+$allowed_tables = array("country", "interface", "test", "user", "bugtracker");// tests users
 
 if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARAMS.table")) ){
 
@@ -31,6 +32,94 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 
 	// check if autorised table
 	switch ($table) {
+
+
+	case 'bugtracker':
+
+		/*
+		header('Content-Type: application/json; charset=utf-8');
+		echo json_encode( $_POST );
+		exit;
+*/
+
+		// This route can only be used to POST bug reports to the DB.
+		
+		if( empty($_POST)  || empty($_POST['profile_name'])  || empty($_POST['user_email'] ) ){
+			$result= ['status'=> "error", 'data'=> 'Invalid Request: missing data in POST.'];
+			echo json_encode($result);
+			exit;
+		}
+		$args = array(
+			'page_title' => FILTER_SANITIZE_STRING,
+			'page_url' => FILTER_SANITIZE_URL,
+			'diag_label' => FILTER_SANITIZE_STRING,
+			'diag_ratio'=> FILTER_SANITIZE_STRING,
+			'user_agent'=> FILTER_SANITIZE_STRING,
+			'delta'=> FILTER_SANITIZE_STRING,
+			'browser'=> FILTER_SANITIZE_STRING,
+			'operating_system'=> FILTER_SANITIZE_STRING,
+			'profile_name'=> FILTER_SANITIZE_STRING,
+			'screen_height'=> FILTER_SANITIZE_STRING,
+			'screen_width'=> FILTER_SANITIZE_STRING,
+			'screenshot'=> FILTER_SANITIZE_STRING,
+			'screenshot_cropped_result' => FILTER_SANITIZE_STRING,
+			'severity'=>FILTER_SANITIZE_STRING,
+			'user_email'=> FILTER_VALIDATE_EMAIL,
+		);
+		foreach($_POST as $k => $v){
+			if( 'screenshot' == $k || 'screenshot_cropped_result' == $k){
+				// store base64 image data into an image file...
+
+				$file_type = ( 'screenshot_cropped_result' == $k ) ? 'crop': 'orig';
+				$filename_path = $file_type.'_'.md5(time().uniqid()).".jpg";
+/*
+				$v = str_replace(' ','+',$v);
+				$decoded = base64_decode($v);
+*/
+				//$v = urldecode($v);
+				$v = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $v));
+				file_put_contents('uploads/'.$filename_path, $v);
+
+				$_POST[$k] = 'uploads/'.$filename_path;
+			}else{
+				$_POST[$k] = urldecode($v);
+			}
+		}
+		$inputs = filter_var_array($_POST, $args);
+		if (($inputs != null and $inputs != FALSE) ){
+
+			$sql_keys = implode(',', array_keys($args));
+
+			$placeholders = array();
+			foreach($args as $k=> $v){
+				$placeholders[]= '?';
+			}
+			$placeholders = implode(',', $placeholders);
+
+			$sql = "INSERT INTO bugtracker ($sql_keys) VALUES( $placeholders);";
+
+			$stmt = $db->prepare( $sql );
+			$results= $stmt->execute( array_values($inputs) );
+
+			if(!$results){
+				$results = "Insert into db failed: sql = $sql";
+			} else{
+				$results = "$results bug successfully inserted.";
+			}
+		} else{
+			$results = "Insert into db failed: sql = $sql";
+
+		}
+
+		header('Content-Type: application/json; charset=utf-8');
+		echo json_encode( array('result' => $results));
+		exit;
+
+		break;
+
+
+
+
 	case 'user':
 
 		$sql = "SELECT diag_result, diag_ratio, diag_serie, email, test_end_date
@@ -47,18 +136,18 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 		if(empty($results)){
 			$errors->error = "User ".$seek." hasn't made any test.";
 			// Perhaps the user hasn't made any test, so we simply get his user data.
-			
+
 			$sql = 'SELECT * FROM users WHERE users.'.$seek.'=?';
 			$results = $db->exec($sql, $seek_value);
 			if(empty($results)){
 				$errors->error = "User ".$seek." does not exist.";
 			}
 		} else if($selection === 'latest'){
-			$results = $results[0];
-		}
-		
+				$results = $results[0];
+			}
+
 		break;
-		
+
 	default:
 		$errors->error = "The table '$table' does not exist.";
 		break;
