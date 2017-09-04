@@ -8,6 +8,7 @@ $hybridauth->logoutAllProviders();
 
 // Unset all of the session variables.
 $f3->clear('SESSION');
+
 $_SESSION = array();
 
 // If it's desired to kill the session, also delete the session cookie.
@@ -21,4 +22,4 @@ if (ini_get("session.use_cookies")) {
 }
 
 
-$f3->reroute('/');
+$f3->reroute('@home');

@@ -44,7 +44,7 @@ $f3->set('countries', getCountries($lang) );
 echo View::instance()->render('views/admin/header.htm'); 
 // check if user is  admin
 if( $f3->get("SESSION.user.role") === "admin"){
-	echo View::instance()->render('views/admin/nav-admin.htm'); 
+	echo Template::instance()->render('admin/nav-admin.htm');
 } else {
 	echo View::instance()->render('views/admin/nav-user.htm'); 
 }

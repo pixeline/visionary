@@ -95,7 +95,7 @@ $f3->set('finished_count', $finished->fetch(PDO::FETCH_OBJ)->finished );
 //echo View::instance()->render('views/layout.htm');
 
 echo View::instance()->render('views/admin/header.htm'); 
-echo View::instance()->render('views/admin/nav-admin.htm'); 
+echo Template::instance()->render('admin/nav-admin.htm');
 echo Template::instance()->render('admin/tests.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
 

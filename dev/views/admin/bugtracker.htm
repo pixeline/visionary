@@ -4,33 +4,29 @@
 
 <p><span class="big" style="font-size:24px">{{ @bugs_count }} daltonian bugs</span></p>
 
-<table class="pure-table pure-table-horizontal tablesorter bugs">
+<table class="pure-table pure-table-horizontal pure-table-striped">
     <thead>
         <tr>
-	        <th>Date du rapport</th>
-            <th style="max-width:100px">URL</th>
-            <th>Titre de la page</th>
-            <th>Tech</th>
-            <th>Utilisateur</th>
-            <th>Image</th>
+	        <th style="width:150px">Date du rapport</th>
+            <th style="width:200px">URL & Titre de la page</th>
+            <th style="width:100px">Tech</th>
+            <th style="width:250px">Image</th>
         </tr>
     </thead>
     <tbody>
         <repeat group="{{ @bugs }}" value="{{ @bug }}" counter="{{ @key }}">
-            <tr class="{{ @key%2 ? '' : 'pure-table-odd'}}">
-	            <td>{{ @bug->creation_date }}</td>
-                <td style="max-width:100px"><a target="_blank" title="Voir la page (nouvelle fenêtre)" href="{{ @bug->page_url }}">{{ @bug->page_url }}</a></td>
-                <td>{{ @bug->page_title }}</td>
+            <tr >
+	            <td>{{ @bug->creation_date }}<br>par: {{ @bug->profile_name }}</td>
+                <td style="max-width:100px"><a target="_blank" title="Voir la page (nouvelle fenêtre)" href="{{ @bug->page_url }}" class="truncate">{{ @bug->page_url }}</a><br>{{ @bug->page_title }}</td>
+
                 <td><strong>OS:</strong> {{ @bug->operating_system }}<br>{{ 
 	                
 	                $browser = new Browser(@bug->browser);
 	                $browser->getPlatform();
 	                }}<br><strong>Ecran:</strong> {{ @bug->screen_width }}x{{ @bug->screen_height }}
 	            </td>
-                <td>{{ @bug->profile_name }}</td>
-<td></td>
                 <td>{{ @bug->screenshot_description }}<br>
-	            <a href="{{ @bug->screenshot }}" target="_blank"><img src="{{ @bug->screenshot_cropped_result }}"></a>
+	            <a href="{{ @bug->screenshot }}" target="_blank"><img src="{{ @bug->screenshot_cropped_result }}" style="max-width:100%"></a>
                 </td>
             </tr>
         </repeat>

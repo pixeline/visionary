@@ -13,7 +13,7 @@ require "functions.php";
 // Kickstart the framework
 $f3 = require 'lib/base.php';
 
-$f3->set('DEBUG', 1);
+$f3->set('DEBUG', 9);
 if ((float)PCRE_VERSION<7.9) {
     trigger_error('PCRE version is out of date');
 }
@@ -75,8 +75,10 @@ $f3->route('GET /userref', function($f3) {
 /******************
      VISIONARY
 *******************/
+define('CURRENT_URI', $f3->get('PATH'));
 
-$f3->route('GET /', function($f3){  require 'controllers/home.get.php'; });
+
+$f3->route('GET @home: /', function($f3){  require 'controllers/home.get.php'; });
 $f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
 $f3->route('POST /login', function($f3){ require 'controllers/login.post.php'; });
 $f3->route('GET|POST /register-auth', function($f3){ require 'controllers/register-auth.post.php'; });
@@ -132,5 +134,7 @@ $f3->route('GET /admin/analytics', function($f3){ require 'controllers/admin/ana
 // TOOLS FOR ADMIN
 $f3->route('GET|POST /admin/mailchimp', function($f3){ require 'controllers/admin/tools/mailchimp.get.php'; });
 $f3->route('GET|POST /admin/fixdatabase', function($f3){ require 'controllers/admin/tools/fixdatabase.php'; });
+
+$f3->set('current_url', $f3->PATH);
 
 $f3->run();

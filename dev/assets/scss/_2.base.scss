@@ -23,7 +23,6 @@ font-size:1rem;
 }
 a {
     color: $blue;
-    @include link-underline($white, $blue, $color-selection);
     &:hover{
 	    color:$dark-blue;
     }
@@ -558,4 +557,12 @@ table.tablesorter tbody tr:hover td { background:#ebebeb; }
 	text-transform:uppercase;
 	font-size:12px;
 	color: #999;
+}
+
+.truncate {
+	display:block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

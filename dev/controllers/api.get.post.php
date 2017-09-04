@@ -43,7 +43,7 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 */
 
 		// This route can only be used to POST bug reports to the DB.
-
+		
 		if( empty($_POST)  || empty($_POST['profile_name'])  || empty($_POST['user_email'] ) ){
 			$result= ['status'=> "error", 'data'=> 'Invalid Request: missing data in POST.'];
 			echo json_encode($result);
@@ -62,20 +62,27 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			'screen_height'=> FILTER_SANITIZE_STRING,
 			'screen_width'=> FILTER_SANITIZE_STRING,
 			'screenshot'=> FILTER_SANITIZE_STRING,
+			'screenshot_cropped_result' => FILTER_SANITIZE_STRING,
 			'severity'=>FILTER_SANITIZE_STRING,
 			'user_email'=> FILTER_VALIDATE_EMAIL,
 		);
 		foreach($_POST as $k => $v){
 			if( 'screenshot' == $k || 'screenshot_cropped_result' == $k){
 				// store base64 image data into an image file...
-				
-				$file_type = ( 'screenshot_cropped_result' == $k ) ? 'crop': '';
-				$filename_path = $file_type.'_'.md5(time().uniqid()).".jpg"; 
-				$decoded=base64_decode($v); 
-				file_put_contents('uploads/'.$filename_path,$decoded);
+
+				$file_type = ( 'screenshot_cropped_result' == $k ) ? 'crop': 'orig';
+				$filename_path = $file_type.'_'.md5(time().uniqid()).".jpg";
+/*
+				$v = str_replace(' ','+',$v);
+				$decoded = base64_decode($v);
+*/
+				//$v = urldecode($v);
+				$v = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $v));
+				file_put_contents('uploads/'.$filename_path, $v);
+
 				$_POST[$k] = 'uploads/'.$filename_path;
 			}else{
-				$_POST[$k] = urldecode($v);			
+				$_POST[$k] = urldecode($v);
 			}
 		}
 		$inputs = filter_var_array($_POST, $args);

@@ -43,6 +43,6 @@ default:
 }
 
 echo View::instance()->render('views/admin/header.htm');
-echo View::instance()->render('views/admin/nav-admin.htm');
+echo Template::instance()->render('admin/nav-admin.htm');
 echo Template::instance()->render('admin/bugtracker.htm');
 echo View::instance()->render('views/admin/footer.htm'); 
