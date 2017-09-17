@@ -1298,18 +1298,6 @@
 		"oAP": "\/config.ini",
 		"oF": 0
 		},
-	"\/config.production.ini": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/config.production.ini",
-		"oF": 0
-		},
-	"\/config.staging.ini": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/config.staging.ini",
-		"oF": 0
-		},
 	"\/controllers\/account.get.php": {
 		"ft": 8192,
 		"oA": 0,
