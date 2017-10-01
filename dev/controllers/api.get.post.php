@@ -62,6 +62,7 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			'screen_height'=> FILTER_SANITIZE_STRING,
 			'screen_width'=> FILTER_SANITIZE_STRING,
 			'screenshot'=> FILTER_SANITIZE_STRING,
+			'screenshot_description'=> FILTER_SANITIZE_STRING,
 			'screenshot_cropped_result' => FILTER_SANITIZE_STRING,
 			'severity'=>FILTER_SANITIZE_STRING,
 			'user_email'=> FILTER_VALIDATE_EMAIL,

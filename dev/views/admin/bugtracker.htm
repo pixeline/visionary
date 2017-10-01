@@ -9,13 +9,13 @@
         <tr>
 	        <th style="width:150px">Date du rapport</th>
             <th style="width:200px">URL & Titre de la page</th>
-            <th style="width:100px">Tech</th>
+            <th style="width:100px">Infos techniques</th>
             <th style="width:250px">Image</th>
         </tr>
     </thead>
     <tbody>
         <repeat group="{{ @bugs }}" value="{{ @bug }}" counter="{{ @key }}">
-            <tr >
+            <tr style="vertical-align: top" >
 	            <td>{{ @bug->creation_date }}<br>par: {{ @bug->profile_name }}</td>
                 <td style="max-width:100px"><a target="_blank" title="Voir la page (nouvelle fenêtre)" href="{{ @bug->page_url }}" class="truncate">{{ @bug->page_url }}</a><br>{{ @bug->page_title }}</td>
 
