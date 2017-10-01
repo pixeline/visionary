@@ -10,7 +10,7 @@
 	        <th style="width:150px">Date du rapport</th>
             <th style="width:200px">URL & Titre de la page</th>
             <th style="width:100px">Infos techniques</th>
-            <th style="width:250px">Image</th>
+            <th style="width:250px">Image & message</th>
         </tr>
     </thead>
     <tbody>
@@ -25,18 +25,12 @@
 	                $browser->getPlatform();
 	                }}<br><strong>Ecran:</strong> {{ @bug->screen_width }}x{{ @bug->screen_height }}
 	            </td>
-                <td>{{ @bug->screenshot_description }}<br>
+                <td>
+<check if="{{ empty(@bug->screenshot_description)==false }}">
+	                <div style="border-radius:15px;background:white;border:1px solid #DDD;padding:1rem">{{ @bug->screenshot_description }}</div>	</check>
 	            <a href="{{ @bug->screenshot }}" target="_blank"><img src="{{ @bug->screenshot_cropped_result }}" style="max-width:100%"></a>
                 </td>
             </tr>
         </repeat>
     </tbody>
 </table>
-
-<script src="/assets/js/jquery-1.12.0.min.js"></script>
-<script src="/assets/js/jquery.tablesorter.js"></script>
-<script type="text/javascript">
-    $(function() {
-        $("table").tablesorter({debug: false})
-    });
-</script>
