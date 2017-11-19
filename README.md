@@ -32,4 +32,6 @@ Visionary est un projet de recherche de solutions améliorant l’accessibilité
 - 15 septembre 2023 : fin de l'hébergement.
 
 ## License : GNU General Public License v3.0
-[Lire la license](./COPYING).
+The GNU GPLv3 is a copyleft license that requires anyone who distributes the code or a derivative work to make the source available under the same terms, and also provides an express grant of patent rights from contributors to users.
+
+[Read the license](./COPYING).
