@@ -1,6 +1,6 @@
 # Visionary
 Visionary est un projet de recherche de solutions améliorant l’accessibilité du web pour les personnes souffrant de déficiences visuelles, et en particulier, le daltonisme. 
- Visionary est financé par la Région Wallonne et est poursuivi dans un partenariat associant :
+ Visionary est financé par la [Région Wallonne](http://www.wallonie.be/) et est poursuivi dans un partenariat associant :
  
  - une Haute Ecole (l’HEAJ / [Catégorie Techniques Graphiques](https://heaj.be/fr/category/infographie/)), 
  - une université ([centre PReCISE de l’Université de Namur](https://www.unamur.be/en/precise/))
