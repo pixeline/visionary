@@ -25,3 +25,4 @@ Visionary est un projet de recherche de solutions améliorant l’accessibilité
 - 15 septembre 2017 : fin de la recherche. Les sources actuelles sont mises à disposition 
 
 ## License : GNU General Public License v3.0
+[Lire la license](./COPYING).
