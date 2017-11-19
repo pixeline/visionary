@@ -1,0 +1,43 @@
+<template name="Profile">
+
+		<h3>Merci de votre collaboration {{user.firstname}} {{user.name}} !</h3>
+		<!--
+		<h3>Vos informations personnelles : </h3>
+ 
+			<p>Nom : {{user.name}} </p>
+			<p>Prénom : {{user.firstname}} </p>
+			<p>Email : {{user.email}} </p>
+			<p>Age : {{user.age}} </p>
+			<p>Sexe : 	{{#if user.sex}}
+							Homme 
+					 	{{else}}
+					 		Femme 
+					 	{{/if}}
+			</p> 
+
+		<h3>Vos informations de correction : </h3>
+			<ul>
+			    {{#each user.correcObj}}
+			      {{#each picObj}}
+			      	<li>Fichier image : {{fileName}}</li>
+			      	{{#each QA}}
+			      		<li>Qestion : {{question}}</li>
+			      		<li>Réponse : {{answerUser}}</li>
+			      		<li>Réponse correcte : {{answerCorrect}}</li>
+				  	{{/each}}
+				  {{/each}}
+			      <li>Correction de type : {{type}}</li>
+			      <li>Type de déficience : {{CB_type}}</li>
+			      <li>Configuration préférée ? {{#if isBest}}Oui{{else}}Non{{/if}}</li>
+
+			      <ul>
+			      	{{#each rulesObj}}
+				      	<li>{{parameter}} : {{value}} </li>
+				    {{/each}}
+				  </ul>
+			    {{/each}}
+			</ul>
+		-->
+  		<p><a href="{{pathFor 'Home'}}">&larr; Retour</a></p>
+  		
+</template>

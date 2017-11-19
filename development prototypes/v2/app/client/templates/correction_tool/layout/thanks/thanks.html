@@ -1,0 +1,70 @@
+<template name = "Thanks">
+
+	<div class="home">
+	
+		{{>Logo}}
+		
+		<div class="center">
+			<div class="main">
+				
+				<h2>Merci pour votre collaboration {{user.firstname}} !</h2>
+				
+				
+				<h2>Vos informations personnelles : </h2>
+		
+					<p>Nom : {{user.name}} </p>
+					<p>Prénom : {{user.firstname}} </p>
+					<p>Email : {{user.email}} </p>
+					<p>Age : {{user.age}} </p>
+					<p>Sexe : 	{{#if user.sex}}
+									Homme 
+								{{else}}
+									Femme 
+								{{/if}}
+					</p> 
+		
+				<h2>Vos informations de correction : </h2>
+					<ul>
+						{{#each user.survey}}
+							<p>Questionnaire : {{name}}</p>
+						{{/each}}
+						
+						{{#each user.correcRes}}
+							<li>Correction résultante de type : {{type}}</li>
+							<br/>
+							<ul>
+								<p>Filtres :</p>
+								{{#each filter}}
+									<li>{{parameter}} : {{value}} </li>
+								{{/each}}
+							</ul>
+						{{/each}}
+						
+						{{#each user.correcPic}}
+							<br/>
+							{{#each picture}}
+								<p>Image {{order}} :</p>
+								<li>Titre : {{title}}</li>
+								<li>Type image : {{type}}</li>
+								<li>fichier : {{file_name}}</li>
+							{{/each}}
+							
+							<li>Correction de type : {{filter_type}}</li>
+							<li>Nombre de recorrection sur l'image : {{reset_counter}}</li>
+							<br/>
+							<ul>
+								<p>Filtres :</p>
+								{{#each filter}}
+									<li>{{parameter}} : {{value}} </li>
+								{{/each}}
+							</ul>
+						{{/each}}
+					</ul>
+			
+			</div>
+			
+		</div>
+		
+	</div>
+
+</template>

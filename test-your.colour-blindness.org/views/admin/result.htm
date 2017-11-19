@@ -1,0 +1,85 @@
+<div class="content center">
+    <main class="result text-center">
+	    	<a href="/admin" class="logo-home">
+			<img src="/assets/images/logo.png" alt="Retour à l'accueil">
+		</a>
+    <p class="voice--whisper text-right"><?php echo $INTERFACE_VERSION; ?></p>
+    <h1>Résultat du test de classement</h1> 
+
+    <p class="voice--loud"><?php echo html_entity_decode($test['message']) ?></p>
+    
+    <div id="scheme" data-serie="<?php echo $test['diag_serie']; ?>">
+        <svg id="stage" width="400" height="280"></svg>
+    </div>
+    
+        <table class="pure-table center">
+            <thead>
+                <tr>
+                    <th title="Confusion Angle">Angle</th>
+                    <th title="Major Radius">Major</th>
+                    <th title="Minor Radius">Minor</th>
+                    <th title="Total Score of Error">TES</th>
+                    <th title="Selectivity Index">S-index</th>
+                    <th title="Confusion Index">C-index</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><?php echo $test["diag_confusion_angle"]; ?></td>
+                    <td><?php echo $test["diag_major"]; ?></td>
+                    <td><?php echo $test["diag_minor"]; ?></td>
+                    <td><?php echo $test["diag_tes"]; ?></td>
+                    <td><?php echo $test["diag_s_index"]; ?></td>
+                    <td><?php echo $test["diag_c_index"]; ?></td>
+                </tr>
+            </tbody>    
+        </table>
+    
+    <div>
+        <p>Ce test constitue un pré-diagnostic: vous pouvez <a href="#" class="js-print">l'imprimer</a> pour le montrer à un ophtalmologue qui testera votre vision dans des conditions cliniques contrôlées afin d'établir un diagnostic fiable.
+        </p>
+     </div>
+     <div id="js-revoir">
+	     <div id="js-revoir-content">
+		     <h2>Votre test</h2>
+		     <p class="text-left voice--discreete">Durée: <?php echo $test["test_duration"]; ?></p>
+     <table class="classement classement--user" style="width:100%;height:200px"><tr>
+	     <?php
+	     $diag_series = explode(',',$test['diag_serie']);
+	     foreach($diag_series as $index){
+		     $color = $classement['colors'][$index]['color'];
+		     ?>
+		     <td style="background:<?= $color; ?>">&nbsp;</td>
+		     <?php
+	     }
+	     ?></tr>
+     </table>
+     <h2>Le classement escompté</h2>
+          <table class="classement classement--normal" style="width:100%;height:200px"><tr>
+	     <?php
+	     foreach($classement['colors'] as $row){
+		     $color = $row['color'];
+		     ?>
+		     <td style="background:<?= $color; ?>">&nbsp;</td>
+		     <?php
+	     }
+	     ?></tr>
+     </table>
+	     </div>
+     </div>
+
+            <?php 
+            $display_register_form = 'no';
+            if( $display_register_form == 'yes'): ?>
+			<fieldset class="no-print">
+            <h2>Participez à la recherche en vous créant un compte</h2>
+
+            <?php require 'views/register.form.htm'; ?>
+            </fieldset>
+         <?php endif; ?>
+    <p class="text-center">
+        <button class="pure-button pure-button-primary js-print"><i class="fa fa-print" aria-hidden="true"></i> Imprimer le test</button>
+        <a href="/test" class="pure-button pure-button-primary"><i class="fa fa-refresh" aria-hidden="true"></i>Recommencer le test</a>
+    </p>
+
+</div>

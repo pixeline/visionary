@@ -1,0 +1,38 @@
+
+<h1><i class="fa fa-users" aria-hidden="true"></i> Utilisateurs rencontrés</h1>
+
+<p>Vetted users count : {{ @users_count }}</p>
+
+<table class="pure-table center tablesorter">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Diagnostic</th>
+            <th>tests date</th>
+            <th>Finished</th>
+        </tr>
+    </thead>
+    <tbody>
+        <repeat group="{{ @users }}" value="{{ @user }}" counter="{{ @key }}">
+            <tr class="{{ @key%2 ? '' : 'pure-table-odd'}} " >
+                <td>{{ @user->id }}</td>
+                <td>{{ @user->name }}</td>
+                <td>{{ @user->email }}</td>
+                <td>{{ @user->tests_diagnostic }}</td>
+                <td>{{ @user->tests_date }}</td>
+                <td>{{ @user->tests_done ? "Finished" : "Not done yet" }}</td>
+            </tr>
+        </repeat>
+    </tbody>
+</table>
+
+<script src="/assets/js/jquery-1.12.0.min.js"></script>
+<script src="/assets/js/jquery.tablesorter.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $("table").tablesorter({debug: false})
+    });
+</script>
+

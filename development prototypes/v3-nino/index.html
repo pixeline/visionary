@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="TestDeClassement.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+    <meta name="apple-mobile-web-app-title" content="Visionary">
+    <meta name="application-name" content="Visionary">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#000000">
+
+	<script src="https://use.typekit.net/vyt6ezk.js"></script>
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
+	
+</head>
+<body>
+
+    
+    <div id="homeScreen" class="home">
+        <div class="center">
+            <h1><a href="#"><img src="logo.png" alt="Visionary"></a></h1>
+        </div>
+        <div class="center">
+            <div class="main">
+                <h2>Choisissez votre test</h2>
+                <div class="text-center">
+                    <a id="classement" class="btn-primary">Test de classement</a>
+                    <a id="reconaissance" class="btn-primary">Test de reconaissance</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="test-1" class="test hide">
+
+        <section class="color-arrangement">
+            <ul id="list-sortable" class="color-list"></ul>
+        </section>
+
+        <div class="brienfing">
+            <button id="toggle-cheat">Settings</button>
+            <div id="cheat" class="hide">
+                <div id="commands">
+                    <button id="set-normal">Set normal</button>
+                    <button id="set-protan">Set protan</button>
+                    <button id="set-deutan">Set deutan</button>
+                    <button id="set-tritan">Set tritan</button>
+                    <button id="set-random">Set random</button>
+                </div>
+            </div>
+
+            <div class="briefing-content">
+                <!-- <a href="http://colour-blindness.org/">
+                    <img src="../../pictures/logo.png" alt="Visionary">
+                </a>
+                 -->
+                <h1 class='text-center'>Test d'arrangement de couleur
+                <small>Test dichotomique de Farnsworth pour la cécité des couleurs - Série D-15</small>
+                </h1>
+
+                <p class="test-instruction text-center">Reconstituez un dégradé de couleur homogène à partir de la gauche. Vous pouvez les bouger par cliquer-glisser.</p>
+
+                <p>
+                    <a href="#" id="show-result" class="btnPrimary">J'ai fini</a>
+                </p>
+            </div>
+        </div>
+
+        <main class="result text-center">
+
+            <div class="container home main">
+                <h2>Analyse dychotomique</h2>
+
+                <div class="result-instruction text-left hide">
+                    <p>La ligne noire décrit l'ordre des plaques que vous avez réalisé. Les personnes avec une vision normale forment un cercle (P, 1, 2, ..., 15).</p>
+
+                    <p>Les diagonales indiquent une certaine forme de daltonisme.</p>
+
+                    <p>Le parallélisme avec les ligne de confusion (protan, deutan, tritan) est un indice pour le type de votre daltonisme.</p>
+                </div>
+
+                <div id="graph-1" class="graph"></div>
+
+                <!--<p><span id="cvd_type"></span></p>-->
+
+                <form class="form-result">
+                    <div class="column">
+                        <strong class="text-left">Type Axe de confusion</strong>
+                        <p class="hide"><input type="checkbox" name="type" value="normal">normal</p>
+                        <p><input type="checkbox" value="protan">Protane (Rouge - bleu vert)</p>
+                        <p><input type="checkbox" value="deutan">Deutan (Vert - rouge pourpre)</p>
+                        <p><input type="checkbox" value="tritan">Tritane (Violet - jaune vert)</p>
+                    </div>
+                    <div class="column offst-top-20">
+                        <strong class="text-left"> </strong>
+                        <p><input type="checkbox" value="succeed">Réussite</p>
+                        <!-- <p><input type="checkbox" value="fail">Échec</p> -->
+                    </div>
+                </form>
+
+                <p class="text-left">
+                    <strong>Ordre donné :</strong> <span class="currentOrder"></span>
+                </p>
+
+                <p class="text-left">
+                    <strong>Gravité de la confusion :</strong> <span class="severity_range"></span>
+                </p>
+
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Angle</th>
+                            <th>Major</th>
+                            <th>Minor</th>
+                            <th>TES</th>
+                            <th>S-index</th>
+                            <th>C-index</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="angle"></td>
+                            <td class="major_radius"></td>
+                            <td class="minor_radius"></td>
+                            <td class="tes"></td>
+                            <td class="s_index"></td>
+                            <td class="c_index"></td>
+                        </tr>
+                    </tbody>    
+                </table>
+                
+                <p class="hide-print">
+                    <ul class="list-inline">
+                        <li><a href="#" class="btn-print btn-primary sm"><i class="fa fa-print"></i>Imprimer ce pré-diagnostic</a></li>
+                        <!-- <li><a href="#" id="send-by-email" class="btn-primary sm"><i class="fa fa-envelope"></i>Me l'envoyer par email</a></li> -->
+                        <li><a href="./" id="re-retest" class="btn-primary sm"><i class="fa fa-refresh"></i>Refaire le test</a></li>
+                    </ul>
+                </p>
+
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+
+
+
+
+
+    <div id="test-2" class="test hide">
+        
+        <section class="color-arrangement">
+            <ul id="list-normal" class="color-list"></ul>
+        </section>
+
+        <div class="brienfing">
+            <div class="briefing-content">
+                <h1 class='text-center'>Test d'arrangement de couleur
+                    <small>Test dichotomique de Farnsworth pour la cécité des couleurs - Série D-15</small>
+                </h1>
+                <p class="test-instruction text-center">Choisissez parmi les 6 options celle qui vous propose un dégradé de couleur bien homogène.</p>
+                <ul id="choices" class="list-inline">
+                    <li><a id="pick-normal">1</a></li>
+                    <li><a id="pick-protan">2</a></li>
+                    <li><a id="pick-deutan">3</a></li>
+                    <li><a id="pick-tritan">4</a></li>
+                    <li><a id="pick-deuteranormal">5</a></li>
+                    <li><a id="pick-tritan-crossing">6</a></li>
+                </ul>
+                <p class="text-center">
+                    <a href="#" id="show-final" class="btn-primary btn-disabled">J'ai fini</a>
+                </p>
+            </div>
+        </div>
+
+        <main class="result text-center">
+
+            <div class="container home main">
+                <h2>Analyse dychotomique</h2>
+
+                <div class="result-instruction text-left hide">
+                    <p>La ligne noire décrit l'ordre des plaques que vous avez réalisé. Les personnes avec une vision normale forment un cercle (P, 1, 2, ..., 15).</p>
+
+                    <p>Les diagonales indiquent une certaine forme de daltonisme.</p>
+
+                    <p>Le parallélisme avec les ligne de confusion (protan, deutan, tritan) est un indice pour le type de votre daltonisme.</p>
+                </div>
+
+                <div id="graph-2" class="graph"></div>
+
+                <!--<p><span id="cvd_type"></span></p>-->
+
+                <form class="form-result">
+                    <div class="column">
+                        <strong class="text-left">Type Axe de confusion</strong>
+                        <p class="hide"><input type="checkbox" name="type" value="normal">normal</p>
+                        <p><input type="checkbox" value="protan">Protane (Rouge - bleu vert)</p>
+                        <p><input type="checkbox" value="deutan">Deutan (Vert - rouge pourpre)</p>
+                        <p><input type="checkbox" value="tritan">Tritane (Violet - jaune vert)</p>
+                    </div>
+                    <div class="column offst-top-20">
+                        <strong class="text-left"> </strong>
+                        <p><input type="checkbox" value="succeed">Réussite</p>
+                        <p><input type="checkbox" value="fail">Échec</p>
+                    </div>
+                </form>
+
+                <p class="text-left">
+                    <strong>Ordre donné :</strong> <span class="currentOrder"></span>
+                </p>
+
+                <p class="text-left">
+                    <strong>Gravité de la confusion :</strong> <span class="severity_range"></span>
+                </p>
+
+                <table class="result-table">
+                    <thead>
+                        <tr>
+                            <th>Angle</th>
+                            <th>Major</th>
+                            <th>Minor</th>
+                            <th>TES</th>
+                            <th>S-index</th>
+                            <th>C-index</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="angle"></td>
+                            <td class="major_radius"></td>
+                            <td class="minor_radius"></td>
+                            <td class="tes"></td>
+                            <td class="s_index"></td>
+                            <td class="c_index"></td>
+                        </tr>
+                    </tbody>    
+                </table>
+                
+                <p class="hide-print">
+                    <ul class="list-inline">
+                        <li><a href="#" class="btn-print btn-primary sm"><i class="fa fa-print"></i>Imprimer ce pré-diagnostic</a></li>
+                        <!-- <li><a href="#" id="send-by-email" class="btn-primary sm"><i class="fa fa-envelope"></i>Me l'envoyer par email</a></li> -->
+                        <li><a href="./" id="re-retest" class="btn-primary sm"><i class="fa fa-refresh"></i>Refaire le test</a></li>
+                    </ul>
+                </p>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    
+    <script src="js/jquery-1.12.0.min.js"></script>
+    <script src="js/pixi.js"></script>
+    <script src="js/tools.js"></script>
+    <script src="js/touch-dnd.js"></script>
+    <script src="js/velocity.js"></script>
+    <script src="js/velocity.ui.js"></script>
+    <script src="TestDeClassement.js"></script>
+
+
+ 
+</body>
+</html>

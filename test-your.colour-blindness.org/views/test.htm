@@ -1,0 +1,34 @@
+<div id="test" class="test" data-serie="<?php echo $test['diag_serie']; ?>">
+
+    <section class="color-arrangement">
+        <ul id="list-normal" class="color-list"></ul>
+    </section>
+
+    <div class="briefing">
+        <div class="briefing-content">
+
+            <h1 class="text-center">Arrangez les couleurs pour former un dégradé</h1>
+            <p class="text-center">Astuce: commencez par la gauche et réarrangez les couleurs progressivement vers la droite</p>
+
+            <form action="/test-save" method="POST">
+                <input type="hidden" id="serie" name="diag_serie">
+                <input type="hidden" id="result" name="diag_result">
+                <input type="hidden" id="ratio" name="diag_ratio">
+                <input type="hidden" id="majorAngle" name="diag_confusion_angle">
+                <input type="hidden" id="majorRadius" name="diag_major">
+                <input type="hidden" id="minorRadius" name="diag_minor">
+                <input type="hidden" id="tes" name="diag_tes">
+                <input type="hidden" id="s_index" name="diag_s_index">
+                <input type="hidden" id="c_index" name="diag_c_index">
+                <p class="text-center">
+                    <button type="submit" name="is_sure" value="1" class="pure-button pure-button-primary"><i class="fa fa-smile-o fa-2xx" aria-hidden="true"></i> J'ai fini (et je suis sûr)</button>
+                    <button type="submit" name="is_sure" value="0" class="pure-button pure-button-primary"><i class="fa fa-meh-o fa-2xx" aria-hidden="true"></i> J'ai fini (mais je ne suis pas certain)</button>
+                </p>
+            </form>
+            
+        </div>
+    </div>
+</div>
+<div class="center" style="margin-top:6rem;text-align:center">
+	<?php require "views/footer.htm"; ?>
+</div>
