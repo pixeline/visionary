@@ -43,7 +43,7 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 */
 
 		// This route can only be used to POST bug reports to the DB.
-		
+
 		if( empty($_POST)  || empty($_POST['profile_name'])  || empty($_POST['user_email'] ) ){
 			$result= ['status'=> "error", 'data'=> 'Invalid Request: missing data in POST.'];
 			echo json_encode($result);
@@ -67,26 +67,26 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			'severity'=>FILTER_SANITIZE_STRING,
 			'user_email'=> FILTER_VALIDATE_EMAIL,
 		);
-		foreach($_POST as $k => $v){
-			if( 'screenshot' == $k || 'screenshot_cropped_result' == $k){
+		$filename_path= '';
+		foreach($f3->get('POST') as $k => $v){
+			if( 'screenshot' === $k || 'screenshot_cropped_result' === $k){
 				// store base64 image data into an image file...
 
-				$file_type = ( 'screenshot_cropped_result' == $k ) ? 'crop': 'orig';
-				$filename_path = $file_type.'_'.md5(time().uniqid()).".jpg";
-/*
-				$v = str_replace(' ','+',$v);
-				$decoded = base64_decode($v);
-*/
-				//$v = urldecode($v);
-				$v = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $v));
-				file_put_contents('uploads/'.$filename_path, $v);
+				$file_type = ( 'screenshot_cropped_result' === $k ) ? 'crop': 'orig';
+				$filename_path = 'uploads/'.$file_type.'_'.md5(time().uniqid()).".jpg";
 
-				$_POST[$k] = 'uploads/'.$filename_path;
+				$v  = base64url_decode($v);
+				$stored= file_put_contents($filename_path, $v, LOCK_EX);
+				if($stored){
+					$f3->set('POST.'.$k,  $filename_path );
+					//$_POST[$k] = 'uploads/'.$filename_path;
+				}
 			}else{
-				$_POST[$k] = urldecode($v);
+				// $_POST[$k] = urldecode($v);
+				$f3->set('POST.'.$k,urldecode($v));
 			}
 		}
-		$inputs = filter_var_array($_POST, $args);
+		$inputs = filter_var_array($f3->get('POST'), $args);
 		if (($inputs != null and $inputs != FALSE) ){
 
 			$sql_keys = implode(',', array_keys($args));
@@ -98,7 +98,6 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			$placeholders = implode(',', $placeholders);
 
 			$sql = "INSERT INTO bugtracker ($sql_keys) VALUES( $placeholders);";
-
 			$stmt = $db->prepare( $sql );
 			$results= $stmt->execute( array_values($inputs) );
 
@@ -109,7 +108,6 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 			}
 		} else{
 			$results = "Insert into db failed: sql = $sql";
-
 		}
 
 		header('Content-Type: application/json; charset=utf-8');
@@ -162,4 +160,10 @@ if( $f3->get("PARAMS") && !empty($f3->get("PARAMS.id")) && !empty($f3->get("PARA
 		echo json_encode($errors);
 	}
 
+}
+
+// HELPERS
+function base64url_decode($base64url)
+{
+	return base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64url));
 }

@@ -28,7 +28,16 @@
                 <td>
 <check if="{{ empty(@bug->screenshot_description)==false }}">
 	                <div style="border-radius:15px;background:white;border:1px solid #DDD;padding:1rem">{{ @bug->screenshot_description }}</div>	</check>
-	            <a href="{{ @bug->screenshot }}" target="_blank"><img src="{{ @bug->screenshot_cropped_result }}" style="max-width:100%"></a>
+	            <a href="{{ @bug->screenshot }}" target="_blank">
+		                 <check if="{{ empty(@bug->screenshot_cropped_result)==false }}">
+		            <true>
+		            <img src="{{ @bug->screenshot_cropped_result }}" style="max-width:100%">
+		            </true>
+		            <false>
+		            <img src="{{ @bug->screenshot }}" style="max-width:100%">
+		            </false>
+		            </check>
+	            </a>
                 </td>
             </tr>
         </repeat>
