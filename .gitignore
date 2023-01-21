@@ -11,3 +11,4 @@ dev/config.production.ini
 dev/config.staging.ini
 dev/database.mwb.bak
 dev/*.sql
+visionary-website/
