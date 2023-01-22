@@ -1,0 +1,14 @@
+/node_modules
+node_modules
+*.codekit3
+*.scssc
+*/.sass-cache
+src/assets/scss/.sass-cache/*
+.DS_Store
+src/vendor
+/src/vendor
+src/vendor/*
+/src/vendor/*
+src/assets/js/min/*
+src/assets/css/min/*
+project.json
