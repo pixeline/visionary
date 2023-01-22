@@ -1,0 +1,58 @@
+version: "3.8"
+services:
+
+    # PHP service
+    visionary:
+        build: .
+        container_name: colour-blindness.org
+        working_dir: /var/www/colour-blindness.org
+        volumes:
+            - ./www.colour-blindness.org:/var/www/colour-blindness.org
+        networks:
+            - app-network
+
+    testyour:
+        build: .
+        container_name: testyour.colour-blindness.org
+        working_dir: /var/www/test-your.colour-blindness.org
+        volumes:
+            - ./test-your.colour-blindness.org:/var/www/test-your.colour-blindness.org
+        networks:
+            - app-network
+
+    # MySQL database service
+    db:
+        image: mysql:5.7
+        container_name: visionary-db
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        env_file:
+            - ./.env
+        restart: always
+        volumes:
+            - ./mysql-dump:/docker-entrypoint-initdb.d
+        networks:
+            - app-network
+
+    # Nginx service
+    nginx:
+        image: nginx:alpine
+        container_name: visionary-nginx
+        ports:
+            - 2000:80
+            - 2001:81
+        volumes:
+            - ./test-your.colour-blindness.org:/var/www/test-your.colour-blindness.org
+            - ./www.colour-blindness.org:/var/www/colour-blindness.org
+            - ./nginx/conf.d:/etc/nginx/conf.d
+        networks:
+            - app-network
+
+networks:
+    app-network:
+        driver: bridge
