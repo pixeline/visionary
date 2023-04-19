@@ -11,16 +11,17 @@ require "functions.php";
 
 
 // Kickstart the framework
-$f3 = require 'lib/base.php';
+require 'vendor/autoload.php';
+$f3 = \Base::instance();
 
 $f3->set('DEBUG', 9);
 if ((float)PCRE_VERSION<7.9) {
     trigger_error('PCRE version is out of date');
 }
 
-//$f3->set('LOCALES','dict/');
-//$f3->set('LANGUAGE','fr');
-//$f3->set('FALLBACK','fr');  // French as default fallback language
+$f3->set('LOCALES','dict/');
+$f3->set('LANGUAGE','fr');
+$f3->set('FALLBACK','fr');  // French as default fallback language
 $lang = "fr";
 
 $LOCALE = array(
@@ -29,16 +30,16 @@ $LOCALE = array(
     //"en" => "en_GB",
 );
 
-$codeset = "UTF8";  // warning ! not UTF-8 with dash '-' 
+$codeset = "UTF8";  // warning ! not UTF-8 with dash '-'
 $language = $LOCALE[$lang];
-putenv("LANG=$language".'.'.$codeset); 
+putenv("LANG=$language".'.'.$codeset);
 setlocale(LC_ALL, $language); // pour toutes les constantes suivantes
-bindtextdomain($lang, "dict/"); 
+bindtextdomain($lang, "dict/");
 textdomain($lang);
 
 /*
     Load configuration file, depending on domain name.
-*/ 
+*/
 //$config_file = ( strpos($_SERVER['HTTP_HOST'], 'colour-blindness.org') ) ? 'config.live.ini': 'config.ini';
 
 switch ($_SERVER['HTTP_HOST']){
@@ -46,9 +47,13 @@ switch ($_SERVER['HTTP_HOST']){
     case 'test-your.colour-blindness.org':  $config_file = 'config.production.ini';  break;
     default:                                $config_file = 'config.ini';             break;
 }
+// Setup head info
+define('WWWROOT', '//'.$_SERVER["HTTP_HOST"]);
+define('LOCALROOT', '//'.$_SERVER["DOCUMENT_ROOT"]);
 
 $f3->config($config_file);
 
+$f3->set('HOST', $_SERVER['HTTP_HOST']);
 $f3->set('UI',"views/");
 
 /*
@@ -65,6 +70,7 @@ $db = new \DB\SQL(
     )
 );
 
+$f3->set('CACHE',FALSE);
 
 /* FAT FREE - HELPER */
 $f3->route('GET /userref', function($f3) {
@@ -78,23 +84,23 @@ $f3->route('GET /userref', function($f3) {
 define('CURRENT_URI', $f3->get('PATH'));
 
 
-$f3->route('GET @home: /', function($f3){  require 'controllers/home.get.php'; });
-$f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
-$f3->route('POST /login', function($f3){ require 'controllers/login.post.php'; });
-$f3->route('GET|POST /register-auth', function($f3){ require 'controllers/register-auth.post.php'; });
-$f3->route('GET /thank-you-for-registering', function($f3){ require 'controllers/thank-you-for-registering.get.php'; });
+$f3->route('GET @home: /',  function($f3){ require 'controllers/home.get.php'; });
+// $f3->route('POST /register', function($f3){ require 'controllers/register.post.php'; });
+// $f3->route('POST /login', function($f3){ require 'controllers/login.post.php'; });
+// $f3->route('GET|POST /register-auth', function($f3){ require 'controllers/register-auth.post.php'; });
+// $f3->route('GET /thank-you-for-registering', function($f3){ require 'controllers/thank-you-for-registering.get.php'; });
 
-// do the test and save an anonymous user
+// // do the test and save an anonymous user
 
-$f3->route('GET @test: /test/@unique_test_url', function($f3){ require 'controllers/test.get.php'; });
-$f3->route('GET /test', function($f3){ require 'controllers/test.get.php'; });
 
 $f3->route('POST /test-save', function($f3){ require 'controllers/test-save.post.php'; });
 $f3->route('GET @result: /result/@unique_test_url', function($f3){ require 'controllers/result.get.php'; });
+$f3->route('GET @test: /test/@unique_test_url', function($f3){ require 'controllers/test.get.php'; });
+$f3->route('GET /test', function($f3){ require 'controllers/test.get.php'; });
 
-$f3->route('GET /logout', function($f3){ require 'controllers/logout.php'; });
+// $f3->route('GET /logout', function($f3){ require 'controllers/logout.php'; });
 
-$f3->route('GET /account', function($f3){ require 'controllers/account.get.php'; });
+// $f3->route('GET /account', function($f3){ require 'controllers/account.get.php'; });
 
 
 /******************

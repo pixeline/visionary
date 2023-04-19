@@ -1,5 +1,5 @@
 <?php
-
+use Hashids\Hashids;
 $unique_salt_value = "What a wonderful world!";
 
 $minimum_id_length = 8;
@@ -11,7 +11,7 @@ function getCountries($lang = "fr", $id=''){
 	if(!empty($id)){
 		$countries = $db->exec("SELECT nom_".$lang." as country_name FROM countries WHERE iso='$id'");
 		return $countries[0]['country_name'];
-	} 
+	}
 	$countries = $db->exec("SELECT iso, nom_".$lang." as country_name FROM countries");
 
 	usort($countries, function ($a, $b) {
@@ -43,7 +43,7 @@ function decodeToken($token){
 	require 'lib/JWT/JWT.php';
     $token_secret = 'As you think so shall you become';
 
-    $decoded = JWT::decode($token, $token_secret, array('HS256')); 
+    $decoded = JWT::decode($token, $token_secret, array('HS256'));
     if($decoded->sub){
     	return $decoded->sub;
     }
@@ -65,9 +65,9 @@ function pr($arg, $exit = false){
 
 function getUniqueURL($diff = 0){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
-	require "lib/Hashids/Hashids.php";
-	$hashids = new Hashids\Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
-	$hashids->_lower_max_int_value = PHP_INT_MAX;
+
+	$hashids = new Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
+	$hashids->lower_max_int_value = PHP_INT_MAX;
 	return $hashids->encode( round(microtime(true)) + intval($diff) );
 }
 
@@ -77,7 +77,7 @@ function decodeUniqueURL($url){
 	global $unique_salt_value, $minimum_id_length, $custom_alphabet;
 	require "lib/Hashids/Hashids.php";
 	$hashids = new Hashids($unique_salt_value, $minimum_id_length, $custom_alphabet);
-	$hashids->_lower_max_int_value = PHP_INT_MAX;
+	//$hashids->_lower_max_int_value = PHP_INT_MAX;
 	return $hashids->decode($url);
 }
 
@@ -115,7 +115,7 @@ function getTestFromUrl($url){
 	return false;
 }
 
-function getOS() { 
+function getOS() {
     $os_platform = "Unknown OS Platform";
     $os_array = array(
         '/windows nt 10/i'     =>  'Windows 10',
@@ -144,11 +144,11 @@ function getOS() {
         '/webos/i'              =>  'Mobile'
     );
 
-    foreach ($os_array as $regex => $value) { 
+    foreach ($os_array as $regex => $value) {
         if (preg_match($regex, $_SERVER['HTTP_USER_AGENT'])) {
             $os_platform = $value;
         }
-    }   
+    }
     return $os_platform;
 }
 
@@ -166,14 +166,14 @@ function getSystemProfil(){
 	    } else if( $detect->isAndroidOS() ){
 	        $detector["OS"] = "Android " . $detect->version("Android");
 	    } else {
-	        $detector["OS"] = "Other";        
+	        $detector["OS"] = "Other";
 	    }
 	} else {
 	     $detector["OS"] = getOS();
 	}
 
 	if( $detect->version("IE") ){
-	    $detector["browser"] = "Internet Explorer " . $detect->version("IE"); 
+	    $detector["browser"] = "Internet Explorer " . $detect->version("IE");
 	} else if( $detect->version("Chrome") ){
 	    $detector["browser"] = "Chrome ". $detect->version("Chrome");
 	} else if( $detect->version("Firefox") ){
@@ -219,7 +219,7 @@ function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plenneva
 		$template = 'emails/welcome.html';
 		break;
 	}
-	
+
 	$smtp->set('Subject', 'Visionary: ' . $subject);
 	$message = Template::instance()->render($template);
 	$message .= Template::instance()->render('emails/footer.html');
@@ -228,5 +228,3 @@ function send_mail($to = 'aplennevaux@gmail.com', $to_name = 'Alexandre Plenneva
 	}
 	return 'ok';
 }
-
-

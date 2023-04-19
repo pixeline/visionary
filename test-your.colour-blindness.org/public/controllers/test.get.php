@@ -4,8 +4,8 @@ global $db, $lang;
 	"TEST" CONTROLLER:
 	> if route is /test/@unique_test_url: get data then redirect to /test
 	> if route is /test  : check if session is not dry. If it is, populate session with default "anonymous" values.
-
 */
+
 if( empty( $f3->get('SESSION.user.name')) || ($f3->get('SESSION.user.name') == 'anonymous') ){
 
 	// User is unknown, let's link him to the Anonymous account
@@ -20,12 +20,16 @@ if( empty( $f3->get('SESSION.user.name')) || ($f3->get('SESSION.user.name') == '
 		'role'           => 'user',
 		'countries_iso'  => 'BE',
 		'id'    		 => '1',
-		'is_logged_in' 	 => 'ko'
+		'is_logged_in' 	 => 'ko',
+		'diag_serie'	 => '',
 	);
 	$f3->set('SESSION.user', $user);
 }
 
-$unique_test_url = trim($f3->get('PARAMS.unique_test_url'));
+if ($f3->exists('PARAMS.unique_test_url') && !empty($f3->get('PARAMS.unique_test_url')) ){
+	$unique_test_url = trim($f3->get('PARAMS.unique_test_url'));
+}
+
 if(!empty($unique_test_url)){
 
 	// Unique url query var present in URL, get relevant test data.
@@ -52,21 +56,21 @@ if(!empty($unique_test_url)){
 
 		$f3->set('SESSION.test', $test);
 		$f3->set('SESSION.user', $user);
-		
+
 		// Update user's last login datetime...
 		$db->exec(
-			"UPDATE users SET last_login=:now WHERE id=:users_id", 
+			"UPDATE users SET last_login=:now WHERE id=:users_id",
 				array(
-				':now'=> date("Y-m-d H:i:s"), 
+				':now'=> date("Y-m-d H:i:s"),
 				':users_id'=> $test['users_id']
 				)
 			);
 
 		// We reset the test start time since he's reaccessing the screen and starting over.
 		$db->exec(
-			"UPDATE tests SET test_start_date=:now WHERE unique_url=:unique_url", 
+			"UPDATE tests SET test_start_date=:now WHERE unique_url=:unique_url",
 			array(
-				':now' => date("Y-m-d H:i:s"), 
+				':now' => date("Y-m-d H:i:s"),
 				':unique_url' => $unique_test_url
 				)
 			);
@@ -79,7 +83,7 @@ if(!empty($unique_test_url)){
 	}
 }
 
-if( empty(trim($f3->get('SESSION.test.unique_url'))) || $f3->get('SESSION.test.finished') == '1' ) {
+if( empty($unique_test_url ) || $f3->get('SESSION.test.finished') == '1' ) {
 
 	$detector = getSystemProfil();
 
@@ -88,14 +92,13 @@ if( empty(trim($f3->get('SESSION.test.unique_url'))) || $f3->get('SESSION.test.f
 	- une colonne "OS" os + os version
 	- une colonne "browser" : browser + browser version
 	*/
-	
+
 	// If no test prepared for that user, create a new test
-	
+
 	$interfaces = $db->exec("SELECT * FROM interfaces WHERE name = '".$f3->get('INTERFACE_VERSION')."'");
 	$interface_version = $interfaces[0]["id"];
 	//$mysql_time = date("Y-m-d H:i:s");
-	//$unique_test_url= getUniqueURL();
-	
+
 	$test = array(
 		"users_id"			    => $f3->get('SESSION.user.id'),
 		"interface_id" 		    => $interface_version,
@@ -104,11 +107,12 @@ if( empty(trim($f3->get('SESSION.test.unique_url'))) || $f3->get('SESSION.test.f
 		"test_start_date" 	    => date("Y-m-d H:i:s"),
 		"device"	  			=> $detector["device"],
 		"os"	   				=> $detector["OS"],
-		"browser"	 			=> $detector["browser"]
+		"browser"	 			=> $detector["browser"],
+		'diag_serie'	 => ''
 	);
-	
+
 	$db->exec(
-		"INSERT INTO tests(users_id, interface_id, unique_url, test_creation_date, test_start_date,device,os,browser) VALUES (:users_id,:interface_id,:unique_url,:test_creation_date,:test_start_date,:device,:os,:browser)", 
+		"INSERT INTO tests(users_id, interface_id, unique_url, test_creation_date, test_start_date,device,os,browser,diag_serie) VALUES (:users_id,:interface_id,:unique_url,:test_creation_date,:test_start_date,:device,:os,:browser,:diag_serie)",
 		$test
 	);
 
@@ -119,7 +123,6 @@ if( empty(trim($f3->get('SESSION.test.unique_url'))) || $f3->get('SESSION.test.f
 // set variables
 $f3->set('test', $test);
 $f3->set('user', $user);
-$f3->set('content', 'views/test.htm');
+$f3->set('content', '../views/test.htm');
 
-echo View::instance()->render('views/layout.htm');
-
+echo View::instance()->render('../views/layout.htm');

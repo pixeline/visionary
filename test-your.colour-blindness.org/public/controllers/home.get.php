@@ -7,6 +7,7 @@ require("auth-config.php");
 
 $hybridauth = new Hybrid_Auth( $auth_config );
 $auth_connected = false;
+$user = false;
 
 if( $hybridauth->isConnectedWith("Google") ){
 	try {
@@ -80,7 +81,7 @@ if($auth_connected){
 	//$token_provider = "facebook_token";
 
 	$db->exec(
-		"UPDATE users SET ".$token_provider."=:token WHERE id=:users_id", 
+		"UPDATE users SET ".$token_provider."=:token WHERE id=:users_id",
 		array(':token'=> $token, ':users_id'=> $user['id'])
 	);
 }
@@ -91,16 +92,18 @@ if($user){
 	// Update the session
 	$f3->set('SESSION.user', $user);
 	$db->exec(
-		"UPDATE users SET last_login=:now WHERE id=:users_id", 
+		"UPDATE users SET last_login=:now WHERE id=:users_id",
 		array(':now'=> date("Y-m-d H:i:s"), ':users_id'=> $f3->get("SESSION.user.id"))
 	);
 	//$f3->reroute("/test");
+} else{
+	$f3->set('SESSION.user', array('is_logged_in' => 'no'));
 }
 if( !empty($f3->get('SESSION.errors') ) ){
 	$f3->set('errors', $f3->get('SESSION.errors'));
-	
+
 }
 $f3->set('countries', getCountries($lang) );
-$f3->set('content', 'views/home.htm');
-echo View::instance()->render('views/layout.htm');
+$f3->set('content', '../views/home.htm');
+echo View::instance()->render('../views/layout.htm');
 $f3->clear('SESSION.errors');
